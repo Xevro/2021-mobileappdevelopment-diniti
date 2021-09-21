@@ -1,0 +1,7 @@
+{
+  "name": "Diniti",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
