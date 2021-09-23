@@ -1,1 +1,11 @@
 Logboek Mobile Application Development - 2021-2022
+
+- Week 1 - vrijdag 24/09/2021
+
+* Technologie en applicatie idee bedacht en uitgeschreven.
+* Opzoekingswerk verricht in verband met de technologie
+* Figma prototypes ontworpen
+* Basis start project aangemaakt + git repo aangemaakt
+
+
+- Week 2 - vrijdag 01/10/2021
