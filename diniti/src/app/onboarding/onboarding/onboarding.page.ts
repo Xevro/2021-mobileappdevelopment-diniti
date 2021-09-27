@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Routes} from '../../models/routes.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-onboarding',
@@ -9,9 +11,17 @@ export class OnboardingPage implements OnInit {
 
   appIcon = '../../../assets/icon/diniti-logo.svg';
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
+  login() {
+    this.router.navigate(Routes.login);
+  }
+
+  registerUser() {
+    this.router.navigate(Routes.register);
+  }
 }
