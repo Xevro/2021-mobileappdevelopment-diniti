@@ -24,3 +24,10 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+  --global-app-background: #F9F9FB;
+  --color-shadow-black: rgba(0, 0, 0, 0.1);
+  --color-app-primary-button: #EC1F46;
+  --color-app-secondary-button: #FFF;
+}
