@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {RouteLiterals} from '../../models/route-literals.model';
+import {RouteLiterals} from '../../../models';
 import {OnboardingPage} from './onboarding.page';
 
 const routes: Routes = [

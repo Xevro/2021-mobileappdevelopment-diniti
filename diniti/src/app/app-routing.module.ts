@@ -5,15 +5,15 @@ import {RouteLiterals} from './models/route-literals.model';
 const routes: Routes = [
   {
     path: RouteLiterals.onboarding,
-    loadChildren: () => import('./onboarding/onboarding/onboarding.module').then( m => m.OnboardingPageModule)
+    loadChildren: () => import('./screens/onboarding/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
   },
   {
     path: RouteLiterals.registerUser,
-    loadChildren: () => import('./login/register-user/register-user.module').then( m => m.RegisterUserPageModule)
+    loadChildren: () => import('./screens/login/register-user/register-user.module').then(m => m.RegisterUserPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login/login.module').then( m => m.LoginPageModule)
+    path: RouteLiterals.login,
+    loadChildren: () => import('./screens/login/login/login.module').then(m => m.LoginPageModule)
   }
 ];
 @NgModule({
