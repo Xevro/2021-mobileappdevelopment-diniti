@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import {RouteLiterals} from './models/route-literals.model';
+import {RouteLiterals} from './models';
 
 const routes: Routes = [
   {
     path: RouteLiterals.onboarding,
-    loadChildren: () => import('./screens/onboarding/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
+    loadChildren: () => import('./screens/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
   },
   {
     path: RouteLiterals.registerUser,
-    loadChildren: () => import('./screens/login/register-user/register-user.module').then(m => m.RegisterUserPageModule)
+    loadChildren: () => import('./screens/register-user/register-user.module').then(m => m.RegisterUserPageModule)
   },
   {
     path: RouteLiterals.login,
-    loadChildren: () => import('./screens/login/login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./screens/login/login.module').then(m => m.LoginPageModule)
   }
 ];
 @NgModule({

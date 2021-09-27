@@ -1,8 +1,13 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
-/** Ionic CSS Variables **/
+/** Diniti & Ionic CSS Variables **/
 :root {
+  --global-app-background: #F9F9FB;
+  --color-shadow-black: rgba(0, 0, 0, 0.1);
+  --color-app-primary-button: #EC1F46;
+  --color-app-secondary-button: #FFF;
+
   /** primary **/
   --ion-color-primary: #eb445a;
   --ion-color-primary-rgb: 235, 68, 90;
