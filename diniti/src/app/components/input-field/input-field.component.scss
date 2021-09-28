@@ -1,0 +1,8 @@
+ion-input {
+  margin-top: 15px;
+  background: var(--color-app-background-input);
+  border: 1px solid var(--color-app-border-input);
+  box-sizing: border-box;
+  border-radius: 8px;
+  --padding-start: 8px;
+}
