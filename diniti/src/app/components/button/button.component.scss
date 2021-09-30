@@ -6,3 +6,8 @@ ion-button {
   --border-radius: 50px;
   --background: #FFF;
 }
+
+.dark-button {
+  --color: #FFF;
+  --background: var(--color-app-primary-button);
+}

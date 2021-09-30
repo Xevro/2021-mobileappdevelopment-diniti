@@ -1,11 +1,14 @@
 <ion-content>
-  <div class="login-page">
+  <div class="login-header">
+    <a [routerLink]="onboardingRoute"><img class="cancel-login" [src]="imageSrc" alt="cancel"></a>
     <h2>Log in</h2>
+  </div>
+  <div class="login-page">
     <div class="input-fields">
       <app-input-field [placeholder]="'Email'"></app-input-field>
       <app-input-field [placeholder]="'Wachtwoord'"></app-input-field>
       <div class="button-login">
-      <app-button [buttonText]="'Log in'"></app-button>
+        <app-button [invertColor]="true" [buttonText]="'Log in'"></app-button>
       </div>
     </div>
   </div>
