@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RouteLiterals} from '../../models';
+import {FieldTypes} from '../../models/field-types.enum';
 
 @Component({
   selector: 'app-register',
@@ -7,6 +8,8 @@ import {RouteLiterals} from '../../models';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+
+  fieldTypes = FieldTypes;
 
   get imageSrc(): string {
     return './assets/icon/cancel-x.svg';

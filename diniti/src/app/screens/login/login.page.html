@@ -8,8 +8,8 @@
   </div>
   <div class="login-page">
     <div class="input-fields">
-      <app-input-field [placeholder]="'Email'"></app-input-field>
-      <app-input-field [placeholder]="'Wachtwoord'"></app-input-field>
+      <app-input-field [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
+      <app-input-field [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord'"></app-input-field>
       <div class="button-login">
         <app-button [invertColor]="true" [buttonText]="'Log in'"></app-button>
       </div>
