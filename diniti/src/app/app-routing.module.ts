@@ -8,8 +8,8 @@ const routes: Routes = [
     loadChildren: () => import('./screens/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
   },
   {
-    path: RouteLiterals.registerUser,
-    loadChildren: () => import('./screens/register-user/register-user.module').then(m => m.RegisterUserPageModule)
+    path: RouteLiterals.register,
+    loadChildren: () => import('./screens/register/register.module').then(m => m.RegisterUserPageModule)
   },
   {
     path: RouteLiterals.login,

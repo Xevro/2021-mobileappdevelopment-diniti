@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {RouteLiterals} from '../../models';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class RegisterPage implements OnInit {
 
   get imageSrc(): string {
     return './assets/icon/cancel-x.svg';
@@ -16,8 +16,8 @@ export class LoginPage implements OnInit {
     return '/' + RouteLiterals.onboarding;
   }
 
-  get registerRoute(): string {
-    return '/' + RouteLiterals.register;
+  get loginRoute(): string {
+    return '/' + RouteLiterals.login;
   }
 
   constructor() {

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { RegisterUserPageRoutingModule } from './register-routing.module';
 
-import { LoginPage } from './login.page';
+import { RegisterPage } from './register.page';
 import {InputFieldComponent} from '../../components/input-field/input-field.component';
 import {ButtonComponent} from '../../components/button/button.component';
 
@@ -15,8 +15,8 @@ import {ButtonComponent} from '../../components/button/button.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    RegisterUserPageRoutingModule
   ],
-  declarations: [LoginPage, InputFieldComponent, ButtonComponent]
+  declarations: [RegisterPage, InputFieldComponent, ButtonComponent]
 })
-export class LoginPageModule {}
+export class RegisterUserPageModule {}

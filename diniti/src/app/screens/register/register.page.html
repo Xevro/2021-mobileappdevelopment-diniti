@@ -1,0 +1,19 @@
+<ion-content>
+  <div class="register-header">
+    <a routerLink="{{onboardingRoute}}" routerDirection="back">
+      <img class="cancel-register" [src]="imageSrc" alt="cancel">
+    </a>
+    <h2>Registreer</h2>
+    <a routerLink="{{loginRoute}}" routerDirection="forward" class="header-login">Login</a>
+  </div>
+  <div class="register-page">
+    <div class="input-fields">
+      <app-input-field [placeholder]="'Email'"></app-input-field>
+      <app-input-field [placeholder]="'Wachtwoord'"></app-input-field>
+      <div class="button-register">
+        <app-button [invertColor]="true" [buttonText]="'Registeer'"></app-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
