@@ -9,3 +9,18 @@ Logboek Mobile Application Development - 2021-2022
 
 
 - Week 2 - vrijdag 01/10/2021
+
+* Afwerken van Figma designs.
+* Starten met het opbouwen van de applicatie in Ionic. De onboarding, login en registreer pagina's beginnen opbouwen.
+  Enkele basis routing zaken geoptimaliseerd en componenten gebouwd (button, input veld).
+* Om op een nette manier te werken met routes en properties maak ik gebruik van models, enums en interfaces
+  zodat alles georganiseerd blijft en tijdens het ontwikkelen er duidelijkere regels zijn voor elk component
+
+Om een image picker toe te voegen maakte ik gebruik van deze code:
+https://forum.ionicframework.com/t/imagepicker-for-browser/183262
+Service worker informatie:
+https://blog.angular-university.io/angular-service-worker/
+https://ionicframework.com/blog/start-build-deploy-your-first-capacitor-pwa-with-ionic/
+
+
+- Week 3 - vrijdag 08/10/2021

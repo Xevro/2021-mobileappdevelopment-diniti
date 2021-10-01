@@ -28,6 +28,15 @@ ion-content {
         text-align: center;
         margin-top: 25px;
       }
+      .terms {
+        margin-top: 14px;
+        margin-left: 0;
+        .checkbox-label {
+          margin-left: 10px;
+          font-size: 14px;
+          color: var(--color-app-text-gray);
+        }
+      }
     }
   }
 }

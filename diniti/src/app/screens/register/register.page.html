@@ -15,6 +15,11 @@
       <app-input-field [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
       <app-input-field [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord'"></app-input-field>
       <app-input-field [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord controle'"></app-input-field>
+      <ion-item class="terms">
+        <ion-checkbox color="primary"></ion-checkbox>
+        <ion-label class="checkbox-label">{{ 'Ik ga akkoord met de voorwaarden' }}</ion-label>
+      </ion-item>
+
       <div class="button-register">
         <app-button [invertColor]="true" [buttonText]="'Registeer'"></app-button>
       </div>

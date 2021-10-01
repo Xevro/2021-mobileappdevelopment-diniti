@@ -7,16 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
-import {InputFieldComponent} from '../../components/input-field/input-field.component';
-import {ButtonComponent} from '../../components/button/button.component';
+import {InputFieldModule} from '../../components/input-field/input-field.module';
+import {ButtonModule} from '../../components/button/button.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    InputFieldModule,
+    ButtonModule
   ],
-  declarations: [LoginPage, InputFieldComponent, ButtonComponent]
+  declarations: [LoginPage]
 })
 export class LoginPageModule {}
