@@ -21,6 +21,13 @@ https://forum.ionicframework.com/t/imagepicker-for-browser/183262
 Service worker informatie:
 https://blog.angular-university.io/angular-service-worker/
 https://ionicframework.com/blog/start-build-deploy-your-first-capacitor-pwa-with-ionic/
+https://jsmobiledev.com/article/pwa-faq/
 
+Handig voor later:
+  - Online plaatsen van project: https://devdactic.com/ionic-pwa-caching/
 
 - Week 3 - vrijdag 08/10/2021
+
+
+
+
