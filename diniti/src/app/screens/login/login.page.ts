@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RouteLiterals} from '../../models';
+import {Routes} from '../../models';
 import {FieldTypes} from '../../models/field-types.enum';
 
 @Component({
@@ -15,12 +15,12 @@ export class LoginPage implements OnInit {
     return './assets/icon/cancel-x.svg';
   }
 
-  get onboardingRoute(): string {
-    return '/' + RouteLiterals.onboarding;
+  get onboardingRoute() {
+    return Routes.onboarding;
   }
 
   get registerRoute() {
-    return ['/', RouteLiterals.onboarding, RouteLiterals.register];
+    return Routes.register;
   }
 
   constructor() {
