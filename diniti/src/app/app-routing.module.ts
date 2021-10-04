@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: RouteLiterals.orders,
     loadChildren: () => import('./screens/user/orders/orders.module').then(m => m.OrdersPageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./screens/not-found/not-found.module').then( m => m.NotFoundPageModule)
   }
 ];
 
