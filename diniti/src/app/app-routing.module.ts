@@ -13,8 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./screens/user/overview/overview.module').then( m => m.OverviewPageModule)
   },
   {
-    path: RouteLiterals.order,
-    loadChildren: () => import('./screens/user/order/order.module').then( m => m.OrderPageModule)
+    path: RouteLiterals.orders,
+    loadChildren: () => import('./screens/user/orders/orders.module').then(m => m.OrdersPageModule)
   }
 ];
 

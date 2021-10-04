@@ -29,14 +29,15 @@ Handig voor later:
 - Week 3 - vrijdag 08/10/2021
 
   - Gedaan
-
+    * De user overview, order (bestelling), order complete en order overview pagina pagina's aangemaakt.
+    * Routing probleem opgelost waar pagina niet werkte als child.
   
 
   - Opgelost
 
     * Service worker probleem opgelost en gevonden (enkel mogelijk tijdens productie build en hosten in 
       www build map: http-server -p 8080 -c-1 www/)
-    * Routing aangepast zodat /login en /register onder /onboarding zitten
+    * Routing aangepast zodat /login en /register onder /onboarding zitten.
 
   - Nog op te lossen
 
