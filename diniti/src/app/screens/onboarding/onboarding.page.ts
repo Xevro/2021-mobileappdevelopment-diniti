@@ -4,8 +4,8 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-onboarding',
-  templateUrl: './onboarding.page.html',
-  styleUrls: ['./onboarding.page.scss'],
+  templateUrl: 'onboarding.page.html',
+  styleUrls: ['onboarding.page.scss'],
 })
 export class OnboardingPage implements OnInit {
 

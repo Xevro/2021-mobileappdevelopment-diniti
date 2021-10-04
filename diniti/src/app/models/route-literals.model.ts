@@ -1,5 +1,5 @@
 export class RouteLiterals {
-    static onboarding = '';
+    static onboarding = 'onboarding';
     static login = 'login';
     static register = 'register';
 }

@@ -21,14 +21,28 @@ https://forum.ionicframework.com/t/imagepicker-for-browser/183262
 Service worker informatie:
 https://blog.angular-university.io/angular-service-worker/
 https://ionicframework.com/blog/start-build-deploy-your-first-capacitor-pwa-with-ionic/
-https://jsmobiledev.com/article/pwa-faq/
+
 
 Handig voor later:
   - Online plaatsen van project: https://devdactic.com/ionic-pwa-caching/
 
 - Week 3 - vrijdag 08/10/2021
 
-* Service worker probleem opgelost en gevonden (enkel mogelijk tijdens productie build en hosten in 
-  www build map: http-server -p 8080 -c-1 www/)
+  - Gedaan
 
+  
+
+  - Opgelost
+
+    * Service worker probleem opgelost en gevonden (enkel mogelijk tijdens productie build en hosten in 
+      www build map: http-server -p 8080 -c-1 www/)
+    * Routing aangepast zodat /login en /register onder /onboarding zitten
+
+  - Nog op te lossen
+
+
+  - Bronnen
+
+    * Oplossen van routing probleem: https://stackoverflow.com/questions/61239145/ionic-5-how-to-navigate-to-the-child-and-to-the-sub-child
+     
 

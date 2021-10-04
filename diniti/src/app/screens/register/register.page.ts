@@ -4,8 +4,8 @@ import {FieldTypes} from '../../models/field-types.enum';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  templateUrl: 'register.page.html',
+  styleUrls: ['register.page.scss'],
 })
 export class RegisterPage implements OnInit {
 
@@ -19,8 +19,8 @@ export class RegisterPage implements OnInit {
     return '/' + RouteLiterals.onboarding;
   }
 
-  get loginRoute(): string {
-    return '/' + RouteLiterals.login;
+  get loginRoute() {
+    return ['/', RouteLiterals.onboarding, RouteLiterals.login];
   }
 
   constructor() {
