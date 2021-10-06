@@ -1,0 +1,11 @@
+<div style="margin: auto;">
+  <div class="orders-list">
+    <ion-infinite-scroll threshold="100px">
+      <app-order-list-item *ngFor="let order of orders" [order]="order"></app-order-list-item>
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</div>

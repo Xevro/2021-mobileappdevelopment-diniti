@@ -6,14 +6,18 @@ import {IonicModule} from '@ionic/angular';
 import {OverviewPageRoutingModule} from './overview-routing.module';
 
 import {OverviewPage} from './overview.page';
+import {ButtonModule} from '../../../components/button/button.module';
+import {OrderListModule} from '../../../components/order-list/order-list.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    OverviewPageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        OverviewPageRoutingModule,
+        ButtonModule,
+        OrderListModule
+    ],
   declarations: [OverviewPage]
 })
 export class OverviewPageModule {

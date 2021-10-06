@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>overview</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="title-box">
+    <h2>Uw bestellingen</h2>
+    <app-button [invertColor]="true" [buttonText]="'Plaats een bestelling'"></app-button>
+  </div>
+  <div>
+    <div class="list-title">
+      <h4>Bestellingen</h4>
+    </div>
+    <app-order-list [orders]="['Bestelling #2822','Bestelling #2872','Bestelling #2619','Bestelling #3029',
+    'Bestelling #2822','Bestelling #2872','Bestelling #2619','Bestelling #3029',
+    'Bestelling #2822','Bestelling #2872','Bestelling #2619','Bestelling #3029',
+    'Bestelling #2822','Bestelling #2872','Bestelling #2619','Bestelling #3029',
+    'Bestelling #2822','Bestelling #2872','Bestelling #2619','Bestelling #3029']"></app-order-list>
+  </div>
 </ion-content>
