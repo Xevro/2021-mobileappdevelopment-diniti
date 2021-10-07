@@ -13,8 +13,8 @@ const routes: Routes = [
         loadChildren: () => import('../overview-orders/overview-orders.module').then(m => m.OverviewOrdersPageModule)
       },
       {
-        path: RouteLiterals.register,
-        loadChildren: () => import('../../login/login.module').then(m => m.LoginPageModule)
+        path: RouteLiterals.userProfile,
+        loadChildren: () => import('../user-profile/user-profile.module').then( m => m.UserProfilePageModule)
       },
       {
         path: '',
