@@ -30,7 +30,8 @@ Handig voor later:
 
   - Toegevoegd/gedaan
 
-    * De user overview, order (bestelling), order complete en order overview pagina pagina's aangemaakt.
+    * De user overview, order (bestelling), order complete en order overview pagina's aangemaakt.
+    * 2 componenten (order-item en order-list-item) aangemaakt om een lijst van orders weer te geven op de orders pagina.
     * Routing probleem opgelost waar pagina niet werkte als child.
     * Aan de onderkant van de user overview pagina een tabs navigatie component toegevoegd.
 
