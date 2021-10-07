@@ -10,15 +10,11 @@ const routes: Routes = [
   },
   {
     path: RouteLiterals.userOverview,
-    loadChildren: () => import('./screens/user/overview/overview.module').then( m => m.OverviewPageModule)
-  },
-  {
-    path: RouteLiterals.orders,
-    loadChildren: () => import('./screens/user/orders/orders.module').then(m => m.OrdersPageModule)
+    loadChildren: () => import('./screens/user/overview-tabs/overview-tabs.module').then(m => m.OverviewTabsPageModule)
   },
   {
     path: '**',
-    loadChildren: () => import('./screens/not-found/not-found.module').then( m => m.NotFoundPageModule)
+    loadChildren: () => import('./screens/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
 ];
 

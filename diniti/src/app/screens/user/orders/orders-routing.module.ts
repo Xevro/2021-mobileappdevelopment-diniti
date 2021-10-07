@@ -10,7 +10,7 @@ const routes: Routes = [
     component: OrdersPage
   },
   {
-    path: RouteLiterals.orderOverview,
+    path: RouteLiterals.userOrderDetail,
     loadChildren: () => import('../order-overview/order-overview.module').then(m => m.OrderOverviewPageModule)
   },
   {
