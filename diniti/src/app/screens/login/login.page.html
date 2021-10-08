@@ -11,7 +11,7 @@
       <app-input-field [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
       <app-input-field [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord'"></app-input-field>
       <div class="button-login">
-        <app-button [invertColor]="true" [buttonText]="'Log in'"></app-button>
+        <app-button [invertColor]="true" (click)="validateLogin()" [buttonText]="'Log in'"></app-button>
       </div>
     </div>
   </div>

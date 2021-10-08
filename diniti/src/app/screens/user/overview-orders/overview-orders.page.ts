@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Routes} from '../../../models';
 
 @Component({
   selector: 'app-overview-orders',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewOrdersPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  createOrder() {
+    this.router.navigate(Routes.userOrderCreate);
   }
 
 }

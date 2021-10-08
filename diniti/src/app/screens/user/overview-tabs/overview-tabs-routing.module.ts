@@ -17,6 +17,14 @@ const routes: Routes = [
         loadChildren: () => import('../user-profile/user-profile.module').then( m => m.UserProfilePageModule)
       },
       {
+        path: RouteLiterals.userOrderDetail,
+        loadChildren: () => import('../order-details/order-details.module').then( m => m.OrderDetailsPageModule)
+      },
+      {
+        path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderCreate,
+        loadChildren: () => import('../create-order/create-order.module').then( m => m.CreateOrderPageModule)
+      },
+      {
         path: '',
         redirectTo: '/overview/orders',
         pathMatch: 'full'

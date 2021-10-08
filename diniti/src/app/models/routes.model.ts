@@ -8,4 +8,6 @@ export class Routes {
   static orders = ['/',  RouteLiterals.userOverview, RouteLiterals.userOrders];
   static userProfile = ['/', RouteLiterals.userOverview, RouteLiterals.userProfile];
   static orderComplete = ['/', RouteLiterals.orderComplete];
+  static userOrderDetail = ['/', RouteLiterals.userOverview, RouteLiterals.userOrders, RouteLiterals.userOrderDetail];
+  static userOrderCreate = ['/', RouteLiterals.userOverview, RouteLiterals.userOrderDetail, RouteLiterals.userOrderCreate];
 }
