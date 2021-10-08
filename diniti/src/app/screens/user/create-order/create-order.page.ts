@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {RouterExtensionService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-create-order',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateOrderPage implements OnInit {
 
-  constructor() { }
+  constructor(private routerExtensionService: RouterExtensionService) {
+  }
 
   ngOnInit() {
   }
 
+  getPreviousUrl() {
+    return this.routerExtensionService.getPreviousUrl();
+  }
 }
