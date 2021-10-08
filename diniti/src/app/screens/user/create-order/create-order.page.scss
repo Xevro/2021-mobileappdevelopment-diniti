@@ -2,9 +2,12 @@ ion-content {
   .order-header {
     .cancel-order {
       position: absolute;
-      --background: none;
-      margin-top: 13px;
+      --color: var(--color-app-primary-button);
+      --margin-top: 35px;
       margin-left: 20px;
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
       text-decoration: none;
     }
     h2 {
@@ -14,8 +17,12 @@ ion-content {
     }
     .header-register-order {
       position: absolute;
-      top: 32px;
-      right: 25px;
+      right: 20px;
+      top: -45px;
+      --color: var(--color-app-primary-button);
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
       text-decoration: none;
     }
   }

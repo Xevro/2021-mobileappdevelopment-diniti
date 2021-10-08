@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterExtensionService} from '../../../services/ui-services';
+import {Routes} from '../../../models';
 
 @Component({
   selector: 'app-create-order',
@@ -8,13 +8,13 @@ import {RouterExtensionService} from '../../../services/ui-services';
 })
 export class CreateOrderPage implements OnInit {
 
-  constructor(private routerExtensionService: RouterExtensionService) {
+  constructor() {
   }
 
   ngOnInit() {
   }
 
-  getPreviousUrl() {
-    return this.routerExtensionService.getPreviousUrl();
+  getOrderSummaryUrl() {
+    return Routes.userOrderCreateSummary;
   }
 }

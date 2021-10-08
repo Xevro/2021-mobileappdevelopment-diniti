@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonTabs} from '@ionic/angular';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-overview-tabs',
@@ -7,12 +6,7 @@ import {IonTabs} from '@ionic/angular';
   styleUrls: ['overview-tabs.page.scss']
 })
 export class OverviewTabsPage {
-  @ViewChild('tabs', { static: false }) tabs: IonTabs;
 
-  constructor() {}
-
-  setCurrentTab() {
-    //this.selectedTab = this.tabs.getSelected();
-    console.log(this.tabs.getSelected());
+  constructor() {
   }
 }

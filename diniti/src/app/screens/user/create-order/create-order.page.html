@@ -1,10 +1,12 @@
 <ion-content [fullscreen]="true">
   <div class="order-header">
-    <a [routerLink]="getPreviousUrl()" class="cancel-order" routerDirection="back">
-      Annuleer
-    </a>
-    <h2>Bestellen</h2>
-    <a [routerLink]="'/'" routerDirection="forward" class="header-register-order">Winkelmand</a>
+    <ion-buttons>
+      <ion-back-button class="cancel-order" icon="" text="Annuleer" defaultHref="overview/orders"></ion-back-button>
+    </ion-buttons>
+    <h2>Bestel</h2>
+    <ion-buttons>
+      <ion-button [routerLink]="getOrderSummaryUrl()" [textContent]="'Winkelmand'" class="header-register-order"></ion-button>
+    </ion-buttons>
   </div>
   <div>
 

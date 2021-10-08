@@ -34,6 +34,7 @@ Handig voor later:
     * 2 componenten (order-item en order-list-item) aangemaakt om een lijst van orders weer te geven op de orders pagina.
     * Routing probleem opgelost waar pagina niet werkte als child.
     * Aan de onderkant van de user overview pagina een tabs navigatie component toegevoegd.
+    * De bestel pagina voorzien van een header met annuleer en winkelmand knop.
 
   - Opgeloste problemen
 
@@ -48,6 +49,7 @@ Handig voor later:
 
     * Oplossen van routing probleem: https://stackoverflow.com/questions/61239145/ionic-5-how-to-navigate-to-the-child-and-to-the-sub-child
     * Navigator onderkant scherm: https://ionicframework.com/docs/api/tabs
+    * Previous route: https://dev.to/slk5611/how-to-access-the-previous-route-in-your-angular-app-5db0
 
 
 - Week 4 - vrijdag 15/10/2021
