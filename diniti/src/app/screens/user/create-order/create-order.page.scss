@@ -1,0 +1,23 @@
+ion-content {
+  .order-header {
+    .cancel-order {
+      position: absolute;
+      --background: none;
+      margin-top: 13px;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 30px;
+      text-align: center;
+    }
+    .header-register-order {
+      position: absolute;
+      top: 32px;
+      right: 25px;
+      text-decoration: none;
+    }
+  }
+}
+

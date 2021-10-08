@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>create-order</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div class="order-header">
+    <a [routerLink]="'/'" class="cancel-order" routerDirection="back">
+      Annuleer
+    </a>
+    <h2>Bestellen</h2>
+    <a [routerLink]="'/'" routerDirection="forward" class="header-register-order">Winkelmand</a>
+  </div>
+  <div>
+  </div>
 </ion-content>
