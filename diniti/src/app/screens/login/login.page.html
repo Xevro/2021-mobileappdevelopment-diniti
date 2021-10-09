@@ -1,11 +1,15 @@
 <ion-content>
-  <div class="login-header">
-    <a [routerLink]="onboardingRoute" routerDirection="back">
-      <img class="cancel-login" [src]="imageSrc" alt="cancel">
-    </a>
-    <h2>Log in</h2>
-    <a [routerLink]="registerRoute" routerDirection="forward" class="header-register">Registreer</a>
-  </div>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="login-header">
+        <a [routerLink]="onboardingRoute" routerDirection="back">
+          <img class="cancel-login" [src]="imageSrc" alt="cancel">
+        </a>
+        <h2>Log in</h2>
+        <a [routerLink]="registerRoute" routerDirection="forward" class="header-register">Registreer</a>
+      </div>
+    </ion-toolbar>
+  </ion-header>
   <div class="login-page">
     <div class="input-fields">
       <app-input-field [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
