@@ -35,6 +35,7 @@ Handig voor later:
     * Routing probleem opgelost waar pagina niet werkte als child.
     * Aan de onderkant van de user overview pagina een tabs navigatie component toegevoegd.
     * De bestel pagina voorzien van een header met annuleer en winkelmand knop.
+    * Product componenten (item en lijst) gemaakt en opmaak gegeven.
 
   - Opgeloste problemen
 

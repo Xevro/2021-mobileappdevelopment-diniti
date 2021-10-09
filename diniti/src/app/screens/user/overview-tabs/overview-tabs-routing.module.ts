@@ -14,15 +14,19 @@ const routes: Routes = [
       },
       {
         path: RouteLiterals.userProfile,
-        loadChildren: () => import('../user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+        loadChildren: () => import('../user-profile/user-profile.module').then(m => m.UserProfilePageModule)
       },
       {
         path: RouteLiterals.userOrderDetail,
-        loadChildren: () => import('../order-details/order-details.module').then( m => m.OrderDetailsPageModule)
+        loadChildren: () => import('../order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {
         path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderCreate,
-        loadChildren: () => import('../create-order/create-order.module').then( m => m.CreateOrderPageModule)
+        loadChildren: () => import('../create-order/create-order.module').then(m => m.CreateOrderPageModule)
+      },
+      {
+        path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderCreate + '/' + RouteLiterals.userOrderCreateSummary,
+        loadChildren: () => import('../order-summary/order-summary.module').then(m => m.OrderSummaryPageModule)
       },
       {
         path: '',
