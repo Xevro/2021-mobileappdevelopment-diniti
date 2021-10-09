@@ -1,20 +1,21 @@
 /** Diniti & Ionic CSS Variables **/
 
 :root {
-  --global-app-background: #F9F9FB;
   --color-shadow-black: rgba(0, 0, 0, 0.1);
-  --color-app-primary-button: #EC1F46;
-  --color-app-text-gray: #8B8B8B;
-  --color-app-secondary-button: #FFF;
-  --color-app-background-input: #F6F6F6;
-  --color-app-border-input: #E8E8E8;
+  --color-app-primary: #EC1F46;
+  --color-app-shade-gray-1: #8B8B8B;
+  --color-app-secondary: #FFF;
+  --color-app-shade-white-1: #F6F6F6;
+  --color-app-shade-white-2: #E8E8E8;
+  --color-app-shade-white-3: #F9F9FB;
+  --list-width: 450px;
 
   /** primary **/
   --ion-color-primary: #eb445a;
   --ion-color-primary-rgb: 235, 68, 90;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #cf3c4f;
+  --ion-color-primary-shade: #d11537;
   --ion-color-primary-tint: #ed576b;
 
   /** secondary **/

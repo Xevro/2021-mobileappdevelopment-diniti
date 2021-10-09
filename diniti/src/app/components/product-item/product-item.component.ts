@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-product-item',
@@ -7,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductItemComponent implements OnInit {
 
-  constructor() { }
+  image = '../../../assets/icon/diniti-logo.svg';
 
-  ngOnInit() {}
+  constructor() {
+  }
 
+  ngOnInit() {
+  }
+
+  imageUrl() {
+    return this.image;
+  }
 }

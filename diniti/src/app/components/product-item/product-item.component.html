@@ -1,3 +1,30 @@
-<p>
-  product-item works!
-</p>
+<div class="product-item">
+  <div class="products-item-box">
+
+    <div class="product-image-box">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="imageUrl()" alt="Product name here!!!"></ion-img>
+      </ion-thumbnail>
+    </div>
+
+    <div class="product-item-box">
+      <div class="product-name">
+        <p>product naam</p>
+      </div>
+      <div class="product-bottom-row">
+        <div>
+          <p>€23.99</p>
+        </div>
+      </div>
+    </div>
+    <div class="product-count-box">
+      <div class="product-count">
+        <p>1</p>
+      </div>
+    </div>
+    <div class="product-buttons-box">
+      <ion-fab-button size="small" class="button-min">-</ion-fab-button>
+      <ion-fab-button size="small" class="button-plus">+</ion-fab-button>
+    </div>
+  </div>
+</div>

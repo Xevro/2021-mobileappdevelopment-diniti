@@ -1,7 +1,7 @@
 .order-item {
   font-weight: bold;
   margin-bottom: 10px;
-  border-bottom: 1px solid var(--color-app-border-input);
+  border-bottom: 1px solid var(--color-app-shade-white-2);
   .item-bottom-row {
     display: flex;
     justify-content: space-between;
@@ -9,7 +9,7 @@
       margin: 0;
     }
     .price {
-      color: var(--color-app-primary-button);
+      color: var(--color-app-primary);
     }
   }
 }

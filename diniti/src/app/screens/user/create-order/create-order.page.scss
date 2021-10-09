@@ -2,7 +2,7 @@ ion-content {
   .order-header {
     .cancel-order {
       position: absolute;
-      --color: var(--color-app-primary-button);
+      --color: var(--color-app-primary);
       --margin-top: 35px;
       margin-left: 20px;
       text-transform: lowercase;
@@ -19,12 +19,16 @@ ion-content {
       position: absolute;
       right: 20px;
       top: -45px;
-      --color: var(--color-app-primary-button);
+      --color: var(--color-app-primary);
       text-transform: lowercase;
       font-size: 1rem;
       font-weight: normal;
       text-decoration: none;
     }
+  }
+
+  .products-list {
+    margin-top: 60px;
   }
 }
 

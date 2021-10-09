@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { ProductItemComponent } from './product-item.component';
+import {ProductItemComponent} from './product-item.component';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -9,7 +9,7 @@ describe('ProductItemComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductItemComponent ],
+      declarations: [ProductItemComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

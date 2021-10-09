@@ -3,10 +3,11 @@ ion-content {
     text-align: center;
   }
   .list-title {
-    max-width: 360px;
+    max-width: var(--list-width);
     position: relative;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 18px;
   }
   h2 {
     font-weight: 600;

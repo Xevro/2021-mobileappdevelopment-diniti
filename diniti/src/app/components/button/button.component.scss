@@ -2,12 +2,12 @@ ion-button {
   width: 300px;
   height: 40px;
   margin-top: 20px;
-  --color: var(--color-app-primary-button);
+  --color: var(--color-app-primary);
   --border-radius: 50px;
   --background: #FFF;
 }
 
 .dark-button {
   --color: #FFF;
-  --background: var(--color-app-primary-button);
+  --background: var(--color-app-primary);
 }

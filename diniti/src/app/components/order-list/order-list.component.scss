@@ -1,7 +1,11 @@
-.orders-list {
-  width: auto;
+.orders-list-box {
   margin: auto;
-  max-width: 400px;
-  padding-left: 20px;
-  padding-right: 20px;
+
+  .orders-list {
+    width: auto;
+    margin: auto;
+    max-width: var(--list-width);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
