@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./screens/user/overview-tabs/overview-tabs.module').then(m => m.OverviewTabsPageModule)
   },
   {
+    path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderComplete,
+    loadChildren: () => import('./screens/user/order-complete/order-complete.module').then(m => m.OrderCompletePageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./screens/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }

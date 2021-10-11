@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>order-complete</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="order-complete-header">
+        <ion-buttons>
+          <ion-button [routerLink]="getOverviewUrl()" [textContent]="'Gereed'" class="order-complete-button">
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <div class="order-complete-content">
+    <h1>Bestelling is gelukt!</h1>
+    <h2>U kan uw bestelling ophalen om 18:00</h2>
+  </div>
 </ion-content>

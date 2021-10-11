@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Routes} from '../../../models';
 
 @Component({
   selector: 'app-order-summary',
@@ -11,6 +12,10 @@ export class OrderSummaryPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getOrderCompleteUrl() {
+    return Routes.orderComplete;
   }
 
 }
