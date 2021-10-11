@@ -11,6 +11,37 @@
       </div>
     </ion-toolbar>
   </ion-header>
-  <div>
+
+  <div class="summary-page-content">
+    <div class="summary-information">
+      <div class="summary-number">
+      <p>Bestelnummer: <a>#1827</a></p>
+      </div>
+      <div class="summary-price">
+        <p>Totaal prijs: <a>€23.49</a></p>
+      </div>
+    </div>
+    <div class="summary-content">
+      <ion-list class="time-picker">
+        <ion-list-header>
+          <ion-label>
+            Kies een tijdstip
+          </ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Tijdstip</ion-label>
+          <ion-select placeholder="Kies één">
+            <ion-select-option value="f">18:30</ion-select-option>
+            <ion-select-option value="m">18:45</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <div class="summary-list">
+        <h2>Mijn bestelling</h2>
+        <div>
+          <app-product-list [hideButtons]="true"></app-product-list>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

@@ -44,6 +44,7 @@ Handig voor later:
     * Probleem met navigator en routes opgelost (kon de /overview pagina niet meer bezoeken na de andere pagina met de navigator te bezoeken).
 
   - Op te lossen problemen
+
     * 
 
   - Bronnen
@@ -56,7 +57,9 @@ Handig voor later:
 - Week 4 - vrijdag 15/10/2021
 
  - Gedaan
-    * 
+
+    * Content toegevoegd op de summary order pagina.
+    * Onderzocht welke Parse SDK ik zou gebruiken om met de service worker te kunnen werken (Parse REST API);
 
   - Opgelost
 
@@ -64,9 +67,14 @@ Handig voor later:
 
   - Nog op te lossen
 
+    *
+
   - Bronnen
 
-    * 
+    * Offline mode (service worker): https://devdactic.com/ionic-4-offline-mode/
+    * Offline afhandelen van post/put methodes: https://blog.formpl.us/how-to-handle-post-put-requests-in-offline-applications-using-service-workers-indexedb-and-da7d0798a9ab
+    * Service worker met http request: https://blog.ng-book.com/service-workers-and-angular/
+
 
 
 

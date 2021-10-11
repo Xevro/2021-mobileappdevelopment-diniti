@@ -17,12 +17,12 @@
         </div>
       </div>
     </div>
-    <div class="product-count-box">
+    <div class="product-count-box" [ngClass]="{'product-count-left': hideButtons}">
       <div class="product-count">
         <p>1</p>
       </div>
     </div>
-    <div class="product-buttons-box">
+    <div class="product-buttons-box" *ngIf="!hideButtons">
       <ion-fab-button size="small" class="button-min">-</ion-fab-button>
       <ion-fab-button size="small" class="button-plus">+</ion-fab-button>
     </div>

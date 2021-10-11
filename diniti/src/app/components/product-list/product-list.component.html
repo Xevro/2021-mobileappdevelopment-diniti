@@ -1,17 +1,10 @@
 <div class="products-list-box">
   <div class="products-list">
     <ion-infinite-scroll threshold="100px">
-      <app-product-item></app-product-item>
-      <app-product-item></app-product-item>
-      <app-product-item></app-product-item>
-      <app-product-item></app-product-item>
-      <app-product-item></app-product-item>
-      <app-product-item></app-product-item>
-      <app-product-item></app-product-item>
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
-      </ion-infinite-scroll-content>
+      <app-product-item [hideButtons]="hideButtons"></app-product-item>
+      <app-product-item [hideButtons]="hideButtons"></app-product-item>
+      <app-product-item [hideButtons]="hideButtons"></app-product-item>
+      <app-product-item [hideButtons]="hideButtons"></app-product-item>
     </ion-infinite-scroll>
   </div>
 </div>

@@ -31,5 +31,53 @@ ion-content {
   .products-list {
     margin-top: 60px;
   }
+
+  .summary-page-content {
+    max-width: var(--list-width);
+    margin-left: auto;
+    margin-right: auto;
+
+    .summary-information {
+      display: flex;
+      margin-left: 15px;
+      margin-right: 15px;
+
+      .summary-number {
+      }
+
+      .summary-price {
+        margin-left: auto;
+        margin-right: 15px;
+      }
+    }
+
+    .summary-content {
+      .time-picker {
+      }
+
+      ion-list {
+        ion-list-header {
+          padding-left: 15px;
+          margin-bottom: 15px;
+
+          ion-label {
+            --color: var(--ion-color-step-850, #262626);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0;
+          }
+        }
+      }
+
+      .summary-list {
+        margin-left: 15px;
+        margin-right: 15px;
+
+        h2 {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
 }
 
