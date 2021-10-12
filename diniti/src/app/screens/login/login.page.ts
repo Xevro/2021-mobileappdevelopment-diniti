@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../models';
 import {FieldTypes} from '../../models/field-types.enum';
 import {Router} from '@angular/router';
+import {LoginProxyService} from '../../services/backend-services/login-proxy.service';
 
 @Component({
   selector: 'app-login',
@@ -24,13 +25,26 @@ export class LoginPage implements OnInit {
     return Routes.register;
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loginProxyService: LoginProxyService) {
   }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
+    this.loginProxyService.getData()
+      .subscribe(
+        (response) => {
+          console.log('response received');
+          console.log(response);
+        },
+        (error) => {
+          console.error('Request failed with error');
+        });
   }
 
   validateLogin() {
-      this.router.navigate(Routes.userOverview);
+    this.router.navigate(Routes.userOverview);
   }
 }
