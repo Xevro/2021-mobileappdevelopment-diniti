@@ -16,7 +16,7 @@ export class LoginProxyService extends CrudDataProvider<Login> {
   }
 
   loginAction(username: string, password: string): Observable<Login> {
-    const url = `${this.getBaseUrl()}/login?username=${encodeURI(username)}&password=${encodeURI(password)}`;
+    const url = `login?username=${encodeURI(username)}&password=${encodeURI(password)}`;
     return this.getRequest(url);
   }
 }
