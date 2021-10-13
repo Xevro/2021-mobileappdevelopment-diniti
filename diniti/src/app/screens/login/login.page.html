@@ -12,8 +12,8 @@
   </ion-header>
   <div class="login-page">
     <div class="input-fields">
-      <app-input-field [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
-      <app-input-field [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord'"></app-input-field>
+      <app-input-field [name]="'email'" [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
+      <app-input-field [name]="'password'" [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord'"></app-input-field>
       <div class="button-login">
         <app-button [invertColor]="true" (click)="validateLogin()" [buttonText]="'Log in'"></app-button>
       </div>

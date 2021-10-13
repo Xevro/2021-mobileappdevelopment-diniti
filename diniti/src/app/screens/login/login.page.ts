@@ -29,22 +29,18 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getData();
   }
 
-  getData() {
-    this.loginProxyService.getData()
+  validateLogin() {
+    this.loginProxyService.loginAction('louis', 'abc')
       .subscribe(
         (response) => {
           console.log('response received');
           console.log(response);
+          this.router.navigate(Routes.userOverview);
         },
         (error) => {
           console.error('Request failed with error');
         });
-  }
-
-  validateLogin() {
-    this.router.navigate(Routes.userOverview);
   }
 }
