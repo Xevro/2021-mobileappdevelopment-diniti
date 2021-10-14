@@ -13,10 +13,14 @@ const routes: Routes = [
   },
   {
     path: RouteLiterals.login,
+    canActivate: [LoginGuard],
+    runGuardsAndResolvers: 'always',
     loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: RouteLiterals.register,
+    canActivate: [LoginGuard],
+    runGuardsAndResolvers: 'always',
     loadChildren: () => import('../register/register.module').then(m => m.RegisterUserPageModule)
   }
 ];
