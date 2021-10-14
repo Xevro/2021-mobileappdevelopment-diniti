@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {RouteLiterals} from './models';
+import {AuthenticatedGuard} from './authenticated.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteLiterals.onboarding, pathMatch: 'full'},
@@ -10,10 +11,12 @@ const routes: Routes = [
   },
   {
     path: RouteLiterals.userOverview,
+    canActivate: [AuthenticatedGuard],
     loadChildren: () => import('./screens/user/overview-tabs/overview-tabs.module').then(m => m.OverviewTabsPageModule)
   },
   {
     path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderComplete,
+    canActivate: [AuthenticatedGuard],
     loadChildren: () => import('./screens/user/order-complete/order-complete.module').then(m => m.OrderCompletePageModule)
   },
   {

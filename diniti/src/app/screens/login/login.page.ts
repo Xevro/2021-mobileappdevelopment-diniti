@@ -3,6 +3,8 @@ import {Routes} from '../../models';
 import {FieldTypes} from '../../models/field-types.enum';
 import {Router} from '@angular/router';
 import {LoginProxyService} from '../../services/backend-services/login-proxy.service';
+import {UserContextService} from '../../services/ui-services';
+import {LoginInfo} from "../../models/backend-models";
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,10 @@ export class LoginPage implements OnInit {
     return Routes.register;
   }
 
-  constructor(private router: Router, private loginProxyService: LoginProxyService) {
+  constructor(
+    private router: Router,
+    private loginProxyService: LoginProxyService,
+    private userContext: UserContextService) {
   }
 
   ngOnInit() {
@@ -35,8 +40,7 @@ export class LoginPage implements OnInit {
     this.loginProxyService.loginAction('louis', 'abc')
       .subscribe(
         (response) => {
-          console.log('response received');
-          console.log(response);
+          this.userContext.userLoggedIn(response);
           this.router.navigate(Routes.userOverview);
         },
         (error) => {
