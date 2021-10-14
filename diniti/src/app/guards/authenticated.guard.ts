@@ -8,7 +8,7 @@ import {tap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthenticatedGuard implements CanActivate {
-  constructor(private userContext: AuthenticationService, private router: Router) {
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
   }
 
   canActivate(
@@ -16,9 +16,9 @@ export class AuthenticatedGuard implements CanActivate {
     state: RouterStateSnapshot
   ) {
     console.log('guard');
-    return this.userContext.tryAutoLogin().pipe(
+    return this.authenticationService.tryAutoLogin().pipe(
       tap((status) => {
-        if (!status || next.data.expectedRole !== this.userContext.getRole()) {
+        if (!status || next.data.expectedRole !== this.authenticationService.getRole()) {
           this.router.navigate(Routes.login);
         } else {
           return true;

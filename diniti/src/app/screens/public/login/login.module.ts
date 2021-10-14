@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
-import {InputFieldModule} from '../../components/input-field/input-field.module';
-import {ButtonModule} from '../../components/button/button.module';
+import {InputFieldModule} from '../../../components/input-field/input-field.module';
+import {ButtonModule} from '../../../components/button/button.module';
 
 @NgModule({
   imports: [

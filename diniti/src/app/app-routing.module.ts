@@ -2,15 +2,12 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {RouteLiterals} from './models';
 import {AuthenticatedGuard} from './guards/authenticated.guard';
-import {LoginGuard} from './guards/login.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteLiterals.onboarding, pathMatch: 'full'},
   {
     path: RouteLiterals.onboarding,
-    canActivate: [LoginGuard],
-    runGuardsAndResolvers: 'always',
-    loadChildren: () => import('./screens/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
+    loadChildren: () => import('./screens/public/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
   },
   {
     path: RouteLiterals.userOverview,

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Routes} from '../../models';
-import {FieldTypes} from '../../models/field-types.enum';
+import {Routes} from '../../../models';
+import {FieldTypes} from '../../../models/field-types.enum';
 
 @Component({
   selector: 'app-register',

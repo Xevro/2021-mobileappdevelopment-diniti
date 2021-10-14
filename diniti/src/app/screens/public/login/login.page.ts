@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Routes} from '../../models';
-import {FieldTypes} from '../../models/field-types.enum';
+import {Routes} from '../../../models';
+import {FieldTypes} from '../../../models/field-types.enum';
 import {Router} from '@angular/router';
-import {LoginProxyService} from '../../services/backend-services/login-proxy.service';
-import {AuthenticationService} from '../../services/ui-services';
+import {LoginProxyService} from '../../../services/backend-services/login-proxy.service';
+import {AuthenticationService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-login',

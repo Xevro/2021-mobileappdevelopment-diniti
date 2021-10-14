@@ -1,12 +1,15 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {OnboardingPage} from './onboarding.page';
-import {RouteLiterals} from '../../models';
+import {RouteLiterals} from '../../../models';
+import {LoginGuard} from '../../../guards/login.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: OnboardingPage
+    component: OnboardingPage,
+    canActivate: [LoginGuard],
+    runGuardsAndResolvers: 'always',
   },
   {
     path: RouteLiterals.login,

@@ -13,7 +13,6 @@ export class AuthenticationService {
   cookieKey = 'diniti';
   cookiePath = '/';
   authenticated = false;
-  landingPage: string = null;
   sessionToken: string = null;
   role: Role = null;
 
@@ -43,8 +42,8 @@ export class AuthenticationService {
 
   public clear(): void {
     this.authenticated = false;
-    this.landingPage = null;
     this.sessionToken = null;
+    this.role = null;
     this.cookieService.delete(this.cookieKey, this.cookiePath);
   }
 
@@ -56,12 +55,12 @@ export class AuthenticationService {
         .pipe(
           tap((loginInfo) => {
             this.userLoggedIn(loginInfo);
+            return of(true);
           }),
           map(() => true),
           catchError(() => {
             console.error('Cookie login failed, clearing cookie');
-            this.cookieService.delete(this.cookieKey, this.cookiePath);
-            this.sessionToken = null;
+            this.clear();
             return of(false);
           })
         );
