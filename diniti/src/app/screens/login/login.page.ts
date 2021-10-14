@@ -3,8 +3,7 @@ import {Routes} from '../../models';
 import {FieldTypes} from '../../models/field-types.enum';
 import {Router} from '@angular/router';
 import {LoginProxyService} from '../../services/backend-services/login-proxy.service';
-import {UserContextService} from '../../services/ui-services';
-import {LoginInfo} from "../../models/backend-models";
+import {AuthenticationService} from '../../services/ui-services';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +29,7 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private loginProxyService: LoginProxyService,
-    private userContext: UserContextService) {
+    private userContext: AuthenticationService) {
   }
 
   ngOnInit() {

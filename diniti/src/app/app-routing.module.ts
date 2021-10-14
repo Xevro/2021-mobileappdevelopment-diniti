@@ -1,17 +1,24 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {RouteLiterals} from './models';
-import {AuthenticatedGuard} from './authenticated.guard';
+import {AuthenticatedGuard} from './guards/authenticated.guard';
+import {LoginGuard} from './guards/login.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteLiterals.onboarding, pathMatch: 'full'},
   {
     path: RouteLiterals.onboarding,
+    canActivate: [LoginGuard],
+    runGuardsAndResolvers: 'always',
     loadChildren: () => import('./screens/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
   },
   {
     path: RouteLiterals.userOverview,
     canActivate: [AuthenticatedGuard],
+    runGuardsAndResolvers: 'always',
+    data: {
+      expectedRole: 'user'
+    },
     loadChildren: () => import('./screens/user/overview-tabs/overview-tabs.module').then(m => m.OverviewTabsPageModule)
   },
   {

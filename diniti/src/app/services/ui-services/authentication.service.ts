@@ -1,19 +1,21 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable, of} from 'rxjs';
-import {LoginInfo, User} from '../../models/backend-models';
+import {LoginInfo} from '../../models/backend-models';
 import {PublicProxyService} from './public-proxy.service';
 import {catchError, map, tap} from 'rxjs/operators';
+import {Role} from '../../models/backend-models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserContextService {
+export class AuthenticationService {
   cookieKey = 'diniti';
   cookiePath = '/';
   authenticated = false;
   landingPage: string = null;
   sessionToken: string = null;
+  role: Role = null;
 
   constructor(
     private cookieService: CookieService,
@@ -25,12 +27,18 @@ export class UserContextService {
     return this.authenticated;
   }
 
+  public getRole() {
+    return this.role;
+  }
+
   public userLoggedIn(loginInfo: LoginInfo) {
     this.authenticated = true;
+    this.role = loginInfo.role;
     this.sessionToken = loginInfo.sessionToken;
     const expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + 7);
     this.cookieService.set(this.cookieKey, loginInfo.sessionToken, expireDate, this.cookiePath);
+    return true;
   }
 
   public clear(): void {

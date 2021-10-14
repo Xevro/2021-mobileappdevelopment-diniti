@@ -63,15 +63,18 @@ Handig voor later:
     * Onderzocht welke Parse SDK ik zou gebruiken om met de service worker te kunnen werken (Parse REST API).
     * Connectie gemaakt met test API en service provider structuur opgesteld (abstracte crudDataProvider en interfaces).
     * Login met test gegevens op de Parse REST API succesvol toegepast
+    * Authenticatie guard met 'Tryautologin' toegevoegd dat bij elk pagina bezoek een controle doet naar parse. 
+    * Login guard toevoegd zodat de gebruiker doorgestuurd word naar de user pagina wanneer hij ingelogd is (onboarding, login en register zijn dan niet meer bereikbaar).
     
   - Opgeloste problemen
 
-    * 
+    * Authentictie guard toepassen op normaal bezoek bij doorklikken op pagina. (voordien enkel wanneer pagina werd herladen)
 
   - Op te lossen problemen
 
     * Mogelijk maken om een two way binding te hebben tussen de login pagina en het input veld.
-    * Toevoegen van een guard na het inloggen zodat onboarding, login en register niet meer zichtbaar is.
+    * Pagina is tijdelijk zwart omdat guard lang duurt.
+
 
   - Bronnen
 
@@ -80,6 +83,8 @@ Handig voor later:
     * Service worker met http request: https://blog.ng-book.com/service-workers-and-angular/
     * https://medium.com/@firt/dont-use-ios-web-app-meta-tag-irresponsibly-in-your-progressive-web-apps-85d70f4438cb
     * Http client voorbeeld (zeer interessant!): https://www.tektutorialshub.com/angular/angular-http-get-example-using-httpclient/
+    * Route guard in angular: https://eliteionic.com/tutorials/prevent-access-to-pages-in-ionic-with-angular-route-guards/#angular-route-guards
+
 
 
 
