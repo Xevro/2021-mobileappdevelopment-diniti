@@ -90,7 +90,6 @@ export class LoginPage implements OnInit {
         },
         (error) => {
           console.error('Request failed with error');
-          // this.alertService.error(error);
           this.submitted = false;
           this.passwordInput = '';
           this.errorMessage = 'Could not login';

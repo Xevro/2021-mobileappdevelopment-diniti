@@ -62,17 +62,18 @@ Handig voor later:
     * Content op de bestelling voltooid pagina toegevoegd.
     * Onderzocht welke Parse SDK ik zou gebruiken om met de service worker te kunnen werken (Parse REST API).
     * Connectie gemaakt met test API en service provider structuur opgesteld (abstracte crudDataProvider en interfaces).
-    * Login met test gegevens op de Parse REST API succesvol toegepast
+    * Login met test gegevens op de Parse REST API succesvol toegepast.
     * Authenticatie guard met 'Tryautologin' toegevoegd dat bij elk pagina bezoek een controle doet naar parse. 
     * Login guard toevoegd zodat de gebruiker doorgestuurd word naar de user pagina wanneer hij ingelogd is (onboarding, login en register zijn dan niet meer bereikbaar).
+    * Form validatie toegevoegd op de login pagina.
     
   - Opgeloste problemen
 
     * Authentictie guard toepassen op normaal bezoek bij doorklikken op pagina. (voordien enkel wanneer pagina werd herladen)
+    * Mogelijk maken om een two way binding te hebben tussen de login pagina en het input veld.
 
   - Op te lossen problemen
 
-    * Mogelijk maken om een two way binding te hebben tussen de login pagina en het input veld.
     * Pagina is tijdelijk zwart omdat guard lang duurt.
 
 
@@ -85,6 +86,24 @@ Handig voor later:
     * Http client voorbeeld (zeer interessant!): https://www.tektutorialshub.com/angular/angular-http-get-example-using-httpclient/
     * Route guard in angular: https://eliteionic.com/tutorials/prevent-access-to-pages-in-ionic-with-angular-route-guards/#angular-route-guards
 
+- Week 5 - vrijdag 22/10/2021
+
+ - Gedaan
+
+    * 
+    
+  - Opgeloste problemen
+
+    *
+
+  - Op te lossen problemen
+
+    * Pagina is tijdelijk zwart omdat guard lang duurt.
+
+
+  - Bronnen
+
+    *
 
 
 
