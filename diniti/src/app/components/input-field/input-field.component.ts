@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
 import {FieldTypes} from '../../models/field-types.enum';
 
 @Component({
@@ -11,9 +11,18 @@ export class InputFieldComponent implements OnInit {
   @Input() placeholder: string;
   @Input() fieldType: FieldTypes = FieldTypes.text;
   @Input() name: string;
+  @Input() value: string = null;
 
-  constructor() { }
+  @Output() onInputChange = new EventEmitter<string>();
+  inputValue: string = null;
 
-  ngOnInit() {}
+  constructor() {
+  }
 
+  ngOnInit() {
+  }
+
+  onChange() {
+    this.onInputChange.emit(this.inputValue);
+  }
 }

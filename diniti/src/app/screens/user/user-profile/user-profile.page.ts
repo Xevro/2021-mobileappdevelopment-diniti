@@ -19,7 +19,7 @@ export class UserProfilePage implements OnInit {
   }
 
   logout() {
-    this.authenticationService.clear();
+    this.authenticationService.logOut();
     this.router.navigate(Routes.onboarding);
   }
 }

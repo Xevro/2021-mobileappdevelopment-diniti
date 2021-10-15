@@ -28,4 +28,13 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
   }
+
+  /*
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    if (!passwordRegex.test(this.passwordInput)) {
+      this.passwordErrorMessage = 'Password is not valid';
+      this.submitted = false;
+    } else {
+      this.passwordErrorMessage = null;
+    }*/
 }

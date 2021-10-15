@@ -28,6 +28,10 @@ ion-content {
         text-align: center;
         margin-top: 25px;
       }
+      .error-message {
+        font-size: 0.9rem;
+        color: var(--color-app-dark);
+      }
     }
   }
 }

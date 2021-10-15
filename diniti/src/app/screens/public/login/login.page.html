@@ -1,6 +1,7 @@
 <ion-content>
   <ion-header class="ion-no-border">
     <ion-toolbar>
+      <ion-progress-bar *ngIf="submitted" type="indeterminate"></ion-progress-bar>
       <div class="login-header">
         <a [routerLink]="onboardingRoute" routerDirection="back">
           <img class="cancel-login" [src]="imageSrc" alt="cancel">
@@ -12,10 +13,23 @@
   </ion-header>
   <div class="login-page">
     <div class="input-fields">
-      <app-input-field [name]="'email'" [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
-      <app-input-field [name]="'password'" [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord'"></app-input-field>
+      <app-input-field [name]="'email'" (onInputChange)="emailValueChanged($event)"
+                       [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
+      <div *ngIf="emailErrorMessage" class="error-message">
+        <p>{{emailErrorMessage}}</p>
+      </div>
+      <app-input-field [name]="'password'" (onInputChange)="passwordValueChanged($event)"
+                       [fieldType]="fieldTypes.password" [value]="passwordInput" [placeholder]="'Wachtwoord'"></app-input-field>
+
+      <div *ngIf="passwordErrorMessage" class="error-message">
+        <p>{{passwordErrorMessage}}</p>
+      </div>
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{errorMessage}}</p>
+      </div>
       <div class="button-login">
-        <app-button [invertColor]="true" (click)="validateLogin()" [buttonText]="'Log in'"></app-button>
+        <app-button [disabled]="submitted" [invertColor]="true" (click)="validateLogin()"
+                    [buttonText]="'Log in'"></app-button>
       </div>
     </div>
   </div>

@@ -40,7 +40,7 @@ export class AuthenticationService {
     return true;
   }
 
-  public clear(): void {
+  public logOut(): void {
     this.authenticated = false;
     this.sessionToken = null;
     this.role = null;
@@ -60,7 +60,7 @@ export class AuthenticationService {
           map(() => true),
           catchError(() => {
             console.error('Cookie login failed, clearing cookie');
-            this.clear();
+            this.logOut();
             return of(false);
           })
         );

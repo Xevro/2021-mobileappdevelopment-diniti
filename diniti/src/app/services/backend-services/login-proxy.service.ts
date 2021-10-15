@@ -15,8 +15,8 @@ export class LoginProxyService extends CrudDataProvider<LoginInfo> {
     super(httpClient);
   }
 
-  loginAction(username: string, password: string): Observable<LoginInfo> {
-    const url = `login?username=${encodeURI(username)}&password=${encodeURI(password)}`;
+  loginAction(email: string, password: string): Observable<LoginInfo> {
+    const url = `login?email=${encodeURI(email)}&password=${encodeURI(password)}`;
     return this.getRequest(url);
   }
 }

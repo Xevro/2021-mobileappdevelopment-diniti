@@ -8,8 +8,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from './services/ui-services';
+import {InterceptService} from './services/core-services';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,11 +18,13 @@ import {AuthenticationService} from './services/ui-services';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     })],
-  providers: [HttpClientModule, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthenticationService],
+  providers: [HttpClientModule, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptService,
+    multi: true
+  }, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthenticationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
