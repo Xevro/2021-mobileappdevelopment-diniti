@@ -1,11 +1,10 @@
 import {HttpClient} from '@angular/common/http';
-import {IdModel} from '../../models/core-models';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 
 @Injectable()
-export abstract class CrudDataProvider<Type extends IdModel> {
+export abstract class CrudDataProvider<Type> {
   protected abstract api = environment.api;
   // eslint-disable-next-line @typescript-eslint/member-ordering
   protected header = {
@@ -19,6 +18,12 @@ export abstract class CrudDataProvider<Type extends IdModel> {
 
   getRequest(url: string, headerOptions = {}): Observable<Type> {
     return this.httpClient.get<Type>(`${this.getBaseUrl()}/${url}`, {
+      headers: Object.assign(this.header, headerOptions)
+    });
+  }
+
+  postRequest(url: string, body, headerOptions = {}): Observable<Type> {
+    return this.httpClient.post<Type>(`${this.getBaseUrl()}/${url}`, {
       headers: Object.assign(this.header, headerOptions)
     });
   }

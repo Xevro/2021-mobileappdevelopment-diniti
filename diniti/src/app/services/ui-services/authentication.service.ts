@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable, of} from 'rxjs';
-import {LoginInfo} from '../../models/backend-models';
-import {PublicProxyService} from './public-proxy.service';
+import {LoginInfo, RegisterResponse, Role} from '../../models/backend-models';
 import {catchError, map, tap} from 'rxjs/operators';
-import {Role} from '../../models/backend-models';
+import {AuthenticationProxyService} from '../backend-services';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class AuthenticationService {
 
   constructor(
     private cookieService: CookieService,
-    private publicProxyService: PublicProxyService
+    private authenticationProxyService: AuthenticationProxyService
   ) {
   }
 
@@ -40,6 +39,16 @@ export class AuthenticationService {
     return true;
   }
 
+  public userRegistered(registerResponse: RegisterResponse) {
+    this.authenticated = true;
+    this.role = Role.user;
+    this.sessionToken = registerResponse.sessionToken;
+    const expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() + 7);
+    this.cookieService.set(this.cookieKey, registerResponse.sessionToken, expireDate, this.cookiePath);
+    return true;
+  }
+
   public logOut(): void {
     this.authenticated = false;
     this.sessionToken = null;
@@ -50,7 +59,7 @@ export class AuthenticationService {
   tryAutoLogin(): Observable<boolean> {
     if (this.cookieService.check(this.cookieKey)) {
       this.sessionToken = this.cookieService.get(this.cookieKey);
-      return this.publicProxyService
+      return this.authenticationProxyService
         .refreshLogin(this.sessionToken)
         .pipe(
           tap((loginInfo) => {

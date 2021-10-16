@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../../models';
 import {FieldTypes} from '../../../models/field-types.enum';
 import {Router} from '@angular/router';
-import {LoginProxyService} from '../../../services/backend-services/login-proxy.service';
+import {AuthenticationProxyService} from '../../../services/backend-services';
 import {AuthenticationService} from '../../../services/ui-services';
 
 @Component({
@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
-    private loginProxyService: LoginProxyService,
+    private authenticationProxyService: AuthenticationProxyService,
     private userContext: AuthenticationService) {
   }
 
@@ -79,7 +79,7 @@ export class LoginPage implements OnInit {
   }
 
   submitLogin() {
-    this.loginProxyService.loginAction(this.emailInput, this.passwordInput)
+    this.authenticationProxyService.loginAction(this.emailInput, this.passwordInput)
       .subscribe(
         (response) => {
           this.userContext.userLoggedIn(response);
