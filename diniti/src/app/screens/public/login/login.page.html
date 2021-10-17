@@ -13,13 +13,14 @@
   </ion-header>
   <div class="login-page">
     <div class="input-fields">
-      <app-input-field [name]="'email'" (onInputChange)="emailValueChanged($event)"
-                       [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
-      <div *ngIf="emailErrorMessage" class="error-message">
-        <p>{{emailErrorMessage}}</p>
+      <app-input-field [name]="'username'" (onInputChange)="usernameValueChanged($event)"
+                       [fieldType]="fieldTypes.text" [placeholder]="'Gebruikersnaam'"></app-input-field>
+      <div *ngIf="usernameErrorMessage" class="error-message">
+        <p>{{usernameErrorMessage}}</p>
       </div>
       <app-input-field [name]="'password'" (onInputChange)="passwordValueChanged($event)"
-                       [fieldType]="fieldTypes.password" [value]="passwordInput" [placeholder]="'Wachtwoord'"></app-input-field>
+                       [fieldType]="fieldTypes.password" [value]="passwordInput"
+                       [placeholder]="'Wachtwoord'"></app-input-field>
 
       <div *ngIf="passwordErrorMessage" class="error-message">
         <p>{{passwordErrorMessage}}</p>

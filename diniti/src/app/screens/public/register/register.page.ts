@@ -81,11 +81,11 @@ export class RegisterPage implements OnInit {
     // eslint-disable-next-line max-len
     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (this.emailInput === null || this.emailInput.length === 0) {
-      this.emailErrorMessage = 'Email is required';
+      this.emailErrorMessage = 'Email is vereist';
       this.submitted = false;
     } else {
       if (!emailRegex.test(String(this.emailInput).toLowerCase())) {
-        this.emailErrorMessage = 'Email is not in the right format';
+        this.emailErrorMessage = 'Email is niet in het juiste formaat';
         this.submitted = false;
       } else {
         this.emailErrorMessage = null;
@@ -93,33 +93,33 @@ export class RegisterPage implements OnInit {
     }
 
     if (this.firstNameInput === null) {
-      this.firstNameErrorMessage = 'Firstname is required';
+      this.firstNameErrorMessage = 'Voornaam is vereist';
       this.submitted = false;
     } else {
       this.firstNameErrorMessage = null;
     }
 
     if (this.lastNameInput === null) {
-      this.lastNameErrorMessage = 'Lastname is required';
+      this.lastNameErrorMessage = 'Achternaam is vereist';
       this.submitted = false;
     } else {
       this.lastNameErrorMessage = null;
     }
 
     if (this.userNameInput === null) {
-      this.userNameErrorMessage = 'Username is required';
+      this.userNameErrorMessage = 'Gebruikersnaam is vereist';
       this.submitted = false;
     } else {
       this.userNameErrorMessage = null;
     }
 
     if (this.passwordInput === null) {
-      this.passwordErrorMessage = 'Password is required';
+      this.passwordErrorMessage = 'Wachtwoord is vereist';
       this.submitted = false;
     } else {
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
       if (!passwordRegex.test(this.passwordInput)) {
-        this.passwordErrorMessage = 'Password is not valid';
+        this.passwordErrorMessage = 'Wachtwoord is niet goed opgebouwd';
         this.submitted = false;
       } else {
         this.passwordErrorMessage = null;
@@ -154,7 +154,7 @@ export class RegisterPage implements OnInit {
           this.submitted = false;
           this.passwordInput = '';
           this.passwordConfirmInput = '';
-          this.errorMessage = 'Could not register';
+          this.errorMessage = 'Kon niet registreren';
         });
   }
 }

@@ -13,11 +13,11 @@ import {AuthenticationService} from '../../../services/ui-services';
 export class LoginPage implements OnInit {
 
   fieldTypes = FieldTypes;
-  emailInput: string = null;
+  usernameInput: string = null;
   passwordInput: string = null;
 
   submitted = false;
-  emailErrorMessage = null;
+  usernameErrorMessage = null;
   passwordErrorMessage = null;
   errorMessage = null;
 
@@ -42,8 +42,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  emailValueChanged(inputValue: string) {
-    this.emailInput = inputValue.trim();
+  usernameValueChanged(inputValue: string) {
+    this.usernameInput = inputValue.trim();
   }
 
   passwordValueChanged(inputValue: string) {
@@ -52,22 +52,15 @@ export class LoginPage implements OnInit {
 
   validateLogin() {
     this.submitted = true;
-    // eslint-disable-next-line max-len
-    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (this.emailInput === null || this.emailInput.length === 0) {
-      this.emailErrorMessage = 'Email is required';
+    if (this.usernameInput === null) {
+      this.usernameErrorMessage = 'Gebruikersnaam is vereist';
       this.submitted = false;
     } else {
-      if (!emailRegex.test(String(this.emailInput).toLowerCase())) {
-        this.emailErrorMessage = 'Email is not in the right format';
-        this.submitted = false;
-      } else {
-        this.emailErrorMessage = null;
-      }
+      this.usernameErrorMessage = null;
     }
 
     if (this.passwordInput === null || this.passwordInput.length === 0) {
-      this.passwordErrorMessage = 'Password is required';
+      this.passwordErrorMessage = 'Wachtwoord is vereist';
       this.submitted = false;
     } else {
       this.passwordErrorMessage = null;
@@ -79,12 +72,12 @@ export class LoginPage implements OnInit {
   }
 
   submitLogin() {
-    this.authenticationProxyService.loginAction(this.emailInput, this.passwordInput)
+    this.authenticationProxyService.loginAction(this.usernameInput, this.passwordInput)
       .subscribe(
         (response) => {
           this.userContext.userLoggedIn(response);
           this.submitted = false;
-          this.emailInput = null;
+          this.usernameInput = null;
           this.passwordInput = null;
           this.router.navigate(Routes.userOverview);
         },

@@ -2,7 +2,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {RegisterInfo} from '../../models/backend-models';
 
 @Injectable()
 export abstract class CrudDataProvider<Type> {
