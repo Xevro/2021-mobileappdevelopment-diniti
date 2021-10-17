@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable, of} from 'rxjs';
-import {LoginInfo, RegisterResponse, Role} from '../../models/backend-models';
+import {LoginInfo, LoginResponse, RegisterResponse, Role} from '../../models/backend-models';
 import {catchError, map, tap} from 'rxjs/operators';
 import {AuthenticationProxyService} from '../backend-services';
 
@@ -29,13 +29,13 @@ export class AuthenticationService {
     return this.role;
   }
 
-  public userLoggedIn(loginInfo: LoginInfo) {
+  public userLoggedIn(loginResponse: LoginResponse) {
     this.authenticated = true;
-    this.role = loginInfo.role;
-    this.sessionToken = loginInfo.sessionToken;
+    this.role = loginResponse.role;
+    this.sessionToken = loginResponse.sessionToken;
     const expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + 7);
-    this.cookieService.set(this.cookieKey, loginInfo.sessionToken, expireDate, this.cookiePath);
+    this.cookieService.set(this.cookieKey, loginResponse.sessionToken, expireDate, this.cookiePath);
     return true;
   }
 

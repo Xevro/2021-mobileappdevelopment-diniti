@@ -82,7 +82,6 @@ export class LoginPage implements OnInit {
           this.router.navigate(Routes.userOverview);
         },
         (error) => {
-          console.error('Request failed with error');
           this.submitted = false;
           this.passwordInput = '';
           this.errorMessage = 'Could not login';

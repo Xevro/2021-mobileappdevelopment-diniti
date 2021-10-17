@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {LoginInfo, RegisterInfo, RegisterResponse} from '../../models/backend-models';
 import {Observable} from 'rxjs';
+import {LoginResponse} from '../../models/backend-models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
     super(httpClient);
   }
 
-  loginAction(email: string, password: string): Observable<LoginInfo> {
-    const url = `login?email=${encodeURI(email)}&password=${encodeURI(password)}`;
+  loginAction(username: string, password: string): Observable<LoginResponse> {
+    const url = `login?username=${encodeURI(username)}&password=${encodeURI(password)}`;
     return this.getRequest(url);
   }
 
@@ -28,7 +29,7 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
     return this.postRequest(url, registerData, headerOptions);
   }
 
-  public refreshLogin(sessionToken): Observable<LoginInfo> {
+  public refreshLogin(sessionToken): Observable<LoginResponse> {
     const url = '/users/me';
     const headerOptions =  {
       'X-Parse-Session-Token': sessionToken
