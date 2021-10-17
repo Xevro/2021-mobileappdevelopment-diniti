@@ -21,7 +21,7 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
   }
 
   registerAction(registerData: RegisterInfo): Observable<RegisterResponse> { // change loginInfo
-    const url = '/users';
+    const url = 'users';
     const headerOptions =  {
       'Content-Type': 'application/json'
     };

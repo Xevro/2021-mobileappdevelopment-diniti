@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
+import {RegisterInfo} from '../../models/backend-models';
 
 @Injectable()
 export abstract class CrudDataProvider<Type> {
@@ -22,8 +23,8 @@ export abstract class CrudDataProvider<Type> {
     });
   }
 
-  postRequest(url: string, body, headerOptions = {}): Observable<Type> {
-    return this.httpClient.post<Type>(`${this.getBaseUrl()}/${url}`, {
+  postRequest(url: string, body: Type, headerOptions = {}): Observable<Type> {
+    return this.httpClient.post<Type>(`${this.getBaseUrl()}/${url}`, body,{
       headers: Object.assign(this.header, headerOptions)
     });
   }

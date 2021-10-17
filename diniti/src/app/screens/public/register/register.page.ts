@@ -3,8 +3,8 @@ import {Routes} from '../../../models';
 import {FieldTypes} from '../../../models/field-types.enum';
 import {AuthenticationProxyService} from '../../../services/backend-services';
 import {RegisterInfo} from '../../../models/backend-models';
-import {Router} from "@angular/router";
-import {AuthenticationService} from "../../../services/ui-services";
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +19,6 @@ export class RegisterPage implements OnInit {
   firstNameInput: string = null;
   lastNameInput: string = null;
   userNameInput: string = null;
-  phoneNumberInput: string = null;
   emailInput: string = null;
   passwordInput: string = null;
   passwordConfirmInput: string = null;
@@ -27,7 +26,6 @@ export class RegisterPage implements OnInit {
   firstNameErrorMessage = null;
   lastNameErrorMessage = null;
   userNameErrorMessage = null;
-  phoneNumberErrorMessage = null;
   emailErrorMessage = null;
   passwordErrorMessage = null;
   passwordConfirmErrorMessage = null;
@@ -66,10 +64,6 @@ export class RegisterPage implements OnInit {
     this.userNameInput = inputValue.trim();
   }
 
-  phoneNumberValueChanged(inputValue: string) {
-    this.phoneNumberInput = inputValue.trim();
-  }
-
   emailValueChanged(inputValue: string) {
     this.emailInput = inputValue.trim();
   }
@@ -98,24 +92,44 @@ export class RegisterPage implements OnInit {
       }
     }
 
-    if (this.passwordInput === null || this.passwordInput.length === 0) {
+    if (this.firstNameInput === null) {
+      this.firstNameErrorMessage = 'Firstname is required';
+      this.submitted = false;
+    } else {
+      this.firstNameErrorMessage = null;
+    }
+
+    if (this.lastNameInput === null) {
+      this.lastNameErrorMessage = 'Lastname is required';
+      this.submitted = false;
+    } else {
+      this.lastNameErrorMessage = null;
+    }
+
+    if (this.userNameInput === null) {
+      this.userNameErrorMessage = 'Username is required';
+      this.submitted = false;
+    } else {
+      this.userNameErrorMessage = null;
+    }
+
+    if (this.passwordInput === null) {
       this.passwordErrorMessage = 'Password is required';
       this.submitted = false;
     } else {
-      this.passwordErrorMessage = null;
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+      if (!passwordRegex.test(this.passwordInput)) {
+        this.passwordErrorMessage = 'Password is not valid';
+        this.submitted = false;
+      } else {
+        this.passwordErrorMessage = null;
+      }
     }
 
-    if (!this.passwordErrorMessage && !this.passwordErrorMessage) {
+    if (!this.firstNameErrorMessage && !this.lastNameErrorMessage && !this.userNameErrorMessage
+      && !this.passwordErrorMessage && (this.passwordInput === this.passwordConfirmInput)) {
       this.submitRegister();
     }
-    /*
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-    if (!passwordRegex.test(this.passwordInput)) {
-      this.passwordErrorMessage = 'Password is not valid';
-      this.submitted = false;
-    } else {
-      this.passwordErrorMessage = null;
-    }*/
   }
 
   submitRegister() {
@@ -123,20 +137,17 @@ export class RegisterPage implements OnInit {
       firstname: this.firstNameInput,
       lastname: this.lastNameInput,
       username: this.userNameInput,
-      phoneNumber: this.phoneNumberInput,
       email: this.emailInput,
       password: this.passwordInput
     };
     this.authenticationProxyService.registerAction(registerData)
       .subscribe(
         (response) => {
-          console.log('response :) :');
-          console.log(response);
-            this.userContext.userRegistered(response);
-            this.submitted = false;
-            this.emailInput = null;
-            this.passwordInput = null;
-            this.router.navigate(Routes.userOverview);
+          this.userContext.userRegistered(response);
+          this.submitted = false;
+          this.emailInput = null;
+          this.passwordInput = null;
+          this.router.navigate(Routes.userOverview);
         },
         (error) => {
           console.error('Request failed with error');

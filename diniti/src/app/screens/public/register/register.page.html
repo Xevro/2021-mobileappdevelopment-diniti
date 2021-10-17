@@ -28,11 +28,6 @@
       <div *ngIf="userNameErrorMessage" class="error-message">
         <p>{{userNameErrorMessage}}</p>
       </div>
-      <app-input-field (onInputChange)="phoneNumberValueChanged($event)" [name]="'telefoon nummber'"
-                       [fieldType]="fieldTypes.text" [placeholder]="'telefoon nummer'"></app-input-field>
-      <div *ngIf="phoneNumberErrorMessage" class="error-message">
-        <p>{{phoneNumberErrorMessage}}</p>
-      </div>
       <app-input-field (onInputChange)="emailValueChanged($event)" [name]="'email'"
                        [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
       <div *ngIf="emailErrorMessage" class="error-message">
