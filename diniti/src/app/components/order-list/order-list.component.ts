@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Orders} from '../../models/backend-models';
 
 @Component({
   selector: 'app-order-list',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
-  @Input() orders;
+  @Input() orders: Orders;
 
   constructor() {
   }
