@@ -14,6 +14,7 @@ export class AuthenticationService {
   authenticated = false;
   sessionToken: string = null;
   role: Role = null;
+  objectId: string;
 
   constructor(
     private cookieService: CookieService,
@@ -29,9 +30,20 @@ export class AuthenticationService {
     return this.role;
   }
 
+  public getSessionToken() {
+    if (this.cookieService.check(this.cookieKey)) {
+      return this.cookieService.get(this.cookieKey);
+    }
+  }
+
+  public getObjectId() {
+    return this.objectId;
+  }
+
   public userLoggedIn(loginResponse: LoginResponse) {
     this.authenticated = true;
     this.role = loginResponse.role;
+    this.objectId = loginResponse.objectId;
     this.sessionToken = loginResponse.sessionToken;
     const expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + 7);
@@ -42,6 +54,7 @@ export class AuthenticationService {
   public userRegistered(registerResponse: RegisterResponse) {
     this.authenticated = true;
     this.role = Role.user;
+    this.objectId = registerResponse.objectId;
     this.sessionToken = registerResponse.sessionToken;
     const expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + 7);
