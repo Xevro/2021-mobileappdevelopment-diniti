@@ -44,10 +44,12 @@
         <p>{{passwordConfirmErrorMessage}}</p>
       </div>
       <ion-item class="terms">
-        <ion-checkbox color="primary"></ion-checkbox>
+        <ion-checkbox color="primary" (click)="checkboxChanged($event)"></ion-checkbox>
         <ion-label class="checkbox-label">{{ 'Ik ga akkoord met de voorwaarden' }}</ion-label>
       </ion-item>
-
+      <div *ngIf="checkedErrorMessage" class="error-message">
+        <p>{{checkedErrorMessage}}</p>
+      </div>
       <div class="button-register">
         <app-button [invertColor]="true" (click)="validateRegister()" [buttonText]="'Registeer'"></app-button>
       </div>

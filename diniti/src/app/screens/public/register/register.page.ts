@@ -21,6 +21,7 @@ export class RegisterPage implements OnInit {
   emailInput: string = null;
   passwordInput: string = null;
   passwordConfirmInput: string = null;
+  checked = false;
 
   firstNameErrorMessage = null;
   lastNameErrorMessage = null;
@@ -28,6 +29,7 @@ export class RegisterPage implements OnInit {
   emailErrorMessage = null;
   passwordErrorMessage = null;
   passwordConfirmErrorMessage = null;
+  checkedErrorMessage = null;
   errorMessage = null;
 
   get imageSrc(): string {
@@ -73,6 +75,11 @@ export class RegisterPage implements OnInit {
 
   passwordConfirmValueChanged(inputValue: string) {
     this.passwordConfirmInput = inputValue.trim();
+  }
+
+  checkboxChanged(e) {
+    this.checked = !e.currentTarget.checked;
+    console.log(this.checked);
   }
 
   validateRegister() {
@@ -125,8 +132,14 @@ export class RegisterPage implements OnInit {
       }
     }
 
+    if(!this.checked) {
+      this.checkedErrorMessage = 'Voorwaarden zijn niet aangeduid';
+    } else {
+      this.checkedErrorMessage = null;
+    }
+
     if (!this.firstNameErrorMessage && !this.lastNameErrorMessage && !this.userNameErrorMessage
-      && !this.passwordErrorMessage && (this.passwordInput === this.passwordConfirmInput)) {
+      && !this.passwordErrorMessage && (this.passwordInput === this.passwordConfirmInput) && this.checked) {
       this.submitRegister();
     }
   }
