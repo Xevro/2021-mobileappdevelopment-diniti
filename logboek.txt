@@ -59,7 +59,7 @@ Handig voor later:
 
  - Gedaan
 
-    * Content toegevoegd op de summary order pagina.
+    * Content toegevoegd op de bestellings overzicht pagina.
     * Content op de bestelling voltooid pagina toegevoegd.
     * Onderzocht welke Parse SDK ik zou gebruiken om met de service worker te kunnen werken (Parse REST API).
     * Connectie gemaakt met test API en service provider structuur opgesteld (abstracte crudDataProvider en interfaces).
@@ -67,6 +67,8 @@ Handig voor later:
     * Authenticatie guard met 'Tryautologin' toegevoegd dat bij elk pagina bezoek een controle doet naar parse. 
     * Login guard toevoegd zodat de gebruiker doorgestuurd word naar de user pagina wanneer hij ingelogd is (onboarding, login en register zijn dan niet meer bereikbaar).
     * Form validatie toegevoegd op de login pagina.
+    * Form validatie toegevoegd op de registratie pagina en gebruiker kunnen registreren.
+    * Email naar gebruikersnaam omgewisseld op de login pagina.
     
   - Opgeloste problemen
 
@@ -93,7 +95,7 @@ Handig voor later:
  - Te doen deze week
 
     * Bestellingen kunnen toevoegen.
-    * Bestellingen overzicht maken.
+    * Bestellingen overzicht weergeven.
     * Guard op de betaling voltooid pagina plaatsen.
     * Profiel pagina opmaken design.
     * Toevoegen van profielfoto bij registreren gebruiker.
