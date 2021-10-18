@@ -4,7 +4,7 @@
   </div>
   <div class="item-bottom-row">
     <div>
-      <p>{{ order.pickUpTime.iso }}</p>
+      <p>{{ order.pickUpTime | stringtodate }}</p>
     </div>
     <div class="price">
       <p>{{ order.totalPrice | currency:'EUR' }}</p>
