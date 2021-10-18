@@ -26,6 +26,7 @@ https://ionicframework.com/blog/start-build-deploy-your-first-capacitor-pwa-with
 Handig voor later:
   - Online plaatsen van project: https://devdactic.com/ionic-pwa-caching/
 
+
 - Week 3 - vrijdag 08/10/2021
 
   - Toegevoegd/gedaan
@@ -86,7 +87,16 @@ Handig voor later:
     * Http client voorbeeld (zeer interessant!): https://www.tektutorialshub.com/angular/angular-http-get-example-using-httpclient/
     * Route guard in angular: https://eliteionic.com/tutorials/prevent-access-to-pages-in-ionic-with-angular-route-guards/#angular-route-guards
 
+
 - Week 5 - vrijdag 22/10/2021
+
+ - Te doen deze week
+
+    * Bestellingen kunnen toevoegen.
+    * Bestellingen overzicht maken.
+    * Guard op de betaling voltooid pagina plaatsen.
+    * Profiel pagina opmaken design.
+    * Toevoegen van profielfoto bij registreren gebruiker.
 
  - Gedaan
 
