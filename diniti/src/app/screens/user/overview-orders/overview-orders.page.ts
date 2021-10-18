@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Routes} from '../../../models';
+import {Routes} from '../../../models/core-models';
 
 @Component({
   selector: 'app-overview-orders',

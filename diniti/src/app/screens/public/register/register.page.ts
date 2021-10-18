@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Routes} from '../../../models';
-import {FieldTypes} from '../../../models/field-types.enum';
-import {AuthenticationProxyService} from '../../../services/backend-services';
-import {RegisterInfo} from '../../../models/backend-models';
+import {Routes} from '../../../models/core-models';
+import {FieldTypes} from '../../../models';
+import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
+import {RegisterInfo} from '../../../models/authentication-models';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-register',

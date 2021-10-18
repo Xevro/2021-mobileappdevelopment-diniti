@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import {AuthenticationService} from '../services/ui-services';
-import {Routes} from '../models';
-import {catchError, map, tap} from 'rxjs/operators';
-import {Role} from '../models/backend-models';
+import {AuthenticationService} from '../services/authentication-services';
+import {Routes} from '../models/core-models';
+import {catchError, map} from 'rxjs/operators';
+import {Role} from '../models/authentication-models';
 import {Observable, of} from 'rxjs';
 
 @Injectable({

@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Routes} from '../../../models';
-import {FieldTypes} from '../../../models/field-types.enum';
+import {Routes} from '../../../models/core-models';
+import {FieldTypes} from '../../../models';
 import {Router} from '@angular/router';
-import {AuthenticationProxyService} from '../../../services/backend-services';
-import {AuthenticationService} from '../../../services/ui-services';
+import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
 
 @Component({
   selector: 'app-login',
@@ -77,13 +76,11 @@ export class LoginPage implements OnInit {
         (response) => {
           this.userContext.userLoggedIn(response);
           this.submitted = false;
-          this.usernameInput = null;
-          this.passwordInput = null;
           this.router.navigate(Routes.userOverview);
         },
         (error) => {
           this.submitted = false;
-          this.passwordInput = '';
+          this.passwordInput = null;
           this.errorMessage = 'Could not login';
         });
   }

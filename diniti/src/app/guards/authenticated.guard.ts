@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import {AuthenticationService} from '../services/ui-services';
-import {Routes} from '../models';
+import {AuthenticationService} from '../services/authentication-services';
+import {Routes} from '../models/core-models';
 import {tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 

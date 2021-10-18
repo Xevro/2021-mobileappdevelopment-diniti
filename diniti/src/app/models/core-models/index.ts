@@ -1,1 +1,2 @@
-export * from './id-model.model';
+export * from './route-literals.model';
+export * from './routes.model';

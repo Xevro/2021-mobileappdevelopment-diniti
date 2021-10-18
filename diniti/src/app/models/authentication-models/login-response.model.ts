@@ -1,4 +1,4 @@
-import {User} from './user.model';
+import {User} from '../backend-models/user.model';
 
 export interface LoginResponse extends User {
   code?: string;

@@ -9,7 +9,7 @@ import {AppComponent} from './app.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AuthenticationService} from './services/ui-services';
+import {AuthenticationService} from './services/authentication-services';
 import {InterceptService} from './services/core-services';
 
 @NgModule({

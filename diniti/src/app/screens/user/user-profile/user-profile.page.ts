@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from '../../../services/ui-services';
+import {AuthenticationService} from '../../../services/authentication-services';
 import {Router} from '@angular/router';
-import {Routes} from '../../../models';
+import {Routes} from '../../../models/core-models';
 
 @Component({
   selector: 'app-user-profile',

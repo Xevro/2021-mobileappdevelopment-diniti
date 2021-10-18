@@ -99,6 +99,8 @@ Handig voor later:
     * Guard op de betaling voltooid pagina plaatsen.
     * Profiel pagina opmaken design.
     * Toevoegen van profielfoto bij registreren gebruiker.
+    * Producten lijst weergeven.
+    * Toevoegen zoekbalk in producten lijst.
 
  - Gedaan
 

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable, of} from 'rxjs';
-import {LoginInfo, LoginResponse, RegisterResponse, Role} from '../../models/backend-models';
+import {LoginResponse, RegisterResponse, Role} from '../../models/authentication-models';
 import {catchError, map, tap} from 'rxjs/operators';
-import {AuthenticationProxyService} from '../backend-services';
+import {AuthenticationProxyService} from './index';
 
 @Injectable({
   providedIn: 'root'
