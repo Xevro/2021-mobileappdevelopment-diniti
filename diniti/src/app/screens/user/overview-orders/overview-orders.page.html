@@ -7,6 +7,9 @@
     <div class="list-title">
       <h4>Bestellingen</h4>
     </div>
-    <app-order-list [orders]="orders"></app-order-list>
+    <app-order-list *ngIf="orders" [orders]="orders"></app-order-list>
+    <div *ngIf="!orders" class="no-orders">
+      <p>Geen bestellingen gevonden</p>
+    </div>
   </div>
 </ion-content>

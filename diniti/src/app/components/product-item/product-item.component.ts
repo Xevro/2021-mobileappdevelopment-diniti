@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Product} from '../../models/backend-models';
 
 @Component({
   selector: 'app-product-item',
@@ -8,16 +9,11 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProductItemComponent implements OnInit {
 
   @Input() hideButtons = false;
-
-  image = '../../../assets/icon/diniti-logo.svg';
+  @Input() product: Product;
 
   constructor() {
   }
 
   ngOnInit() {
-  }
-
-  imageUrl() {
-    return this.image;
   }
 }

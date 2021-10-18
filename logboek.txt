@@ -104,7 +104,7 @@ Handig voor later:
 
  - Gedaan
 
-    * 
+    * Data gecached met http interceptor.
     
   - Opgeloste problemen
 
@@ -117,7 +117,7 @@ Handig voor later:
 
   - Bronnen
 
-    *
+    * HTTP caching interceptor: https://stackoverflow.com/questions/63303537/angular-httpinterceptor-for-caching-parallel-request-by-sharing-the-observable
 
 
 

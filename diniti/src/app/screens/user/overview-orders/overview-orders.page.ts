@@ -24,10 +24,7 @@ export class OverviewOrdersPage implements OnInit {
     this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
       .subscribe(
         (response) => {
-          console.log(response.results);
           this.orders = response;
-          //const date = new Date(response.results[0].pickUpTime.iso);
-          //console.log(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
         },
         (error) => {
         });

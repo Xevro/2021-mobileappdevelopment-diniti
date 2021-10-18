@@ -79,7 +79,6 @@ export class RegisterPage implements OnInit {
 
   checkboxChanged(e) {
     this.checked = !e.currentTarget.checked;
-    console.log(this.checked);
   }
 
   validateRegister() {

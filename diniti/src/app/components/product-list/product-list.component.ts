@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Products} from '../../models/backend-models';
 
 @Component({
   selector: 'app-product-list',
@@ -8,6 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProductListComponent implements OnInit {
 
   @Input() hideButtons = false;
+  @Input() products: Products;
 
   constructor() { }
 

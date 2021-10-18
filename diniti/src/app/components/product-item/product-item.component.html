@@ -3,17 +3,17 @@
 
     <div class="product-image-box">
       <ion-thumbnail slot="start">
-        <ion-img [src]="imageUrl()" alt="Product name here!!!"></ion-img>
+        <ion-img [src]="product?.image?.url" alt="{{ product.name }}"></ion-img>
       </ion-thumbnail>
     </div>
 
     <div class="product-item-box">
       <div class="product-name">
-        <p>product naam</p>
+        <p>{{ product.name }}</p>
       </div>
       <div class="product-bottom-row">
         <div>
-          <p>€23.99</p>
+          <p>{{ product.price | currency:'EUR' }}</p>
         </div>
       </div>
     </div>
