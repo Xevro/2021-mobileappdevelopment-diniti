@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {CrudDataProvider} from '../core-services';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {LoginInfo, RegisterInfo, RegisterResponse} from '../../models/authentication-models';
+import {RegisterInfo, RegisterResponse} from '../../models/authentication-models';
 import {Observable} from 'rxjs';
 import {LoginResponse} from '../../models/authentication-models';
 
@@ -23,7 +23,7 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
 
   registerAction(registerData: RegisterInfo): Observable<RegisterResponse> {
     const url = 'users';
-    const headerOptions =  {
+    const headerOptions = {
       'Content-Type': 'application/json'
     };
     return this.postRequest(url, registerData, headerOptions);
@@ -31,7 +31,7 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
 
   public refreshLogin(sessionToken): Observable<LoginResponse> {
     const url = 'users/me';
-    const headerOptions =  {
+    const headerOptions = {
       'X-Parse-Session-Token': sessionToken
     };
     return this.getRequest(url, headerOptions);

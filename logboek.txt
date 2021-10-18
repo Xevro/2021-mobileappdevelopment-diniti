@@ -95,20 +95,23 @@ Handig voor later:
  - Te doen deze week
 
     * Bestellingen kunnen toevoegen.
-    * Bestellingen overzicht weergeven.
-    * Guard op de betaling voltooid pagina plaatsen.
+    ** Bestellingen overzicht weergeven.
+    * Guard op de 'betaling voltooid' pagina plaatsen.
     * Profiel pagina opmaken design.
     * Toevoegen van profielfoto bij registreren gebruiker.
-    * Producten lijst weergeven.
-    * Toevoegen zoekbalk in producten lijst.
+    ** Producten lijst weergeven.
+    * Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
 
  - Gedaan
 
-    * Data gecached met http interceptor.
-    
+    * Data gecached met http interceptor (nu worden alle get requests behalve /users/me gecashed en bewaard).
+    * Bestellingen overzicht weergeven.
+    * Producten lijst weergeven.
+
+
   - Opgeloste problemen
 
-    *
+    * 
 
   - Op te lossen problemen
 
