@@ -15,6 +15,6 @@
     <div class="search-field">
       <ion-searchbar placeholder="Zoek producten"></ion-searchbar>
     </div>
-    <app-product-list (changedProductsList)="updatedProductsList($event)" [products]="products"></app-product-list>
+    <app-product-list (changedProductsList)="updatedProductsList(productsList)" #productsList [products]="products"></app-product-list>
   </div>
 </ion-content>

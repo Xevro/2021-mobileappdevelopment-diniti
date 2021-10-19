@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
   }
 
-  changedProducts(productsList) {
+  changedProducts(productsList: any) {
     this.changedProductsList.emit(productsList);
   }
 }

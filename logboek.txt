@@ -101,12 +101,15 @@ Handig voor later:
     * Toevoegen van profielfoto bij registreren gebruiker.
     ** Producten lijst weergeven.
     * Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
+    ** + en - knop op create order pagina laten werken.
+
 
  - Gedaan
 
     * Data gecached met http interceptor (nu worden alle get requests behalve /users/me gecashed en bewaard).
     * Bestellingen overzicht weergeven.
     * Producten lijst weergeven.
+    * + en - knop op create order pagina laten werken.
 
 
   - Opgeloste problemen
@@ -121,6 +124,7 @@ Handig voor later:
   - Bronnen
 
     * HTTP caching interceptor: https://stackoverflow.com/questions/63303537/angular-httpinterceptor-for-caching-parallel-request-by-sharing-the-observable
+    * Componenten communicatie: https://angular.io/guide/inputs-outputs
 
 
 

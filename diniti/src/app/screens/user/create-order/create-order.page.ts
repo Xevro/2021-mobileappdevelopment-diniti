@@ -29,10 +29,10 @@ export class CreateOrderPage implements OnInit {
 
   }
 
-  updatedProductsList(event: Products) {
-    console.log('create items functie');
-    //console.log('event');
-    console.log(event);
+  updatedProductsList(productsEvent: any) {
+    const products: Products = productsEvent.products;
+    console.log(products.results);
+    this.products = products;
   }
 
   getOrderSummaryUrl() {
