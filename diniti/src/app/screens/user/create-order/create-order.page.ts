@@ -25,6 +25,16 @@ export class CreateOrderPage implements OnInit {
         });
   }
 
+  ionViewWillEnter() {
+
+  }
+
+  updatedProductsList(event: Products) {
+    console.log('create items functie');
+    //console.log('event');
+    console.log(event);
+  }
+
   getOrderSummaryUrl() {
     return Routes.userOrderCreateSummary;
   }

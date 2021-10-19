@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, EventEmitter, OnInit, Output} from '@angular/core';
 import {Products} from '../../models/backend-models';
 
 @Component({
@@ -11,8 +11,15 @@ export class ProductListComponent implements OnInit {
   @Input() hideButtons = false;
   @Input() products: Products;
 
-  constructor() { }
+  @Output() changedProductsList = new EventEmitter<Products>();
 
-  ngOnInit() {}
+  constructor() {
+  }
 
+  ngOnInit() {
+  }
+
+  changedProducts(productsList) {
+    this.changedProductsList.emit(productsList);
+  }
 }

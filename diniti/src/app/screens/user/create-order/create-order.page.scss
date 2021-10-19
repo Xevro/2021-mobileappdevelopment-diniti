@@ -30,6 +30,10 @@ ion-content {
 
   .products-list {
     margin-top: 60px;
+    .search-field {
+      max-width: 430px;
+      margin: auto auto 15px;
+    }
   }
 }
 

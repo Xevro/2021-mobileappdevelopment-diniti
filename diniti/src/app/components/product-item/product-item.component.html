@@ -19,12 +19,12 @@
     </div>
     <div class="product-count-box" [ngClass]="{'product-count-left': hideButtons}">
       <div class="product-count">
-        <p>1</p>
+        <p>{{ product.amount ?? 0 }}</p>
       </div>
     </div>
     <div class="product-buttons-box" *ngIf="!hideButtons">
-      <ion-fab-button size="small" class="button-min">-</ion-fab-button>
-      <ion-fab-button size="small" class="button-plus">+</ion-fab-button>
+      <ion-fab-button size="small" (click)="countDownProductAmount()" class="button-min">-</ion-fab-button>
+      <ion-fab-button size="small" (click)="countUpProductAmount()" class="button-plus">+</ion-fab-button>
     </div>
   </div>
 </div>
