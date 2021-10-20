@@ -1,0 +1,33 @@
+ion-content {
+  .profile-header {
+    background-color: var(--color-app-primary);
+    height: 400px;
+    .back-button {
+      position: absolute;
+      --color: var(--color-app-primary);
+      margin-left: 10px;
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
+      text-decoration: none;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .header-edit-profile {
+      position: absolute;
+      right: 10px;
+      top: -45px;
+      --color: var(--color-app-primary);
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
+      text-decoration: none;
+    }
+  }
+}
+

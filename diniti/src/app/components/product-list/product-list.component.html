@@ -7,7 +7,7 @@
     <div *ngIf="!products?.results" class="no-products">
       <p>Geen producten gevonden</p>
     </div>
-    <div *ngIf="(products?.results | datafilter:filterTerm).length === 0" class="no-products">
+    <div *ngIf="(products?.results | datafilter:filterTerm)?.length === 0" class="no-products">
       <p>Geen zoekresultaten voor {{ filterTerm }}</p>
     </div>
   </div>
