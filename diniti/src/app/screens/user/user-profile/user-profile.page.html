@@ -1,17 +1,27 @@
 <ion-content [fullscreen]="true">
-  <ion-header class="ion-no-border">
-    <ion-toolbar>
-      <div class="profile-header">
-        <ion-back-button class="back-button" icon="" text="Terug" defaultHref="overview/orders"></ion-back-button>
-        <h2>Profiel</h2>
-        <ion-buttons>
-          <ion-button [textContent]="'Bewerk'" class="header-edit-profile">
-          </ion-button>
-        </ion-buttons>
+  <div class="profile-page-box">
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <div class="profile-header">
+          <ion-back-button class="back-button" icon="" text="Terug" defaultHref="overview/orders"></ion-back-button>
+          <h2>Profiel</h2>
+          <ion-buttons>
+            <ion-button [textContent]="'Bewerk'" class="header-edit-profile">
+            </ion-button>
+          </ion-buttons>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+    <div class="profile-page">
+      <img src="./assets/images/profile-image.png" alt="profile image" class="profile-image">
+      <h4>Louis D'Hont</h4>
+      <div>
+        <p>dhontlouis@gmail.com</p>
+        <p></p>
       </div>
-    </ion-toolbar>
-  </ion-header>
-  <div class="">
-    <ion-button (click)="logout()">Log uit</ion-button>
+      <div>
+        <app-button class="logout-button" [invertColor]="true" (click)="logout()" [buttonText]="'Log uit'"></app-button>
+      </div>
+    </div>
   </div>
 </ion-content>

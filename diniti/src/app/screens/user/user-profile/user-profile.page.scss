@@ -1,32 +1,71 @@
 ion-content {
-  .profile-header {
-    background-color: var(--color-app-primary);
-    height: 400px;
-    .back-button {
-      position: absolute;
-      --color: var(--color-app-primary);
-      margin-left: 10px;
-      text-transform: lowercase;
-      font-size: 1rem;
-      font-weight: normal;
-      text-decoration: none;
+  .profile-page-box {
+    ion-header {
+      ion-toolbar {
+        .profile-header {
+          background-color: var(--color-app-primary);
+          margin: -20px 0 0;
+          padding-top: 20px;
+          height: 235px;
+
+          .back-button {
+            position: absolute;
+            --color: var(--color-app-secondary);
+            margin-left: 10px;
+            margin-top: 22px;
+            text-transform: lowercase;
+            font-size: 1rem;
+            font-weight: normal;
+            text-decoration: none;
+          }
+
+          h2 {
+            font-weight: 600;
+            font-size: 30px;
+            text-align: center;
+            color: var(--color-app-secondary);
+          }
+
+          .header-edit-profile {
+            position: absolute;
+            right: 15px;
+            top: -45px;
+            --color: var(--color-app-secondary);
+            text-transform: lowercase;
+            font-size: 1rem;
+            font-weight: normal;
+            text-decoration: none;
+          }
+        }
+      }
     }
 
-    h2 {
-      font-weight: 600;
-      font-size: 30px;
+    .profile-page {
+      z-index: 100;
       text-align: center;
-    }
-
-    .header-edit-profile {
       position: absolute;
-      right: 10px;
-      top: -45px;
-      --color: var(--color-app-primary);
-      text-transform: lowercase;
-      font-size: 1rem;
-      font-weight: normal;
-      text-decoration: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin-top: 85px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .profile-image {
+
+      }
+      
+      h4 {
+        margin-top: 0;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .logout-button {
+        width: 20px;
+      }
     }
   }
 }

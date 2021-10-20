@@ -6,14 +6,16 @@ import {IonicModule} from '@ionic/angular';
 import {UserProfilePageRoutingModule} from './user-profile-routing.module';
 
 import {UserProfilePage} from './user-profile.page';
+import {ButtonModule} from '../../../components/button/button.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    UserProfilePageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        UserProfilePageRoutingModule,
+        ButtonModule
+    ],
   declarations: [UserProfilePage]
 })
 export class UserProfilePageModule {
