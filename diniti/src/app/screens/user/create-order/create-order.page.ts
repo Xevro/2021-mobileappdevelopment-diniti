@@ -12,15 +12,18 @@ export class CreateOrderPage implements OnInit {
 
   products: Products;
   filterTerm: string;
+  loading = false;
 
   constructor(private productsProxyService: ProductsProxyService) {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.productsProxyService.getProductsAction(true)
       .subscribe(
         (response) => {
           this.products = response;
+          this.loading = false;
         },
         (error) => {
         });

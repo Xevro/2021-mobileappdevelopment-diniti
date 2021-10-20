@@ -13,6 +13,7 @@ import {Orders} from '../../../models/backend-models';
 export class OverviewOrdersPage implements OnInit {
 
   orders: Orders;
+  loading = false;
 
   constructor(
     private router: Router,
@@ -21,10 +22,12 @@ export class OverviewOrdersPage implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
       .subscribe(
         (response) => {
           this.orders = response;
+          this.loading = false;
         },
         (error) => {
         });
