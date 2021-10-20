@@ -10,6 +10,7 @@ export class ProductListComponent implements OnInit {
 
   @Input() hideButtons = false;
   @Input() products: Products;
+  @Input() filterTerm: string;
 
   @Output() changedProductsList = new EventEmitter<Products>();
 

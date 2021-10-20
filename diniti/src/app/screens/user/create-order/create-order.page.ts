@@ -11,6 +11,7 @@ import {Products} from '../../../models/backend-models';
 export class CreateOrderPage implements OnInit {
 
   products: Products;
+  filterTerm: string;
 
   constructor(private productsProxyService: ProductsProxyService) {
   }

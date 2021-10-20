@@ -13,8 +13,9 @@
   </ion-header>
   <div class="products-list">
     <div class="search-field">
-      <ion-searchbar placeholder="Zoek producten"></ion-searchbar>
+      <ion-searchbar placeholder="Zoek producten" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
     </div>
-    <app-product-list (changedProductsList)="updatedProductsList(productsList)" #productsList [products]="products"></app-product-list>
+    <app-product-list (changedProductsList)="updatedProductsList(productsList)" #productsList [products]="products"
+                      [filterTerm]="filterTerm"></app-product-list>
   </div>
 </ion-content>

@@ -5,10 +5,11 @@ import { IonicModule } from '@ionic/angular';
 
 import {ProductListComponent} from './product-list.component';
 import {ProductItemModule} from '../product-item/product-item.module';
+import {DataFilterPipe} from "../../services/ui-services";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, ProductItemModule],
-  declarations: [ProductListComponent],
+    declarations: [ProductListComponent, DataFilterPipe],
   exports: [ProductListComponent]
 })
 export class ProductListModule {}
