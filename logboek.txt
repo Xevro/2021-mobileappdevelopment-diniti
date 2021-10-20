@@ -2,29 +2,31 @@ Logboek Mobile Application Development - 2021-2022
 
 - Week 1 - vrijdag 24/09/2021
 
-* Technologie en applicatie idee bedacht en uitgeschreven.
-* Opzoekingswerk verricht in verband met de technologie
-* Figma prototypes ontworpen
-* Basis start project aangemaakt + git repo aangemaakt
+  * Technologie en applicatie idee bedacht en uitgeschreven.
+  * Opzoekingswerk verricht in verband met de technologie
+  * Figma prototypes ontworpen
+  * Basis start project aangemaakt + git repo aangemaakt
+
 
 
 - Week 2 - vrijdag 01/10/2021
 
-* Afwerken van Figma designs.
-* Starten met het opbouwen van de applicatie in Ionic. De onboarding, login en registreer pagina's beginnen opbouwen.
-  Enkele basis routing zaken geoptimaliseerd en componenten gebouwd (button, input veld).
-* Om op een nette manier te werken met routes en properties maak ik gebruik van models, enums en interfaces
-  zodat alles georganiseerd blijft en tijdens het ontwikkelen er duidelijkere regels zijn voor elk component
+  * Afwerken van Figma designs.
+  * Starten met het opbouwen van de applicatie in Ionic. De onboarding, login en registreer pagina's beginnen opbouwen.
+    Enkele basis routing zaken geoptimaliseerd en componenten gebouwd (button, input veld).
+  * Om op een nette manier te werken met routes en properties maak ik gebruik van models, enums en interfaces
+    zodat alles georganiseerd blijft en tijdens het ontwikkelen er duidelijkere regels zijn voor elk component
 
-Om een image picker toe te voegen maakte ik gebruik van deze code:
-https://forum.ionicframework.com/t/imagepicker-for-browser/183262
-Service worker informatie:
-https://blog.angular-university.io/angular-service-worker/
-https://ionicframework.com/blog/start-build-deploy-your-first-capacitor-pwa-with-ionic/
+    Om een image picker toe te voegen maakte ik gebruik van deze code:
+    https://forum.ionicframework.com/t/imagepicker-for-browser/183262
+    Service worker informatie:
+    https://blog.angular-university.io/angular-service-worker/
+    https://ionicframework.com/blog/start-build-deploy-your-first-capacitor-pwa-with-ionic/
 
 
-Handig voor later:
-  - Online plaatsen van project: https://devdactic.com/ionic-pwa-caching/
+  Handig voor later:
+  * Online plaatsen van project: https://devdactic.com/ionic-pwa-caching/
+
 
 
 - Week 3 - vrijdag 08/10/2021
@@ -48,11 +50,13 @@ Handig voor later:
 
     * 
 
+
   - Bronnen
 
     * Oplossen van routing probleem: https://stackoverflow.com/questions/61239145/ionic-5-how-to-navigate-to-the-child-and-to-the-sub-child
     * Navigator onderkant scherm: https://ionicframework.com/docs/api/tabs
     * Previous route: https://dev.to/slk5611/how-to-access-the-previous-route-in-your-angular-app-5db0
+
 
 
 - Week 4 - vrijdag 15/10/2021
@@ -90,6 +94,7 @@ Handig voor later:
     * Route guard in angular: https://eliteionic.com/tutorials/prevent-access-to-pages-in-ionic-with-angular-route-guards/#angular-route-guards
 
 
+
 - Week 5 - vrijdag 22/10/2021
 
  - Te doen deze week
@@ -100,7 +105,7 @@ Handig voor later:
     * Profiel pagina opmaken design.
     * Toevoegen van profielfoto bij registreren gebruiker.
     ** Producten lijst weergeven.
-    * Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
+    ** Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
     ** + en - knop op create order pagina laten werken.
 
 
@@ -110,7 +115,7 @@ Handig voor later:
     * Bestellingen overzicht weergeven.
     * Producten lijst weergeven.
     * + en - knop op create order pagina laten werken.
-
+    * Toevoegen zoekbalk in producten lijst + werking automatisch filteren. - Datafilter pipe toegevoegd om later andere lijsten ook filterbaar te maken
 
   - Opgeloste problemen
 
@@ -127,5 +132,29 @@ Handig voor later:
     * Componenten communicatie: https://angular.io/guide/inputs-outputs
 
 
+
+- Week 6 - vrijdag 29/10/2021
+
+ - Te doen deze week
+
+    * Pagina's voor company admin kant toevoegen.
+
+
+ - Gedaan
+
+    *
+
+  - Opgeloste problemen
+
+    * 
+
+  - Op te lossen problemen
+
+    *
+
+
+  - Bronnen
+
+    *
 
 
