@@ -14,7 +14,6 @@ export class InputFieldComponent implements OnInit {
   @Input() value: string = null;
 
   @Output() onInputChange = new EventEmitter<string>();
-  inputValue: string = null;
 
   constructor() {
   }
@@ -23,6 +22,6 @@ export class InputFieldComponent implements OnInit {
   }
 
   onChange() {
-    this.onInputChange.emit(this.inputValue);
+    this.onInputChange.emit(this.value);
   }
 }

@@ -3,6 +3,8 @@ import {AuthenticationService} from '../../../services/authentication-services';
 import {Router} from '@angular/router';
 import {Routes} from '../../../models/core-models';
 import {FieldTypes} from '../../../models';
+import {UserProxyService} from '../../../services/backend-services';
+import {User} from '../../../models/backend-models';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,6 +20,8 @@ export class UserProfilePage implements OnInit {
   fieldTypes = FieldTypes;
   submitted = false;
 
+  userData: User;
+
   firstName: string = null;
   lastName: string = null;
   userName: string = null;
@@ -31,6 +35,7 @@ export class UserProfilePage implements OnInit {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
+    private userProxyService: UserProxyService
   ) {
   }
 
@@ -38,6 +43,15 @@ export class UserProfilePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    const objectId = this.authenticationService.getObjectId();
+    this.userProxyService.getUserDataAction(objectId)
+      .subscribe(
+        (response) => {
+          this.userData = response;
+          console.log(this.userData);
+        },
+        (error) => {
+        });
   }
 
   logout() {

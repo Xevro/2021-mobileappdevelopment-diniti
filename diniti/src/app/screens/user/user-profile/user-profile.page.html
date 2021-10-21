@@ -7,7 +7,8 @@
             <ion-button [textContent]="'Annuleer'" (click)="cancelEditUser()" class="cancel-button">
             </ion-button>
           </ion-buttons>
-          <ion-back-button *ngIf="!cancelButton" class="back-button" icon="" text="Terug" defaultHref="overview/orders"></ion-back-button>
+          <ion-back-button *ngIf="!cancelButton" class="back-button" icon="" text="Terug"
+                           defaultHref="overview/orders"></ion-back-button>
           <h2>Profiel</h2>
           <ion-buttons>
             <ion-button [textContent]="editButtonText" (click)="handleEditUserData()" class="header-edit-profile">
@@ -23,35 +24,43 @@
       </div>
       <h4>Louis D'Hont</h4>
 
-      <div *ngIf="!toggleEditView" class="profile-data">
+      <div *ngIf="!toggleEditView && userData" class="profile-data">
         <div class="username-box">
           <img src="./assets/icon/user-icon.svg" alt="Username">
-          <p>Username</p>
+          <p>{{ userData?.username }}</p>
         </div>
         <div class="email-box">
           <img src="./assets/icon/email-icon.svg" alt="Email">
-          <p>dhontlouis@gmail.com</p>
+          <p>{{ userData?.userEmail }}</p>
+        </div>
+      </div>
+
+      <div *ngIf="!toggleEditView && !userData" class="profile-data">
+        <div class="username-box">
+          <p>Gebruikersgegevens worden geladen</p>
         </div>
       </div>
 
       <div *ngIf="toggleEditView" class="edit-user-fields">
         <app-input-field (onInputChange)="firstNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [value]="'Louis'" [placeholder]="'Voornaam'" [name]="'voornaam'"></app-input-field>
+                         [value]="userData.firstname" [placeholder]="'Voornaam'" [name]="'voornaam'"></app-input-field>
         <div *ngIf="firstNameErrorMessage" class="error-message">
           <p>{{firstNameErrorMessage}}</p>
         </div>
         <app-input-field (onInputChange)="lastNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [value]="'D\'Hont'" [placeholder]="'Achternaam'" [name]="'achternaam'"></app-input-field>
+                         [value]="userData.lastname" [placeholder]="'Achternaam'"
+                         [name]="'achternaam'"></app-input-field>
         <div *ngIf="lastNameErrorMessage" class="error-message">
           <p>{{lastNameErrorMessage}}</p>
         </div>
         <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [value]="'Test'" [placeholder]="'Gebruikersnaam'" [name]="'gebruikersnaam'"></app-input-field>
+                         [value]="userData.username" [placeholder]="'Gebruikersnaam'"
+                         [name]="'gebruikersnaam'"></app-input-field>
         <div *ngIf="userNameErrorMessage" class="error-message">
           <p>{{userNameErrorMessage}}</p>
         </div>
         <app-input-field (onInputChange)="emailValueChanged($event)" [fieldType]="fieldTypes.email"
-                         [value]="'dhontlouis@gmail.com'" [placeholder]="'Email'" [name]="'email'"></app-input-field>
+                         [value]="userData.userEmail" [placeholder]="'Email'" [name]="'email'"></app-input-field>
         <div *ngIf="emailErrorMessage" class="error-message">
           <p>{{emailErrorMessage}}</p>
         </div>

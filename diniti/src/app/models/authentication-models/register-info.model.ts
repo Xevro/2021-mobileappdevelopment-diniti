@@ -3,5 +3,6 @@ export interface RegisterInfo {
   lastname: string;
   username: string;
   email: string;
+  userEmail: string;
   password: string;
 }

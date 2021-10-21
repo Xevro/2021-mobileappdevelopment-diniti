@@ -149,6 +149,7 @@ export class RegisterPage implements OnInit {
       lastname: this.lastNameInput,
       username: this.userNameInput,
       email: this.emailInput,
+      userEmail: this.emailInput,
       password: this.passwordInput
     };
     this.authenticationProxyService.registerAction(registerData)

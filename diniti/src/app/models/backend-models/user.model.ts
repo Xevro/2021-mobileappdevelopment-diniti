@@ -7,6 +7,7 @@ export interface User {
   lastname?: string;
   username?: string;
   email?: string;
+  userEmail?: string;
   sessionToken?: string;
   role?: Role;
   objectId?: string;
