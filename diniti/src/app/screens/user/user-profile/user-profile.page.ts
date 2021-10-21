@@ -11,22 +11,33 @@ import {FieldTypes} from '../../../models';
 })
 export class UserProfilePage implements OnInit {
 
-  editUserData: boolean;
+  editUserData = false;
+  toggleEditView = false;
   editButtonText = 'Bewerk';
+  cancelButton = false;
   fieldTypes = FieldTypes;
+  submitted = false;
 
-  firstname: string;
-  lastname: string;
-  username: string;
-  email: string;
+  firstName: string = null;
+  lastName: string = null;
+  userName: string = null;
+  email: string = null;
+
+  firstNameErrorMessage: string = null;
+  lastNameErrorMessage: string = null;
+  userNameErrorMessage: string = null;
+  emailErrorMessage: string = null;
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
   ) {
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
   }
 
   logout() {
@@ -34,21 +45,71 @@ export class UserProfilePage implements OnInit {
     this.router.navigate(Routes.onboarding);
   }
 
+  cancelEditUser() {
+    this.toggleEditView = false;
+    this.cancelButton = false;
+    this.editButtonText = 'Bewerk';
+  }
+
   handleEditUserData() {
-    this.editUserData = !this.editUserData;
-    this.editUserData ? this.editButtonText = 'Bewaar' : this.editButtonText = 'Bewerk';
+    this.toggleEditView = !this.toggleEditView;
+    this.toggleEditView ? this.editButtonText = 'Bewaar' : this.editButtonText = 'Bewerk';
+    this.cancelButton = true;
+
+    if (!this.toggleEditView) {
+      this.submitted = true;
+      // eslint-disable-next-line max-len
+      const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (this.email === null || this.email.length === 0) {
+        this.emailErrorMessage = 'Email mag niet leeg zijn';
+        this.submitted = false;
+      } else {
+        if (!emailRegex.test(String(this.email).toLowerCase())) {
+          this.emailErrorMessage = 'Email is niet in het juiste formaat';
+          this.submitted = false;
+        } else {
+          this.emailErrorMessage = null;
+        }
+      }
+
+      if (this.firstName === null) {
+        this.firstNameErrorMessage = 'Voornaam mag niet leeg zijn';
+        this.submitted = false;
+      } else {
+        this.firstNameErrorMessage = null;
+      }
+
+      if (this.lastName === null) {
+        this.lastNameErrorMessage = 'Achternaam mag niet leeg zijn';
+        this.submitted = false;
+      } else {
+        this.lastNameErrorMessage = null;
+      }
+
+      if (this.userName === null) {
+        this.userNameErrorMessage = 'Gebruikersnaam mag niet leeg zijn';
+        this.submitted = false;
+      } else {
+        this.userNameErrorMessage = null;
+      }
+    }
+    if (this.submitted) {
+      this.editUserData = !this.editUserData;
+      console.log('alles goed');
+      this.cancelButton = false;
+    }
   }
 
   firstNameValueChanged(firstNameValue: string) {
-    this.firstname = firstNameValue.trim();
+    this.firstName = firstNameValue.trim();
   }
 
   lastNameValueChanged(lastNameValue: string) {
-    this.lastname = lastNameValue;
+    this.lastName = lastNameValue;
   }
 
   userNameValueChanged(userNameValue: string) {
-    this.username = userNameValue;
+    this.userName = userNameValue;
   }
 
   emailValueChanged(emailValue: string) {
