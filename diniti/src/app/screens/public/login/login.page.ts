@@ -41,12 +41,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  usernameValueChanged(inputValue: string) {
-    this.usernameInput = inputValue.trim();
+  userNameValueChanged(userNameValue: string) {
+    this.usernameInput = userNameValue.trim();
   }
 
-  passwordValueChanged(inputValue: string) {
-    this.passwordInput = inputValue.trim();
+  passwordValueChanged(passwordValue: string) {
+    this.passwordInput = passwordValue.trim();
   }
 
   validateLogin() {

@@ -13,7 +13,7 @@
   </ion-header>
   <div class="login-page">
     <div class="input-fields">
-      <app-input-field [name]="'username'" (onInputChange)="usernameValueChanged($event)"
+      <app-input-field [name]="'username'" (onInputChange)="userNameValueChanged($event)"
                        [fieldType]="fieldTypes.text" [placeholder]="'Gebruikersnaam'"></app-input-field>
       <div *ngIf="usernameErrorMessage" class="error-message">
         <p>{{usernameErrorMessage}}</p>

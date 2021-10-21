@@ -52,9 +52,8 @@ ion-content {
       margin-right: auto;
 
       .profile-image {
-
       }
-      
+
       h4 {
         margin-top: 0;
         font-style: normal;
@@ -62,6 +61,45 @@ ion-content {
         font-size: 2rem;
         text-align: center;
       }
+
+      .profile-data {
+        display: inline-grid;
+        margin-top: 15px;
+
+        .username-box {
+          display: inline-flex;
+          text-align: center;
+
+          p {
+            margin-top: 0;
+            margin-left: 10px;
+          }
+
+          img {
+            margin-top: -12px;
+          }
+        }
+
+        .email-box {
+          display: inline-flex;
+          text-align: center;
+
+          p {
+            margin-top: 0;
+            margin-left: 10px;
+          }
+
+          img {
+            margin-top: -12px;
+          }
+        }
+      }
+
+      .edit-user-fields {
+        margin: 35px auto auto;
+        width: 300px;
+      }
+
 
       .logout-button {
         width: 20px;

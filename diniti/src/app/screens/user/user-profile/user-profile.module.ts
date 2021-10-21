@@ -7,15 +7,17 @@ import {UserProfilePageRoutingModule} from './user-profile-routing.module';
 
 import {UserProfilePage} from './user-profile.page';
 import {ButtonModule} from '../../../components/button/button.module';
+import {InputFieldModule} from '../../../components/input-field/input-field.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        UserProfilePageRoutingModule,
-        ButtonModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    UserProfilePageRoutingModule,
+    ButtonModule,
+    InputFieldModule
+  ],
   declarations: [UserProfilePage]
 })
 export class UserProfilePageModule {

@@ -53,28 +53,28 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  firstNameValueChanged(inputValue: string) {
-    this.firstNameInput = inputValue.trim();
+  firstNameValueChanged(firstNameValue: string) {
+    this.firstNameInput = firstNameValue.trim();
   }
 
-  lastNameValueChanged(inputValue: string) {
-    this.lastNameInput = inputValue.trim();
+  lastNameValueChanged(lastNameValue: string) {
+    this.lastNameInput = lastNameValue.trim();
   }
 
-  userNameValueChanged(inputValue: string) {
-    this.userNameInput = inputValue.trim();
+  userNameValueChanged(userNameValue: string) {
+    this.userNameInput = userNameValue.trim();
   }
 
-  emailValueChanged(inputValue: string) {
-    this.emailInput = inputValue.trim();
+  emailValueChanged(emailValue: string) {
+    this.emailInput = emailValue.trim();
   }
 
-  passwordValueChanged(inputValue: string) {
-    this.passwordInput = inputValue.trim();
+  passwordValueChanged(passwordValue: string) {
+    this.passwordInput = passwordValue.trim();
   }
 
-  passwordConfirmValueChanged(inputValue: string) {
-    this.passwordConfirmInput = inputValue.trim();
+  passwordConfirmValueChanged(passwordConfirmValue: string) {
+    this.passwordConfirmInput = passwordConfirmValue.trim();
   }
 
   checkboxChanged(e) {
