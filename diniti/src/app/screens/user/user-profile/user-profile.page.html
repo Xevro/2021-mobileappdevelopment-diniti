@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content>
   <div class="profile-page-box">
     <ion-header class="ion-no-border">
       <ion-toolbar>
@@ -13,7 +13,10 @@
       </ion-toolbar>
     </ion-header>
     <div class="profile-page">
-      <img src="./assets/images/profile-image.png" alt="profile image" class="profile-image">
+      <div class="profile-image-box">
+        <img *ngIf="!editUserData" src="./assets/icon/edit-circle.svg" alt="Edit profile image" class="edit-icon">
+        <img src="./assets/images/profile-image.png" alt="profile image" class="profile-image">
+      </div>
       <h4>Louis D'Hont</h4>
 
       <div *ngIf="!editUserData" class="profile-data">
