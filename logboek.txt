@@ -102,7 +102,7 @@ Logboek Mobile Application Development - 2021-2022
     * Bestellingen kunnen toevoegen.
     ** Bestellingen overzicht weergeven.
     * Guard op de 'betaling voltooid' pagina plaatsen.
-    * Profiel pagina opmaken design.
+    ** Profiel pagina opmaken design.
     * Toevoegen van profielfoto bij registreren gebruiker.
     ** Producten lijst weergeven.
     ** Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
@@ -116,6 +116,8 @@ Logboek Mobile Application Development - 2021-2022
     * Producten lijst weergeven.
     * + en - knop op create order pagina laten werken.
     * Toevoegen zoekbalk in producten lijst + werking automatisch filteren. - Datafilter pipe toegevoegd om later andere lijsten ook filterbaar te maken
+    * Profiel pagina opmaken design.
+
 
   - Opgeloste problemen
 

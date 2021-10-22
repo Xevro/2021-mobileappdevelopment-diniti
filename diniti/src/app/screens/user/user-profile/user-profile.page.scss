@@ -1,5 +1,7 @@
 ion-content {
   .profile-page-box {
+    margin-right: -5px;
+    margin-left: -5px;
     ion-header {
       ion-toolbar {
         .profile-header {
@@ -11,7 +13,7 @@ ion-content {
           .cancel-button {
             position: absolute;
             --color: var(--color-app-secondary);
-            margin-left: 10px;
+            margin-left: 15px;
             margin-top: 40px;
             text-transform: lowercase;
             font-size: 1rem;
@@ -22,7 +24,7 @@ ion-content {
           .back-button {
             position: absolute;
             --color: var(--color-app-secondary);
-            margin-left: 10px;
+            margin-left: 15px;
             margin-top: 22px;
             text-transform: lowercase;
             font-size: 1rem;
