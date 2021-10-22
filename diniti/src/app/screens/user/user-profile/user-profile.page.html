@@ -23,8 +23,8 @@
     </ion-header>
     <div class="profile-page" *ngIf="userData">
       <div class="profile-image-box">
-        <img *ngIf="toggleEditView" src="./assets/icon/edit-circle.svg" alt="Edit profile image" class="edit-icon">
-        <img src="./assets/images/profile-image.png" alt="profile image" class="profile-image">
+        <img *ngIf="toggleEditView" (click)="changeProfilePicture()" src="./assets/icon/edit-circle.svg" alt="Edit profile image" class="edit-icon">
+        <img src="{{ userData.profilePicture.url }}" alt="profile image" class="profile-image">
       </div>
       <h4>{{ userData.firstname + ' ' + userData.lastname }}</h4>
 

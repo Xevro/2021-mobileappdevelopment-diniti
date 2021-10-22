@@ -5,6 +5,8 @@ import {Routes} from '../../../models/core-models';
 import {FieldTypes} from '../../../models';
 import {UserProxyService} from '../../../services/backend-services';
 import {UpdateUser, User} from '../../../models/backend-models';
+import {PhotoService} from '../../../services/ui-services';
+import {ActionSheetController} from '@ionic/angular';
 
 @Component({
   selector: 'app-user-profile',
@@ -31,7 +33,9 @@ export class UserProfilePage implements OnInit {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userProxyService: UserProxyService
+    private userProxyService: UserProxyService,
+    private photoService: PhotoService,
+    public actionSheetCtrl: ActionSheetController
   ) {
   }
 
@@ -128,6 +132,36 @@ export class UserProfilePage implements OnInit {
         (error) => {
           location.reload(true);
         });
+  }
+
+  changeProfilePicture() {
+    const actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: 'Neem foto',
+          role: 'destructive',
+          handler: () => {
+            console.log('take picture clicked');
+            this.photoService.takeAPicture();
+          }
+        },{
+          text: 'Archief',
+          handler: () => {
+            console.log('Archive clicked');
+            this.photoService.addNewFromGallery();
+          }
+        },{
+          text: 'Annuleer',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.then(res => {
+      res.present();
+    });
   }
 
   firstNameValueChanged(firstNameValue: string) {

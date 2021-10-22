@@ -117,11 +117,13 @@ Logboek Mobile Application Development - 2021-2022
     * + en - knop op create order pagina laten werken.
     * Toevoegen zoekbalk in producten lijst + werking automatisch filteren. - Datafilter pipe toegevoegd om later andere lijsten ook filterbaar te maken
     * Profiel pagina opmaken design.
+    * App icon (favicon) aan app toegevoegd.
+    * Default profiel foto op databank toegevoegd.
 
 
   - Opgeloste problemen
 
-    * 
+    * Witte balk rondom de achtergrond op de user profiel pagina kunnen verwijderen.
 
   - Op te lossen problemen
 
@@ -132,6 +134,8 @@ Logboek Mobile Application Development - 2021-2022
 
     * HTTP caching interceptor: https://stackoverflow.com/questions/63303537/angular-httpinterceptor-for-caching-parallel-request-by-sharing-the-observable
     * Componenten communicatie: https://angular.io/guide/inputs-outputs
+    * Genereren van favicons: https://www.favicon-generator.org
+    * Foto camera module gebruiken: https://ionicframework.com/docs/angular/your-first-app/2-taking-photos
 
 
 

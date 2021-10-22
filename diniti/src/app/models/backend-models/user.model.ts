@@ -1,4 +1,5 @@
 import {Role} from '../authentication-models';
+import {ProfilePicture} from './profile-picture.model';
 
 export interface User {
   createdAt?: string;
@@ -11,4 +12,5 @@ export interface User {
   sessionToken?: string;
   role?: Role;
   objectId?: string;
+  profilePicture: ProfilePicture;
 }
