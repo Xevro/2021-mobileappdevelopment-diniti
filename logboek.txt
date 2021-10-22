@@ -89,7 +89,7 @@ Logboek Mobile Application Development - 2021-2022
     * Offline mode (service worker): https://devdactic.com/ionic-4-offline-mode/
     * Offline afhandelen van post/put methodes: https://blog.formpl.us/how-to-handle-post-put-requests-in-offline-applications-using-service-workers-indexedb-and-da7d0798a9ab
     * Service worker met http request: https://blog.ng-book.com/service-workers-and-angular/
-    * https://medium.com/@firt/dont-use-ios-web-app-meta-tag-irresponsibly-in-your-progressive-web-apps-85d70f4438cb
+    * Maak een website een echte pwa: https://medium.com/@firt/dont-use-ios-web-app-meta-tag-irresponsibly-in-your-progressive-web-apps-85d70f4438cb
     * Http client voorbeeld (zeer interessant!): https://www.tektutorialshub.com/angular/angular-http-get-example-using-httpclient/
     * Route guard in angular: https://eliteionic.com/tutorials/prevent-access-to-pages-in-ionic-with-angular-route-guards/#angular-route-guards
 

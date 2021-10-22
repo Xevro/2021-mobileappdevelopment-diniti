@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {Routes} from '../../../models/core-models';
 import {FieldTypes} from '../../../models';
 import {UserProxyService} from '../../../services/backend-services';
-import {User} from '../../../models/backend-models';
+import {UpdateUser, User} from '../../../models/backend-models';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,17 +15,13 @@ export class UserProfilePage implements OnInit {
 
   editUserData = false;
   toggleEditView = false;
-  editButtonText = 'Bewerk';
   cancelButton = false;
   fieldTypes = FieldTypes;
-  submitted = false;
+  submitted = true;
+  editButton = true;
 
   userData: User;
-
-  firstName: string = null;
-  lastName: string = null;
-  userName: string = null;
-  email: string = null;
+  updatedData: UpdateUser = {} as UpdateUser;
 
   firstNameErrorMessage: string = null;
   lastNameErrorMessage: string = null;
@@ -43,12 +39,21 @@ export class UserProfilePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.getUserDataFromCloud();
+  }
+
+  getUserDataFromCloud() {
     const objectId = this.authenticationService.getObjectId();
     this.userProxyService.getUserDataAction(objectId)
       .subscribe(
         (response) => {
           this.userData = response;
-          console.log(this.userData);
+          this.userData.email = response.userEmail;
+          this.updatedData.firstname = response.firstname;
+          this.updatedData.lastname = response.lastname;
+          this.updatedData.email = response.userEmail;
+          this.updatedData.userEmail = response.userEmail;
+          this.updatedData.username = response.username;
         },
         (error) => {
         });
@@ -62,71 +67,82 @@ export class UserProfilePage implements OnInit {
   cancelEditUser() {
     this.toggleEditView = false;
     this.cancelButton = false;
-    this.editButtonText = 'Bewerk';
+    this.editButton = true;
   }
 
   handleEditUserData() {
-    this.toggleEditView = !this.toggleEditView;
-    this.toggleEditView ? this.editButtonText = 'Bewaar' : this.editButtonText = 'Bewerk';
     this.cancelButton = true;
+    this.editButton = false;
+    this.toggleEditView = true;
+  }
 
-    if (!this.toggleEditView) {
-      this.submitted = true;
-      // eslint-disable-next-line max-len
-      const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (this.email === null || this.email.length === 0) {
-        this.emailErrorMessage = 'Email mag niet leeg zijn';
+  validateInput() {
+    // eslint-disable-next-line max-len
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (this.updatedData.email === '' || this.updatedData.email.length === 0) {
+      this.emailErrorMessage = 'Email adres mag niet leeg zijn';
+      this.submitted = false;
+    } else {
+      if (!emailRegex.test(String(this.updatedData.email).toLowerCase())) {
+        this.emailErrorMessage = 'Email adres is niet in het juiste formaat';
         this.submitted = false;
       } else {
-        if (!emailRegex.test(String(this.email).toLowerCase())) {
-          this.emailErrorMessage = 'Email is niet in het juiste formaat';
-          this.submitted = false;
-        } else {
-          this.emailErrorMessage = null;
-        }
-      }
-
-      if (this.firstName === null) {
-        this.firstNameErrorMessage = 'Voornaam mag niet leeg zijn';
-        this.submitted = false;
-      } else {
-        this.firstNameErrorMessage = null;
-      }
-
-      if (this.lastName === null) {
-        this.lastNameErrorMessage = 'Achternaam mag niet leeg zijn';
-        this.submitted = false;
-      } else {
-        this.lastNameErrorMessage = null;
-      }
-
-      if (this.userName === null) {
-        this.userNameErrorMessage = 'Gebruikersnaam mag niet leeg zijn';
-        this.submitted = false;
-      } else {
-        this.userNameErrorMessage = null;
+        this.emailErrorMessage = '';
       }
     }
-    if (this.submitted) {
-      this.editUserData = !this.editUserData;
-      console.log('alles goed');
-      this.cancelButton = false;
+    if (this.updatedData.firstname === '') {
+      this.firstNameErrorMessage = 'Voornaam mag niet leeg zijn';
+      this.submitted = false;
+    } else {
+      this.firstNameErrorMessage = '';
     }
+    if (this.updatedData.lastname === '') {
+      this.lastNameErrorMessage = 'Achternaam mag niet leeg zijn';
+      this.submitted = false;
+    } else {
+      this.lastNameErrorMessage = '';
+    }
+    if (this.updatedData.username === '') {
+      this.userNameErrorMessage = 'Gebruikersnaam mag niet leeg zijn';
+      this.submitted = false;
+    } else {
+      this.userNameErrorMessage = '';
+    }
+    if (!this.emailErrorMessage && !this.firstNameErrorMessage && !this.lastNameErrorMessage && !this.userNameErrorMessage) {
+      this.updateUserData();
+    }
+  }
+
+  updateUserData() {
+    this.updatedData.userEmail = this.updatedData.email;
+    this.userProxyService.updateUserdataAction(this.updatedData, this.authenticationService.getObjectId())
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.getUserDataFromCloud();
+          this.editUserData = !this.editUserData;
+          this.cancelButton = false;
+          this.editButton = true;
+          this.toggleEditView = false;
+        },
+        (error) => {
+          location.reload(true);
+        });
   }
 
   firstNameValueChanged(firstNameValue: string) {
-    this.firstName = firstNameValue.trim();
+    this.updatedData.firstname = firstNameValue.trim();
   }
 
   lastNameValueChanged(lastNameValue: string) {
-    this.lastName = lastNameValue;
+    this.updatedData.lastname = lastNameValue.trim();
   }
 
   userNameValueChanged(userNameValue: string) {
-    this.userName = userNameValue;
+    this.updatedData.username = userNameValue.trim();
   }
 
   emailValueChanged(emailValue: string) {
-    this.email = emailValue;
+    this.updatedData.email = emailValue.trim();
   }
 }

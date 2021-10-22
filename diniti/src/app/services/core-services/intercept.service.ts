@@ -12,12 +12,15 @@ export class InterceptService implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (request.headers.get('X-skip-request')) {
+      request = request.clone({
+        headers: request.headers.delete('X-skip-request')
+      });
+      return this.handleRequest(request, next);
+    }
     if (request.method !== 'GET') {
       return this.handleRequest(request, next);
     } else {
-      if (request.url.indexOf('users/me') > -1) {
-        return this.handleRequest(request, next);
-      }
       const cachedObservable = this.store[request.urlWithParams] ||
         (this.store[request.urlWithParams] = next.handle(request).pipe(
           filter((res) => res instanceof HttpResponse),

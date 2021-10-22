@@ -32,7 +32,8 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
   public refreshLogin(sessionToken): Observable<LoginResponse> {
     const url = 'users/me';
     const headerOptions = {
-      'X-Parse-Session-Token': sessionToken
+      'X-Parse-Session-Token': sessionToken,
+      'X-skip-request': 'true'
     };
     return this.getRequest(url, headerOptions);
   }

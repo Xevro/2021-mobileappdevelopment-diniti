@@ -23,7 +23,13 @@ export abstract class CrudDataProvider<Type> {
   }
 
   postRequest(url: string, body: Type, headerOptions = {}): Observable<Type> {
-    return this.httpClient.post<Type>(`${this.getBaseUrl()}/${url}`, body,{
+    return this.httpClient.post<Type>(`${this.getBaseUrl()}/${url}`, body, {
+      headers: Object.assign(this.header, headerOptions)
+    });
+  }
+
+  putRequest(url: string, body: Type, headerOptions = {}): Observable<void> {
+    return this.httpClient.put<void>(`${this.getBaseUrl()}/${url}`, body, {
       headers: Object.assign(this.header, headerOptions)
     });
   }
