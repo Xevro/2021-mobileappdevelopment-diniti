@@ -40,11 +40,13 @@ Logboek Mobile Application Development - 2021-2022
     * De bestel pagina voorzien van een header met annuleer en winkelmand knop.
     * Product componenten (item en lijst) gemaakt en opmaak gegeven.
 
+
   - Opgeloste problemen
 
     * Service worker probleem opgelost (enkel mogelijk tijdens productie build en hosten in www build map: http-server -p 8080 -c-1 www/)
     * Routing aangepast zodat /login en /register onder /onboarding zitten.
     * Probleem met navigator en routes opgelost (kon de /overview pagina niet meer bezoeken na de andere pagina met de navigator te bezoeken).
+
 
   - Op te lossen problemen
 
@@ -74,10 +76,12 @@ Logboek Mobile Application Development - 2021-2022
     * Form validatie toegevoegd op de registratie pagina en gebruiker kunnen registreren.
     * Email naar gebruikersnaam omgewisseld op de login pagina.
     
+
   - Opgeloste problemen
 
     * Authentictie guard toepassen op normaal bezoek bij doorklikken op pagina. (voordien enkel wanneer pagina werd herladen)
     * Mogelijk maken om een two way binding te hebben tussen de login pagina en het input veld.
+
 
   - Op te lossen problemen
 
@@ -104,6 +108,7 @@ Logboek Mobile Application Development - 2021-2022
     * Guard op de 'betaling voltooid' pagina plaatsen.
     ** Profiel pagina opmaken design.
     * Toevoegen van profielfoto bij registreren gebruiker.
+    * Bewerken van profielfoto op user profile pagina.
     ** Producten lijst weergeven.
     ** Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
     ** + en - knop op create order pagina laten werken.
@@ -120,10 +125,15 @@ Logboek Mobile Application Development - 2021-2022
     * App icon (favicon) aan app toegevoegd.
     * Default profiel foto op databank toegevoegd.
 
+  - Huidige taak
+
+    * Bewerken van profielfoto op user profile pagina.
+
 
   - Opgeloste problemen
 
     * Witte balk rondom de achtergrond op de user profiel pagina kunnen verwijderen.
+
 
   - Op te lossen problemen
 
@@ -136,7 +146,7 @@ Logboek Mobile Application Development - 2021-2022
     * Componenten communicatie: https://angular.io/guide/inputs-outputs
     * Genereren van favicons: https://www.favicon-generator.org
     * Foto camera module gebruiken: https://ionicframework.com/docs/angular/your-first-app/2-taking-photos
-
+    * Camera optie om bestand te kiezen (native camera element): https://capacitorjs.com/docs/web/pwa-elements
 
 
 - Week 6 - vrijdag 29/10/2021
@@ -144,15 +154,18 @@ Logboek Mobile Application Development - 2021-2022
  - Te doen deze week
 
     * Pagina's voor company admin kant toevoegen.
+    * Toevoegen van profielfoto op registratie pagina.
 
 
  - Gedaan
 
     *
 
+
   - Opgeloste problemen
 
     * 
+
 
   - Op te lossen problemen
 

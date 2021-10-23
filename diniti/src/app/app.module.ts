@@ -11,6 +11,7 @@ import {environment} from '../environments/environment';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from './services/authentication-services';
 import {InterceptService} from './services/core-services';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,9 @@ import {InterceptService} from './services/core-services';
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
     })],
-  providers: [HttpClientModule, {
+  providers: [HttpClientModule,
+    ImagePicker,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptService,
     multi: true

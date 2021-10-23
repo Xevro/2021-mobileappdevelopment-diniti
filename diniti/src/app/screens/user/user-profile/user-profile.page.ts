@@ -6,7 +6,6 @@ import {FieldTypes} from '../../../models';
 import {UserProxyService} from '../../../services/backend-services';
 import {UpdateUser, User} from '../../../models/backend-models';
 import {PhotoService} from '../../../services/ui-services';
-import {ActionSheetController} from '@ionic/angular';
 
 @Component({
   selector: 'app-user-profile',
@@ -34,8 +33,7 @@ export class UserProfilePage implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private userProxyService: UserProxyService,
-    private photoService: PhotoService,
-    public actionSheetCtrl: ActionSheetController
+    private photoService: PhotoService
   ) {
   }
 
@@ -122,7 +120,6 @@ export class UserProfilePage implements OnInit {
     this.userProxyService.updateUserdataAction(this.updatedData, this.authenticationService.getObjectId())
       .subscribe(
         (response) => {
-          console.log(response);
           this.getUserDataFromCloud();
           this.editUserData = !this.editUserData;
           this.cancelButton = false;
@@ -135,33 +132,7 @@ export class UserProfilePage implements OnInit {
   }
 
   changeProfilePicture() {
-    const actionSheet = this.actionSheetCtrl.create({
-      buttons: [
-        {
-          text: 'Neem foto',
-          role: 'destructive',
-          handler: () => {
-            console.log('take picture clicked');
-            this.photoService.takeAPicture();
-          }
-        },{
-          text: 'Archief',
-          handler: () => {
-            console.log('Archive clicked');
-            this.photoService.addNewFromGallery();
-          }
-        },{
-          text: 'Annuleer',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.then(res => {
-      res.present();
-    });
+      this.photoService.capturePhoto();
   }
 
   firstNameValueChanged(firstNameValue: string) {
