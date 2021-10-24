@@ -81,7 +81,7 @@ export class LoginPage implements OnInit {
         (error) => {
           this.submitted = false;
           this.passwordInput = null;
-          this.errorMessage = 'Could not login';
+          this.errorMessage = 'Kon niet inloggen';
         });
   }
 }

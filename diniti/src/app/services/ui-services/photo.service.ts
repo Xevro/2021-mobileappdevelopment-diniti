@@ -22,7 +22,7 @@ export class PhotoService {
     });
   }
 
-  public async toDataURL(url) {
+  public async toDataURL(url: string) {
     return await fetch(url)
       .then(response => response.blob())
       .then(blob => new Promise((resolve, reject) => {
@@ -42,7 +42,6 @@ export class PhotoService {
       byteString = unescape(dataURI.split(',')[1]);
     }
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
     const ia = new Uint8Array(byteString.length);
     for (let i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);

@@ -131,6 +131,36 @@ export class UserProfilePage implements OnInit {
         });
   }
 
+  async removeProfilePicture() {
+    const getUrl = window.location;
+    const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/icon/DNTUserDARK.png';
+    const urlRawData = await this.photoService.toDataURL(baseUrl)
+      .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
+
+    this.userProxyService.postImageAction(urlRawData)
+      .subscribe(
+        (result) => {
+          const data = {
+            profilePicture: {
+              name: result.name,
+              url: result.url,
+              __type: 'File'
+            }
+          };
+          this.userProxyService.putUserImageAction(data, this.authenticationService.getObjectId())
+            .subscribe(
+              (status) => {
+                this.getUserDataFromCloud();
+              },
+              (error) => {
+                location.reload(true);
+              });
+        },
+        (error) => {
+          location.reload(true);
+        });
+  }
+
   changeProfilePicture() {
     const photo = this.photoService.capturePhoto();
     photo.then(async (response) => {
@@ -161,6 +191,7 @@ export class UserProfilePage implements OnInit {
           });
     });
   }
+
 
   firstNameValueChanged(firstNameValue: string) {
     this.updatedData.firstname = firstNameValue.trim();

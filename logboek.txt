@@ -108,7 +108,7 @@ Logboek Mobile Application Development - 2021-2022
     * Guard op de 'betaling voltooid' pagina plaatsen.
     ** Profiel pagina opmaken design.
     * Toevoegen van profielfoto bij registreren gebruiker.
-    * Bewerken van profielfoto op user profile pagina.
+    ** Bewerken van profielfoto op user profile pagina.
     ** Producten lijst weergeven.
     ** Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
     ** + en - knop op create order pagina laten werken.
@@ -124,15 +124,13 @@ Logboek Mobile Application Development - 2021-2022
     * Profiel pagina opmaken design.
     * App icon (favicon) aan app toegevoegd.
     * Default profiel foto op databank toegevoegd.
-
-  - Huidige taak
-
     * Bewerken van profielfoto op user profile pagina.
 
 
   - Opgeloste problemen
 
     * Witte balk rondom de achtergrond op de user profiel pagina kunnen verwijderen.
+    * Pagina is tijdelijk zwart omdat guard lang duurt.
 
 
   - Op te lossen problemen
@@ -154,7 +152,7 @@ Logboek Mobile Application Development - 2021-2022
  - Te doen deze week
 
     * Pagina's voor company admin kant toevoegen.
-    * Toevoegen van profielfoto op registratie pagina.
+    * Loading icon tonen op bewerken van profiel pagina.
 
 
  - Gedaan
@@ -164,7 +162,8 @@ Logboek Mobile Application Development - 2021-2022
 
   - Opgeloste problemen
 
-    * 
+    * Pagina is tijdelijk zwart omdat guard lang duurt.
+    * Remove profielfoto en voeg profiel foto toe overlappen met padding dus kan 1 van de 2 knoppen niet aangeklikt worden.
 
 
   - Op te lossen problemen
