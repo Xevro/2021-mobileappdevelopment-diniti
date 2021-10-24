@@ -26,6 +26,23 @@ export class UserProxyService extends CrudDataProvider<any> {
     return this.getRequest(url, headerOptions);
   }
 
+  postImageAction(imageData: any): Observable<any> {
+    const url = `files/userProfilePicture.png`;
+    const headerOptions = {
+      'Content-Type': 'image/png'
+    };
+    return this.postRequest(url, imageData, headerOptions);
+  }
+
+  putUserImageAction(imageData: any, objectId: string): Observable<any> {
+    const url = 'users/' + objectId;
+    const headerOptions = {
+      'Content-Type': 'application/json',
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
+    };
+    return this.putRequest(url, imageData, headerOptions);
+  }
+
   updateUserdataAction(body: UpdateUser, objectId: string): Observable<void> {
     const url = `users/${objectId}`;
     const headerOptions = {

@@ -132,7 +132,34 @@ export class UserProfilePage implements OnInit {
   }
 
   changeProfilePicture() {
-      this.photoService.capturePhoto();
+    const photo = this.photoService.capturePhoto();
+    photo.then(async (response) => {
+      const urlRawData = await this.photoService.toDataURL(response.webPath)
+        .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
+
+      this.userProxyService.postImageAction(urlRawData)
+        .subscribe(
+          (result) => {
+            const data = {
+              profilePicture: {
+                name: result.name,
+                url: result.url,
+                __type: 'File'
+              }
+            };
+            this.userProxyService.putUserImageAction(data, this.authenticationService.getObjectId())
+              .subscribe(
+                (status) => {
+                  this.getUserDataFromCloud();
+                },
+                (error) => {
+                  location.reload(true);
+                });
+          },
+          (error) => {
+            location.reload(true);
+          });
+    });
   }
 
   firstNameValueChanged(firstNameValue: string) {
