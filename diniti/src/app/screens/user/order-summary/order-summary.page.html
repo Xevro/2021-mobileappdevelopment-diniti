@@ -14,10 +14,7 @@
 
   <div class="summary-page-content">
     <div class="summary-information">
-      <div class="summary-number">
-      <p>Bestelnummer: <a>#1827</a></p>
-      </div>
-      <div class="summary-price">
+      <div>
         <p>Totaal prijs: <a>€23.49</a></p>
       </div>
     </div>
@@ -25,7 +22,7 @@
       <ion-list class="time-picker">
         <ion-list-header>
           <ion-label>
-            Kies een tijdstip
+            Kies een afhaal tijdstip
           </ion-label>
         </ion-list-header>
         <ion-item>
@@ -39,7 +36,7 @@
       <div class="summary-list">
         <h2>Mijn bestelling</h2>
         <div>
-          <app-product-list [hideButtons]="true"></app-product-list>
+          <app-product-list [hideButtons]="true" [products]="products"></app-product-list>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, OnInit, Output} from '@angular/core';
-import {Products} from '../../models/backend-models';
+import {Product, Products} from '../../models/backend-models';
 
 @Component({
   selector: 'app-product-list',
@@ -9,7 +9,7 @@ import {Products} from '../../models/backend-models';
 export class ProductListComponent implements OnInit {
 
   @Input() hideButtons = false;
-  @Input() products: Products;
+  @Input() products: Product[];
   @Input() filterTerm: string;
 
   @Output() changedProductsList = new EventEmitter<Products>();

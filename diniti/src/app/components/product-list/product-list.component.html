@@ -1,13 +1,13 @@
 <div class="products-list-box">
   <div class="products-list">
     <ion-infinite-scroll *ngIf="products" threshold="100px">
-      <app-product-item #productsList *ngFor="let product of products?.results | datafilter:filterTerm" [product]="product"
+      <app-product-item #productsList *ngFor="let product of products | datafilter:filterTerm" [product]="product"
                        (changedProduct)="changedProducts(productsList)" [hideButtons]="hideButtons"></app-product-item>
     </ion-infinite-scroll>
-    <div *ngIf="!products?.results" class="no-products">
+    <div *ngIf="!products" class="no-products">
       <p>Geen producten gevonden</p>
     </div>
-    <div *ngIf="(products?.results | datafilter:filterTerm)?.length === 0" class="no-products">
+    <div *ngIf="(products | datafilter:filterTerm)?.length === 0" class="no-products">
       <p>Geen zoekresultaten voor {{ filterTerm }}</p>
     </div>
   </div>
