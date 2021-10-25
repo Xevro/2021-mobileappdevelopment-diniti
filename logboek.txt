@@ -153,10 +153,16 @@ Logboek Mobile Application Development - 2021-2022
 
     * Pagina's voor company admin toevoegen.
     * Loading icon tonen op bewerken van profiel pagina toevoegen.
-    * 
+    ** Bestelling maken en data tijdelijk opslaan.
+    * Bestelling toevoegen aan databank.
+    * Totaal berekenen van bestelling.
+    * Data van bestelling opslaan in json array.
+    *  
 
 
  - Gedaan
+
+    * Bestelling maken en data tijdelijk opslaan.
 
 
   - Opgeloste problemen
@@ -172,6 +178,7 @@ Logboek Mobile Application Development - 2021-2022
 
   - Bronnen
 
-    *
+    * Localstorage: https://stackoverflow.com/questions/46601155/keep-data-in-page-after-refresh
+    * Array objecten samenvoegen en overschrijven: https://stackoverflow.com/questions/52357239/how-to-overwrite-javascript-object-values-using-object
 
 
