@@ -41,6 +41,11 @@ export class CreateOrderPage implements OnInit {
 
   ionViewWillEnter() {
     this.message = null;
+    if (this.selectedProducts?.length === 0) {
+      for (const [key] of Object.entries(this.products)) {
+        this.products[key].amount = 0;
+      }
+    }
   }
 
   loadStoredProducts() {
@@ -70,6 +75,7 @@ export class CreateOrderPage implements OnInit {
 
   getOverviewUrl() {
     this.productsSummaryService.removeProductsData();
+    this.selectedProducts = [];
     this.router.navigate(Routes.userOverview);
   }
 }
