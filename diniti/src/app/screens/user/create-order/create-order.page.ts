@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {ProductsProxyService} from '../../../services/backend-services';
 import {Products} from '../../../models/backend-models';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-order',
@@ -13,12 +14,18 @@ export class CreateOrderPage implements OnInit {
   products: Products;
   filterTerm: string;
   loading = false;
+  message: string;
+  selectedProducts: Products;
 
-  constructor(private productsProxyService: ProductsProxyService) {
+  constructor(
+    private router: Router,
+    private productsProxyService: ProductsProxyService
+  ) {
   }
 
   ngOnInit() {
     this.loading = true;
+    this.message = null;
     this.productsProxyService.getProductsAction(true)
       .subscribe(
         (response) => {
@@ -30,16 +37,20 @@ export class CreateOrderPage implements OnInit {
   }
 
   ionViewWillEnter() {
-
+    this.message = null;
   }
 
   updatedProductsList(productsEvent: any) {
-    const products: Products = productsEvent.products;
-    console.log(products.results);
-    this.products = products;
+    this.selectedProducts = productsEvent.products;
   }
 
   getOrderSummaryUrl() {
-    return Routes.userOrderCreateSummary;
+    const filtered = this.selectedProducts?.results?.filter((value) => value?.amount !== 0 && value.amount);
+    if (filtered && filtered.length !== 0) {
+      this.message = null;
+      // this.router.navigate(Routes.userOrderCreateSummary);
+    } else {
+      this.message = 'Kies een product om verder te kunnen gaan';
+    }
   }
 }

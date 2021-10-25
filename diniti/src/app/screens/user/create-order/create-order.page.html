@@ -5,13 +5,16 @@
         <ion-back-button class="cancel-order" icon="" text="Annuleer" defaultHref="overview/orders"></ion-back-button>
         <h2>Bestel</h2>
         <ion-buttons>
-          <ion-button [routerLink]="getOrderSummaryUrl()" [textContent]="'Winkelmand'" class="header-register-order">
+          <ion-button (click)="getOrderSummaryUrl()" [textContent]="'Winkelmand'" class="header-register-order">
           </ion-button>
         </ion-buttons>
       </div>
     </ion-toolbar>
   </ion-header>
   <div class="products-list">
+    <div *ngIf="message" class="products-loading">
+      <p>{{ message }}</p>
+    </div>
     <div class="search-field">
       <ion-searchbar placeholder="Zoek producten" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
     </div>
