@@ -151,13 +151,12 @@ Logboek Mobile Application Development - 2021-2022
 
  - Te doen deze week
 
-    * Pagina's voor company admin kant toevoegen.
-    * Loading icon tonen op bewerken van profiel pagina.
+    * Pagina's voor company admin toevoegen.
+    * Loading icon tonen op bewerken van profiel pagina toevoegen.
+    * 
 
 
  - Gedaan
-
-    *
 
 
   - Opgeloste problemen

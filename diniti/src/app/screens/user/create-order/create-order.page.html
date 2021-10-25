@@ -21,5 +21,8 @@
     <div *ngIf="loading" class="products-loading">
       <p>Producten laden...</p>
     </div>
+    <div *ngIf="products?.results?.length === 0 && !loading" class="products-loading">
+      <p>Geen producten gevonden</p>
+    </div>
   </div>
 </ion-content>
