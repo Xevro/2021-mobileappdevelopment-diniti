@@ -1,26 +1,27 @@
 import {Injectable} from '@angular/core';
 import {Product} from '../../models/backend-models';
+import {SaveLocalService} from '../core-services';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsSummaryService {
+export class ProductsSummaryService extends SaveLocalService<Product[]> {
   products: Product[];
   storageName = 'products';
 
   constructor() {
+    super();
   }
 
   setProductsData(products: Product[]) {
-   localStorage.setItem(this.storageName, JSON.stringify(products));
+    this.saveToStorage(products);
   }
 
   getProductsData(): Product[] {
-    const data = localStorage.getItem(this.storageName);
-    return JSON.parse(data);
+    return this.getStoredData();
   }
 
   removeProductsData() {
-    return localStorage.removeItem(this.storageName);
+    return this.removeStoredData();
   }
 }
