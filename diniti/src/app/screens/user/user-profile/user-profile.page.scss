@@ -74,9 +74,8 @@ ion-content {
           left: 0;
           right: 0;
           margin-top: 28px;
-          margin-left: auto;
+          margin-left: calc(50% + 43px);
           margin-right: auto;
-          padding-left: 115px;
         }
 
         .remove-icon {
@@ -86,8 +85,7 @@ ion-content {
           right: 0;
           margin-top: 28px;
           margin-left: auto;
-          margin-right: auto;
-          padding-right: 115px;
+          margin-right: calc(50% + 43px);
         }
 
         .profile-image {
