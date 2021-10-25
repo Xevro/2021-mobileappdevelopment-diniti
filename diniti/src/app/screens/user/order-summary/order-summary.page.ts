@@ -24,11 +24,9 @@ export class OrderSummaryPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    const data = this.productsSummaryService.getProductsData();
-    if (data !== undefined) {
-      this.products = data;
-      console.log(data);
-      console.log(this.products);
+    const productsData = this.productsSummaryService.getProductsData();
+    if (productsData !== undefined) {
+      this.products = productsData;
     } else {
       this.router.navigate(Routes.userOrderCreate);
     }

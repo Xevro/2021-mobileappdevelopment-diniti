@@ -6,15 +6,21 @@ import {Product} from '../../models/backend-models';
 })
 export class ProductsSummaryService {
   products: Product[];
+  storageName = 'products';
 
   constructor() {
   }
 
   setProductsData(products: Product[]) {
-    return (this.products = products);
+   localStorage.setItem(this.storageName, JSON.stringify(products));
   }
 
   getProductsData(): Product[] {
-    return this.products;
+    const data = localStorage.getItem(this.storageName);
+    return JSON.parse(data);
+  }
+
+  removeProductsData() {
+    return localStorage.removeItem(this.storageName);
   }
 }

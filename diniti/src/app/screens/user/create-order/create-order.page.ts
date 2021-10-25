@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {ProductsProxyService} from '../../../services/backend-services';
-import {Product, Products} from '../../../models/backend-models';
+import {Product} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 import {ProductsSummaryService} from '../../../services/backend-services';
 
@@ -33,6 +33,7 @@ export class CreateOrderPage implements OnInit {
         (response) => {
           this.products = response?.results;
           this.loading = false;
+          this.loadStoredProducts();
         },
         (error) => {
         });
@@ -40,6 +41,16 @@ export class CreateOrderPage implements OnInit {
 
   ionViewWillEnter() {
     this.message = null;
+  }
+
+  loadStoredProducts() {
+    const storedProducts = this.productsSummaryService.getProductsData();
+    if (storedProducts) {
+      for (const [key, value] of Object.entries(storedProducts)) {
+        this.products[key] = value;
+      }
+      this.selectedProducts = storedProducts;
+    }
   }
 
   updatedProductsList(productsEvent: any) {
@@ -50,15 +61,15 @@ export class CreateOrderPage implements OnInit {
     const filteredProducts = this.selectedProducts?.filter((value) => value?.amount !== 0 && value.amount);
     if (filteredProducts && filteredProducts.length !== 0) {
       this.message = null;
-      if (this.productsSummaryService.setProductsData(filteredProducts)) {
-        this.router.navigate(Routes.userOrderCreateSummary);
-      }
+      this.productsSummaryService.setProductsData(filteredProducts);
+      this.router.navigate(Routes.userOrderCreateSummary);
     } else {
       this.message = 'Kies een product om verder te kunnen gaan';
     }
   }
 
   getOverviewUrl() {
+    this.productsSummaryService.removeProductsData();
     this.router.navigate(Routes.userOverview);
   }
 }
