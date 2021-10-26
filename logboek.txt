@@ -103,15 +103,14 @@ Logboek Mobile Application Development - 2021-2022
 
  - Te doen deze week
 
-    * Bestellingen kunnen toevoegen.
-    ** Bestellingen overzicht weergeven.
-    * Guard op de 'betaling voltooid' pagina plaatsen.
+    ** Bestellingen overzicht weergeven.    
     ** Profiel pagina opmaken design.
-    * Toevoegen van profielfoto bij registreren gebruiker.
-    ** Bewerken van profielfoto op user profile pagina.
+    ** Bewerken van profielfoto op user profiel pagina.
     ** Producten lijst weergeven.
     ** Toevoegen zoekbalk in producten lijst + werking automatisch filteren.
     ** + en - knop op create order pagina laten werken.
+    * Bestellingen kunnen toevoegen.
+    * Guard op de 'betaling voltooid' pagina plaatsen.
 
 
  - Gedaan
@@ -147,24 +146,26 @@ Logboek Mobile Application Development - 2021-2022
     * Camera optie om bestand te kiezen (native camera element): https://capacitorjs.com/docs/web/pwa-elements
 
 
+
 - Week 6 - vrijdag 29/10/2021
 
  - Te doen deze week
 
-    * Pagina's voor company admin toevoegen.
     ** Loading icon tonen op bewerken van profiel pagina toevoegen.
     ** Bestelling maken en data tijdelijk opslaan.
+    * Pagina's voor company admin toevoegen.
     * Bestelling toevoegen aan databank.
     * Totaal berekenen van bestelling.
     * Data van bestelling opslaan in json array.
     * Producten afbeelding kunnen wijzigen op admin pagina.
     * Detail van een bestelling kunnen bekijken. 
+    * Detail pagina voor een project toevoegen.
 
 
  - Gedaan
 
-    * Bestelling maken en data tijdelijk opslaan.
     * Loading icon tonen op bewerken van profiel pagina toevoegen.
+    * Bestelling maken en data tijdelijk opslaan.
 
 
   - Opgeloste problemen
