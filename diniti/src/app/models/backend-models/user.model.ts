@@ -12,5 +12,5 @@ export interface User {
   sessionToken?: string;
   role?: Role;
   objectId?: string;
-  profilePicture: ProfilePicture;
+  profilePicture?: ProfilePicture;
 }

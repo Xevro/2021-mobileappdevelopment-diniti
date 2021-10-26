@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Router} from '@angular/router';
 import {Routes} from '../../../models/core-models';
-import {FieldTypes} from '../../../models';
+import {FieldTypes} from '../../../models/ui-models';
 import {UserProxyService} from '../../../services/backend-services';
 import {UpdateUser, User} from '../../../models/backend-models';
 import {PhotoService} from '../../../services/ui-services';

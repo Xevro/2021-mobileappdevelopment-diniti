@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../../models/core-models';
-import {FieldTypes} from '../../../models';
+import {FieldTypes} from '../../../models/ui-models';
 import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
 import {RegisterInfo} from '../../../models/authentication-models';
 import {Router} from '@angular/router';

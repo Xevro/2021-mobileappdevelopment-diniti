@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
-import {FieldTypes} from '../../models/field-types.enum';
+import {FieldTypes} from '../../models/ui-models/field-types.enum';
 
 @Component({
   selector: 'app-input-field',
