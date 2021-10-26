@@ -27,6 +27,7 @@
         <img *ngIf="toggleEditView" (click)="changeProfilePicture()" src="./assets/icon/edit-circle.svg" alt="Edit profile image" class="edit-icon">
         <img src="{{ userData.profilePicture.url }}" alt="profile image" class="profile-image">
       </div>
+      <p class="image-upload-message" *ngIf="loadingImage && toggleEditView">Afbeelding aan het uploaden...</p>
       <h4>{{ userData.firstname + ' ' + userData.lastname }}</h4>
 
       <div *ngIf="!toggleEditView && userData" class="profile-data">

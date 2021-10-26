@@ -152,17 +152,19 @@ Logboek Mobile Application Development - 2021-2022
  - Te doen deze week
 
     * Pagina's voor company admin toevoegen.
-    * Loading icon tonen op bewerken van profiel pagina toevoegen.
+    ** Loading icon tonen op bewerken van profiel pagina toevoegen.
     ** Bestelling maken en data tijdelijk opslaan.
     * Bestelling toevoegen aan databank.
     * Totaal berekenen van bestelling.
     * Data van bestelling opslaan in json array.
-    *  
+    * Producten afbeelding kunnen wijzigen op admin pagina.
+    * Detail van een bestelling kunnen bekijken. 
 
 
  - Gedaan
 
     * Bestelling maken en data tijdelijk opslaan.
+    * Loading icon tonen op bewerken van profiel pagina toevoegen.
 
 
   - Opgeloste problemen

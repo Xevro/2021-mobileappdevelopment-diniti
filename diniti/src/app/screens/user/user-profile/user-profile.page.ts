@@ -20,6 +20,7 @@ export class UserProfilePage implements OnInit {
   fieldTypes = FieldTypes;
   submitted = true;
   editButton = true;
+  loadingImage = false;
 
   userData: User;
   updatedData: UpdateUser = {} as UpdateUser;
@@ -56,6 +57,7 @@ export class UserProfilePage implements OnInit {
           this.updatedData.email = response.userEmail;
           this.updatedData.userEmail = response.userEmail;
           this.updatedData.username = response.username;
+          this.loadingImage = false;
         },
         (error) => {
         });
@@ -132,6 +134,7 @@ export class UserProfilePage implements OnInit {
   }
 
   async removeProfilePicture() {
+    this.loadingImage = true;
     const getUrl = window.location;
     const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/icon/DNTUserDARK.png';
     const urlRawData = await this.photoService.toDataURL(baseUrl)
@@ -162,6 +165,7 @@ export class UserProfilePage implements OnInit {
   }
 
   changeProfilePicture() {
+    this.loadingImage = true;
     const photo = this.photoService.capturePhoto();
     photo.then(async (response) => {
       const urlRawData = await this.photoService.toDataURL(response.webPath)
