@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {ProductsSummaryService} from '../../../services/backend-services';
-import {Product} from '../../../models/backend-models';
+import {Order} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,8 +11,8 @@ import {Router} from '@angular/router';
 })
 export class OrderSummaryPage implements OnInit {
 
-  products: Product[];
   createOrder = false;
+  order: Order = {totalPrice: 0.0} as Order;
 
   constructor(
     private router: Router,
@@ -26,7 +26,10 @@ export class OrderSummaryPage implements OnInit {
   ionViewWillEnter() {
     const productsData = this.productsSummaryService.getProductsData();
     if (productsData !== undefined) {
-      this.products = productsData;
+      this.order.products = productsData;
+      this.order.products.filter((product) => {
+        this.order.totalPrice += (product.price * product.amount);
+      });
     } else {
       this.router.navigate(Routes.userOrderCreate);
     }

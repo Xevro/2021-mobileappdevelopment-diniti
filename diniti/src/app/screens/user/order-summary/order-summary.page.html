@@ -15,7 +15,7 @@
   <div class="summary-page-content">
     <div class="summary-information">
       <div>
-        <p>Totaal prijs: <a>€23.49</a></p>
+        <p>Totaal prijs: <a>€{{ (order?.totalPrice !== 0.0) ? order?.totalPrice : ' --'}}</a></p>
       </div>
     </div>
     <div class="summary-content">
@@ -27,7 +27,7 @@
         </ion-list-header>
         <ion-item>
           <ion-label>Tijdstip</ion-label>
-          <ion-select placeholder="Kies één">
+          <ion-select placeholder="Kies één tijdstip">
             <ion-select-option value="f">18:30</ion-select-option>
             <ion-select-option value="m">18:45</ion-select-option>
           </ion-select>
@@ -36,7 +36,7 @@
       <div class="summary-list">
         <h2>Mijn bestelling</h2>
         <div>
-          <app-product-list [hideButtons]="true" [products]="products"></app-product-list>
+          <app-product-list [hideButtons]="true" [products]="order?.products"></app-product-list>
         </div>
       </div>
     </div>
