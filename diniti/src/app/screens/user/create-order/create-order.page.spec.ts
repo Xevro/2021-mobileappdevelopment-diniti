@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { CreateOrderPage } from './create-order.page';
+import {CreateOrderPage} from './create-order.page';
 
 describe('CreateOrderPage', () => {
   let component: CreateOrderPage;
@@ -9,7 +9,7 @@ describe('CreateOrderPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateOrderPage ],
+      declarations: [CreateOrderPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../../models/core-models';
-import {ProductsProxyService} from '../../../services/backend-services';
+import {ProductsProxyService, ProductsSummaryService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
 import {Router} from '@angular/router';
-import {ProductsSummaryService} from '../../../services/backend-services';
 
 @Component({
   selector: 'app-create-order',

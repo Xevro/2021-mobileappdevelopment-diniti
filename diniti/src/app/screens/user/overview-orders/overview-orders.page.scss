@@ -2,6 +2,7 @@ ion-content {
   .title-box {
     text-align: center;
   }
+
   .list-title {
     max-width: var(--list-width);
     position: relative;
@@ -9,15 +10,18 @@ ion-content {
     margin-right: auto;
     padding-left: 18px;
   }
+
   h2 {
     font-weight: 600;
     font-size: 30px;
     text-align: center;
   }
+
   .no-orders {
     text-align: center;
     margin: auto;
   }
+
   .orders-loading {
     text-align: center;
     margin: auto;

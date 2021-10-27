@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { InputFieldComponent } from './input-field.component';
+import {InputFieldComponent} from './input-field.component';
 
 describe('InputFieldComponent', () => {
   let component: InputFieldComponent;
@@ -9,7 +9,7 @@ describe('InputFieldComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputFieldComponent ],
+      declarations: [InputFieldComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

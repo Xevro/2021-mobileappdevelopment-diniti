@@ -1,4 +1,4 @@
-import { StringToDatePipe } from './string-to-date.pipe';
+import {StringToDatePipe} from './string-to-date.pipe';
 
 describe('StringToDatePipe', () => {
   it('create an instance', () => {

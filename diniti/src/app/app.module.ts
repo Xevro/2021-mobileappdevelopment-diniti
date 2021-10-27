@@ -11,7 +11,7 @@ import {environment} from '../environments/environment';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from './services/authentication-services';
 import {InterceptService} from './services/core-services';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import {ImagePicker} from '@ionic-native/image-picker/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,10 +24,10 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
   providers: [HttpClientModule,
     ImagePicker,
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: InterceptService,
-    multi: true
-  }, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthenticationService],
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptService,
+      multi: true
+    }, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthenticationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

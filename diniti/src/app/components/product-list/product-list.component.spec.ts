@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { ProductListComponent } from './product-list.component';
+import {ProductListComponent} from './product-list.component';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -9,7 +9,7 @@ describe('ProductListComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ],
+      declarations: [ProductListComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

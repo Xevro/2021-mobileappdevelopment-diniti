@@ -2,9 +2,8 @@ import {Injectable} from '@angular/core';
 import {CrudDataProvider} from '../core-services';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {RegisterInfo, RegisterResponse} from '../../models/authentication-models';
+import {LoginResponse, RegisterInfo, RegisterResponse} from '../../models/authentication-models';
 import {Observable} from 'rxjs';
-import {LoginResponse} from '../../models/authentication-models';
 
 @Injectable({
   providedIn: 'root'

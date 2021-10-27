@@ -11,8 +11,10 @@ export class ButtonComponent implements OnInit {
   @Input() invertColor: boolean = false;
   @Input() disabled: boolean = false;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

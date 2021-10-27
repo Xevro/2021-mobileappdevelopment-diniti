@@ -9,13 +9,13 @@ import {OrderSummaryPage} from './order-summary.page';
 import {ProductListModule} from "../../../components/product-list/product-list.module";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        OrderSummaryPageRoutingModule,
-        ProductListModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    OrderSummaryPageRoutingModule,
+    ProductListModule
+  ],
   declarations: [OrderSummaryPage]
 })
 export class OrderSummaryPageModule {

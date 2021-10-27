@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { OverviewOrdersPage } from './overview-orders.page';
+import {OverviewOrdersPage} from './overview-orders.page';
 
 describe('OverviewOrdersPage', () => {
   let component: OverviewOrdersPage;
@@ -9,7 +9,7 @@ describe('OverviewOrdersPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ OverviewOrdersPage ],
+      declarations: [OverviewOrdersPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

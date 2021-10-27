@@ -1,4 +1,4 @@
-import { DataFilterPipe } from './data-filter.pipe';
+import {DataFilterPipe} from './data-filter.pipe';
 
 describe('DataFilterPipe', () => {
   it('create an instance', () => {

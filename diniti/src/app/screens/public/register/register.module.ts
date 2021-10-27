@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { RegisterUserPageRoutingModule } from './register-routing.module';
+import {RegisterUserPageRoutingModule} from './register-routing.module';
 
-import { RegisterPage } from './register.page';
+import {RegisterPage} from './register.page';
 import {InputFieldModule} from '../../../components/input-field/input-field.module';
 import {ButtonModule} from '../../../components/button/button.module';
 
@@ -21,4 +21,5 @@ import {ButtonModule} from '../../../components/button/button.module';
   ],
   declarations: [RegisterPage]
 })
-export class RegisterUserPageModule {}
+export class RegisterUserPageModule {
+}

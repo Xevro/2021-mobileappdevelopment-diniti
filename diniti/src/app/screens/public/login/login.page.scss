@@ -6,11 +6,13 @@ ion-content {
       margin-top: 13px;
       margin-left: 20px;
     }
-      h2 {
-        font-weight: 600;
-        font-size: 30px;
-        text-align: center;
-      }
+
+    h2 {
+      font-weight: 600;
+      font-size: 30px;
+      text-align: center;
+    }
+
     .header-register {
       position: absolute;
       top: 32px;
@@ -18,16 +20,20 @@ ion-content {
       text-decoration: none;
     }
   }
+
   .login-page {
     max-width: 330px;
     margin-left: auto;
     margin-right: auto;
+
     .input-fields {
       margin-top: 150px;
+
       .button-login {
         text-align: center;
         margin-top: 25px;
       }
+
       .error-message {
         font-size: 0.9rem;
         color: var(--color-app-dark);

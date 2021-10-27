@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { NotFoundPage } from './not-found.page';
+import {NotFoundPage} from './not-found.page';
 
 describe('NotFoundPage', () => {
   let component: NotFoundPage;
@@ -9,7 +9,7 @@ describe('NotFoundPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotFoundPage ],
+      declarations: [NotFoundPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

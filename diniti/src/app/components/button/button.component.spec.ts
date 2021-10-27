@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { ButtonComponent } from './button.component';
+import {ButtonComponent} from './button.component';
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;
@@ -9,7 +9,7 @@ describe('ButtonComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ButtonComponent ],
+      declarations: [ButtonComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

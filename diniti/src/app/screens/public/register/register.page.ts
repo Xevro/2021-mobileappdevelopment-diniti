@@ -131,7 +131,7 @@ export class RegisterPage implements OnInit {
       }
     }
 
-    if(!this.checked) {
+    if (!this.checked) {
       this.checkedErrorMessage = 'Voorwaarden zijn niet aangeduid';
     } else {
       this.checkedErrorMessage = null;

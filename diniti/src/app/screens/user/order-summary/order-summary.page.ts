@@ -49,15 +49,16 @@ export class OrderSummaryPage implements OnInit {
         className: '_User',
         objectId: this.authenticationService.getObjectId()
       };
+      const date = new Date(Date.now());
       this.order.pickUpTime = {
         __type: 'Date',
-        iso: Date.now().toString()
+        iso: `${date.toDateString()}  ${date.toTimeString()}`
       };
       this.order.orderId = Date.now();
       this.ordersProxyService.postOrderAction(this.order)
         .subscribe(
           (response) => {
-            this.router.navigate(Routes.orderComplete);
+            //this.router.navigate(Routes.orderComplete);
           },
           (error) => {
             // show error

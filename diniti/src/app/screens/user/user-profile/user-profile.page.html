@@ -23,8 +23,10 @@
     </ion-header>
     <div class="profile-page" *ngIf="userData">
       <div class="profile-image-box">
-        <img *ngIf="toggleEditView" (click)="removeProfilePicture()" src="./assets/icon/cancel-icon.svg" alt="Remove profile image" class="remove-icon">
-        <img *ngIf="toggleEditView" (click)="changeProfilePicture()" src="./assets/icon/edit-circle.svg" alt="Edit profile image" class="edit-icon">
+        <img *ngIf="toggleEditView" (click)="removeProfilePicture()" src="./assets/icon/cancel-icon.svg"
+             alt="Remove profile image" class="remove-icon">
+        <img *ngIf="toggleEditView" (click)="changeProfilePicture()" src="./assets/icon/edit-circle.svg"
+             alt="Edit profile image" class="edit-icon">
         <img src="{{ userData.profilePicture.url }}" alt="profile image" class="profile-image">
       </div>
       <p class="image-upload-message" *ngIf="loadingImage && toggleEditView">Afbeelding aan het uploaden...</p>

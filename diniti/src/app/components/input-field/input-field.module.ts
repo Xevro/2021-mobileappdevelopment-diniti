@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {IonicModule} from '@ionic/angular';
 
-import { InputFieldComponent } from './input-field.component';
+import {InputFieldComponent} from './input-field.component';
 
 @NgModule({
-  imports: [ CommonModule, FormsModule, IonicModule],
+  imports: [CommonModule, FormsModule, IonicModule],
   declarations: [InputFieldComponent],
   exports: [InputFieldComponent]
 })
-export class InputFieldModule {}
+export class InputFieldModule {
+}
