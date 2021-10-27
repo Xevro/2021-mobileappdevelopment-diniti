@@ -156,10 +156,14 @@ Logboek Mobile Application Development - 2021-2022
     ** Totaal berekenen van bestelling.
     ** Bestelling toevoegen aan databank.
     ** Data van bestelling opslaan in json array.
-    * Pagina's voor company admin toevoegen.
+    ** Admin routing en guards oplossen (onboarding, user, amin).
+    * pagina products list toevoegen.
+    * Pagina admin profile toevoegen.
+    * Pagina edit product toevoegen.
+    * Pagina edit product toevoegen.
     * Producten afbeelding kunnen wijzigen op admin pagina.
     * Detail van een bestelling kunnen bekijken. 
-    * Detail pagina voor een project toevoegen.
+    * Detail pagina voor een product toevoegen.
 
 
  - Gedaan
@@ -169,8 +173,8 @@ Logboek Mobile Application Development - 2021-2022
     * Totaal berekenen van bestelling.
     * Bestelling toevoegen aan databank.
     * Data van bestelling opslaan in json array.
+    * Admin routing en guards oplossen (onboarding, user, amin)
 
-    
   - Opgeloste problemen
 
     * Pagina is tijdelijk zwart omdat guard lang duurt.
