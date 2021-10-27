@@ -3,6 +3,7 @@ import {Routes} from '../../../models/core-models';
 import {FieldTypes} from '../../../models/ui-models';
 import {Router} from '@angular/router';
 import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
+import {Role} from '../../../models/authentication-models';
 
 @Component({
   selector: 'app-login',
@@ -76,7 +77,14 @@ export class LoginPage implements OnInit {
         (response) => {
           this.userContext.userLoggedIn(response);
           this.submitted = false;
-          this.router.navigate(Routes.userOverview);
+          if (response.role === Role.admin) {
+            this.router.navigate(Routes.adminOverview);
+          } else if (response.role === Role.user) {
+            this.router.navigate(Routes.userOverview);
+          } else {
+            this.passwordInput = null;
+            this.errorMessage = 'Kon niet inloggen';
+          }
         },
         (error) => {
           this.submitted = false;

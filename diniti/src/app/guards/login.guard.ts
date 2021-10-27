@@ -23,11 +23,13 @@ export class LoginGuard implements CanActivate {
           return true;
         } else {
           if (this.authenticationService.getRole() === Role.user) {
+            console.log('userrrr');
             this.router.navigate(Routes.userOverview);
           } else if (this.authenticationService.getRole() === Role.admin) {
-            // Fix: change to admin page
-            this.router.navigate(Routes.userProfile);
+            console.log('adminnnnn');
+            this.router.navigate(Routes.adminOverview);
           } else {
+            console.log('onboarding');
             this.router.navigate(Routes.onboarding);
           }
         }

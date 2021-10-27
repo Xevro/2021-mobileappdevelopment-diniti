@@ -6,8 +6,10 @@ export class RouteLiterals {
   static userProfile = 'profile';
   static userOverview = 'overview';
   static userOrders = 'orders';
-  static userOrderDetail = 'order';
+  static userOrderDetail = 'detail';
   static userOrderCreate = 'create';
   static userOrderComplete = 'complete';
   static userOrderCreateSummary = 'summary';
+
+  static adminOverview = 'admin';
 }

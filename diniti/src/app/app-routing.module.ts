@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {RouteLiterals} from './models/core-models';
 import {AuthenticatedGuard} from './guards/authenticated.guard';
+import {Role} from './models/authentication-models';
 
 const routes: Routes = [
   {path: '', redirectTo: RouteLiterals.onboarding, pathMatch: 'full'},
@@ -14,14 +15,18 @@ const routes: Routes = [
     canActivate: [AuthenticatedGuard],
     runGuardsAndResolvers: 'always',
     data: {
-      expectedRole: 'user'
+      expectedRole: Role.user
     },
     loadChildren: () => import('./screens/user/overview-tabs/overview-tabs.module').then(m => m.OverviewTabsPageModule)
   },
   {
-    path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderComplete,
+    path: RouteLiterals.adminOverview,
     canActivate: [AuthenticatedGuard],
-    loadChildren: () => import('./screens/user/order-complete/order-complete.module').then(m => m.OrderCompletePageModule)
+    runGuardsAndResolvers: 'always',
+    data: {
+      expectedRole: Role.admin
+    },
+    loadChildren: () => import('./screens/admin/admin-tabs/admin-tabs.module').then(m => m.AdminTabsModule)
   },
   {
     path: '**',

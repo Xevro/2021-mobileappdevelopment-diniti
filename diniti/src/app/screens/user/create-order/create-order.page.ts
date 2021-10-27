@@ -49,7 +49,7 @@ export class CreateOrderPage implements OnInit {
 
   loadStoredProducts() {
     const storedProducts = this.productsSummaryService.getProductsData();
-    if (storedProducts !== undefined) {
+    if (storedProducts !== undefined && storedProducts) {
       for (const [key, value] of Object.entries(storedProducts)) {
         this.products[key] = value;
       }

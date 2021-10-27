@@ -19,16 +19,20 @@ const routes: Routes = [
         loadChildren: () => import('../user-profile/user-profile.module').then(m => m.UserProfilePageModule)
       },
       {
-        path: RouteLiterals.userOrderDetail,
-        loadChildren: () => import('../order-details/order-details.module').then(m => m.OrderDetailsPageModule)
+        path: RouteLiterals.userOrders + '/' + RouteLiterals.userOrderDetail,
+        loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {
-        path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderCreate,
+        path: RouteLiterals.userOrders + '/' + RouteLiterals.userOrderCreate,
         loadChildren: () => import('../create-order/create-order.module').then(m => m.CreateOrderPageModule)
       },
       {
-        path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderCreate + '/' + RouteLiterals.userOrderCreateSummary,
+        path: RouteLiterals.userOrders + '/' + RouteLiterals.userOrderCreate + '/' + RouteLiterals.userOrderCreateSummary,
         loadChildren: () => import('../order-summary/order-summary.module').then(m => m.OrderSummaryPageModule)
+      },
+      {
+        path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderComplete,
+        loadChildren: () => import('../order-complete/order-complete.module').then(m => m.OrderCompletePageModule)
       },
       {
         path: '',
