@@ -9,7 +9,7 @@ import {Products} from '../../models/backend-models';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsProxyService extends CrudDataProvider<any> {
+export class ProductsProxyService extends CrudDataProvider<Products> {
   api = environment.api;
 
   constructor(

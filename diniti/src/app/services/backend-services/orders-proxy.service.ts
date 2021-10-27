@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../authentication-services';
-import {Orders} from '../../models/backend-models';
+import {Order, Orders} from '../../models/backend-models';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +24,10 @@ export class OrdersProxyService extends CrudDataProvider<any> {
     };
     const url = `classes/Orders?where={"userId":{"__type":"Pointer","className":"_User","objectId":"${objectId}"}}`;
     return this.getRequest(url, headerOptions);
+  }
+
+  postOrderAction(order: Order): Observable<any> {
+    const url = `classes/Orders`;
+    return this.postRequest(url, order);
   }
 }

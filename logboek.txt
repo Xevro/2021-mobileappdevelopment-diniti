@@ -154,9 +154,9 @@ Logboek Mobile Application Development - 2021-2022
     ** Loading icon tonen op bewerken van profiel pagina toevoegen.
     ** Bestelling maken en data tijdelijk opslaan.
     ** Totaal berekenen van bestelling.
+    ** Bestelling toevoegen aan databank.
+    ** Data van bestelling opslaan in json array.
     * Pagina's voor company admin toevoegen.
-    * Bestelling toevoegen aan databank.
-    * Data van bestelling opslaan in json array.
     * Producten afbeelding kunnen wijzigen op admin pagina.
     * Detail van een bestelling kunnen bekijken. 
     * Detail pagina voor een project toevoegen.
@@ -167,8 +167,10 @@ Logboek Mobile Application Development - 2021-2022
     * Loading icon tonen op bewerken van profiel pagina toevoegen.
     * Bestelling maken en data tijdelijk opslaan.
     * Totaal berekenen van bestelling.
+    * Bestelling toevoegen aan databank.
+    * Data van bestelling opslaan in json array.
 
-
+    
   - Opgeloste problemen
 
     * Pagina is tijdelijk zwart omdat guard lang duurt.

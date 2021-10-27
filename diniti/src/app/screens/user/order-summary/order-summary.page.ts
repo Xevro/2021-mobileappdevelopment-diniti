@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Routes} from '../../../models/core-models';
-import {ProductsSummaryService} from '../../../services/backend-services';
-import {Order} from '../../../models/backend-models';
+import {OrdersProxyService, ProductsSummaryService} from '../../../services/backend-services';
+import {Order, OrderStatus} from '../../../models/backend-models';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../../services/authentication-services';
 
 @Component({
   selector: 'app-order-summary',
@@ -13,10 +14,13 @@ export class OrderSummaryPage implements OnInit {
 
   createOrder = false;
   order: Order = {totalPrice: 0.0} as Order;
+  timeError: string;
 
   constructor(
     private router: Router,
-    private productsSummaryService: ProductsSummaryService
+    private authenticationService: AuthenticationService,
+    private productsSummaryService: ProductsSummaryService,
+    private ordersProxyService: OrdersProxyService
   ) {
   }
 
@@ -35,7 +39,31 @@ export class OrderSummaryPage implements OnInit {
     }
   }
 
-  getOrderCompleteUrl() {
-    return Routes.orderComplete;
+  goToOrderComplete() {
+    this.timeError = '';
+    // check if internet connection is active
+    if (this.order.pickUpTime) {
+      this.order.status = OrderStatus.pending;
+      this.order.userId = {
+        __type: 'Pointer',
+        className: '_User',
+        objectId: this.authenticationService.getObjectId()
+      };
+      this.order.pickUpTime = {
+        __type: 'Date',
+        iso: Date.now().toString()
+      };
+      this.order.orderId = Date.now();
+      this.ordersProxyService.postOrderAction(this.order)
+        .subscribe(
+          (response) => {
+            this.router.navigate(Routes.orderComplete);
+          },
+          (error) => {
+            // show error
+          });
+    } else {
+      this.timeError = 'Kies een tijdstip';
+    }
   }
 }

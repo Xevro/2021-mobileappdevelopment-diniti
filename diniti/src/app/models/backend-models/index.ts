@@ -7,3 +7,4 @@ export * from './products.model';
 export * from './update-user.model';
 export * from './photo.model';
 export * from './profile-picture.model';
+export * from './user-pointer.model';

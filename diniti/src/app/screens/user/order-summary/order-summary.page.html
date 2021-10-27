@@ -5,7 +5,7 @@
         <ion-back-button class="go-back" icon="" text="Terug" defaultHref="overview/order/create"></ion-back-button>
         <h2>Winkelmand</h2>
         <ion-buttons>
-          <ion-button [routerLink]="getOrderCompleteUrl()" [textContent]="'Bestel'" class="header-register-order">
+          <ion-button (click)="goToOrderComplete()" [textContent]="'Bestel'" class="header-register-order">
           </ion-button>
         </ion-buttons>
       </div>
@@ -15,7 +15,7 @@
   <div class="summary-page-content">
     <div class="summary-information">
       <div>
-        <p>Totaal prijs: <a>€{{ (order?.totalPrice !== 0.0) ? order?.totalPrice : ' --'}}</a></p>
+        <p>Totaal prijs: <a>€{{ (order?.totalPrice !== 0.0) ? order?.totalPrice : ' --' }}</a></p>
       </div>
     </div>
     <div class="summary-content">
@@ -25,12 +25,12 @@
             Kies een afhaal tijdstip
           </ion-label>
         </ion-list-header>
+        <p class="time-error">{{ timeError }}</p>
         <ion-item>
           <ion-label>Tijdstip</ion-label>
-          <ion-select placeholder="Kies één tijdstip">
-            <ion-select-option value="f">18:30</ion-select-option>
-            <ion-select-option value="m">18:45</ion-select-option>
-          </ion-select>
+          <ion-datetime [(ngModel)]="order.pickUpTime" placeholder="Kies één tijdstip" display-format="HH:mm"
+                        min="10:00" max="19:00">
+          </ion-datetime>
         </ion-item>
       </ion-list>
       <div class="summary-list">
