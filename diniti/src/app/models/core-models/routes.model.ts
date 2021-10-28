@@ -6,12 +6,12 @@ export class Routes {
   static register = ['/', RouteLiterals.onboarding, RouteLiterals.register];
 
   static userOverview = ['/', RouteLiterals.userOverview];
-  static orders = ['/', RouteLiterals.userOverview, RouteLiterals.userOrders];
+  static orders = ['/', RouteLiterals.userOverview, RouteLiterals.orders];
   static userProfile = ['/', RouteLiterals.userOverview, RouteLiterals.userProfile];
   static orderComplete = ['/', RouteLiterals.userOrderDetail, RouteLiterals.userOrderComplete];
-  static userOrderDetail = ['/', RouteLiterals.userOverview, RouteLiterals.userOrders, RouteLiterals.userOrderDetail];
-  static userOrderCreate = ['/', RouteLiterals.userOverview, RouteLiterals.userOrders, RouteLiterals.userOrderCreate];
-  static userOrderCreateSummary = ['/', RouteLiterals.userOverview, RouteLiterals.userOrders, RouteLiterals.userOrderCreate,
+  static userOrderDetail = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderDetail];
+  static userOrderCreate = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderCreate];
+  static userOrderCreateSummary = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderCreate,
     RouteLiterals.userOrderCreateSummary];
 
   static adminOverview = ['/', RouteLiterals.adminOverview, RouteLiterals.adminOrders];

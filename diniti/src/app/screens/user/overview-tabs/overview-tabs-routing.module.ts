@@ -11,7 +11,7 @@ const routes: Routes = [
     canActivate: [AuthenticatedGuard],
     children: [
       {
-        path: RouteLiterals.userOrders,
+        path: RouteLiterals.orders,
         loadChildren: () => import('../overview-orders/overview-orders.module').then(m => m.OverviewOrdersPageModule)
       },
       {
@@ -19,15 +19,15 @@ const routes: Routes = [
         loadChildren: () => import('../user-profile/user-profile.module').then(m => m.UserProfilePageModule)
       },
       {
-        path: RouteLiterals.userOrders + '/' + RouteLiterals.userOrderDetail,
+        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail,
         loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {
-        path: RouteLiterals.userOrders + '/' + RouteLiterals.userOrderCreate,
+        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderCreate,
         loadChildren: () => import('../create-order/create-order.module').then(m => m.CreateOrderPageModule)
       },
       {
-        path: RouteLiterals.userOrders + '/' + RouteLiterals.userOrderCreate + '/' + RouteLiterals.userOrderCreateSummary,
+        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderCreate + '/' + RouteLiterals.userOrderCreateSummary,
         loadChildren: () => import('../order-summary/order-summary.module').then(m => m.OrderSummaryPageModule)
       },
       {
