@@ -15,7 +15,7 @@ const routes: Routes = [
         loadChildren: () => import('../../admin/admin-overview/admin-overview.module').then(m => m.AdminOverviewPageModule)
       },
       {
-        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail,
+        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail + '/:orderId',
         loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {

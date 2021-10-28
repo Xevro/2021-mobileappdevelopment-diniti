@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private authenticationProxyService: AuthenticationProxyService,
-    private userContext: AuthenticationService) {
+    private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -75,7 +75,7 @@ export class LoginPage implements OnInit {
     this.authenticationProxyService.loginAction(this.usernameInput, this.passwordInput)
       .subscribe(
         (response) => {
-          this.userContext.userLoggedIn(response);
+          this.authenticationService.userLoggedIn(response);
           this.submitted = false;
           if (response.role === Role.admin) {
             this.router.navigate(Routes.adminOverview);

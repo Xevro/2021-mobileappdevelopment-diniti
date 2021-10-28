@@ -9,10 +9,17 @@ export class Routes {
   static orders = ['/', RouteLiterals.userOverview, RouteLiterals.orders];
   static userProfile = ['/', RouteLiterals.userOverview, RouteLiterals.userProfile];
   static orderComplete = ['/', RouteLiterals.userOrderDetail, RouteLiterals.userOrderComplete];
-  static userOrderDetail = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderDetail];
   static userOrderCreate = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderCreate];
   static userOrderCreateSummary = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderCreate,
     RouteLiterals.userOrderCreateSummary];
 
   static adminOverview = ['/', RouteLiterals.adminOverview, RouteLiterals.adminOrders];
+
+  static userOrderDetail(orderId: string) {
+    return ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderDetail, orderId];
+  }
+
+  static adminOrderDetail(orderId: string) {
+    return ['/', RouteLiterals.adminOverview, RouteLiterals.orders, RouteLiterals.userOrderDetail, orderId];
+  }
 }
