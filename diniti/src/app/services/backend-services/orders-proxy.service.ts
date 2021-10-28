@@ -18,6 +18,14 @@ export class OrdersProxyService extends CrudDataProvider<any> {
     super(httpClient);
   }
 
+  getAllOrdersAction(): Observable<Orders> {
+    const headerOptions = {
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
+    };
+    const url = `classes/Orders`;
+    return this.getRequest(url, headerOptions);
+  }
+
   getOrdersAction(objectId: string): Observable<Orders> {
     const headerOptions = {
       'X-Parse-Session-Token': this.authenticationService.getSessionToken()

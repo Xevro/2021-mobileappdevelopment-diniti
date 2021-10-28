@@ -31,6 +31,18 @@ const routes: Routes = [
   {
     path: '**',
     loadChildren: () => import('./screens/not-found/not-found.module').then(m => m.NotFoundPageModule)
+  },
+  {
+    path: 'admin-products',
+    loadChildren: () => import('./screens/admin/admin-products/admin-products.module').then( m => m.AdminProductsPageModule)
+  },
+  {
+    path: 'admin-profile',
+    loadChildren: () => import('./screens/admin/admin-profile/admin-profile.module').then( m => m.AdminProfilePageModule)
+  },
+  {
+    path: 'admin-product-detail',
+    loadChildren: () => import('./screens/admin/admin-product-detail/admin-product-detail.module').then( m => m.AdminProductDetailPageModule)
   }
 ];
 

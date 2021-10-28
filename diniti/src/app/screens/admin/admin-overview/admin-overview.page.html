@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>admin-overview</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <p>Admin overviewww</p>
+<ion-content [fullscreen]="true">
+  <div class="title-box">
+    <h2>Bestellingen</h2>
+  </div>
+  <div class="orders-list">
+    <app-order-list *ngIf="orders?.results?.length > 0 && !loading" [orders]="orders"></app-order-list>
+    <div *ngIf="loading" class="orders-loading">
+      <p>Bestellingen laden...</p>
+    </div>
+    <div *ngIf="orders?.results?.length === 0 && !loading" class="no-orders">
+      <p>Geen bestellingen gevonden</p>
+    </div>
+  </div>
 </ion-content>

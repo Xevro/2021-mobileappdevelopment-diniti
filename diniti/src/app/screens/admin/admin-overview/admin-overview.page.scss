@@ -1,0 +1,33 @@
+ion-content {
+  .title-box {
+    text-align: center;
+  }
+
+  .list-title {
+    max-width: var(--list-width);
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 18px;
+  }
+
+  .orders-list {
+    margin-top: 100px;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .no-orders {
+    text-align: center;
+    margin: auto;
+  }
+
+  .orders-loading {
+    text-align: center;
+    margin: auto;
+  }
+}

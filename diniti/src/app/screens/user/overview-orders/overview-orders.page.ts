@@ -36,5 +36,4 @@ export class OverviewOrdersPage implements OnInit {
   createOrder() {
     this.router.navigate(Routes.userOrderCreate);
   }
-
 }
