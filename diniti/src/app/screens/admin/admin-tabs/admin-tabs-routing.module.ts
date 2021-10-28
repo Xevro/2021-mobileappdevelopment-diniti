@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminTabsPage} from './admin-tabs.page';
 import {RouteLiterals} from '../../../models/core-models';
-import {AuthenticatedGuard} from '../../../guards/authenticated.guard';
+import {AuthenticatedGuard} from '../../../guards';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     canActivate: [AuthenticatedGuard],
     children: [
       {
-        path: RouteLiterals.adminOverview,
+        path: RouteLiterals.adminOrders,
         loadChildren: () => import('../../admin/admin-overview/admin-overview.module').then(m => m.AdminOverviewPageModule)
       },
       {
@@ -20,14 +20,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/admin',
+        redirectTo: '/admin/orders',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/admin',
+    redirectTo: '/admin/orders',
     pathMatch: 'full'
   }
 ];

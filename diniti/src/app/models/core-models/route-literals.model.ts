@@ -12,4 +12,5 @@ export class RouteLiterals {
   static userOrderCreateSummary = 'summary';
 
   static adminOverview = 'admin';
+  static adminOrders = 'orders';
 }

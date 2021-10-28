@@ -14,5 +14,5 @@ export class Routes {
   static userOrderCreateSummary = ['/', RouteLiterals.userOverview, RouteLiterals.userOrders, RouteLiterals.userOrderCreate,
     RouteLiterals.userOrderCreateSummary];
 
-  static adminOverview = ['/', RouteLiterals.adminOverview];
+  static adminOverview = ['/', RouteLiterals.adminOverview, RouteLiterals.adminOrders];
 }
