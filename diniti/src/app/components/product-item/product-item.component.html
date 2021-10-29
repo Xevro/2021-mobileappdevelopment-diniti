@@ -9,22 +9,33 @@
 
     <div class="product-item-box">
       <div class="product-name">
-        <p>{{ product.name }}</p>
+        <p>{{ product?.name ?? '--' }}</p>
       </div>
       <div class="product-bottom-row">
         <div>
-          <p>{{ product.price | currency:'EUR' }}</p>
+          <p>{{ product?.price | currency:'EUR' }}</p>
         </div>
       </div>
     </div>
-    <div class="product-count-box" [ngClass]="{'product-count-left': hideButtons}">
+    <div class="product-count-box" *ngIf="!hideCount" [ngClass]="{'product-count-left': hideUserButtons}">
       <div class="product-count">
-        <p>{{ product.amount ?? 0 }}</p>
+        <p>{{ product?.amount ?? 0 }}</p>
       </div>
     </div>
-    <div class="product-buttons-box" *ngIf="!hideButtons">
+    <div class="product-buttons-box" *ngIf="!hideUserButtons">
       <ion-fab-button size="small" (click)="countDownProductAmount()" class="button-min">-</ion-fab-button>
       <ion-fab-button size="small" (click)="countUpProductAmount()" class="button-plus">+</ion-fab-button>
+    </div>
+    <div class="product-admin-buttons-box" *ngIf="showAdminButtons">
+      <ion-fab-button *ngIf="product?.visibility" size="small" (click)="toggleVisibility(false)">
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button *ngIf="!product?.visibility" size="small" (click)="toggleVisibility(true)">
+        <ion-icon name="eye-off-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button size="small" (click)="deleteProduct()" class="button-min">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
     </div>
   </div>
 </div>

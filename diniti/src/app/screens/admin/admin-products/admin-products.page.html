@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>admin-products</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="order-header">
+        <h2>Producten</h2>
+        <ion-buttons>
+          <ion-button (click)="getOrderSummaryUrl()" class="header-register-order">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <div class="products-list">
+    <div *ngIf="message" class="products-loading">
+      <p>{{ message }}</p>
+    </div>
+    <div class="search-field">
+      <ion-searchbar placeholder="Zoek producten" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+    </div>
+    <app-product-list *ngIf="!loading" (changedProductsList)="updatedProductsList(productsList)" #productsList
+                      [products]="products" [filterTerm]="filterTerm" [showAdminButtons]="true" [hideCount]="true"
+                      [hideUserButtons]="true"></app-product-list>
+    <div *ngIf="loading" class="products-loading">
+      <p>Producten laden...</p>
+    </div>
+    <div *ngIf="products?.length === 0 && !loading" class="products-loading">
+      <p>Geen producten gevonden</p>
+    </div>
+  </div>
 </ion-content>

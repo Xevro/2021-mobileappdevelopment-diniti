@@ -70,6 +70,12 @@
         --color: var(--color-app-secondary);
       }
     }
+
+    .product-admin-buttons-box {
+      margin-left: auto;
+      margin-right: 10px;
+      display: flex;
+    }
   }
 }
 

@@ -2,11 +2,9 @@
   <div class="products-list">
     <ion-infinite-scroll *ngIf="products" threshold="100px">
       <app-product-item #productsList *ngFor="let product of products | datafilter:filterTerm" [product]="product"
-                        (changedProduct)="changedProducts(productsList)" [hideButtons]="hideButtons"></app-product-item>
+                        (changedProduct)="changedProducts(productsList)" [hideUserButtons]="hideUserButtons"
+                        [hideCount]="hideCount" [showAdminButtons]="showAdminButtons"></app-product-item>
     </ion-infinite-scroll>
-    <div *ngIf="!products" class="no-products">
-      <p>Geen producten gevonden</p>
-    </div>
     <div *ngIf="(products | datafilter:filterTerm)?.length === 0" class="no-products">
       <p>Geen zoekresultaten voor {{ filterTerm }}</p>
     </div>

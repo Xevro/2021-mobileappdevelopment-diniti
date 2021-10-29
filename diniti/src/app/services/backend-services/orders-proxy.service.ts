@@ -26,11 +26,19 @@ export class OrdersProxyService extends CrudDataProvider<any> {
     return this.getRequest(url, headerOptions);
   }
 
-  getOrdersAction(objectId: string): Observable<Orders> {
+  getOrdersAction(userId: string): Observable<Orders> {
     const headerOptions = {
       'X-Parse-Session-Token': this.authenticationService.getSessionToken()
     };
-    const url = `classes/Orders?where={"userId":{"__type":"Pointer","className":"_User","objectId":"${objectId}"}}`;
+    const url = `classes/Orders?where={"userId":{"__type":"Pointer","className":"_User","objectId":"${userId}"}}`;
+    return this.getRequest(url, headerOptions);
+  }
+
+  getOrderByIdAction(orderId: string): Observable<Orders> {
+    const headerOptions = {
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
+    };
+    const url = `classes/Orders?where={"orderId":${orderId}}`;
     return this.getRequest(url, headerOptions);
   }
 

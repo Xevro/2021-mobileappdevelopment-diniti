@@ -8,7 +8,9 @@ import {Product, Products} from '../../models/backend-models';
 })
 export class ProductListComponent implements OnInit {
 
-  @Input() hideButtons = false;
+  @Input() hideUserButtons = false;
+  @Input() showAdminButtons = false;
+  @Input() hideCount = false;
   @Input() products: Product[];
   @Input() filterTerm: string;
 

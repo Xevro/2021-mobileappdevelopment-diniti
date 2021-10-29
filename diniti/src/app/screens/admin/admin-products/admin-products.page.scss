@@ -1,0 +1,35 @@
+ion-content {
+  .order-header {
+    h2 {
+      font-weight: 600;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .header-register-order {
+      position: absolute;
+      right: 10px;
+      top: -45px;
+      --color: var(--color-app-primary);
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
+      text-decoration: none;
+    }
+  }
+
+  .products-list {
+    margin-top: 60px;
+
+    .search-field {
+      max-width: 430px;
+      margin: auto auto 15px;
+    }
+
+    .products-loading {
+      text-align: center;
+      margin: auto;
+    }
+  }
+}
+

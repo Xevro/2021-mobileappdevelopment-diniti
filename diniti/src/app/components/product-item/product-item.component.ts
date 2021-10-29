@@ -8,7 +8,9 @@ import {Product} from '../../models/backend-models';
 })
 export class ProductItemComponent implements OnInit {
 
-  @Input() hideButtons = false;
+  @Input() hideUserButtons = false;
+  @Input() showAdminButtons = false;
+  @Input() hideCount = false;
   @Input() product: Product;
 
   @Output() changedProduct = new EventEmitter<Product>();
@@ -33,5 +35,14 @@ export class ProductItemComponent implements OnInit {
       this.product.amount -= 1;
       this.changedProduct.emit(this.product);
     }
+  }
+
+  deleteProduct() {
+
+  }
+
+  toggleVisibility(visibility: boolean) {
+    this.product.visibility = visibility;
+
   }
 }

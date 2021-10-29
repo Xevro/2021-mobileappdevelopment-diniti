@@ -174,6 +174,7 @@ Logboek Mobile Application Development - 2021-2022
     * Bestelling toevoegen aan databank.
     * Data van bestelling opslaan in json array.
     * Admin routing en guards oplossen (onboarding, user, amin)
+    * Detail pagina aan bestelling lijst gekoppeld (doorklikbaar naar detail)
 
   - Opgeloste problemen
 

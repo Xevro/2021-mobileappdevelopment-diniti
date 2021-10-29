@@ -1,9 +1,7 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>order-details</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<p>Detail van een bestelling</p>
+  <p>Detail van een bestelling</p>
+  <p *ngIf="loading">Gegevens aan het ophalen...</p>
+  <div *ngIf="!loading">
+  <p>{{ order?.status }}</p>
+  </div>
 </ion-content>
