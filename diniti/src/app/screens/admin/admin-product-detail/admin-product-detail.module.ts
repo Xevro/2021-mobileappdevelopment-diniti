@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { AdminProductDetailPageRoutingModule } from './admin-product-detail-routing.module';
+import {AdminProductDetailPageRoutingModule} from './admin-product-detail-routing.module';
 
-import { AdminProductDetailPage } from './admin-product-detail.page';
+import {AdminProductDetailPage} from './admin-product-detail.page';
 
 @NgModule({
   imports: [
@@ -17,4 +17,5 @@ import { AdminProductDetailPage } from './admin-product-detail.page';
   ],
   declarations: [AdminProductDetailPage]
 })
-export class AdminProductDetailPageModule {}
+export class AdminProductDetailPageModule {
+}

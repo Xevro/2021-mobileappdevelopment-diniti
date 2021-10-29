@@ -20,7 +20,7 @@
     </div>
     <app-product-list *ngIf="!loading" (changedProductsList)="updatedProductsList(productsList)" #productsList
                       [products]="products" [filterTerm]="filterTerm" [showAdminButtons]="true" [hideCount]="true"
-                      [hideUserButtons]="true"></app-product-list>
+                      [hideUserButtons]="true" (removedProduct)="getProducts()"></app-product-list>
     <div *ngIf="loading" class="products-loading">
       <p>Producten laden...</p>
     </div>

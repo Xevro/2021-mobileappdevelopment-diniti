@@ -34,6 +34,12 @@ export abstract class CrudDataProvider<Type> {
     });
   }
 
+  deleteRequest(url: string, headerOptions = {}): Observable<void> {
+    return this.httpClient.delete<void>(`${this.getBaseUrl()}/${url}`, {
+      headers: Object.assign(this.header, headerOptions)
+    });
+  }
+
   protected getBaseUrl() {
     return this.api;
   }

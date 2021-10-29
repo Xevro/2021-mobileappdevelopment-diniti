@@ -27,7 +27,7 @@ export class CreateOrderPage implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.message = null;
-    this.productsProxyService.getProductsAction(true)
+    this.productsProxyService.getProductsWithVisibilityAction(true)
       .subscribe(
         (response) => {
           this.products = response?.results;

@@ -31,6 +31,10 @@ const routes: Routes = [
         loadChildren: () => import('../../admin/admin-product-detail/admin-product-detail.module').then(m => m.AdminProductDetailPageModule)
       },
       {
+        path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductCreate,
+        loadChildren: () => import('../../admin/admin-add-product/admin-add-product.module').then(m => m.AdminAddProductPageModule)
+      },
+      {
         path: '',
         redirectTo: '/admin/orders',
         pathMatch: 'full'

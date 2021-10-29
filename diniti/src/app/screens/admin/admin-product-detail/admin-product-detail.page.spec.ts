@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {IonicModule} from '@ionic/angular';
 
-import { AdminProductDetailPage } from './admin-product-detail.page';
+import {AdminProductDetailPage} from './admin-product-detail.page';
 
 describe('AdminProductDetailPage', () => {
   let component: AdminProductDetailPage;
@@ -9,7 +9,7 @@ describe('AdminProductDetailPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminProductDetailPage ],
+      declarations: [AdminProductDetailPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 

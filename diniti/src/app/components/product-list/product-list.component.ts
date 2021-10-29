@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
   @Input() filterTerm: string;
 
   @Output() changedProductsList = new EventEmitter<Products>();
+  @Output() removedProduct = new EventEmitter<boolean>();
 
   constructor() {
   }
@@ -24,5 +25,9 @@ export class ProductListComponent implements OnInit {
 
   changedProducts(productsList: any) {
     this.changedProductsList.emit(productsList);
+  }
+
+  removedProductEmit(productsList: boolean) {
+    this.removedProduct.emit(productsList);
   }
 }

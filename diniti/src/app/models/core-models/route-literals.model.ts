@@ -16,4 +16,5 @@ export class RouteLiterals {
   static adminOrders = 'orders';
   static adminProducts = 'products';
   static adminProductDetail = 'detail';
+  static adminProductCreate = 'create';
 }

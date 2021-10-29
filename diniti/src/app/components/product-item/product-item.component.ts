@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../models/backend-models';
+import {AlertController} from '@ionic/angular';
+import {ProductsProxyService} from '../../services/backend-services';
 
 @Component({
   selector: 'app-product-item',
@@ -14,8 +16,12 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product;
 
   @Output() changedProduct = new EventEmitter<Product>();
+  @Output() removedProduct = new EventEmitter<boolean>();
 
-  constructor() {
+  constructor(
+    private alertController: AlertController,
+    private productsProxyService: ProductsProxyService
+  ) {
   }
 
   ngOnInit() {
@@ -37,12 +43,37 @@ export class ProductItemComponent implements OnInit {
     }
   }
 
-  deleteProduct() {
-
+  async deleteProduct() {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Opgelet',
+      message: 'Bent u zeker dat u "' + this.product.name + '" wilt verwijderen?',
+      buttons: [
+        {
+          text: 'Verwijder',
+          cssClass: 'btns-modal-alert',
+          handler: () => {
+            this.productsProxyService.deleteProductsAction(this.product.objectId)
+              .subscribe(
+                (response) => {
+                  this.removedProduct.emit(true);
+                },
+                (error) => {
+                });
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'modal-button-cancel'
+        }
+      ]
+    });
+    await alert.present();
   }
+
 
   toggleVisibility(visibility: boolean) {
     this.product.visibility = visibility;
-
   }
 }

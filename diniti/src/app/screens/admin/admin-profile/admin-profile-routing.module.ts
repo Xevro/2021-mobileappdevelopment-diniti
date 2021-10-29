@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { AdminProfilePage } from './admin-profile.page';
+import {AdminProfilePage} from './admin-profile.page';
 
 const routes: Routes = [
   {
@@ -14,4 +14,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminProfilePageRoutingModule {}
+export class AdminProfilePageRoutingModule {
+}

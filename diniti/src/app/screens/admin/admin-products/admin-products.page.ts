@@ -23,9 +23,13 @@ export class AdminProductsPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getProducts();
+  }
+
+  getProducts() {
     this.loading = true;
     this.message = null;
-    this.productsProxyService.getProductsAction(true)
+    this.productsProxyService.getAllProductsAction()
       .subscribe(
         (response) => {
           this.products = response?.results;

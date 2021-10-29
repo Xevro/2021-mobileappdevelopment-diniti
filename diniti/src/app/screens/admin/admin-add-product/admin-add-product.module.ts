@@ -4,18 +4,18 @@ import {FormsModule} from '@angular/forms';
 
 import {IonicModule} from '@ionic/angular';
 
-import {AdminProfilePageRoutingModule} from './admin-profile-routing.module';
+import {AdminAddProductPageRoutingModule} from './admin-add-product-routing.module';
 
-import {AdminProfilePage} from './admin-profile.page';
+import {AdminAddProductPage} from './admin-add-product.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminProfilePageRoutingModule
+    AdminAddProductPageRoutingModule
   ],
-  declarations: [AdminProfilePage]
+  declarations: [AdminAddProductPage]
 })
-export class AdminProfilePageModule {
+export class AdminAddProductPageModule {
 }
