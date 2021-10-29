@@ -72,7 +72,6 @@ export class ProductItemComponent implements OnInit {
     await alert.present();
   }
 
-
   toggleVisibility(visibility: boolean) {
     this.product.visibility = visibility;
   }

@@ -47,11 +47,7 @@ export class AdminProductsPage implements OnInit {
     this.products = productsEvent.products;
   }
 
-  getOrderSummaryUrl() {
-
-  }
-
-  getOverviewUrl() {
-    this.router.navigate(Routes.userOverview);
+  goToCreateOrder() {
+    this.router.navigate(Routes.adminCreateProduct);
   }
 }
