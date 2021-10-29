@@ -9,7 +9,7 @@ import {Products} from '../../models/backend-models';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsProxyService extends CrudDataProvider<Products> {
+export class ProductsProxyService extends CrudDataProvider<any> {
   api = environment.api;
 
   constructor(
@@ -35,8 +35,19 @@ export class ProductsProxyService extends CrudDataProvider<Products> {
     return this.getRequest(url, headerOptions);
   }
 
-  deleteProductsAction(productId: string): Observable<any> {
-    const url = `classes/Products/${productId}`;
+  updateProductVisibilityAction(visibility: boolean, objectId: string): Observable<any> {
+    const url = `classes/Products/${objectId}`;
+    const headerOptions = {
+      'Content-Type': 'application/json'
+    };
+    const body = {
+      visibility
+    };
+    return this.putRequest(url, body, headerOptions);
+  }
+
+  deleteProductsAction(objectId: string): Observable<any> {
+    const url = `classes/Products/${objectId}`;
     return this.deleteRequest(url);
   }
 }

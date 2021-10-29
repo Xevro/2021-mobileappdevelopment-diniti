@@ -28,10 +28,12 @@
     </div>
     <div class="product-admin-buttons-box" *ngIf="showAdminButtons">
       <ion-fab-button *ngIf="product?.visibility" size="small" (click)="toggleVisibility(false)">
-        <ion-icon name="eye-outline"></ion-icon>
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+        <ion-icon *ngIf="!loading" name="eye-outline"></ion-icon>
       </ion-fab-button>
       <ion-fab-button *ngIf="!product?.visibility" size="small" (click)="toggleVisibility(true)">
-        <ion-icon name="eye-off-outline"></ion-icon>
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+        <ion-icon *ngIf="!loading" name="eye-off-outline"></ion-icon>
       </ion-fab-button>
       <ion-fab-button size="small" (click)="deleteProduct()" class="button-min">
         <ion-icon name="trash-outline"></ion-icon>

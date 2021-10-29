@@ -18,6 +18,8 @@ export class ProductItemComponent implements OnInit {
   @Output() changedProduct = new EventEmitter<Product>();
   @Output() removedProduct = new EventEmitter<boolean>();
 
+  loading = false;
+
   constructor(
     private alertController: AlertController,
     private productsProxyService: ProductsProxyService
@@ -73,6 +75,15 @@ export class ProductItemComponent implements OnInit {
   }
 
   toggleVisibility(visibility: boolean) {
+    this.loading = true;
     this.product.visibility = visibility;
+    this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.objectId)
+      .subscribe(
+        (response) => {
+          this.loading = false;
+        },
+        (error) => {
+          this.loading = false;
+        });
   }
 }
