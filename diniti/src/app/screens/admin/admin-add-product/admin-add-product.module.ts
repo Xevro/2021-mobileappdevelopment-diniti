@@ -7,13 +7,17 @@ import {IonicModule} from '@ionic/angular';
 import {AdminAddProductPageRoutingModule} from './admin-add-product-routing.module';
 
 import {AdminAddProductPage} from './admin-add-product.page';
+import {InputFieldModule} from "../../../components/input-field/input-field.module";
+import {ButtonModule} from "../../../components/button/button.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminAddProductPageRoutingModule
+    AdminAddProductPageRoutingModule,
+    InputFieldModule,
+    ButtonModule
   ],
   declarations: [AdminAddProductPage]
 })

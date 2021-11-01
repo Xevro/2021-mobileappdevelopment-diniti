@@ -14,6 +14,16 @@
     </ion-toolbar>
   </ion-header>
   <div class="add-product-box">
-
+    <p class="title">Voeg een product toe</p>
+    <div class="input-fields">
+      <app-input-field [name]="'name'" [placeholder]="'Naam'" [fieldType]="fieldTypes.text"></app-input-field>
+      <app-input-field [name]="'price'" [placeholder]="'Prijs'" [fieldType]="fieldTypes.numbers"></app-input-field>
+      <div class="product-upload">
+        <p class="image-upload-message" *ngIf="loadingImage">Afbeelding aan het uploaden...</p>
+        <p class="image-upload-message" *ngIf="!loadingImage && uploadingImageDone">Klik op 'voeg toe' om het product toe te voegen</p>
+        <app-button [buttonText]="'Voeg een product foto toe'" [disabled]="loadingImage" [invertColor]="true"
+                    (click)="uploadProductImage()"></app-button>
+      </div>
+    </div>
   </div>
 </ion-content>

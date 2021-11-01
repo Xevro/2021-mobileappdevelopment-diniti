@@ -50,4 +50,12 @@ export class ProductsProxyService extends CrudDataProvider<any> {
     const url = `classes/Products/${objectId}`;
     return this.deleteRequest(url);
   }
+
+  postImageAction(imageData: any): Observable<any> {
+    const url = `files/product-image.png`;
+    const headerOptions = {
+      'Content-Type': 'image/png'
+    };
+    return this.postRequest(url, imageData, headerOptions);
+  }
 }

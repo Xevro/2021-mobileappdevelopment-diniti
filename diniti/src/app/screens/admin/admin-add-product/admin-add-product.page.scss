@@ -30,8 +30,27 @@ ion-content {
   }
 
   .add-product-box {
-    margin-top: 35px;
+    margin-top: 70px;
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
 
+    .title {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .input-fields {
+      .product-upload {
+        .image-upload-message {
+          font-size: 1rem;
+          font-weight: bold;
+        }
+
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
   }
 }
 
