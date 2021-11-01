@@ -1,6 +1,6 @@
 ion-content {
   .order-header {
-    .cancel-order {
+    .cancel {
       position: absolute;
       left: 15px;
       top: 0;
@@ -17,7 +17,7 @@ ion-content {
       text-align: center;
     }
 
-    .header-register-order {
+    .header-order-summary {
       position: absolute;
       right: 10px;
       top: -45px;

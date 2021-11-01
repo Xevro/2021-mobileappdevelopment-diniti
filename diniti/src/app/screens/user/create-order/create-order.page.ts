@@ -72,7 +72,7 @@ export class CreateOrderPage implements OnInit {
     }
   }
 
-  getOverviewUrl() {
+  goToOverview() {
     this.productsSummaryService.removeProductsData();
     this.selectedProducts = [];
     this.router.navigate(Routes.userOverview);

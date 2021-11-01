@@ -1,9 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>admin-add-product</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="product-header">
+        <ion-buttons>
+          <ion-button (click)="goToProducts()" [textContent]="'Annuleer'" class="cancel">
+          </ion-button>
+        </ion-buttons>
+        <ion-buttons>
+          <ion-button (click)="saveNewProduct()" [textContent]="'Voeg toe'" class="header-product-add">
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <div class="add-product-box">
 
-<ion-content>
-
+  </div>
 </ion-content>

@@ -15,7 +15,7 @@
   <div class="summary-page-content">
     <div class="summary-information">
       <div>
-        <p>Totaal prijs: <a>€{{ (order?.totalPrice !== 0.0) ? order?.totalPrice : ' --' }}</a></p>
+        <p>Totaal prijs: <a>{{ (order?.totalPrice !== 0.0) ? (order?.totalPrice | currency:'EUR') : ' --' }}</a></p>
       </div>
     </div>
     <div class="summary-content">

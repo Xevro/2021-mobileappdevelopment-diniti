@@ -1,0 +1,37 @@
+ion-content {
+  .product-header {
+    .cancel {
+      position: absolute;
+      left: 15px;
+      top: 0;
+      --color: var(--color-app-primary);
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
+      text-decoration: none;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .header-product-add {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      --color: var(--color-app-primary);
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
+      text-decoration: none;
+    }
+  }
+
+  .add-product-box {
+    margin-top: 35px;
+
+  }
+}
+

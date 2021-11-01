@@ -8,12 +8,13 @@ export class Routes {
   static userOverview = ['/', RouteLiterals.userOverview];
   static orders = ['/', RouteLiterals.userOverview, RouteLiterals.orders];
   static userProfile = ['/', RouteLiterals.userOverview, RouteLiterals.userProfile];
-  static orderComplete = ['/', RouteLiterals.userOrderDetail, RouteLiterals.userOrderComplete];
+  static orderComplete = ['/', RouteLiterals.userOverview, RouteLiterals.userOrderDetail, RouteLiterals.userOrderComplete];
   static userOrderCreate = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderCreate];
   static userOrderCreateSummary = ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderCreate,
     RouteLiterals.userOrderCreateSummary];
 
   static adminOverview = ['/', RouteLiterals.adminOverview, RouteLiterals.adminOrders];
+  static adminProducts = ['/', RouteLiterals.adminOverview, RouteLiterals.adminProducts];
   static adminCreateProduct = ['/', RouteLiterals.adminOverview, RouteLiterals.adminProducts, RouteLiterals.adminProductCreate];
 
   static userOrderDetail(orderId: string) {

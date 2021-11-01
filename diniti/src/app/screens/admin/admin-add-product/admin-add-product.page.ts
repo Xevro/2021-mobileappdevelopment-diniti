@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Routes} from '../../../models/core-models';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-add-product',
@@ -7,10 +9,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdminAddProductPage implements OnInit {
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
   }
 
+
+  goToProducts() {
+    this.router.navigate(Routes.adminProducts);
+  }
+
+  saveNewProduct() {
+
+  }
 }

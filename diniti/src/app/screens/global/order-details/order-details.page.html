@@ -1,7 +1,8 @@
 <ion-content>
   <p>Detail van een bestelling</p>
-  <p *ngIf="loading">Gegevens aan het ophalen...</p>
+  <p *ngIf="loading">Gegevens ophalen...</p>
   <div *ngIf="!loading">
     <p>{{ order?.status }}</p>
+    <p>{{ order?.totalPrice | currency:'EUR' }}</p>
   </div>
 </ion-content>

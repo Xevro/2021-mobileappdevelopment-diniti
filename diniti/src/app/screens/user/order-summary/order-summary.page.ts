@@ -33,6 +33,8 @@ export class OrderSummaryPage implements OnInit {
       this.order.products = productsData;
       this.order.products.filter((product) => {
         this.order.totalPrice += (product.price * product.amount);
+        const roundedString = this.order.totalPrice.toFixed(2);
+        this.order.totalPrice = Number(roundedString);
       });
     } else {
       this.router.navigate(Routes.userOrderCreate);
@@ -58,7 +60,7 @@ export class OrderSummaryPage implements OnInit {
       this.ordersProxyService.postOrderAction(this.order)
         .subscribe(
           (response) => {
-            //this.router.navigate(Routes.orderComplete);
+            this.router.navigate(Routes.orderComplete);
           },
           (error) => {
             // show error
