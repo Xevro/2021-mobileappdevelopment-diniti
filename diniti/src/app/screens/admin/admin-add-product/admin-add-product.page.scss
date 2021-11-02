@@ -1,4 +1,9 @@
 ion-content {
+  .error-message {
+    font-size: 0.95rem;
+    color: var(--color-app-primary);
+  }
+
   .product-header {
     .cancel {
       position: absolute;
