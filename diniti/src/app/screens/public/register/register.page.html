@@ -4,54 +4,54 @@
       <ion-progress-bar *ngIf="submitted" type="indeterminate"></ion-progress-bar>
       <div class="register-header">
         <a [routerLink]="onboardingRoute" routerDirection="back">
-          <img class="cancel-register" [src]="imageSrc" alt="cancel">
+          <img [src]="imageSrc" alt="cancel" class="cancel-register">
         </a>
         <h2>Registreer</h2>
-        <a [routerLink]="loginRoute" routerDirection="forward" class="header-login">Login</a>
+        <a [routerLink]="loginRoute" class="header-login" routerDirection="forward">Login</a>
       </div>
     </ion-toolbar>
   </ion-header>
   <div class="register-page">
     <div class="input-fields">
-      <app-input-field (onInputChange)="firstNameValueChanged($event)" [name]="'voornaam'"
-                       [fieldType]="fieldTypes.text" [placeholder]="'Voornaam'"></app-input-field>
+      <app-input-field (onInputChange)="firstNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                       [name]="'voornaam'" [placeholder]="'Voornaam'"></app-input-field>
       <div *ngIf="firstNameErrorMessage" class="error-message">
         <p>{{firstNameErrorMessage}}</p>
       </div>
-      <app-input-field (onInputChange)="lastNameValueChanged($event)" [name]="'achternaam'"
-                       [fieldType]="fieldTypes.text" [placeholder]="'Achternaam'"></app-input-field>
+      <app-input-field (onInputChange)="lastNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                       [name]="'achternaam'" [placeholder]="'Achternaam'"></app-input-field>
       <div *ngIf="lastNameErrorMessage" class="error-message">
         <p>{{lastNameErrorMessage}}</p>
       </div>
-      <app-input-field (onInputChange)="userNameValueChanged($event)" [name]="'gebruikersnaam'"
-                       [fieldType]="fieldTypes.text" [placeholder]="'Gebruikersnaam'"></app-input-field>
+      <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                       [name]="'gebruikersnaam'" [placeholder]="'Gebruikersnaam'"></app-input-field>
       <div *ngIf="userNameErrorMessage" class="error-message">
         <p>{{userNameErrorMessage}}</p>
       </div>
-      <app-input-field (onInputChange)="emailValueChanged($event)" [name]="'email'"
-                       [fieldType]="fieldTypes.email" [placeholder]="'Email'"></app-input-field>
+      <app-input-field (onInputChange)="emailValueChanged($event)" [fieldType]="fieldTypes.email"
+                       [name]="'email'" [placeholder]="'Email'"></app-input-field>
       <div *ngIf="emailErrorMessage" class="error-message">
         <p>{{emailErrorMessage}}</p>
       </div>
-      <app-input-field (onInputChange)="passwordValueChanged($event)" [name]="'wachtwoord'"
-                       [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord'"></app-input-field>
+      <app-input-field (onInputChange)="passwordValueChanged($event)" [fieldType]="fieldTypes.password"
+                       [name]="'wachtwoord'" [placeholder]="'Wachtwoord'"></app-input-field>
       <div *ngIf="passwordErrorMessage" class="error-message">
         <p>{{passwordErrorMessage}}</p>
       </div>
-      <app-input-field (onInputChange)="passwordConfirmValueChanged($event)" [name]="'Wachtwoord controle'"
-                       [fieldType]="fieldTypes.password" [placeholder]="'Wachtwoord controle'"></app-input-field>
+      <app-input-field (onInputChange)="passwordConfirmValueChanged($event)" [fieldType]="fieldTypes.password"
+                       [name]="'Wachtwoord controle'" [placeholder]="'Wachtwoord controle'"></app-input-field>
       <div *ngIf="passwordConfirmErrorMessage" class="error-message">
         <p>{{passwordConfirmErrorMessage}}</p>
       </div>
       <ion-item class="terms">
-        <ion-checkbox color="primary" (click)="checkboxChanged($event)"></ion-checkbox>
+        <ion-checkbox (click)="checkboxChanged($event)" color="primary"></ion-checkbox>
         <ion-label class="checkbox-label">{{ 'Ik ga akkoord met de voorwaarden' }}</ion-label>
       </ion-item>
       <div *ngIf="checkedErrorMessage" class="error-message">
         <p>{{checkedErrorMessage}}</p>
       </div>
       <div class="button-register">
-        <app-button [invertColor]="true" (click)="validateRegister()" [buttonText]="'Registeer'"></app-button>
+        <app-button (click)="validateRegister()" [buttonText]="'Registeer'" [invertColor]="true"></app-button>
       </div>
     </div>
   </div>

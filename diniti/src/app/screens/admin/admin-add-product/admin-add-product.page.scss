@@ -42,13 +42,18 @@ ion-content {
 
     .input-fields {
       .product-upload {
+        margin-top: 10px;
+        text-align: center;
+
         .image-upload-message {
           font-size: 1rem;
           font-weight: bold;
         }
+      }
 
-        margin-top: 10px;
-        text-align: center;
+      .product-visibility {
+        left: -10px;
+        margin: 15px auto auto;
       }
     }
   }

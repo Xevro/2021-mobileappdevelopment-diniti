@@ -1,10 +1,10 @@
 import {Image} from '../core-models';
 
 export interface Product {
-  objectId: string;
+  objectId?: string;
   name: string;
   price: number;
-  image: Image;
+  image?: Image;
   visibility: boolean;
-  amount: number;
+  amount?: number;
 }

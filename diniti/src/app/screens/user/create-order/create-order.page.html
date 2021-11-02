@@ -3,7 +3,7 @@
     <ion-toolbar>
       <div class="order-header">
         <ion-buttons>
-          <ion-button (click)="goToOverview()" [textContent]="'Annuleer'" class="cancel-order">
+          <ion-button (click)="goToOverview()" [textContent]="'Annuleer'" class="cancel">
           </ion-button>
         </ion-buttons>
         <h2>Bestel</h2>
@@ -19,11 +19,11 @@
       <p>{{ message }}</p>
     </div>
     <div class="search-field">
-      <ion-searchbar placeholder="Zoek producten" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="filterTerm" animated="true" placeholder="Zoek producten"></ion-searchbar>
     </div>
-    <app-product-list *ngIf="!loading" (changedProductsList)="updatedProductsList(productsList)" #productsList
-                      [products]="products"
-                      [filterTerm]="filterTerm"></app-product-list>
+    <app-product-list #productsList (changedProductsList)="updatedProductsList(productsList)" *ngIf="!loading"
+                      [filterTerm]="filterTerm"
+                      [products]="products"></app-product-list>
     <div *ngIf="loading" class="products-loading">
       <p>Producten laden...</p>
     </div>

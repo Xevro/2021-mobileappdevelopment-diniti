@@ -16,11 +16,11 @@
       <p>{{ message }}</p>
     </div>
     <div class="search-field">
-      <ion-searchbar placeholder="Zoek producten" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="filterTerm" animated="true" placeholder="Zoek producten"></ion-searchbar>
     </div>
-    <app-product-list *ngIf="!loading" (changedProductsList)="updatedProductsList(productsList)" #productsList
-                      [products]="products" [filterTerm]="filterTerm" [showAdminButtons]="true" [hideCount]="true"
-                      [hideUserButtons]="true" (removedProduct)="getProducts()"></app-product-list>
+    <app-product-list #productsList (changedProductsList)="updatedProductsList(productsList)" (removedProduct)="getProducts()"
+                      *ngIf="!loading" [filterTerm]="filterTerm" [hideCount]="true" [hideUserButtons]="true"
+                      [products]="products" [showAdminButtons]="true"></app-product-list>
     <div *ngIf="loading" class="products-loading">
       <p>Producten laden...</p>
     </div>

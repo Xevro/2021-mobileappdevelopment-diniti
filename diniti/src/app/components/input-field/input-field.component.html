@@ -1,2 +1,2 @@
-<ion-input type="{{ fieldType }}" name="{{ name }}" placeholder="{{ placeholder }}"
-           [(ngModel)]="value" (ionChange)="onChange()" value="{{ value }}"></ion-input>
+<ion-input (ionChange)="onChange()" [(ngModel)]="value" name="{{ name }}"
+           placeholder="{{ placeholder }}" type="{{ fieldType }}" value="{{ value }}"></ion-input>

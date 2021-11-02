@@ -4,42 +4,42 @@
       <ion-toolbar>
         <div class="profile-header">
           <ion-buttons *ngIf="cancelButton">
-            <ion-button [textContent]="'Annuleer'" (click)="cancelEditUser()" class="cancel-button">
+            <ion-button (click)="cancelEditUser()" [textContent]="'Annuleer'" class="cancel-button">
             </ion-button>
           </ion-buttons>
-          <ion-back-button *ngIf="!cancelButton" class="back-button" icon="" text="Terug"
-                           defaultHref="overview/orders"></ion-back-button>
+          <ion-back-button *ngIf="!cancelButton" class="back-button" defaultHref="overview/orders" icon=""
+                           text="Terug"></ion-back-button>
           <h2>Profiel</h2>
           <ion-buttons *ngIf="editButton">
-            <ion-button [textContent]="'Bewerk'" (click)="handleEditUserData()" class="header-edit-profile">
+            <ion-button (click)="handleEditUserData()" [textContent]="'Bewerk'" class="header-edit-profile">
             </ion-button>
           </ion-buttons>
           <ion-buttons *ngIf="!editButton">
-            <ion-button [textContent]="'Bewaar'" (click)="validateInput()" class="header-edit-profile">
+            <ion-button (click)="validateInput()" [textContent]="'Bewaar'" class="header-edit-profile">
             </ion-button>
           </ion-buttons>
         </div>
       </ion-toolbar>
     </ion-header>
-    <div class="profile-page" *ngIf="userData">
+    <div *ngIf="userData" class="profile-page">
       <div class="profile-image-box">
-        <img *ngIf="toggleEditView" (click)="removeProfilePicture()" src="./assets/icon/cancel-icon.svg"
-             alt="Remove profile image" class="remove-icon">
-        <img *ngIf="toggleEditView" (click)="changeProfilePicture()" src="./assets/icon/edit-circle.svg"
-             alt="Edit profile image" class="edit-icon">
-        <img src="{{ userData.profilePicture.url }}" alt="profile image" class="profile-image">
+        <img (click)="removeProfilePicture()" *ngIf="toggleEditView" alt="Remove profile image"
+             class="remove-icon" src="./assets/icon/cancel-icon.svg">
+        <img (click)="changeProfilePicture()" *ngIf="toggleEditView" alt="Edit profile image"
+             class="edit-icon" src="./assets/icon/edit-circle.svg">
+        <img alt="profile image" class="profile-image" src="{{ userData?.profilePicture?.url }}">
       </div>
-      <p class="image-upload-message" *ngIf="loadingImage && toggleEditView">Afbeelding aan het uploaden...</p>
-      <h4>{{ userData.firstname + ' ' + userData.lastname }}</h4>
+      <p *ngIf="loadingImage && toggleEditView" class="image-upload-message">Afbeelding aan het uploaden...</p>
+      <h4>{{ userData?.firstname + ' ' + userData?.lastname }}</h4>
 
       <div *ngIf="!toggleEditView && userData" class="profile-data">
         <div class="username-box">
-          <img src="./assets/icon/user-icon.svg" alt="Username">
-          <p>{{ userData.username }}</p>
+          <img alt="Username" src="./assets/icon/user-icon.svg">
+          <p>{{ userData?.username }}</p>
         </div>
         <div class="email-box">
-          <img src="./assets/icon/email-icon.svg" alt="Email">
-          <p>{{ userData.userEmail }}</p>
+          <img alt="Email" src="./assets/icon/email-icon.svg">
+          <p>{{ userData?.userEmail }}</p>
         </div>
       </div>
 
@@ -51,31 +51,31 @@
 
       <div *ngIf="toggleEditView" class="edit-user-fields">
         <app-input-field (onInputChange)="firstNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [value]="userData.firstname" [placeholder]="'Voornaam'" [name]="'voornaam'"></app-input-field>
+                         [name]="'voornaam'" [placeholder]="'Voornaam'" [value]="userData.firstname"></app-input-field>
         <div *ngIf="firstNameErrorMessage" class="error-message">
-          <p>{{firstNameErrorMessage}}</p>
+          <p>{{ firstNameErrorMessage }}</p>
         </div>
         <app-input-field (onInputChange)="lastNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [value]="userData.lastname" [placeholder]="'Achternaam'"
-                         [name]="'achternaam'"></app-input-field>
+                         [name]="'achternaam'" [placeholder]="'Achternaam'"
+                         [value]="userData.lastname"></app-input-field>
         <div *ngIf="lastNameErrorMessage" class="error-message">
-          <p>{{lastNameErrorMessage}}</p>
+          <p>{{ lastNameErrorMessage }}</p>
         </div>
         <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [value]="userData.username" [placeholder]="'Gebruikersnaam'"
-                         [name]="'gebruikersnaam'"></app-input-field>
+                         [name]="'gebruikersnaam'" [placeholder]="'Gebruikersnaam'"
+                         [value]="userData.username"></app-input-field>
         <div *ngIf="userNameErrorMessage" class="error-message">
-          <p>{{userNameErrorMessage}}</p>
+          <p>{{ userNameErrorMessage }}</p>
         </div>
         <app-input-field (onInputChange)="emailValueChanged($event)" [fieldType]="fieldTypes.email"
-                         [value]="userData.userEmail" [placeholder]="'Email'" [name]="'email'"></app-input-field>
+                         [name]="'email'" [placeholder]="'Email'" [value]="userData.userEmail"></app-input-field>
         <div *ngIf="emailErrorMessage" class="error-message">
-          <p>{{emailErrorMessage}}</p>
+          <p>{{ emailErrorMessage }}</p>
         </div>
       </div>
 
       <div *ngIf="!toggleEditView">
-        <app-button class="logout-button" [invertColor]="true" (click)="logout()" [buttonText]="'Log uit'"></app-button>
+        <app-button (click)="logout()" [buttonText]="'Log uit'" [invertColor]="true" class="logout-button"></app-button>
       </div>
     </div>
   </div>

@@ -17,25 +17,25 @@
         </div>
       </div>
     </div>
-    <div class="product-count-box" *ngIf="!hideCount" [ngClass]="{'product-count-left': hideUserButtons}">
+    <div *ngIf="!hideCount" [ngClass]="{'product-count-left': hideUserButtons}" class="product-count-box">
       <div class="product-count">
         <p>{{ product?.amount ?? 0 }}</p>
       </div>
     </div>
-    <div class="product-buttons-box" *ngIf="!hideUserButtons">
-      <ion-fab-button size="small" (click)="countDownProductAmount()" class="button-min">-</ion-fab-button>
-      <ion-fab-button size="small" (click)="countUpProductAmount()" class="button-plus">+</ion-fab-button>
+    <div *ngIf="!hideUserButtons" class="product-buttons-box">
+      <ion-fab-button (click)="countDownProductAmount()" class="button-min" size="small">-</ion-fab-button>
+      <ion-fab-button (click)="countUpProductAmount()" class="button-plus" size="small">+</ion-fab-button>
     </div>
-    <div class="product-admin-buttons-box" *ngIf="showAdminButtons">
-      <ion-fab-button *ngIf="product?.visibility" size="small" (click)="toggleVisibility(false)">
+    <div *ngIf="showAdminButtons" class="product-admin-buttons-box">
+      <ion-fab-button (click)="toggleVisibility(false)" *ngIf="product?.visibility" size="small">
         <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
         <ion-icon *ngIf="!loading" name="eye-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button *ngIf="!product?.visibility" size="small" (click)="toggleVisibility(true)">
+      <ion-fab-button (click)="toggleVisibility(true)" *ngIf="!product?.visibility" size="small">
         <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
         <ion-icon *ngIf="!loading" name="eye-off-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button size="small" (click)="deleteProduct()" class="button-min">
+      <ion-fab-button (click)="deleteProduct()" class="button-min" size="small">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-fab-button>
     </div>

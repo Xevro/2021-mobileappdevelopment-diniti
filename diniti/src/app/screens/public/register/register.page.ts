@@ -32,6 +32,12 @@ export class RegisterPage implements OnInit {
   checkedErrorMessage = null;
   errorMessage = null;
 
+  constructor(
+    private router: Router,
+    private authenticationProxyService: AuthenticationProxyService,
+    private userContext: AuthenticationService) {
+  }
+
   get imageSrc(): string {
     return './assets/icon/cancel-x.svg';
   }
@@ -42,12 +48,6 @@ export class RegisterPage implements OnInit {
 
   get loginRoute() {
     return Routes.login;
-  }
-
-  constructor(
-    private router: Router,
-    private authenticationProxyService: AuthenticationProxyService,
-    private userContext: AuthenticationService) {
   }
 
   ngOnInit() {

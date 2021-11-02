@@ -21,6 +21,12 @@ export class LoginPage implements OnInit {
   passwordErrorMessage = null;
   errorMessage = null;
 
+  constructor(
+    private router: Router,
+    private authenticationProxyService: AuthenticationProxyService,
+    private authenticationService: AuthenticationService) {
+  }
+
   get imageSrc(): string {
     return './assets/icon/cancel-x.svg';
   }
@@ -31,12 +37,6 @@ export class LoginPage implements OnInit {
 
   get registerRoute() {
     return Routes.register;
-  }
-
-  constructor(
-    private router: Router,
-    private authenticationProxyService: AuthenticationProxyService,
-    private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {

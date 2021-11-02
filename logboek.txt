@@ -160,11 +160,12 @@ Logboek Mobile Application Development - 2021-2022
     ** pagina products list toevoegen.
     ** Pagina admin profile toevoegen.
     ** Pagina edit product toevoegen.
+    ** Product kunnen verwijderen.
+    ** Product kunnen verbergen voor klanten.
     * Producten afbeelding kunnen wijzigen op admin pagina.
     * Detail van een bestelling kunnen bekijken. 
     * Detail pagina voor een product toevoegen.
-    * Product kunnen verwijderen.
-    * Product kunnen verbergen voor klanten.
+  
 
 
  - Gedaan
@@ -179,7 +180,9 @@ Logboek Mobile Application Development - 2021-2022
     * pagina products list toevoegen.
     * Pagina admin profile toevoegen.
     * Pagina edit product toevoegen.
-    
+    * Product kunnen verwijderen.
+    * Product kunnen verbergen voor klanten.
+
 
   - Opgeloste problemen
 
@@ -197,4 +200,34 @@ Logboek Mobile Application Development - 2021-2022
     * Localstorage: https://stackoverflow.com/questions/46601155/keep-data-in-page-after-refresh
     * Array objecten samenvoegen en overschrijven: https://stackoverflow.com/questions/52357239/how-to-overwrite-javascript-object-values-using-object
 
+
+
+- Week 7 - vrijdag 05/11/2021
+
+ - Te doen deze week
+
+    ** Product kunnen toevoegen met optionele afbeelding.
+    * Producten afbeelding kunnen wijzigen op admin pagina.
+    * Detail van een bestelling kunnen bekijken. 
+    * Detail pagina voor een product toevoegen.
+
+
+ - Gedaan
+
+    * Product kunnen toevoegen met optionele afbeelding.
+
+
+  - Opgeloste problemen
+
+    *
+
+
+  - Op te lossen problemen
+
+    *
+
+
+  - Bronnen
+
+    *
 

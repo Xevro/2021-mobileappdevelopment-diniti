@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../authentication-services';
-import {Products} from '../../models/backend-models';
+import {Product, Products} from '../../models/backend-models';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +57,10 @@ export class ProductsProxyService extends CrudDataProvider<any> {
       'Content-Type': 'image/png'
     };
     return this.postRequest(url, imageData, headerOptions);
+  }
+
+  postProductAction(product: Product): Observable<any> {
+    const url = `classes/Products`;
+    return this.postRequest(url, product);
   }
 }

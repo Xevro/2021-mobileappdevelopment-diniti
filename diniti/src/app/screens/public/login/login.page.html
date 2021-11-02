@@ -4,23 +4,23 @@
       <ion-progress-bar *ngIf="submitted" type="indeterminate"></ion-progress-bar>
       <div class="login-header">
         <a [routerLink]="onboardingRoute" routerDirection="back">
-          <img class="cancel-login" [src]="imageSrc" alt="cancel">
+          <img [src]="imageSrc" alt="cancel" class="cancel-login">
         </a>
         <h2>Log in</h2>
-        <a [routerLink]="registerRoute" routerDirection="forward" class="header-register">Registreer</a>
+        <a [routerLink]="registerRoute" class="header-register" routerDirection="forward">Registreer</a>
       </div>
     </ion-toolbar>
   </ion-header>
   <div class="login-page">
     <div class="input-fields">
-      <app-input-field [name]="'username'" (onInputChange)="userNameValueChanged($event)"
-                       [fieldType]="fieldTypes.text" [placeholder]="'Gebruikersnaam'"></app-input-field>
+      <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                       [name]="'username'" [placeholder]="'Gebruikersnaam'"></app-input-field>
       <div *ngIf="usernameErrorMessage" class="error-message">
         <p>{{usernameErrorMessage}}</p>
       </div>
-      <app-input-field [name]="'password'" (onInputChange)="passwordValueChanged($event)"
-                       [fieldType]="fieldTypes.password" [value]="passwordInput"
-                       [placeholder]="'Wachtwoord'"></app-input-field>
+      <app-input-field (onInputChange)="passwordValueChanged($event)" [fieldType]="fieldTypes.password"
+                       [name]="'password'" [placeholder]="'Wachtwoord'"
+                       [value]="passwordInput"></app-input-field>
 
       <div *ngIf="passwordErrorMessage" class="error-message">
         <p>{{passwordErrorMessage}}</p>
@@ -29,8 +29,8 @@
         <p>{{errorMessage}}</p>
       </div>
       <div class="button-login">
-        <app-button [disabled]="submitted" [invertColor]="true" (click)="validateLogin()"
-                    [buttonText]="'Log in'"></app-button>
+        <app-button (click)="validateLogin()" [buttonText]="'Log in'" [disabled]="submitted"
+                    [invertColor]="true"></app-button>
       </div>
     </div>
   </div>
