@@ -1,7 +1,8 @@
 <div class="products-list-box">
   <div class="products-list">
     <ion-infinite-scroll *ngIf="products" threshold="100px">
-      <app-product-item #productsList (changedProduct)="changedProducts(productsList)" (removedProduct)="removedProductEmit($event)"
+      <app-product-item #productsList (changedProduct)="changedProducts(productsList)"
+                        (removedProduct)="removedProductEmit($event)"
                         *ngFor="let product of products | datafilter:filterTerm" [hideCount]="hideCount"
                         [hideUserButtons]="hideUserButtons" [product]="product" [disableDetail]="disableDetail"
                         [showAdminButtons]="showAdminButtons"></app-product-item>
