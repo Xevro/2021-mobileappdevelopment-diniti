@@ -18,7 +18,8 @@
     <div class="search-field">
       <ion-searchbar [(ngModel)]="filterTerm" animated="true" placeholder="Zoek producten"></ion-searchbar>
     </div>
-    <app-product-list #productsList (changedProductsList)="updatedProductsList(productsList)" (removedProduct)="getProducts()"
+    <app-product-list #productsList (changedProductsList)="updatedProductsList(productsList)"
+                      (removedProduct)="getProducts()"
                       *ngIf="!loading" [filterTerm]="filterTerm" [hideCount]="true" [hideUserButtons]="true"
                       [products]="products" [showAdminButtons]="true"></app-product-list>
     <div *ngIf="loading" class="products-loading">

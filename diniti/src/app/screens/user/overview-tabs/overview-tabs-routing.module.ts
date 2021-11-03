@@ -19,7 +19,7 @@ const routes: Routes = [
         loadChildren: () => import('../user-profile/user-profile.module').then(m => m.UserProfilePageModule)
       },
       {
-        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail + '/:orderId',
+        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail + '/:orderUuid',
         loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {

@@ -5,7 +5,6 @@
         <ion-img [src]="product?.image?.url" alt="{{ product.name }}"></ion-img>
       </ion-thumbnail>
     </div>
-
     <div (click)="goToDetailPage()" class="product-item-box">
       <div class="product-name">
         <p>{{ (product?.name?.length > 30 ? (product?.name.substring(0, 30 - 3) + '...') : product?.name) ?? '--' }}</p>

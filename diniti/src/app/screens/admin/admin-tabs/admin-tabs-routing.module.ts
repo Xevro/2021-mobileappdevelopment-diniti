@@ -15,16 +15,16 @@ const routes: Routes = [
         loadChildren: () => import('../../admin/admin-overview/admin-overview.module').then(m => m.AdminOverviewPageModule)
       },
       {
-        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail + '/:orderId',
+        path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail + '/:orderUuid',
         loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
-      },
-      {
-        path: RouteLiterals.adminProducts,
-        loadChildren: () => import('../../admin/admin-products/admin-products.module').then(m => m.AdminProductsPageModule)
       },
       {
         path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductDetail + '/:productId',
         loadChildren: () => import('../../global/product-details/product-details.module').then(m => m.AdminProductDetailsPageModule)
+      },
+      {
+        path: RouteLiterals.adminProducts,
+        loadChildren: () => import('../../admin/admin-products/admin-products.module').then(m => m.AdminProductsPageModule)
       },
       {
         path: RouteLiterals.adminProfile,

@@ -16,6 +16,7 @@ export class ProductItemComponent implements OnInit {
 
   @Input() hideUserButtons = false;
   @Input() showAdminButtons = false;
+  @Input() disableDetail = false;
   @Input() hideCount = false;
   @Input() product: Product;
 
@@ -94,9 +95,9 @@ export class ProductItemComponent implements OnInit {
   }
 
   goToDetailPage() {
-    if (this.authenticationService.getRole() === Role.admin) {
+    if (this.authenticationService.getRole() === Role.admin && !this.disableDetail) {
       this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
-    } else if (this.authenticationService.getRole() === Role.user) {
+    } else if (this.authenticationService.getRole() === Role.user && !this.disableDetail) {
       this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
     }
   }

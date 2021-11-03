@@ -4,6 +4,7 @@ import {OrdersProxyService, ProductsSummaryService} from '../../../services/back
 import {Order, OrderStatus} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication-services';
+import {UuidGenerator} from '../../../services/core-services';
 
 @Component({
   selector: 'app-order-summary',
@@ -20,7 +21,8 @@ export class OrderSummaryPage implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private productsSummaryService: ProductsSummaryService,
-    private ordersProxyService: OrdersProxyService
+    private ordersProxyService: OrdersProxyService,
+    private uuidGenerator: UuidGenerator
   ) {
   }
 
@@ -57,6 +59,7 @@ export class OrderSummaryPage implements OnInit {
         iso: `${date.toDateString()}  ${date.toTimeString()}`
       };
       this.order.orderId = Date.now();
+      this.order.orderUuid = this.uuidGenerator.generateUUID();
       this.ordersProxyService.postOrderAction(this.order)
         .subscribe(
           (response) => {

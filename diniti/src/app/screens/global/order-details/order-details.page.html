@@ -1,8 +1,34 @@
-<ion-content>
-  <p>Detail van een bestelling</p>
-  <p *ngIf="loading">Gegevens ophalen...</p>
-  <div *ngIf="!loading">
-    <p>{{ order?.status }}</p>
-    <p>{{ order?.totalPrice | currency:'EUR' }}</p>
+<ion-content [fullscreen]="true">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="summary-header">
+        <ion-back-button class="go-back"
+                         defaultHref="{{ (authenticationService.getRole() === role.admin) ? 'admin/orders' : 'overview/orders' }}"
+                         icon="" text="Terug"></ion-back-button>
+        <h2>Bestelling</h2>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="summary-page-content">
+    <div class="summary-information">
+      <p *ngIf="loading">Gegevens ophalen...</p>
+      <div *ngIf="!loading">
+        <p>Bestelling nr: <a>#{{ order?.orderId }}</a></p>
+        <p>Status bestelling: <a>{{ order?.status }}</a></p>
+        <p>Ophaal moment: <a>{{ order?.pickUpTime | stringtodate }}</a></p>
+        <p>Totaal prijs: <a>{{ (order?.totalPrice !== 0.0) ? (order?.totalPrice | currency:'EUR') : ' --' }}</a></p>
+      </div>
+    </div>
+    <div class="summary-content">
+      <div class="summary-list">
+        <h2>Bestelling</h2>
+        <p *ngIf="loading">Bestelling ophalen...</p>
+        <div *ngIf="!loading">
+          <app-product-list [hideUserButtons]="true" [disableDetail]="true"
+                            [products]="order?.products"></app-product-list>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

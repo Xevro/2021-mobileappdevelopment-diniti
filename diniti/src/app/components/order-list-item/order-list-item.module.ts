@@ -9,7 +9,7 @@ import {StringToDatePipe} from '../../services/ui-services';
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule],
   declarations: [OrderListItemComponent, StringToDatePipe],
-  exports: [OrderListItemComponent]
+  exports: [OrderListItemComponent, StringToDatePipe]
 })
 export class OrderListItemModule {
 }

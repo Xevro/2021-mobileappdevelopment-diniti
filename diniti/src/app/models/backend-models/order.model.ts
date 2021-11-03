@@ -6,6 +6,7 @@ import {UserPointer} from './user-pointer.model';
 export interface Order {
   objectId: string;
   orderId: number;
+  orderUuid: string;
   userId: UserPointer;
   pickUpTime: Time;
   products: Product[];

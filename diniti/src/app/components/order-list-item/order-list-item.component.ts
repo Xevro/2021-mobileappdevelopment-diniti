@@ -25,9 +25,9 @@ export class OrderListItemComponent implements OnInit {
 
   goToDetailPage() {
     if (this.authenticationService.getRole() === Role.admin) {
-      this.router.navigate(Routes.adminOrderDetail(this.order.orderId.toString()));
+      this.router.navigate(Routes.adminOrderDetail(this.order.orderUuid.toString()));
     } else if (this.authenticationService.getRole() === Role.user) {
-      this.router.navigate(Routes.userOrderDetail(this.order.orderId.toString()));
+      this.router.navigate(Routes.userOrderDetail(this.order.orderUuid.toString()));
     }
   }
 }
