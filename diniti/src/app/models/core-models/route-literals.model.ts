@@ -8,6 +8,7 @@ export class RouteLiterals {
   static orders = 'orders';
   static userOrderDetail = 'detail';
   static userOrderCreate = 'create';
+  static userProduct = 'product';
   static userOrderComplete = 'complete';
   static userOrderCreateSummary = 'summary';
 

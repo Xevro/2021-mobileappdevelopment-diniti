@@ -23,12 +23,12 @@ const routes: Routes = [
         loadChildren: () => import('../../admin/admin-products/admin-products.module').then(m => m.AdminProductsPageModule)
       },
       {
-        path: RouteLiterals.adminProfile,
-        loadChildren: () => import('../../admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
+        path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductDetail + '/:productId',
+        loadChildren: () => import('../../global/product-details/product-details.module').then(m => m.AdminProductDetailsPageModule)
       },
       {
-        path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductDetail,
-        loadChildren: () => import('../../admin/admin-product-detail/admin-product-detail.module').then(m => m.AdminProductDetailPageModule)
+        path: RouteLiterals.adminProfile,
+        loadChildren: () => import('../../admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
       },
       {
         path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductCreate,

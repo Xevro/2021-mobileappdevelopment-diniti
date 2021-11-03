@@ -24,4 +24,12 @@ export class Routes {
   static adminOrderDetail(orderId: string) {
     return ['/', RouteLiterals.adminOverview, RouteLiterals.orders, RouteLiterals.userOrderDetail, orderId];
   }
+
+  static userProductDetail(productId: string) {
+    return ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userProduct, productId];
+  }
+
+  static adminProductDetail(productId: string) {
+    return ['/', RouteLiterals.adminOverview, RouteLiterals.adminProducts, RouteLiterals.adminProductDetail, productId];
+  }
 }

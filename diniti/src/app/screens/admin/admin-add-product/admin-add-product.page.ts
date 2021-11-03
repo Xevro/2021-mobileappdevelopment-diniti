@@ -7,6 +7,7 @@ import {ProductsProxyService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
 import {IonToggle} from '@ionic/angular';
 import {CurrencyPipe} from '@angular/common';
+import {UuidGenerator} from '../../../services/core-services';
 
 @Component({
   selector: 'app-admin-add-product',
@@ -27,14 +28,15 @@ export class AdminAddProductPage implements OnInit {
 
   nameErrorMessage: string = null;
   priceErrorMessage: string = null;
-  fieldsErrorMessage: string = null;
+  errorMessage: string = null;
   imageError = false;
 
   constructor(
     private router: Router,
     private photoService: PhotoService,
     private productsProxyService: ProductsProxyService,
-    private currencyPipe: CurrencyPipe
+    private currencyPipe: CurrencyPipe,
+    private uuidGenerator: UuidGenerator
   ) {
   }
 
@@ -59,33 +61,35 @@ export class AdminAddProductPage implements OnInit {
 
   saveNewProduct() {
     if (this.product.name && this.product.price) {
-      this.fieldsErrorMessage = '';
+      this.errorMessage = '';
       if (this.imageResultData) {
         this.product.image = {
           name: this.imageResultData.name,
           url: this.imageResultData.url,
           __type: 'File'
         };
+        this.product.productId = this.uuidGenerator.generateUUID();
         this.productsProxyService.postProductAction(this.product)
           .subscribe(
             (status) => {
               this.goToProducts();
             },
             (error) => {
-              this.fieldsErrorMessage = 'Er is een onverwacht probleem opgetreden.';
+              this.errorMessage = 'Er is een onverwacht probleem opgetreden.';
             });
       } else {
+        this.product.productId = this.uuidGenerator.generateUUID();
         this.productsProxyService.postProductAction(this.product)
           .subscribe(
             (status) => {
               this.goToProducts();
             },
             (error) => {
-              this.fieldsErrorMessage = 'Er is een onverwacht probleem opgetreden.';
+              this.errorMessage = 'Er is een onverwacht probleem opgetreden.';
             });
       }
     } else {
-      this.fieldsErrorMessage = 'Naam en of prijs zijn niet ingevuld';
+      this.errorMessage = 'Naam en of prijs zijn niet ingevuld';
     }
   }
 

@@ -1,15 +1,14 @@
 <div class="product-item">
   <div class="products-item-box">
-
-    <div class="product-image-box">
+    <div (click)="goToDetailPage()" class="product-image-box">
       <ion-thumbnail slot="start">
         <ion-img [src]="product?.image?.url" alt="{{ product.name }}"></ion-img>
       </ion-thumbnail>
     </div>
 
-    <div class="product-item-box">
+    <div (click)="goToDetailPage()" class="product-item-box">
       <div class="product-name">
-        <p>{{ product?.name ?? '--' }}</p>
+        <p>{{ (product?.name?.length > 30 ? (product?.name.substring(0, 30 - 3) + '...') : product?.name) ?? '--' }}</p>
       </div>
       <div class="product-bottom-row">
         <div>

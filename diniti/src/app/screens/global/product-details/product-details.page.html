@@ -1,0 +1,8 @@
+<ion-content>
+  <p>Detail van een product</p>
+  <p *ngIf="loading">Gegevens ophalen...</p>
+  <div *ngIf="!loading">
+    <p>{{ product?.name }}</p>
+    <p>{{ product?.price }}</p>
+  </div>
+</ion-content>

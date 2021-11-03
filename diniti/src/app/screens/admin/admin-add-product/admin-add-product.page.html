@@ -36,8 +36,8 @@
           toe te voegen</p>
         <p *ngIf="!loadingImage && imageError" class="image-upload-message">Er is een fout opgetreden bij het
           ophalen van de afbeelding</p>
-        <div *ngIf="fieldsErrorMessage" class="error-message">
-          <p>{{ fieldsErrorMessage }}</p>
+        <div *ngIf="errorMessage" class="error-message">
+          <p>{{ errorMessage }}</p>
         </div>
         <app-button (click)="uploadProductImage()" [buttonText]="'Voeg een product foto toe'" [disabled]="loadingImage"
                     [invertColor]="true"></app-button>

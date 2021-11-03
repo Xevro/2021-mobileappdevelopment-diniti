@@ -2,6 +2,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../models/backend-models';
 import {AlertController} from '@ionic/angular';
 import {ProductsProxyService} from '../../services/backend-services';
+import {Routes} from '../../models/core-models';
+import {Router} from '@angular/router';
+import {Role} from '../../models/authentication-models';
+import {AuthenticationService} from '../../services/authentication-services';
 
 @Component({
   selector: 'app-product-item',
@@ -21,8 +25,10 @@ export class ProductItemComponent implements OnInit {
   loading = false;
 
   constructor(
+    private router: Router,
     private alertController: AlertController,
-    private productsProxyService: ProductsProxyService
+    private productsProxyService: ProductsProxyService,
+    private authenticationService: AuthenticationService
   ) {
   }
 
@@ -77,7 +83,7 @@ export class ProductItemComponent implements OnInit {
   toggleVisibility(visibility: boolean) {
     this.loading = true;
     this.product.visibility = visibility;
-    this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.objectId)
+    this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.productId)
       .subscribe(
         (response) => {
           this.loading = false;
@@ -85,5 +91,13 @@ export class ProductItemComponent implements OnInit {
         (error) => {
           this.loading = false;
         });
+  }
+
+  goToDetailPage() {
+    if (this.authenticationService.getRole() === Role.admin) {
+      this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
+    } else if (this.authenticationService.getRole() === Role.user) {
+      this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
+    }
   }
 }

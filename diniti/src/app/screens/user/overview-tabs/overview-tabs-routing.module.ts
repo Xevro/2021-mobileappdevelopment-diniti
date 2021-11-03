@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {
+        path: RouteLiterals.orders + '/' + RouteLiterals.userProduct + '/:productId',
+        loadChildren: () => import('../../global/product-details/product-details.module').then(m => m.AdminProductDetailsPageModule)
+      },
+      {
         path: RouteLiterals.orders + '/' + RouteLiterals.userOrderCreate,
         loadChildren: () => import('../create-order/create-order.module').then(m => m.CreateOrderPageModule)
       },
