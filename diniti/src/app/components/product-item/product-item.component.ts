@@ -24,6 +24,7 @@ export class ProductItemComponent implements OnInit {
   @Output() removedProduct = new EventEmitter<boolean>();
 
   loading = false;
+  currentRole: Role;
 
   constructor(
     private router: Router,
@@ -34,6 +35,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentRole = this.authenticationService.getRole();
   }
 
   countUpProductAmount() {
@@ -72,8 +74,8 @@ export class ProductItemComponent implements OnInit {
           }
         },
         {
-          text: 'Cancel',
-          role: 'cancel',
+          text: 'Annuleer',
+          role: 'Annuleer',
           cssClass: 'modal-button-cancel'
         }
       ]
@@ -95,9 +97,9 @@ export class ProductItemComponent implements OnInit {
   }
 
   goToDetailPage() {
-    if (this.authenticationService.getRole() === Role.admin && !this.disableDetail) {
+    if (this.currentRole === Role.admin && !this.disableDetail) {
       this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
-    } else if (this.authenticationService.getRole() === Role.user && !this.disableDetail) {
+    } else if (this.currentRole === Role.user && !this.disableDetail) {
       this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
     }
   }

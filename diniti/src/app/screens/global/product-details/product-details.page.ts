@@ -16,6 +16,7 @@ export class ProductDetailsPage implements OnInit {
   loading = false;
   error = false;
   role = Role;
+  currentRole: Role;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,6 +27,7 @@ export class ProductDetailsPage implements OnInit {
 
   ngOnInit() {
     this.getOrderData();
+    this.currentRole = this.authenticationService.getRole();
   }
 
   getOrderData() {

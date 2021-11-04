@@ -13,6 +13,7 @@ import {Role} from '../../models/authentication-models';
 export class OrderListItemComponent implements OnInit {
 
   @Input() order: Order;
+  currentRole: Role;
 
   constructor(
     private router: Router,
@@ -21,12 +22,13 @@ export class OrderListItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentRole = this.authenticationService.getRole();
   }
 
   goToDetailPage() {
-    if (this.authenticationService.getRole() === Role.admin) {
+    if (this.currentRole === Role.admin) {
       this.router.navigate(Routes.adminOrderDetail(this.order.orderUuid.toString()));
-    } else if (this.authenticationService.getRole() === Role.user) {
+    } else if (this.currentRole === Role.user) {
       this.router.navigate(Routes.userOrderDetail(this.order.orderUuid.toString()));
     }
   }

@@ -3,7 +3,7 @@
     <ion-toolbar>
       <div class="product-header">
         <ion-back-button class="go-back"
-                         defaultHref="{{ (authenticationService.getRole() === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
+                         defaultHref="{{ (currentRole === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
                          icon="" text="Terug"></ion-back-button>
         <h2>{{ (product?.name) ? product?.name : '' }}</h2>
       </div>
