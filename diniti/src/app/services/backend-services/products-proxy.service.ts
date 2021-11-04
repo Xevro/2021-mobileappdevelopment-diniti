@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../authentication-services';
-import {Product, Products} from '../../models/backend-models';
+import {Product, Products, UpdateProduct} from '../../models/backend-models';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,8 @@ export class ProductsProxyService extends CrudDataProvider<any> {
 
   getProductByIdAction(productId: string): Observable<Products> {
     const headerOptions = {
-      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken(),
+      'X-skip-request': 'true'
     };
     const url = `classes/Products?where={"productId":"${productId}"}`;
     return this.getRequest(url, headerOptions);
@@ -52,6 +53,14 @@ export class ProductsProxyService extends CrudDataProvider<any> {
       visibility
     };
     return this.putRequest(url, body, headerOptions);
+  }
+
+  updateProductAction(product: UpdateProduct, objectId: string): Observable<any> {
+    const url = `classes/Products/${objectId}`;
+    const headerOptions = {
+      'Content-Type': 'application/json'
+    };
+    return this.putRequest(url, product, headerOptions);
   }
 
   deleteProductsAction(objectId: string): Observable<any> {

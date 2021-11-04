@@ -6,12 +6,20 @@
                          defaultHref="{{ (currentRole === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
                          icon="" text="Terug"></ion-back-button>
         <h2>{{ (product?.name) ? product?.name : '' }}</h2>
+        <ion-buttons *ngIf="currentRole === role.admin">
+          <ion-button *ngIf="!edit" (click)="editProduct()" [textContent]="" class="header-edit-product">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="edit" (click)="hideEditProduct()" [textContent]="" class="header-edit-product">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </div>
     </ion-toolbar>
   </ion-header>
 
   <div class="product-page-content">
-    <div class="product-information">
+    <div class="product-information" *ngIf="!edit">
       <p *ngIf="loading">Product gegevens laden...</p>
       <p *ngIf="error && !product">Kon de product gegevens niet laden.</p>
       <div *ngIf="!loading && product">
@@ -19,8 +27,62 @@
           <img src="{{ product?.image?.url }}" alt="{{ product?.image?.name }}">
         </div>
         <p>Prijs/st: <a>{{ product?.price | currency:'EUR' }}</a></p>
-        <b>Beschrijving</b>
+        <p class="bold-text">Beschrijving</p>
         <p>{{ product?.description }}</p>
+      </div>
+    </div>
+
+    <div class="product-information" *ngIf="currentRole === role.admin && edit">
+
+      <p *ngIf="loading">Product gegevens laden...</p>
+      <p *ngIf="error && !product">Kon de product gegevens niet laden.</p>
+      <p *ngIf="loadingImage" class="image-upload-message">Afbeelding aan het uploaden...</p>
+      <p *ngIf="!loadingImage && uploadingImageDone" class="image-upload-message">Afbeelding succesvol gewijzigd</p>
+      <p *ngIf="!loadingImage && imageError" class="image-upload-message">Er is een fout opgetreden bij het
+        ophalen van de afbeelding</p>
+
+      <div *ngIf="!loading && product">
+        <div class="product-image">
+          <img src="{{ product?.image?.url }}" alt="{{ product?.image?.name }}">
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+          <p>{{ errorMessage }}</p>
+        </div>
+
+        <p class="bold-text">Product naam</p>
+        <div *ngIf="nameErrorMessage" class="error-message">
+          <p>{{ nameErrorMessage }}</p>
+        </div>
+        <app-input-field (onInputChange)="nameValueChanged($event)" [fieldType]="fieldTypes.text"
+                         [placeholder]="'Naam'" [name]="'name'"
+                         [value]="product?.name"></app-input-field>
+
+        <p class="bold-text">Prijs</p>
+        <div *ngIf="priceErrorMessage" class="error-message">
+          <p>{{ priceErrorMessage }}</p>
+        </div>
+        <app-input-field (onInputChange)="priceValueChanged($event)" [fieldType]="fieldTypes.text"
+                         [placeholder]="'Prijs'" [name]="'price'"
+                         [value]="product?.price"></app-input-field>
+
+        <p class="bold-text">Beschrijving</p>
+        <div *ngIf="descriptionErrorMessage" class="error-message">
+          <p>{{ descriptionErrorMessage }}</p>
+        </div>
+        <ion-textarea (ionInput)="descriptionValueChanged($event)" placeholder="Beschrijving" name="description"
+                      rows="6" cols="20"
+                      value="{{ product?.description }}"></ion-textarea>
+        <ion-item class="product-visibility">
+          <ion-label (click)="visibility.checked = !visibility.checked">Zichtbaar voor klanten</ion-label>
+          <ion-toggle #visibility checked="{{ updateProduct?.visibility }}"
+                      (ionChange)="changeVisibility($event)"
+                      class="button"></ion-toggle>
+        </ion-item>
+        <div class="save-button">
+          <app-button [invertColor]="true" [buttonText]="'Sla wijzigingen op'"
+                      (click)="SaveEditProduct()"></app-button>
+        </div>
       </div>
     </div>
   </div>

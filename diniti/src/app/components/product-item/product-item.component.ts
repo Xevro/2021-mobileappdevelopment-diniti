@@ -86,7 +86,7 @@ export class ProductItemComponent implements OnInit {
   toggleVisibility(visibility: boolean) {
     this.loading = true;
     this.product.visibility = visibility;
-    this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.productId)
+    this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.objectId)
       .subscribe(
         (response) => {
           this.loading = false;
