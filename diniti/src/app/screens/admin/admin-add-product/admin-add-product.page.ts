@@ -5,7 +5,6 @@ import {FieldTypes} from '../../../models/ui-models';
 import {PhotoService} from '../../../services/ui-services';
 import {ProductsProxyService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
-import {IonToggle} from '@ionic/angular';
 import {CurrencyPipe} from '@angular/common';
 import {UuidGenerator} from '../../../services/core-services';
 
@@ -15,7 +14,6 @@ import {UuidGenerator} from '../../../services/core-services';
   styleUrls: ['./admin-add-product.page.scss'],
 })
 export class AdminAddProductPage implements OnInit {
-  @ViewChild('visibility', {static: true}) visibilityToggle: IonToggle;
 
   fieldTypes = FieldTypes;
 
@@ -51,8 +49,8 @@ export class AdminAddProductPage implements OnInit {
     };
   }
 
-  changeVisibility() {
-    this.product.visibility = this.visibilityToggle.checked;
+  changeVisibility(visibility: any) {
+    this.product.visibility = visibility.target.checked;
   }
 
   goToProducts() {

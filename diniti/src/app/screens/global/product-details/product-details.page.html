@@ -43,6 +43,10 @@
 
       <div *ngIf="!loading && product">
         <div class="product-image">
+          <img (click)="removeProductPicture()" *ngIf="edit && !loadingImage" alt="Remove product image"
+               class="remove-product" src="./assets/icon/cancel-icon.svg">
+          <img (click)="changeProductPicture()" *ngIf="edit" alt="Edit product image"
+               class="edit-product" src="./assets/icon/edit-circle.svg">
           <img src="{{ product?.image?.url }}" alt="{{ product?.image?.name }}">
         </div>
 

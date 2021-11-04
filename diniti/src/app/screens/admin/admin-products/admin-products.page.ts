@@ -23,6 +23,10 @@ export class AdminProductsPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    this.message = null;
     this.getProducts();
   }
 
@@ -37,10 +41,6 @@ export class AdminProductsPage implements OnInit {
         },
         (error) => {
         });
-  }
-
-  ionViewWillEnter() {
-    this.message = null;
   }
 
   updatedProductsList(productsEvent: any) {

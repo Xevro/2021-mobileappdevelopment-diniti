@@ -133,9 +133,71 @@ export class ProductDetailsPage implements OnInit {
     });
   }
 
-  removeProductImage() {
+  changeProductPicture() {
+    this.loadingImage = true;
+    const photo = this.photoService.capturePhoto();
+    photo.then(async (response) => {
+      const urlRawData = await this.photoService.toDataURL(response.webPath)
+        .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
+
+      this.productsProxyService.postImageAction(urlRawData)
+        .subscribe(
+          (result) => {
+            const data = {
+              image: {
+                name: result.name,
+                url: result.url,
+                __type: 'File'
+              }
+            };
+            this.productsProxyService.updateProductImageAction(data, this.product.objectId)
+              .subscribe(
+                (status) => {
+                  this.loadingImage = false;
+                  this.getOrderData();
+                },
+                (error) => {
+                  location.reload(true);
+                });
+          },
+          (error) => {
+            location.reload(true);
+          });
+    });
+  }
+
+  async removeProductPicture() {
+    this.loadingImage = true;
     this.imageResultData = null;
     this.uploadingImageDone = false;
+    const getUrl = window.location;
+    const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/favicons/apple-icon-180x180.png';
+    const urlRawData = await this.photoService.toDataURL(baseUrl)
+      .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
+
+    this.productsProxyService.postImageAction(urlRawData)
+      .subscribe(
+        (result) => {
+          const data = {
+            image: {
+              name: result.name,
+              url: result.url,
+              __type: 'File'
+            }
+          };
+          this.productsProxyService.updateProductImageAction(data, this.product.objectId)
+            .subscribe(
+              (status) => {
+                this.loadingImage = false;
+                this.getOrderData();
+              },
+              (error) => {
+                location.reload(true);
+              });
+        },
+        (error) => {
+          location.reload(true);
+        });
   }
 
   hideEditProduct() {

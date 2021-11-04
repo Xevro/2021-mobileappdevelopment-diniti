@@ -28,7 +28,7 @@
                        [placeholder]="'Prijs'" [value]="product?.price" inputmode="decimal"></app-input-field>
       <ion-item class="product-visibility">
         <ion-label (click)="visibility.checked = !visibility.checked">Zichtbaar voor klanten</ion-label>
-        <ion-toggle #visibility (ionChange)="changeVisibility()" class="button"></ion-toggle>
+        <ion-toggle #visibility (ionChange)="changeVisibility($event)" class="button"></ion-toggle>
       </ion-item>
       <div class="product-upload">
         <p *ngIf="loadingImage" class="image-upload-message">Afbeelding aan het uploaden...</p>

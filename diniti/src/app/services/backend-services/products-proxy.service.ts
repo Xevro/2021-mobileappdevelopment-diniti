@@ -76,6 +76,15 @@ export class ProductsProxyService extends CrudDataProvider<any> {
     return this.postRequest(url, imageData, headerOptions);
   }
 
+  updateProductImageAction(imageData: any, objectId: string): Observable<any> {
+    const url = 'classes/Products/' + objectId;
+    const headerOptions = {
+      'Content-Type': 'application/json',
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
+    };
+    return this.putRequest(url, imageData, headerOptions);
+  }
+
   postProductAction(product: Product): Observable<any> {
     const url = `classes/Products`;
     return this.postRequest(url, product);
