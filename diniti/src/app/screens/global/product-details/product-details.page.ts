@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../../../models/backend-models';
 import {ActivatedRoute} from '@angular/router';
 import {ProductsProxyService} from '../../../services/backend-services';
+import {Role} from '../../../models/authentication-models';
+import {AuthenticationService} from '../../../services/authentication-services';
 
 @Component({
   selector: 'app-product-details',
@@ -12,10 +14,13 @@ export class ProductDetailsPage implements OnInit {
 
   product: Product;
   loading = false;
+  error = false;
+  role = Role;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productsProxyService: ProductsProxyService
+    private productsProxyService: ProductsProxyService,
+    public authenticationService: AuthenticationService
   ) {
   }
 
@@ -30,8 +35,10 @@ export class ProductDetailsPage implements OnInit {
         (response) => {
           this.product = response?.results[0];
           this.loading = false;
+          this.error = false;
         },
         (error) => {
+          this.error = true;
         });
   }
 }

@@ -207,7 +207,7 @@ Logboek Mobile Application Development - 2021-2022
  - Te doen deze week
 
     ** Product kunnen toevoegen met optionele afbeelding.
-    ** Detail pagina voor een product toevoegen.
+    ** Details van een product kunnen bekijken.
     ** Details van een bestelling kunnen bekijken.
     * Producten afbeelding en gegevens kunnen wijzigen op admin pagina.
     * Details van een bestelling kunnen wijzigen (status) als admin;
@@ -218,9 +218,12 @@ Logboek Mobile Application Development - 2021-2022
  - Gedaan
 
     * Product kunnen toevoegen met optionele afbeelding.
-    * Detail pagina voor een product toevoegen.
+    * Details van een product kunnen bekijken.
     * Details van een bestelling kunnen bekijken.
+    * Beschrijving toegevoegd aan een product
+    * 
 
+    
 
   - Opgeloste problemen
 

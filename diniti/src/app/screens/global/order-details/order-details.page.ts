@@ -14,6 +14,7 @@ export class OrderDetailsPage implements OnInit {
 
   order: Order;
   loading = false;
+  error = false;
   role = Role;
 
   constructor(
@@ -34,8 +35,10 @@ export class OrderDetailsPage implements OnInit {
         (response) => {
           this.order = response?.results[0];
           this.loading = false;
+          this.error = false;
         },
         (error) => {
+          this.error = true;
         });
   }
 }

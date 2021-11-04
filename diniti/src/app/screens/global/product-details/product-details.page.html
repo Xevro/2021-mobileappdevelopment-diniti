@@ -2,8 +2,8 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <div class="product-header">
-        <!-- defaultHref="{{ (authenticationService.getRole() === role.admin) ? 'admin/orders' : 'overview/orders' }}" -->
         <ion-back-button class="go-back"
+                         defaultHref="{{ (authenticationService.getRole() === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
                          icon="" text="Terug"></ion-back-button>
         <h2>{{ product?.name }}</h2>
       </div>
@@ -13,10 +13,12 @@
   <div class="product-page-content">
     <div class="product-information">
       <p *ngIf="loading">Product gegevens laden...</p>
+      <p *ngIf="error">Kon de product gegevens niet laden.</p>
       <div *ngIf="!loading">
-        <img class="product-image" src="{{ product?.image?.url }}" alt="{{ product?.image?.name }}">
-        <p>Naam: <a>{{ product?.name }}</a></p>
-        <p>Prijs per stuk: <a>{{ product?.price | currency:'EUR' }}</a></p>
+        <div class="product-image">
+        <img src="{{ product?.image?.url }}" alt="{{ product?.image?.name }}">
+        </div>
+        <p>Prijs/st: <a>{{ product?.price | currency:'EUR' }}</a></p>
         <b>Beschrijving</b>
         <p>{{ product?.description }}</p>
       </div>
