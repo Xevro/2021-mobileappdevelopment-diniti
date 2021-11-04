@@ -36,19 +36,18 @@
 
       <p *ngIf="loading">Product gegevens laden...</p>
       <p *ngIf="error && !product">Kon de product gegevens niet laden.</p>
-      <p *ngIf="loadingImage" class="image-upload-message">Afbeelding aan het uploaden...</p>
-      <p *ngIf="!loadingImage && uploadingImageDone" class="image-upload-message">Afbeelding succesvol gewijzigd</p>
-      <p *ngIf="!loadingImage && imageError" class="image-upload-message">Er is een fout opgetreden bij het
-        ophalen van de afbeelding</p>
-
       <div *ngIf="!loading && product">
         <div class="product-image">
-          <img (click)="removeProductPicture()" *ngIf="edit && !loadingImage" alt="Remove product image"
+          <img (click)="removeProductPicture()" *ngIf="edit && !loadingImage && !imageError" alt="Remove product image"
                class="remove-product" src="./assets/icon/cancel-icon.svg">
-          <img (click)="changeProductPicture()" *ngIf="edit" alt="Edit product image"
+          <img (click)="changeProductPicture()" *ngIf="edit && !loadingImage && !imageError" alt="Edit product image"
                class="edit-product" src="./assets/icon/edit-circle.svg">
           <img src="{{ product?.image?.url }}" alt="{{ product?.image?.name }}">
         </div>
+        <p *ngIf="loadingImage" class="image-upload-message">Afbeelding aan het uploaden...</p>
+        <p *ngIf="!loadingImage && uploadingImageDone" class="image-upload-message">Afbeelding succesvol gewijzigd</p>
+        <p *ngIf="!loadingImage && imageError" class="image-upload-message">Er is een fout opgetreden bij het
+          ophalen van de afbeelding</p>
 
         <div *ngIf="errorMessage" class="error-message">
           <p>{{ errorMessage }}</p>
