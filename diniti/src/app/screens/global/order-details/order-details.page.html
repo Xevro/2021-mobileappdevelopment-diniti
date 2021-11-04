@@ -13,8 +13,8 @@
   <div class="summary-page-content">
     <div class="summary-information">
       <p *ngIf="loading">Bestellings gegevens laden...</p>
-      <p *ngIf="error">Kon de bestellings gegevens niet laden.</p>
-      <div *ngIf="!loading">
+      <p *ngIf="error && !order">Kon de bestellings gegevens niet laden.</p>
+      <div *ngIf="!loading && order">
         <p>Bestelling nr: <a>#{{ order?.orderId }}</a></p>
         <p>Status bestelling: <a>{{ order?.status }}</a></p>
         <p>Ophaal moment: <a>{{ order?.pickUpTime | stringtodate }}</a></p>
@@ -23,9 +23,9 @@
     </div>
     <div class="summary-content">
       <div class="summary-list">
-        <h2>Bestelling</h2>
         <p *ngIf="loading">Bestelling laden...</p>
-        <div *ngIf="!loading">
+        <h2 *ngIf="!loading && order">Bestelling</h2>
+        <div *ngIf="!loading && order">
           <app-product-list [hideUserButtons]="true" [disableDetail]="true"
                             [products]="order?.products"></app-product-list>
         </div>

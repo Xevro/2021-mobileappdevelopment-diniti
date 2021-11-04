@@ -35,7 +35,7 @@ export class OrderDetailsPage implements OnInit {
         (response) => {
           this.order = response?.results[0];
           this.loading = false;
-          this.error = false;
+          this.error = !this.order?.orderId;
         },
         (error) => {
           this.error = true;

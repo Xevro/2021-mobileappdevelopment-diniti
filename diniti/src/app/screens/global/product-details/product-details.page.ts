@@ -35,7 +35,7 @@ export class ProductDetailsPage implements OnInit {
         (response) => {
           this.product = response?.results[0];
           this.loading = false;
-          this.error = false;
+          this.error = !this.product?.productId;
         },
         (error) => {
           this.error = true;
