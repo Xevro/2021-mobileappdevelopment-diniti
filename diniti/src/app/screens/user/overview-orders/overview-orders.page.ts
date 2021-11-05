@@ -22,6 +22,9 @@ export class OverviewOrdersPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
     this.loading = true;
     this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
       .subscribe(

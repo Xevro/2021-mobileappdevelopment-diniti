@@ -124,6 +124,7 @@ export class ProductDetailsPage implements OnInit {
             this.imageResultData = result;
             this.loadingImage = false;
             this.uploadingImageDone = true;
+            this.edit = false;
             this.imageError = false;
           },
           (error) => {
@@ -154,6 +155,7 @@ export class ProductDetailsPage implements OnInit {
               .subscribe(
                 (status) => {
                   this.loadingImage = false;
+                  this.edit = false;
                   this.getOrderData();
                 },
                 (error) => {
@@ -189,6 +191,7 @@ export class ProductDetailsPage implements OnInit {
             .subscribe(
               (status) => {
                 this.loadingImage = false;
+                this.edit = false;
                 this.getOrderData();
               },
               (error) => {
