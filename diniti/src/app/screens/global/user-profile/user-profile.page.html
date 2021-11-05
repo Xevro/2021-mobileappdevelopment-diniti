@@ -50,25 +50,40 @@
       </div>
 
       <div *ngIf="toggleEditView" class="edit-user-fields">
-        <app-input-field (onInputChange)="firstNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [name]="'voornaam'" [placeholder]="'Voornaam'" [value]="userData.firstname"></app-input-field>
-        <div *ngIf="firstNameErrorMessage" class="error-message">
-          <p>{{ firstNameErrorMessage }}</p>
+        <div class="input-field">
+          <ion-label>Voornaam</ion-label>
+          <app-input-field (onInputChange)="firstNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                           [name]="'voornaam'" [placeholder]="'Voornaam'"
+                           [value]="userData.firstname"></app-input-field>
+          <div *ngIf="firstNameErrorMessage" class="error-message">
+            <p>{{ firstNameErrorMessage }}</p>
+          </div>
         </div>
-        <app-input-field (onInputChange)="lastNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [name]="'achternaam'" [placeholder]="'Achternaam'"
-                         [value]="userData.lastname"></app-input-field>
-        <div *ngIf="lastNameErrorMessage" class="error-message">
-          <p>{{ lastNameErrorMessage }}</p>
+        <div class="input-field">
+          <ion-label>Achternaam</ion-label>
+          <app-input-field (onInputChange)="lastNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                           [name]="'achternaam'" [placeholder]="'Achternaam'"
+                           [value]="userData.lastname"></app-input-field>
+          <div *ngIf="lastNameErrorMessage" class="error-message">
+            <p>{{ lastNameErrorMessage }}</p>
+          </div>
         </div>
-        <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                         [name]="'gebruikersnaam'" [placeholder]="'Gebruikersnaam'"
-                         [value]="userData.username"></app-input-field>
+
+        <div class="input-field">
+          <ion-label>Gebruikersnaam</ion-label>
+          <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                           [name]="'gebruikersnaam'" [placeholder]="'Gebruikersnaam'"
+                           [value]="userData.username"></app-input-field>
+        </div>
+
         <div *ngIf="userNameErrorMessage" class="error-message">
           <p>{{ userNameErrorMessage }}</p>
         </div>
-        <app-input-field (onInputChange)="emailValueChanged($event)" [fieldType]="fieldTypes.email"
-                         [name]="'email'" [placeholder]="'Email'" [value]="userData.userEmail"></app-input-field>
+        <div class="input-field">
+          <ion-label>Email adres</ion-label>
+          <app-input-field (onInputChange)="emailValueChanged($event)" [fieldType]="fieldTypes.email"
+                           [name]="'email'" [placeholder]="'Email'" [value]="userData.userEmail"></app-input-field>
+        </div>
         <div *ngIf="emailErrorMessage" class="error-message">
           <p>{{ emailErrorMessage }}</p>
         </div>

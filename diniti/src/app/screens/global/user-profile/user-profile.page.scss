@@ -80,7 +80,7 @@ ion-content {
           left: 0;
           right: 0;
           margin-top: 28px;
-          margin-left: calc(50% + 43px);
+          margin-left: calc(50% + 45px);
           margin-right: auto;
         }
 
@@ -151,6 +151,14 @@ ion-content {
         .error-message {
           font-size: 0.95rem;
           color: var(--color-app-primary);
+        }
+
+        .input-field {
+          margin-top: 18px;
+          text-align: left;
+          ion-label {
+            font-weight: bold;
+          }
         }
       }
 

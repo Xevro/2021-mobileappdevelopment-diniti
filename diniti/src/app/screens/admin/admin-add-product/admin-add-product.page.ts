@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Image, Routes} from '../../../models/core-models';
 import {Router} from '@angular/router';
 import {FieldTypes} from '../../../models/ui-models';
