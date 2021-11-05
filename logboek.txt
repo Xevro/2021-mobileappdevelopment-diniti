@@ -211,7 +211,7 @@ Logboek Mobile Application Development - 2021-2022
     ** Details van een bestelling kunnen bekijken.
     ** Producten afbeelding en gegevens kunnen wijzigen op admin pagina.
     ** Profiel van admin kunnen wijzigen.
-    * Details van een bestelling kunnen wijzigen (status) als admin;
+    ** Details van een bestelling kunnen wijzigen (status) als admin;
     * Klanten overzicht tonen op admin.
 
 
@@ -223,6 +223,7 @@ Logboek Mobile Application Development - 2021-2022
     * Beschrijving toegevoegd aan een product
     * Producten afbeelding en gegevens kunnen wijzigen op admin pagina.
     * Profiel van admin kunnen wijzigen.
+    * Details van een bestelling kunnen wijzigen (status) als admin;
 
 
   - Opgeloste problemen
@@ -244,6 +245,9 @@ Logboek Mobile Application Development - 2021-2022
 - Week 8 - vrijdag 12/11/2021
 
  - Te doen deze week
+
+    * Wachtwoord vergeten functie
+    * 
 
 
 
