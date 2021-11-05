@@ -210,8 +210,8 @@ Logboek Mobile Application Development - 2021-2022
     ** Details van een product kunnen bekijken.
     ** Details van een bestelling kunnen bekijken.
     ** Producten afbeelding en gegevens kunnen wijzigen op admin pagina.
+    ** Profiel van admin kunnen wijzigen.
     * Details van een bestelling kunnen wijzigen (status) als admin;
-    * Profiel van admin kunnen wijzigen.
     * Klanten overzicht tonen op admin.
 
 
@@ -222,7 +222,7 @@ Logboek Mobile Application Development - 2021-2022
     * Details van een bestelling kunnen bekijken.
     * Beschrijving toegevoegd aan een product
     * Producten afbeelding en gegevens kunnen wijzigen op admin pagina.
-
+    * Profiel van admin kunnen wijzigen.
 
 
   - Opgeloste problemen

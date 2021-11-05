@@ -15,6 +15,17 @@ ion-content {
       font-size: 30px;
       text-align: center;
     }
+
+    .header-edit-order {
+      position: absolute;
+      right: 10px;
+      top: -45px;
+      --color: var(--color-app-primary);
+      text-transform: lowercase;
+      font-size: 1rem;
+      font-weight: normal;
+      text-decoration: none;
+    }
   }
 
   .products-list {
@@ -37,6 +48,19 @@ ion-content {
       .summary-list {
         margin-left: 15px;
         margin-right: 15px;
+
+        .order-edit-box {
+          margin-top: 15px;
+          width: 100%;
+
+          ion-label {
+            font-weight: bold;
+          }
+
+          .save-status-button {
+            text-align: center;
+          }
+        }
 
         h2 {
           margin-bottom: 20px;

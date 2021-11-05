@@ -6,6 +6,14 @@
                          defaultHref="{{ (currentRole === role.admin) ? 'admin/orders' : 'overview/orders' }}"
                          icon="" text="Terug"></ion-back-button>
         <h2>Bestelling</h2>
+        <ion-buttons *ngIf="currentRole === role.admin">
+          <ion-button *ngIf="!edit" (click)="editOrder()" [textContent]="" class="header-edit-order">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="edit" (click)="hideEditOrder()" [textContent]="" class="header-edit-order">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </div>
     </ion-toolbar>
   </ion-header>
@@ -19,15 +27,31 @@
         <p>Status bestelling: <a>{{ order?.status }}</a></p>
         <p>Ophaal moment: <a>{{ order?.pickUpTime | stringtodate }}</a></p>
         <p>Totaal prijs: <a>{{ (order?.totalPrice !== 0.0) ? (order?.totalPrice | currency:'EUR') : ' --' }}</a></p>
+        <p>Op te halen door: {{ (user?.firstname ?? '--') + ' ' + (user?.lastname ?? '--') }}</p>
       </div>
     </div>
     <div class="summary-content">
-      <div class="summary-list">
+      <div class="summary-list" *ngIf="!edit">
         <p *ngIf="loading">Bestelling laden...</p>
         <h2 *ngIf="!loading && order">Bestelling</h2>
         <div *ngIf="!loading && order">
           <app-product-list [hideUserButtons]="true" [disableDetail]="true"
                             [products]="order?.products"></app-product-list>
+        </div>
+      </div>
+      <div class="summary-list" *ngIf="edit">
+        <div class="order-edit-box">
+          <ion-label>Status</ion-label>
+          <ion-select [(ngModel)]="order.status" [compareWith]="compareFn" (ionChange)="statusChanged($event)">
+            <ion-select-option *ngFor="let status of orderStatus | enumToArray"
+                               [value]="status[0]">{{ status[0] }}</ion-select-option>
+          </ion-select>
+          <div *ngIf="updatingLoading">
+            <p>Status wordt aangepast.</p>
+          </div>
+          <div class="save-status-button" *ngIf="changedStatus">
+            <app-button [buttonText]="'Sla wijziging op'" [invertColor]="true" (click)="saveStatus()"></app-button>
+          </div>
         </div>
       </div>
     </div>

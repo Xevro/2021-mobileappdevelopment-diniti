@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../../../models/backend-models';
+import {Order, OrderStatus, User} from '../../../models/backend-models';
 import {ActivatedRoute} from '@angular/router';
-import {OrdersProxyService} from '../../../services/backend-services';
+import {OrdersProxyService, UserProxyService} from '../../../services/backend-services';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Role} from '../../../models/authentication-models';
 
@@ -13,15 +13,21 @@ import {Role} from '../../../models/authentication-models';
 export class OrderDetailsPage implements OnInit {
 
   order: Order;
+  user: User;
   loading = false;
+  updatingLoading = false;
   error = false;
+  edit = false;
   role = Role;
+  changedStatus = false;
   currentRole: Role;
+  orderStatus = OrderStatus;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private ordersProxyService: OrdersProxyService,
-    public authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService,
+    private userProxyService: UserProxyService
   ) {
   }
 
@@ -36,8 +42,46 @@ export class OrderDetailsPage implements OnInit {
       .subscribe(
         (response) => {
           this.order = response?.results[0];
-          this.loading = false;
-          this.error = !this.order?.orderId;
+          this.userProxyService.getUserDataAction(this.order.userId.objectId)
+            .subscribe(
+              (userData) => {
+                this.user = userData;
+                this.loading = false;
+                this.error = !this.order?.orderId;
+              },
+              (error) => {
+                this.error = true;
+              });
+        },
+        (error) => {
+          this.error = true;
+        });
+  }
+
+  editOrder() {
+    this.edit = true;
+  }
+
+  hideEditOrder() {
+    this.edit = false;
+  }
+
+  statusChanged(status: any) {
+    this.changedStatus = true;
+    this.order.status = status.target.value;
+  }
+
+  compareFn(e1: any, e2: any): boolean {
+    return e1 === e2;
+  }
+
+  saveStatus() {
+    this.updatingLoading = true;
+    this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId)
+      .subscribe(
+        (response) => {
+          this.updatingLoading = false;
+          this.changedStatus = false;
         },
         (error) => {
           this.error = true;
