@@ -150,7 +150,7 @@ export class UserProfilePage implements OnInit {
               __type: 'File'
             }
           };
-          this.userProxyService.putUserImageAction(data, this.authenticationService.getObjectId())
+          this.userProxyService.updateUserImageAction(data, this.authenticationService.getObjectId())
             .subscribe(
               (status) => {
                 this.getUserDataFromCloud();
@@ -181,7 +181,7 @@ export class UserProfilePage implements OnInit {
                 __type: 'File'
               }
             };
-            this.userProxyService.putUserImageAction(data, this.authenticationService.getObjectId())
+            this.userProxyService.updateUserImageAction(data, this.authenticationService.getObjectId())
               .subscribe(
                 (status) => {
                   this.getUserDataFromCloud();
@@ -195,7 +195,6 @@ export class UserProfilePage implements OnInit {
           });
     });
   }
-
 
   firstNameValueChanged(firstNameValue: string) {
     this.updatedData.firstname = firstNameValue.trim();

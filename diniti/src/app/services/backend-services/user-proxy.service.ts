@@ -34,7 +34,7 @@ export class UserProxyService extends CrudDataProvider<any> {
     return this.postRequest(url, imageData, headerOptions);
   }
 
-  putUserImageAction(imageData: any, objectId: string): Observable<any> {
+  updateUserImageAction(imageData: any, objectId: string): Observable<any> {
     const url = 'users/' + objectId;
     const headerOptions = {
       'Content-Type': 'application/json',

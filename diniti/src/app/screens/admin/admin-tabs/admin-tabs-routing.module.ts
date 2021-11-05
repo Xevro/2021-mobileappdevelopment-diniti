@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: RouteLiterals.adminProfile,
-        loadChildren: () => import('../../admin/admin-profile/admin-profile.module').then(m => m.AdminProfilePageModule)
+        loadChildren: () => import('../../global/user-profile/user-profile.module').then(m => m.UserProfilePageModule)
       },
       {
         path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductCreate,

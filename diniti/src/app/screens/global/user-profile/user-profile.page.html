@@ -24,9 +24,9 @@
     <div *ngIf="userData" class="profile-page">
       <div class="profile-image-box">
         <img (click)="removeProfilePicture()" *ngIf="toggleEditView" alt="Remove profile image"
-             class="remove-icon" src="./assets/icon/cancel-icon.svg">
+             class="remove-icon" src="../../../../assets/icon/cancel-icon.svg">
         <img (click)="changeProfilePicture()" *ngIf="toggleEditView" alt="Edit profile image"
-             class="edit-icon" src="./assets/icon/edit-circle.svg">
+             class="edit-icon" src="../../../../assets/icon/edit-circle.svg">
         <img alt="profile image" class="profile-image" src="{{ userData?.profilePicture?.url }}">
       </div>
       <p *ngIf="loadingImage && toggleEditView" class="image-upload-message">Afbeelding aan het uploaden...</p>
@@ -34,11 +34,11 @@
 
       <div *ngIf="!toggleEditView && userData" class="profile-data">
         <div class="username-box">
-          <img alt="Username" src="./assets/icon/user-icon.svg">
+          <img alt="Username" src="../../../../assets/icon/user-icon.svg">
           <p>{{ userData?.username }}</p>
         </div>
         <div class="email-box">
-          <img alt="Email" src="./assets/icon/email-icon.svg">
+          <img alt="Email" src="../../../../assets/icon/email-icon.svg">
           <p>{{ userData?.userEmail }}</p>
         </div>
       </div>

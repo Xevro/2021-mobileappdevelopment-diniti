@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: RouteLiterals.userProfile,
-        loadChildren: () => import('../user-profile/user-profile.module').then(m => m.UserProfilePageModule)
+        loadChildren: () => import('../../global/user-profile/user-profile.module').then(m => m.UserProfilePageModule)
       },
       {
         path: RouteLiterals.orders + '/' + RouteLiterals.userOrderDetail + '/:orderUuid',
