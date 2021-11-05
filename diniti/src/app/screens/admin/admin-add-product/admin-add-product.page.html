@@ -26,6 +26,12 @@
       </div>
       <app-input-field (onInputChange)="priceValueChanged($event)" [fieldType]="fieldTypes.text" [name]="'price'"
                        [placeholder]="'Prijs'" [value]="product?.price" inputmode="decimal"></app-input-field>
+      <div *ngIf="descriptionErrorMessage" class="error-message">
+        <p>{{ descriptionErrorMessage }}</p>
+      </div>
+      <ion-textarea (ionInput)="descriptionValueChanged($event)" placeholder="Beschrijving" name="description"
+                    rows="6" cols="20"
+                    value="{{ product?.description }}"></ion-textarea>
       <ion-item class="product-visibility">
         <ion-label (click)="visibility.checked = !visibility.checked">Zichtbaar voor klanten</ion-label>
         <ion-toggle #visibility (ionChange)="changeVisibility($event)" class="button"></ion-toggle>

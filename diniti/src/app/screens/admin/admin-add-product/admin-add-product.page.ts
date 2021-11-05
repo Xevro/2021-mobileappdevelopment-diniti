@@ -26,6 +26,7 @@ export class AdminAddProductPage implements OnInit {
 
   nameErrorMessage: string = null;
   priceErrorMessage: string = null;
+  descriptionErrorMessage: string = null;
   errorMessage: string = null;
   imageError = false;
 
@@ -45,6 +46,7 @@ export class AdminAddProductPage implements OnInit {
     this.product = {
       visibility: false,
       name: '',
+      description: '',
       price: 0.0
     };
   }
@@ -135,6 +137,16 @@ export class AdminAddProductPage implements OnInit {
       this.priceErrorMessage = '';
     } catch (error) {
       this.priceErrorMessage = 'Geen geldig bedrag';
+    }
+  }
+
+  descriptionValueChanged(descriptionValue: any) {
+    const description = descriptionValue.target.value;
+    if (description.length !== 0) {
+      this.product.description = description;
+      this.descriptionErrorMessage = '';
+    } else {
+      this.descriptionErrorMessage = 'Beschrijving kan niet leeg zijn';
     }
   }
 }
