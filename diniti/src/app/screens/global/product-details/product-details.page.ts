@@ -173,7 +173,7 @@ export class ProductDetailsPage implements OnInit {
     this.imageResultData = null;
     this.uploadingImageDone = false;
     const getUrl = window.location;
-    const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/favicons/apple-icon-180x180.png';
+    const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/icon/diniti-logo.png';
     const urlRawData = await this.photoService.toDataURL(baseUrl)
       .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 

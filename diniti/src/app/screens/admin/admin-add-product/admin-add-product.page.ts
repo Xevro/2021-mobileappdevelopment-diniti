@@ -21,6 +21,7 @@ export class AdminAddProductPage implements OnInit {
   loadingImage = false;
   uploadingImageDone = false;
   imageResultData: Image;
+  routes = Routes;
 
   product: Product = {visibility: false} as Product;
 
