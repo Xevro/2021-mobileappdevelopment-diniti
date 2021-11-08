@@ -2,7 +2,7 @@
   "name": "diniti",
   "version": "0.0.1",
   "author": "Louis D'Hont",
-  "homepage": "https://ionicframework.com/",
+  "homepage": "https://xevro.github.io/diniti/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
