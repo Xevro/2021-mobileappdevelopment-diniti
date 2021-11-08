@@ -247,7 +247,9 @@ Logboek Mobile Application Development - 2021-2022
  - Te doen deze week
 
     * Wachtwoord vergeten functie
-    * 
+    * Overzicht van klanten en hun bestellingen weergeven op admin.
+    * Filters toevoegen op bestellingen pagina (admin + user).
+    * Notitie voor bestelling toevoegen (optionele notitie).
 
 
 

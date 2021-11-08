@@ -26,5 +26,24 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "urls": [
+        "https://parseapi.back4app.com/parse/classes/Products",
+        "https://parseapi.back4app.com/parse/classes/Products/**",
+        "https://parseapi.back4app.com/parse/classes/Orders",
+        "https://parseapi.back4app.com/parse/classes/Orders/**",
+        "https://parseapi.back4app.com/parse/classes/users",
+        "https://parseapi.back4app.com/parse/classes/users/**"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 100,
+        "maxAge": "1d",
+        "timeout": "5s"
+      }
+    }
   ]
 }
