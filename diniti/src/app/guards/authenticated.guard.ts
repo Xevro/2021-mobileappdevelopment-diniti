@@ -9,13 +9,13 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticatedGuard implements CanActivate {
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
   }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.authenticationService.tryAutoLogin().pipe(
       tap((status) => {
         if (!status || next.data.expectedRole !== this.authenticationService.getRole()) {

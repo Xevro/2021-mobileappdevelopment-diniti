@@ -7,7 +7,6 @@
       "installMode": "prefetch",
       "resources": {
         "files": [
-          "/favicon.ico",
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
@@ -24,6 +23,22 @@
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "parse-api",
+      "urls": [
+        "https://parseapi.back4app.com/parse/classes/Products",
+        "https://parseapi.back4app.com/parse/classes/Products/**",
+        "https://parseapi.back4app.com/parse/classes/Orders",
+        "https://parseapi.back4app.com/parse/classes/Orders/**"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 100,
+        "maxAge": "2d"
       }
     }
   ]

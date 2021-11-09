@@ -28,12 +28,20 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
     return this.postRequest(url, registerData, headerOptions);
   }
 
-  public refreshLogin(sessionToken): Observable<LoginResponse> {
+  public refreshLogin(sessionToken: string): Observable<LoginResponse> {
     const url = 'users/me';
     const headerOptions = {
       'X-Parse-Session-Token': sessionToken,
       'X-skip-request': 'true'
     };
     return this.getRequest(url, headerOptions);
+  }
+
+  public logOutAction(sessionToken: string): Observable<LoginResponse> {
+    const url = 'logout';
+    const headerOptions = {
+      'X-Parse-Session-Token': sessionToken
+    };
+    return this.postRequest(url, headerOptions);
   }
 }

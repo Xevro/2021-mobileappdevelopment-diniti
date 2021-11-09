@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {catchError, filter, first, shareReplay} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {filter, first, shareReplay} from 'rxjs/operators';
 import {AuthenticationService} from '../authentication-services';
 
 @Injectable()
 export class InterceptService implements HttpInterceptor {
   public readonly store: Record<string, Observable<HttpEvent<any>>> = {};
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(
+    private authenticationService: AuthenticationService
+  ) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -16,10 +18,10 @@ export class InterceptService implements HttpInterceptor {
       request = request.clone({
         headers: request.headers.delete('X-skip-request')
       });
-      return this.handleRequest(request, next);
+      return next.handle(request);
     }
     if (request.method !== 'GET') {
-      return this.handleRequest(request, next);
+      return next.handle(request);
     } else {
       const cachedObservable = this.store[request.urlWithParams] ||
         (this.store[request.urlWithParams] = next.handle(request).pipe(
@@ -28,17 +30,5 @@ export class InterceptService implements HttpInterceptor {
         ));
       return cachedObservable.pipe(first());
     }
-  }
-
-  private handleRequest(request: HttpRequest<any>, next: HttpHandler) {
-    return next.handle(request).pipe(catchError(err => {
-      if (err.status === 401) {
-        // auto logout if 401 response returned from api
-        this.authenticationService.logOut();
-        location.reload(true);
-      }
-      const error = err.error.message || err.statusText;
-      return throwError(error);
-    }));
   }
 }

@@ -254,7 +254,7 @@ Logboek Mobile Application Development - 2021-2022
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * Status van bestelling in lijst plaatsen op bestellingsoverzicht.
     * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
-
+    * Hoofdletters in teksten (knoppen top navbar).
 
  - Gedaan
 
@@ -262,19 +262,18 @@ Logboek Mobile Application Development - 2021-2022
 
 
 
-
   - Opgeloste problemen
 
-    *
+    * Sessie token verwijderd op de server bij uitloggen.
 
 
   - Op te lossen problemen
 
-    *
+    * In productie krijgen api calls gateway timeout 504 door cors error.
 
 
   - Bronnen
 
     * Online/offline controle: https://stackblitz.com/edit/angular-offline-online-detection?file=src%2Fapp%2Fapp.component.html
-    
+
 

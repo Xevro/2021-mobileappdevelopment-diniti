@@ -29,7 +29,8 @@ export class UserProxyService extends CrudDataProvider<any> {
   postImageAction(imageData: any): Observable<any> {
     const url = `files/userProfilePicture.png`;
     const headerOptions = {
-      'Content-Type': 'image/png'
+      'Content-Type': 'image/png',
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
     };
     return this.postRequest(url, imageData, headerOptions);
   }

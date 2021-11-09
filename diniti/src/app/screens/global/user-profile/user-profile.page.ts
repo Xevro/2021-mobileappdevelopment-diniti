@@ -129,7 +129,7 @@ export class UserProfilePage implements OnInit {
           this.toggleEditView = false;
         },
         (error) => {
-          location.reload(true);
+          console.log('fout5', error);
         });
   }
 
@@ -156,11 +156,11 @@ export class UserProfilePage implements OnInit {
                 this.getUserDataFromCloud();
               },
               (error) => {
-                location.reload(true);
+                console.log('fout4', error);
               });
         },
         (error) => {
-          location.reload(true);
+          console.log('fout3', error);
         });
   }
 
@@ -187,11 +187,11 @@ export class UserProfilePage implements OnInit {
                   this.getUserDataFromCloud();
                 },
                 (error) => {
-                  location.reload(true);
+                  console.log('fout1', error);
                 });
           },
           (error) => {
-            location.reload(true);
+            console.log('fout2', error);
           });
     });
   }

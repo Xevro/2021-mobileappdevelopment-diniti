@@ -58,11 +58,12 @@ export class AuthenticationService {
     return true;
   }
 
-  public logOut(): void {
+  public logOut() {
     this.authenticated = false;
-    this.sessionToken = null;
     this.role = null;
     this.cookieService.delete(this.cookieKey, this.cookiePath);
+    this.authenticationProxyService.logOutAction(this.sessionToken);
+    this.sessionToken = null;
   }
 
   tryAutoLogin(): Observable<boolean> {
@@ -72,17 +73,14 @@ export class AuthenticationService {
         .refreshLogin(this.sessionToken)
         .pipe(
           tap((loginInfo) => {
+            console.log(loginInfo);
             this.userLoggedIn(loginInfo);
             return of(true);
           }),
-          map(() => true),
-          catchError(() => {
-            console.error('Cookie login failed, clearing cookie');
-            this.logOut();
-            return of(false);
-          })
+          map(() => true)
         );
     }
+    this.cookieService.delete(this.cookieKey, this.cookiePath);
     return of(false);
   }
 }

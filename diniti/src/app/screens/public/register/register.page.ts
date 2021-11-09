@@ -53,34 +53,6 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  firstNameValueChanged(firstNameValue: string) {
-    this.firstNameInput = firstNameValue.trim();
-  }
-
-  lastNameValueChanged(lastNameValue: string) {
-    this.lastNameInput = lastNameValue.trim();
-  }
-
-  userNameValueChanged(userNameValue: string) {
-    this.userNameInput = userNameValue.trim();
-  }
-
-  emailValueChanged(emailValue: string) {
-    this.emailInput = emailValue.trim();
-  }
-
-  passwordValueChanged(passwordValue: string) {
-    this.passwordInput = passwordValue.trim();
-  }
-
-  passwordConfirmValueChanged(passwordConfirmValue: string) {
-    this.passwordConfirmInput = passwordConfirmValue.trim();
-  }
-
-  checkboxChanged(e) {
-    this.checked = !e.currentTarget.checked;
-  }
-
   validateRegister() {
     this.submitted = true;
     // eslint-disable-next-line max-len
@@ -122,7 +94,7 @@ export class RegisterPage implements OnInit {
       this.passwordErrorMessage = 'Wachtwoord is vereist';
       this.submitted = false;
     } else {
-      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+      const passwordRegex = /^(?=.*[A-Za-z]){8,}$/;
       if (!passwordRegex.test(this.passwordInput)) {
         this.passwordErrorMessage = 'Wachtwoord is niet goed opgebouwd';
         this.submitted = false;
@@ -167,5 +139,33 @@ export class RegisterPage implements OnInit {
           this.passwordConfirmInput = '';
           this.errorMessage = 'Kon niet registreren';
         });
+  }
+
+  firstNameValueChanged(firstNameValue: string) {
+    this.firstNameInput = firstNameValue.trim();
+  }
+
+  lastNameValueChanged(lastNameValue: string) {
+    this.lastNameInput = lastNameValue.trim();
+  }
+
+  userNameValueChanged(userNameValue: string) {
+    this.userNameInput = userNameValue.trim();
+  }
+
+  emailValueChanged(emailValue: string) {
+    this.emailInput = emailValue.trim();
+  }
+
+  passwordValueChanged(passwordValue: string) {
+    this.passwordInput = passwordValue.trim();
+  }
+
+  passwordConfirmValueChanged(passwordConfirmValue: string) {
+    this.passwordConfirmInput = passwordConfirmValue.trim();
+  }
+
+  checkboxChanged(e) {
+    this.checked = !e.currentTarget.checked;
   }
 }
