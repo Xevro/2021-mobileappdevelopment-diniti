@@ -249,19 +249,20 @@ Logboek Mobile Application Development - 2021-2022
     * Wachtwoord vergeten functie.
     * Overzicht van klanten en hun bestellingen weergeven op admin.
     * Filters toevoegen op bestellingen pagina (admin + user).
-    * Notitie voor bestelling toevoegen (optionele notitie).
-    * Na bestelling de vorige bestelling wissen.
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
+    * Op summary page een loader toevoegen zoals op login/register.
+    * 404 pagina design geven.
+
+    ** Hoofdletters in teksten (knoppen top navbar).
     * Status van bestelling in lijst weergeven op bestellingsoverzicht.
     * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
-    * Hoofdletters in teksten (knoppen top navbar).
-    * Op summary page een loader toevoegen zoals op login/register.
-    
+    * Notitie voor bestelling toevoegen (optionele notitie).
+    * Na bestelling de vorige bestelling wissen (aantal in productenlijst).
 
  - Gedaan
 
     * applicatie online geplaatst op diniti.b4a.app
-
+    * Hoofdletters in teksten (knoppen top navbar).
 
 
   - Opgeloste problemen

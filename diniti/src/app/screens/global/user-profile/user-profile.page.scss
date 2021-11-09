@@ -16,7 +16,7 @@ ion-content {
             --color: var(--color-app-secondary);
             margin-left: 15px;
             margin-top: 40px;
-            text-transform: lowercase;
+            text-transform: none;
             font-size: 1rem;
             font-weight: normal;
             text-decoration: none;
@@ -27,7 +27,7 @@ ion-content {
             --color: var(--color-app-secondary);
             margin-left: 15px;
             margin-top: 22px;
-            text-transform: lowercase;
+            text-transform: none;
             font-size: 1rem;
             font-weight: normal;
             text-decoration: none;
@@ -45,7 +45,7 @@ ion-content {
             right: 15px;
             top: -45px;
             --color: var(--color-app-secondary);
-            text-transform: lowercase;
+            text-transform: none;
             font-size: 1rem;
             font-weight: normal;
             text-decoration: none;
