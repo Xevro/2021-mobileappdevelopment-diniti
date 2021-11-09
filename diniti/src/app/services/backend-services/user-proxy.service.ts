@@ -20,10 +20,7 @@ export class UserProxyService extends CrudDataProvider<any> {
 
   getUserDataAction(objectId: string): Observable<User> {
     const url = `users/${objectId}`;
-    const headerOptions = {
-      'X-skip-request': 'true'
-    };
-    return this.getRequest(url, headerOptions);
+    return this.getRequest(url);
   }
 
   postImageAction(imageData: any): Observable<any> {

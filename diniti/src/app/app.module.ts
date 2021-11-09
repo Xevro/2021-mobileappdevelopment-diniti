@@ -20,14 +20,16 @@ import {OnlineStatusModule} from './components/online-status/online-status.modul
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
     }), OnlineStatusModule],
-  providers: [HttpClientModule,
-    ImagePicker,
-    {
+  providers: [HttpClientModule, ImagePicker, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthenticationService],
+  bootstrap: [AppComponent],
+})
+
+/*
+ {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptService,
       multi: true
-    }, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthenticationService],
-  bootstrap: [AppComponent],
-})
+    }
+ */
 export class AppModule {
 }

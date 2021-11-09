@@ -73,7 +73,6 @@ export class AuthenticationService {
         .refreshLogin(this.sessionToken)
         .pipe(
           tap((loginInfo) => {
-            console.log(loginInfo);
             this.userLoggedIn(loginInfo);
             return of(true);
           }),

@@ -20,8 +20,7 @@ export class ProductsProxyService extends CrudDataProvider<any> {
 
   getAllProductsAction(): Observable<Products> {
     const headerOptions = {
-      'X-Parse-Session-Token': this.authenticationService.getSessionToken(),
-      'X-skip-request': 'true'
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
     };
     const url = `classes/Products`;
     return this.getRequest(url, headerOptions);
@@ -37,8 +36,7 @@ export class ProductsProxyService extends CrudDataProvider<any> {
 
   getProductByIdAction(productId: string): Observable<Products> {
     const headerOptions = {
-      'X-Parse-Session-Token': this.authenticationService.getSessionToken(),
-      'X-skip-request': 'true'
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
     };
     const url = `classes/Products?where={"productId":"${productId}"}`;
     return this.getRequest(url, headerOptions);
@@ -71,7 +69,8 @@ export class ProductsProxyService extends CrudDataProvider<any> {
   postImageAction(imageData: any): Observable<any> {
     const url = `files/product-image.png`;
     const headerOptions = {
-      'Content-Type': 'image/png'
+      'Content-Type': 'image/png',
+      'X-Parse-Session-Token': this.authenticationService.getSessionToken()
     };
     return this.postRequest(url, imageData, headerOptions);
   }
