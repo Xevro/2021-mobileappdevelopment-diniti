@@ -252,9 +252,11 @@ Logboek Mobile Application Development - 2021-2022
     * Notitie voor bestelling toevoegen (optionele notitie).
     * Na bestelling de vorige bestelling wissen.
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
-    * Status van bestelling in lijst plaatsen op bestellingsoverzicht.
+    * Status van bestelling in lijst weergeven op bestellingsoverzicht.
     * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
     * Hoofdletters in teksten (knoppen top navbar).
+    * Op summary page een loader toevoegen zoals op login/register.
+    
 
  - Gedaan
 
@@ -265,7 +267,7 @@ Logboek Mobile Application Development - 2021-2022
   - Opgeloste problemen
 
     * Sessie token verwijderd op de server bij uitloggen.
-
+    * Interceptor verwijderd omdat deze in productie altijd uit de cache werd gehaald en dus niet herlade
 
   - Op te lossen problemen
 
