@@ -22,10 +22,6 @@ export class AuthenticationService {
   ) {
   }
 
-  public isAuthenticated() {
-    return this.authenticated;
-  }
-
   public getRole() {
     return this.role;
   }

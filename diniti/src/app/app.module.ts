@@ -12,6 +12,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from './services/authentication-services';
 import {InterceptService} from './services/core-services';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
+import {OnlineStatusModule} from './components/online-status/online-status.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,7 @@ import {ImagePicker} from '@ionic-native/image-picker/ngx';
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
-    })],
+    }), OnlineStatusModule],
   providers: [HttpClientModule,
     ImagePicker,
     {
