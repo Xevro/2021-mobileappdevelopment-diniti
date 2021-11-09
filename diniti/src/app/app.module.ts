@@ -6,9 +6,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from './services/authentication-services';
-import {InterceptService} from './services/core-services';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {OnlineStatusModule} from './components/online-status/online-status.module';
 
@@ -20,7 +19,10 @@ import {OnlineStatusModule} from './components/online-status/online-status.modul
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
     }), OnlineStatusModule],
-  providers: [HttpClientModule, ImagePicker, {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthenticationService],
+  providers: [HttpClientModule, ImagePicker, {
+    provide: RouteReuseStrategy,
+    useClass: IonicRouteStrategy
+  }, AuthenticationService],
   bootstrap: [AppComponent],
 })
 

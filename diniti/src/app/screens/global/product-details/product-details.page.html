@@ -2,16 +2,28 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <div class="product-header">
-        <ion-back-button class="go-back"
+        <ion-back-button *ngIf="!edit"
                          defaultHref="{{ (currentRole === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
-                         icon="" text="Terug"></ion-back-button>
-        <h2>{{ (product?.name) ? product?.name : '' }}</h2>
+                         class="go-back" icon="" text="Terug">
+        </ion-back-button>
+        <ion-buttons *ngIf="currentRole === role.admin">
+          <ion-button *ngIf="edit" (click)="hideEditProduct()" [textContent]="" class="header-close-edit">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+        <ion-back-button *ngIf="currentRole === role.user"
+                         defaultHref="{{ (currentRole === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
+                         class="go-back" icon="" text="Terug">
+        </ion-back-button>
+
+        <h2>{{ (product?.name) ? product?.name : '--' }}</h2>
         <ion-buttons *ngIf="currentRole === role.admin">
           <ion-button *ngIf="!edit" (click)="editProduct()" [textContent]="" class="header-edit-product">
             <ion-icon name="create-outline"></ion-icon>
           </ion-button>
-          <ion-button *ngIf="edit" (click)="hideEditProduct()" [textContent]="" class="header-edit-product">
-            <ion-icon name="close-outline"></ion-icon>
+          <ion-button *ngIf="edit" (click)="SaveEditProduct()" [textContent]="" class="header-edit-product">
+            <ion-icon name="save-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
       </div>

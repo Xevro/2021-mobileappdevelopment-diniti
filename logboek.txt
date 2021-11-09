@@ -255,7 +255,8 @@ Logboek Mobile Application Development - 2021-2022
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * 404 pagina design geven.
     * Fix error messages on all pages. (console.log('error', error)).
-    
+    * Voeg herlaad knop toe op products en bestellingen pagina.
+
     * Status van bestelling in lijst weergeven op bestellingsoverzicht.
     * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
     * Notitie voor bestelling toevoegen (optionele notitie).
@@ -268,10 +269,12 @@ Logboek Mobile Application Development - 2021-2022
     * Hoofdletters in teksten (knoppen top navbar).
     * Op summary page een loader toevoegen zoals op login/register.
 
+
   - Opgeloste problemen
 
     * Sessie token verwijderd op de server bij uitloggen.
     * Interceptor verwijderd omdat deze in productie altijd uit de cache werd gehaald en dus niet herlade
+
 
   - Op te lossen problemen
 

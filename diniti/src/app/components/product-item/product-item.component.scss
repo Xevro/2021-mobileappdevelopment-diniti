@@ -9,6 +9,10 @@
     .product-image-box {
       margin-top: auto;
       margin-bottom: auto;
+
+      ion-img {
+        border-radius: 10px;
+      }
     }
 
     .product-item-box {

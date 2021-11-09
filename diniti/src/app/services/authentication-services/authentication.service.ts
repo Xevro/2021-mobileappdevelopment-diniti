@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable, of} from 'rxjs';
 import {LoginResponse, RegisterResponse, Role} from '../../models/authentication-models';
-import {catchError, map, tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {AuthenticationProxyService} from './index';
 
 @Injectable({

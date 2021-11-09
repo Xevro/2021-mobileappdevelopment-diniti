@@ -1,6 +1,11 @@
 <div (click)="goToDetailPage()" class="order-item">
-  <div>
-    <p>Bestelling #{{ order.orderId }}</p>
+  <div class="item-top-row">
+    <div>
+      <p>Bestelling #{{ order.orderId }}</p>
+    </div>
+    <div class="order-status">
+      <p>{{ order.status ?? '--' }}</p>
+    </div>
   </div>
   <div class="item-bottom-row">
     <div>
