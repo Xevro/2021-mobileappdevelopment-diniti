@@ -2,16 +2,21 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <div class="summary-header">
-        <ion-back-button class="go-back"
+        <ion-back-button *ngIf="!edit"
                          defaultHref="{{ (currentRole === role.admin) ? 'admin/orders' : 'overview/orders' }}"
-                         icon="" text="Terug"></ion-back-button>
+                         class="go-back" icon="" text="Terug"></ion-back-button>
+        <ion-buttons *ngIf="currentRole === role.admin">
+          <ion-button *ngIf="edit" (click)="hideEditOrder()" [textContent]="" class="header-close-edit">
+            <ion-icon name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
         <h2>Bestelling</h2>
         <ion-buttons *ngIf="currentRole === role.admin">
           <ion-button *ngIf="!edit" (click)="editOrder()" [textContent]="" class="header-edit-order">
             <ion-icon name="create-outline"></ion-icon>
           </ion-button>
-          <ion-button *ngIf="edit" (click)="hideEditOrder()" [textContent]="" class="header-edit-order">
-            <ion-icon name="close-outline"></ion-icon>
+          <ion-button *ngIf="edit" (click)="saveStatus()" [textContent]="" class="header-edit-order">
+            <ion-icon name="save-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
       </div>

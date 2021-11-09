@@ -10,6 +10,13 @@ ion-content {
       text-decoration: none;
     }
 
+    .header-close-edit {
+      position: absolute;
+      top: 1px;
+      left: 14px;
+      --color: var(--color-app-primary);
+    }
+
     h2 {
       font-weight: 600;
       font-size: 30px;
@@ -21,10 +28,6 @@ ion-content {
       right: 10px;
       top: -45px;
       --color: var(--color-app-primary);
-      text-transform: none;
-      font-size: 1rem;
-      font-weight: normal;
-      text-decoration: none;
     }
   }
 
