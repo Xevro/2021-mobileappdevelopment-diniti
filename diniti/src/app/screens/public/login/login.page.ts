@@ -43,11 +43,11 @@ export class LoginPage implements OnInit {
   }
 
   userNameValueChanged(userNameValue: string) {
-    this.usernameInput = userNameValue.trim();
+    this.usernameInput = userNameValue;
   }
 
   passwordValueChanged(passwordValue: string) {
-    this.passwordInput = passwordValue.trim();
+    this.passwordInput = passwordValue;
   }
 
   validateLogin() {

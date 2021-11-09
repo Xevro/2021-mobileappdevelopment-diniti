@@ -142,27 +142,27 @@ export class RegisterPage implements OnInit {
   }
 
   firstNameValueChanged(firstNameValue: string) {
-    this.firstNameInput = firstNameValue.trim();
+    this.firstNameInput = firstNameValue;
   }
 
   lastNameValueChanged(lastNameValue: string) {
-    this.lastNameInput = lastNameValue.trim();
+    this.lastNameInput = lastNameValue;
   }
 
   userNameValueChanged(userNameValue: string) {
-    this.userNameInput = userNameValue.trim();
+    this.userNameInput = userNameValue;
   }
 
   emailValueChanged(emailValue: string) {
-    this.emailInput = emailValue.trim();
+    this.emailInput = emailValue;
   }
 
   passwordValueChanged(passwordValue: string) {
-    this.passwordInput = passwordValue.trim();
+    this.passwordInput = passwordValue;
   }
 
   passwordConfirmValueChanged(passwordConfirmValue: string) {
-    this.passwordConfirmInput = passwordConfirmValue.trim();
+    this.passwordConfirmInput = passwordConfirmValue;
   }
 
   checkboxChanged(e) {

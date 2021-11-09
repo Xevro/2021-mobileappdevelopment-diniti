@@ -16,7 +16,7 @@ import {UuidGenerator} from '../../../services/core-services';
 export class AdminAddProductPage implements OnInit {
 
   fieldTypes = FieldTypes;
-
+  loading = false;
   submitted = true;
   loadingImage = false;
   uploadingImageDone = false;
@@ -57,11 +57,13 @@ export class AdminAddProductPage implements OnInit {
   }
 
   goToProducts() {
+    this.loading = false;
     this.router.navigate(Routes.adminProducts);
   }
 
   saveNewProduct() {
     if (this.product.name && this.product.price) {
+      this.loading = true;
       this.errorMessage = '';
       if (this.imageResultData) {
         this.product.image = {
@@ -122,8 +124,8 @@ export class AdminAddProductPage implements OnInit {
   }
 
   nameValueChanged(nameValue: string) {
-    if (nameValue.trim().length !== 0) {
-      this.product.name = nameValue.trim();
+    if (nameValue.length !== 0) {
+      this.product.name = nameValue;
       this.nameErrorMessage = '';
     } else {
       this.nameErrorMessage = 'Naam kan niet leeg zijn';

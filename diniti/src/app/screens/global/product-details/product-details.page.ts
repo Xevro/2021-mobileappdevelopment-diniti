@@ -159,11 +159,11 @@ export class ProductDetailsPage implements OnInit {
                   this.getOrderData();
                 },
                 (error) => {
-                  location.reload(true);
+                  console.log('error4', error);
                 });
           },
           (error) => {
-            location.reload(true);
+            console.log('error3', error);
           });
     });
   }
@@ -195,11 +195,11 @@ export class ProductDetailsPage implements OnInit {
                 this.getOrderData();
               },
               (error) => {
-                location.reload(true);
+                console.log('error1', error);
               });
         },
         (error) => {
-          location.reload(true);
+          console.log('error2', error);
         });
   }
 
@@ -208,8 +208,8 @@ export class ProductDetailsPage implements OnInit {
   }
 
   nameValueChanged(nameValue: string) {
-    if (nameValue.trim().length !== 0) {
-      this.updateProduct.name = nameValue.trim();
+    if (nameValue?.trim().length !== 0) {
+      this.updateProduct.name = nameValue;
       this.nameErrorMessage = '';
     } else {
       this.nameErrorMessage = 'Naam kan niet leeg zijn';
@@ -229,7 +229,7 @@ export class ProductDetailsPage implements OnInit {
 
   descriptionValueChanged(descriptionValue: any) {
     const description = descriptionValue.target.value;
-    if (description.length !== 0) {
+    if (description?.trim().length !== 0) {
       this.updateProduct.description = description;
       this.descriptionErrorMessage = '';
     } else {

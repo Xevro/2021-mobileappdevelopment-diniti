@@ -197,18 +197,18 @@ export class UserProfilePage implements OnInit {
   }
 
   firstNameValueChanged(firstNameValue: string) {
-    this.updatedData.firstname = firstNameValue.trim();
+    this.updatedData.firstname = firstNameValue;
   }
 
   lastNameValueChanged(lastNameValue: string) {
-    this.updatedData.lastname = lastNameValue.trim();
+    this.updatedData.lastname = lastNameValue;
   }
 
   userNameValueChanged(userNameValue: string) {
-    this.updatedData.username = userNameValue.trim();
+    this.updatedData.username = userNameValue;
   }
 
   emailValueChanged(emailValue: string) {
-    this.updatedData.email = emailValue.trim();
+    this.updatedData.email = emailValue;
   }
 }

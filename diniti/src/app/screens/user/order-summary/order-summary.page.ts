@@ -14,6 +14,7 @@ import {UuidGenerator} from '../../../services/core-services';
 export class OrderSummaryPage implements OnInit {
 
   createOrder = false;
+  loading = false;
   order: Order = {totalPrice: 0.0} as Order;
   timeError: string;
 
@@ -45,6 +46,7 @@ export class OrderSummaryPage implements OnInit {
 
   goToOrderComplete() {
     this.timeError = '';
+    this.loading = true;
     // check if internet connection is active
     if (this.order.pickUpTime) {
       this.order.status = OrderStatus.pending;
@@ -63,6 +65,7 @@ export class OrderSummaryPage implements OnInit {
       this.ordersProxyService.postOrderAction(this.order)
         .subscribe(
           (response) => {
+            this.loading = false;
             this.router.navigate(Routes.orderComplete);
           },
           (error) => {
