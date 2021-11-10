@@ -7,6 +7,23 @@
     <div class="list-title">
       <h4>Bestellingen</h4>
     </div>
+    <div class="orders-list">
+    <div class="filter-options">
+      <ion-item>
+        <ion-label>Sorteer op datum</ion-label>
+        <ion-select interface="popover" [(ngModel)]="dateFilter" (ionChange)="sortOnDate($event)">
+          <ion-select-option *ngFor="let date of dateFilterOptions | enumToArray"
+                             [value]="date[0]">{{ date[0] }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sorteer op status</ion-label>
+        <ion-select interface="popover" [(ngModel)]="filterStatus" (ionChange)="statusChanged($event)">
+          <ion-select-option *ngFor="let status of orderFilterStatus | enumToArray"
+                             [value]="status[0]">{{ status[0] }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
     <app-order-list *ngIf="orders?.results?.length > 0 && !loading" [orders]="orders"></app-order-list>
     <div *ngIf="loading" class="orders-loading">
       <p>Bestellingen laden...</p>
@@ -14,5 +31,6 @@
     <div *ngIf="orders?.results?.length === 0 && !loading" class="no-orders">
       <p>Geen bestellingen gevonden</p>
     </div>
+  </div>
   </div>
 </ion-content>

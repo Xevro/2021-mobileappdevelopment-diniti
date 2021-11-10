@@ -11,19 +11,28 @@ ion-content {
     padding-left: 18px;
   }
 
-  h2 {
-    font-weight: 600;
-    font-size: 30px;
-    text-align: center;
-  }
+  .orders-list {
+    max-width: 430px;
+    margin: 40px auto auto;
 
-  .no-orders {
-    text-align: center;
-    margin: auto;
-  }
+    .filter-options {
+      margin-bottom: 30px;
+    }
 
-  .orders-loading {
-    text-align: center;
-    margin: auto;
+    h2 {
+      font-weight: 600;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .no-orders {
+      text-align: center;
+      margin: auto;
+    }
+
+    .orders-loading {
+      text-align: center;
+      margin: auto;
+    }
   }
 }
