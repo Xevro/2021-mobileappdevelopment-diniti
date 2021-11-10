@@ -248,6 +248,8 @@ Logboek Mobile Application Development - 2021-2022
 
     ** Op summary page een loader toevoegen zoals op login/register.
     ** Hoofdletters in teksten (knoppen top navbar).
+    ** Status van bestelling in lijst weergeven op bestellingsoverzicht.
+
 
     * Wachtwoord vergeten functie.
     * Overzicht van klanten en hun bestellingen weergeven op admin.
@@ -257,7 +259,6 @@ Logboek Mobile Application Development - 2021-2022
     * Fix error messages on all pages. (console.log('error', error)).
     * Voeg herlaad knop toe op products en bestellingen pagina.
 
-    * Status van bestelling in lijst weergeven op bestellingsoverzicht.
     * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
     * Notitie voor bestelling toevoegen (optionele notitie).
     * Na bestelling de vorige bestelling wissen (aantal in productenlijst).
@@ -268,7 +269,9 @@ Logboek Mobile Application Development - 2021-2022
     * applicatie online geplaatst op diniti.b4a.app
     * Hoofdletters in teksten (knoppen top navbar).
     * Op summary page een loader toevoegen zoals op login/register.
-
+    * Status van bestelling in lijst weergeven op bestellingsoverzicht.
+    * Knoppen (close en save) verplaatst voor gebruikersgemak op product en order detail pagina.
+    
 
   - Opgeloste problemen
 

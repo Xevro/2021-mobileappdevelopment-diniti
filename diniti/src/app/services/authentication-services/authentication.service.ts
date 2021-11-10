@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable, of} from 'rxjs';
 import {LoginResponse, RegisterResponse, Role} from '../../models/authentication-models';
-import {map, tap} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {AuthenticationProxyService} from './index';
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -76,7 +77,13 @@ export class AuthenticationService {
             this.userLoggedIn(loginInfo);
             return of(true);
           }),
-          map(() => true)
+          map(() => true),
+          catchError(err => {
+            if (err instanceof HttpErrorResponse) {
+              this.cookieService.delete(this.cookieKey, this.cookiePath);
+              return of(false);
+            }
+          })
         );
     }
     this.cookieService.delete(this.cookieKey, this.cookiePath);

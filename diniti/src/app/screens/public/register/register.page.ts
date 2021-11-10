@@ -94,7 +94,7 @@ export class RegisterPage implements OnInit {
       this.passwordErrorMessage = 'Wachtwoord is vereist';
       this.submitted = false;
     } else {
-      const passwordRegex = /^(?=.*[A-Za-z]){8,}$/;
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})$/;
       if (!passwordRegex.test(this.passwordInput)) {
         this.passwordErrorMessage = 'Wachtwoord is niet goed opgebouwd';
         this.submitted = false;

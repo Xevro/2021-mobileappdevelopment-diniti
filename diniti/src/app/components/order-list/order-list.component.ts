@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Orders} from '../../models/backend-models';
+import {OrderFilterOptions, Orders} from '../../models/backend-models';
 
 @Component({
   selector: 'app-order-list',
@@ -9,6 +9,8 @@ import {Orders} from '../../models/backend-models';
 export class OrderListComponent implements OnInit {
 
   @Input() orders: Orders;
+  orderFilterStatus = OrderFilterOptions;
+  filterStatus: OrderFilterOptions = OrderFilterOptions.empty;
 
   constructor() {
   }
@@ -16,4 +18,9 @@ export class OrderListComponent implements OnInit {
   ngOnInit() {
   }
 
+  statusChanged(status: any) {
+    console.log(status.target.value);
+    //this.changedStatus = true;
+    // this.order.status = status.target.value;
+  }
 }

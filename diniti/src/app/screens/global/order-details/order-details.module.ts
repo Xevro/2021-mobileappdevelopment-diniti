@@ -19,6 +19,9 @@ import {ButtonModule} from "../../../components/button/button.module";
     OrderListItemModule,
     ButtonModule
   ],
+  exports: [
+    EnumToArrayPipe
+  ],
   declarations: [OrderDetailsPage, EnumToArrayPipe]
 })
 export class OrderDetailsPageModule {
