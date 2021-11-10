@@ -249,11 +249,12 @@ Logboek Mobile Application Development - 2021-2022
     ** Op summary page een loader toevoegen zoals op login/register.
     ** Hoofdletters in teksten (knoppen top navbar).
     ** Status van bestelling in lijst weergeven op bestellingsoverzicht.
+    ** Wijzig guard op onboarding/login/register pagina's zoals bij overview tabs.
+    ** Filters toevoegen op bestellingen pagina (admin + user).
 
+    * Wachtwoord vergeten functie toevoegen.
+    * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
 
-    * Wachtwoord vergeten functie.
-    * Overzicht van klanten en hun bestellingen weergeven op admin.
-    * Filters toevoegen op bestellingen pagina (admin + user).
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * 404 pagina design geven.
     * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
@@ -263,7 +264,7 @@ Logboek Mobile Application Development - 2021-2022
     * Notitie voor bestelling toevoegen (optionele notitie) (toast.
     * Push notificatie kunnen tonen (optioneel).
     * Na bestelling de vorige bestelling wissen (aantal in productenlijst).
-    * Wijzig guard op onboarding/login/register pagina's zoals bij overview tabs.
+    
 
 
  - Gedaan
@@ -274,7 +275,9 @@ Logboek Mobile Application Development - 2021-2022
     * Status van bestelling in lijst weergeven op bestellingsoverzicht.
     * Knoppen (close en save) verplaatst voor gebruikersgemak op product en order detail pagina.
     * Error catch toegevoegd om session cookie te verwijderen.
-
+    * Wijzig guard op onboarding/login/register pagina's zoals bij overview tabs.
+    * Filters toevoegen op bestellingen pagina (admin + user).
+    
 
   - Opgeloste problemen
 

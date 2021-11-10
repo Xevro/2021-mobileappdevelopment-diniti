@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs';
 import {LoginResponse, RegisterResponse, Role} from '../../models/authentication-models';
 import {catchError, map, tap} from 'rxjs/operators';
 import {AuthenticationProxyService} from './index';
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'

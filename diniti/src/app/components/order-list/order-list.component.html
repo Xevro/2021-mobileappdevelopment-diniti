@@ -1,13 +1,5 @@
 <div class="orders-list-box">
   <div class="orders-list">
-    <div class="filter-options">
-      <p>Filter</p>
-      <ion-select interface="popover" [(ngModel)]="filterStatus"
-                  (ionChange)="statusChanged($event)">
-        <ion-select-option *ngFor="let status of orderFilterStatus | enumToArray"
-                           [value]="status[0]">{{ status[0] }}</ion-select-option>
-      </ion-select>
-    </div>
     <app-order-list-item *ngFor="let order of orders?.results" [order]="order"></app-order-list-item>
   </div>
 </div>

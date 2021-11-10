@@ -12,7 +12,12 @@ ion-content {
   }
 
   .orders-list {
-    margin-top: 100px;
+    max-width: 430px;
+    margin: 40px auto auto;
+
+    .filter-options {
+      margin-bottom: 30px;
+    }
   }
 
   h2 {
