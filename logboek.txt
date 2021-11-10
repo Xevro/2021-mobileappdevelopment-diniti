@@ -254,6 +254,7 @@ Logboek Mobile Application Development - 2021-2022
 
     * Wachtwoord vergeten functie toevoegen.
     * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
+    * Bestelling kunnen verwijderen op detail pagina.
 
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * 404 pagina design geven.
@@ -277,7 +278,7 @@ Logboek Mobile Application Development - 2021-2022
     * Error catch toegevoegd om session cookie te verwijderen.
     * Wijzig guard op onboarding/login/register pagina's zoals bij overview tabs.
     * Filters toevoegen op bestellingen pagina (admin + user).
-    
+
 
   - Opgeloste problemen
 

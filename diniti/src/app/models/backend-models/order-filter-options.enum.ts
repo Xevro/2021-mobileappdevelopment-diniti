@@ -1,5 +1,5 @@
 export enum OrderFilterOptions {
-  empty = 'Geen filter',
+  empty = '--',
   pending = 'Open',
   closed = 'Afgewerkt'
 }
