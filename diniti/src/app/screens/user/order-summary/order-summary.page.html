@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <ion-header class="ion-no-border">
     <ion-toolbar>
-      <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+      <ion-progress-bar *ngIf="loading && !timeError" type="indeterminate"></ion-progress-bar>
       <div class="summary-header">
         <ion-back-button class="go-back" defaultHref="overview/order/create" icon="" text="Terug"></ion-back-button>
         <h2>Winkelmand</h2>
@@ -15,9 +15,7 @@
 
   <div class="summary-page-content">
     <div class="summary-information">
-      <div>
-        <p>Totaal prijs: <a>{{ (order?.totalPrice !== 0.0) ? (order?.totalPrice | currency:'EUR') : ' --' }}</a></p>
-      </div>
+      <p>Totaal prijs: <a>{{ (order?.totalPrice !== 0.0) ? (order?.totalPrice | currency:'EUR') : ' --' }}</a></p>
     </div>
     <div class="summary-content">
       <ion-list class="time-picker">

@@ -2,25 +2,18 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OnboardingPage} from './onboarding.page';
 import {RouteLiterals} from '../../../models/core-models';
-import {LoginGuard} from '../../../guards';
 
 const routes: Routes = [
   {
     path: '',
     component: OnboardingPage,
-    canActivate: [LoginGuard],
-    runGuardsAndResolvers: 'always',
   },
   {
     path: RouteLiterals.login,
-    canActivate: [LoginGuard],
-    runGuardsAndResolvers: 'always',
     loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: RouteLiterals.register,
-    canActivate: [LoginGuard],
-    runGuardsAndResolvers: 'always',
     loadChildren: () => import('../register/register.module').then(m => m.RegisterUserPageModule)
   }
 ];

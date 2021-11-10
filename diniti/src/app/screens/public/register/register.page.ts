@@ -94,7 +94,7 @@ export class RegisterPage {
       this.passwordErrorMessage = 'Wachtwoord is vereist';
       this.submitted = false;
     } else {
-      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})$/;
+      const passwordRegex = /^[A-Za-z0-9]\w{8,}$/;
       if (!passwordRegex.test(this.passwordInput)) {
         this.passwordErrorMessage = 'Wachtwoord is niet goed opgebouwd';
         this.submitted = false;
@@ -109,8 +109,8 @@ export class RegisterPage {
       this.checkedErrorMessage = null;
     }
 
-    if (!this.firstNameErrorMessage && !this.lastNameErrorMessage && !this.userNameErrorMessage
-      && !this.passwordErrorMessage && (this.passwordInput === this.passwordConfirmInput) && this.checked) {
+    if ((!this.firstNameErrorMessage && !this.lastNameErrorMessage && !this.userNameErrorMessage
+      && !this.passwordErrorMessage) && (this.passwordInput === this.passwordConfirmInput) && this.checked) {
       this.submitRegister();
     }
   }

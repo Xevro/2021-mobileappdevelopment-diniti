@@ -29,6 +29,11 @@ ion-content {
     .input-fields {
       margin-top: 80px;
 
+      .error-message {
+        font-size: 0.95rem;
+        color: var(--color-app-primary);
+      }
+
       .button-register {
         text-align: center;
         margin-top: 25px;

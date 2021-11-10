@@ -281,6 +281,8 @@ Logboek Mobile Application Development - 2021-2022
     * Sessie token verwijderd op de server bij uitloggen.
     * Interceptor verwijderd omdat deze in productie altijd uit de cache werd gehaald en dus niet herlade
     * Verbetering in de guards: Elke pagina voerde 2 keer de guard uit doordat de guard op beide routing bestanden stond.
+    * Om data steeds opnieuw te laden bij bezoeken zijn alle 'ngOnInit' functies gewijzigd naar 'ionViewWillEnter'
+
 
   - Op te lossen problemen
 
