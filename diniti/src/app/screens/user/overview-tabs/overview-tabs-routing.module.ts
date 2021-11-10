@@ -2,13 +2,11 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OverviewTabsPage} from './overview-tabs.page';
 import {RouteLiterals} from '../../../models/core-models';
-import {AuthenticatedGuard} from '../../../guards';
 
 const routes: Routes = [
   {
     path: '',
     component: OverviewTabsPage,
-    canActivate: [AuthenticatedGuard],
     children: [
       {
         path: RouteLiterals.orders,

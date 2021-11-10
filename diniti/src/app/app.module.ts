@@ -9,7 +9,6 @@ import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from './services/authentication-services';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
-import {OnlineStatusModule} from './components/online-status/online-status.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +17,7 @@ import {OnlineStatusModule} from './components/online-status/online-status.modul
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerWhenStable:30000'
-    }), OnlineStatusModule],
+    })],
   providers: [HttpClientModule, ImagePicker, {
     provide: RouteReuseStrategy,
     useClass: IonicRouteStrategy

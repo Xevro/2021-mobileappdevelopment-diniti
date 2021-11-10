@@ -12,11 +12,6 @@
           </ion-button>
         </ion-buttons>
 
-        <ion-back-button *ngIf="currentRole === role.user"
-                         defaultHref="{{ (currentRole === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
-                         class="go-back" icon="" text="Terug">
-        </ion-back-button>
-
         <h2>{{ (product?.name) ? product?.name : '--' }}</h2>
         <ion-buttons *ngIf="currentRole === role.admin">
           <ion-button *ngIf="!edit" (click)="editProduct()" [textContent]="" class="header-edit-product">

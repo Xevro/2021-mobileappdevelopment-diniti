@@ -19,12 +19,17 @@ export class AdminOverviewPage implements OnInit {
   }
 
   ngOnInit() {
+    this.getOrders();
+  }
+
+  getOrders(event?: any) {
     this.loading = true;
     this.ordersProxyService.getAllOrdersAction()
       .subscribe(
         (response) => {
           this.orders = response;
           this.loading = false;
+          event?.target.complete();
         },
         (error) => {
         });

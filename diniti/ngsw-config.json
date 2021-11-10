@@ -38,6 +38,7 @@
       "cacheConfig": {
         "strategy": "performance",
         "maxSize": 100,
+        "timeout": "3s",
         "maxAge": "2d"
       }
     }

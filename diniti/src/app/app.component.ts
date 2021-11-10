@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {fromEvent, Observable, Subscription} from 'rxjs';
+import {ToastMessageService} from './services/ui-services';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  connectionStatusMessage: string;
-  connectionStatus: string;
-
-  constructor() {
+  constructor(
+    private toastMessageService: ToastMessageService
+  ) {
   }
 
   ngOnInit() {
@@ -23,14 +23,14 @@ export class AppComponent implements OnInit, OnDestroy {
     this.offlineEvent = fromEvent(window, 'offline');
 
     this.subscriptions.push(this.onlineEvent.subscribe(e => {
-      this.connectionStatusMessage = 'Back to online';
-      this.connectionStatus = 'online';
+      this.toastMessageService.presentToast('U bent terug online').then(() => {
+        location.reload(true);
+      });
       console.log('Online...');
     }));
 
     this.subscriptions.push(this.offlineEvent.subscribe(e => {
-      this.connectionStatusMessage = 'Connection lost! You are not connected to internet';
-      this.connectionStatus = 'offline';
+      this.toastMessageService.presentToast('U bent offline');
       console.log('Offline...');
     }));
   }

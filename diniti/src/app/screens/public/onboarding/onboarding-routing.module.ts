@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OnboardingPage} from './onboarding.page';
 import {RouteLiterals} from '../../../models/core-models';
-import {LoginGuard} from '../../../guards/login.guard';
+import {LoginGuard} from '../../../guards';
 
 const routes: Routes = [
   {

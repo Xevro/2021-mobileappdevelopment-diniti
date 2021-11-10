@@ -256,12 +256,14 @@ Logboek Mobile Application Development - 2021-2022
     * Filters toevoegen op bestellingen pagina (admin + user).
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * 404 pagina design geven.
-    * Fix error messages on all pages. (console.log('error', error)).
-    * Voeg herlaad knop toe op products en bestellingen pagina.
+    * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
+    * Voeg herlaad data knop toe op products en bestellingen pagina (ion-refresher) (toegepast op orders overview).
 
     * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
-    * Notitie voor bestelling toevoegen (optionele notitie).
+    * Notitie voor bestelling toevoegen (optionele notitie) (toast.
+    * Push notificatie kunnen tonen (optioneel).
     * Na bestelling de vorige bestelling wissen (aantal in productenlijst).
+    * Wijzig guard op onboarding/login/register pagina's zoals bij overview tabs.
 
 
  - Gedaan
@@ -271,13 +273,14 @@ Logboek Mobile Application Development - 2021-2022
     * Op summary page een loader toevoegen zoals op login/register.
     * Status van bestelling in lijst weergeven op bestellingsoverzicht.
     * Knoppen (close en save) verplaatst voor gebruikersgemak op product en order detail pagina.
-    
+    * Error catch toegevoegd om session cookie te verwijderen.
+
 
   - Opgeloste problemen
 
     * Sessie token verwijderd op de server bij uitloggen.
     * Interceptor verwijderd omdat deze in productie altijd uit de cache werd gehaald en dus niet herlade
-
+    * Verbetering in de guards: Elke pagina voerde 2 keer de guard uit doordat de guard op beide routing bestanden stond.
 
   - Op te lossen problemen
 

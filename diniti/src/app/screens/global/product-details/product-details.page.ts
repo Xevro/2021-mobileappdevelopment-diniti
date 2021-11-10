@@ -46,6 +46,9 @@ export class ProductDetailsPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
     this.getOrderData();
     this.currentRole = this.authenticationService.getRole();
   }
