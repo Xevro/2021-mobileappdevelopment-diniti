@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Orders} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 import {OrdersProxyService} from '../../../services/backend-services';
@@ -8,7 +8,7 @@ import {OrdersProxyService} from '../../../services/backend-services';
   templateUrl: './admin-overview.page.html',
   styleUrls: ['./admin-overview.page.scss'],
 })
-export class AdminOverviewPage implements OnInit {
+export class AdminOverviewPage {
   orders: Orders;
   loading = false;
 
@@ -18,7 +18,7 @@ export class AdminOverviewPage implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getOrders();
   }
 
@@ -32,6 +32,8 @@ export class AdminOverviewPage implements OnInit {
           event?.target.complete();
         },
         (error) => {
+          console.log('orders error probleem');
+          console.log(error);
         });
   }
 }

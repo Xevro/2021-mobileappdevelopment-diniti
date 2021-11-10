@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Order, OrderStatus, User} from '../../../models/backend-models';
 import {ActivatedRoute} from '@angular/router';
 import {OrdersProxyService, UserProxyService} from '../../../services/backend-services';
@@ -10,7 +10,7 @@ import {Role} from '../../../models/authentication-models';
   templateUrl: './order-details.page.html',
   styleUrls: ['./order-details.page.scss'],
 })
-export class OrderDetailsPage implements OnInit {
+export class OrderDetailsPage {
 
   order: Order;
   user: User;
@@ -31,7 +31,7 @@ export class OrderDetailsPage implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getOrderData();
     this.currentRole = this.authenticationService.getRole();
   }
@@ -82,6 +82,7 @@ export class OrderDetailsPage implements OnInit {
         (response) => {
           this.updatingLoading = false;
           this.changedStatus = false;
+          this.edit = false;
         },
         (error) => {
           this.error = true;

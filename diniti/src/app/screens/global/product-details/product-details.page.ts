@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Product, UpdateProduct} from '../../../models/backend-models';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductsProxyService} from '../../../services/backend-services';
@@ -14,7 +14,7 @@ import {PhotoService} from '../../../services/ui-services';
   templateUrl: './product-details.page.html',
   styleUrls: ['./product-details.page.scss'],
 })
-export class ProductDetailsPage implements OnInit {
+export class ProductDetailsPage {
 
   product: Product;
   updateProduct: UpdateProduct = {} as UpdateProduct;
@@ -43,9 +43,6 @@ export class ProductDetailsPage implements OnInit {
     private productsProxyService: ProductsProxyService,
     public authenticationService: AuthenticationService
   ) {
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {

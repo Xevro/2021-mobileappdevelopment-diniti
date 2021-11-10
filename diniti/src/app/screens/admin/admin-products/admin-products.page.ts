@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Product} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 import {ProductsProxyService} from '../../../services/backend-services';
@@ -9,7 +9,7 @@ import {Routes} from '../../../models/core-models';
   templateUrl: './admin-products.page.html',
   styleUrls: ['./admin-products.page.scss'],
 })
-export class AdminProductsPage implements OnInit {
+export class AdminProductsPage {
 
   products: Product[];
   filterTerm: string;
@@ -20,9 +20,6 @@ export class AdminProductsPage implements OnInit {
     private router: Router,
     private productsProxyService: ProductsProxyService
   ) {
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Routes} from '../../../models/core-models';
 import {OrdersProxyService} from '../../../services/backend-services';
@@ -10,7 +10,7 @@ import {Orders} from '../../../models/backend-models';
   templateUrl: './overview-orders.page.html',
   styleUrls: ['./overview-orders.page.scss'],
 })
-export class OverviewOrdersPage implements OnInit {
+export class OverviewOrdersPage {
 
   orders: Orders;
   loading = false;
@@ -19,9 +19,6 @@ export class OverviewOrdersPage implements OnInit {
     private router: Router,
     private ordersProxyService: OrdersProxyService,
     private authenticationService: AuthenticationService) {
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {

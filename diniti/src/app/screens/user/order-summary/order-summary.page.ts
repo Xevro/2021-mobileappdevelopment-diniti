@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {OrdersProxyService, ProductsSummaryService} from '../../../services/backend-services';
 import {Order, OrderStatus} from '../../../models/backend-models';
@@ -11,7 +11,7 @@ import {UuidGenerator} from '../../../services/core-services';
   templateUrl: './order-summary.page.html',
   styleUrls: ['./order-summary.page.scss'],
 })
-export class OrderSummaryPage implements OnInit {
+export class OrderSummaryPage {
 
   createOrder = false;
   loading = false;
@@ -25,9 +25,6 @@ export class OrderSummaryPage implements OnInit {
     private ordersProxyService: OrdersProxyService,
     private uuidGenerator: UuidGenerator
   ) {
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {

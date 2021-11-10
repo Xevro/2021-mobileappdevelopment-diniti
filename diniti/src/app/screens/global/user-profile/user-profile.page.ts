@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Router} from '@angular/router';
 import {Routes} from '../../../models/core-models';
@@ -12,7 +12,7 @@ import {PhotoService} from '../../../services/ui-services';
   templateUrl: './user-profile.page.html',
   styleUrls: ['./user-profile.page.scss'],
 })
-export class UserProfilePage implements OnInit {
+export class UserProfilePage {
 
   editUserData = false;
   toggleEditView = false;
@@ -36,9 +36,6 @@ export class UserProfilePage implements OnInit {
     private userProxyService: UserProxyService,
     private photoService: PhotoService
   ) {
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {

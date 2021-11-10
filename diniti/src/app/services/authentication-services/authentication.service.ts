@@ -80,7 +80,6 @@ export class AuthenticationService {
           map(() => true),
           catchError(err => {
             if (err instanceof HttpErrorResponse) {
-              this.cookieService.delete(this.cookieKey, this.cookiePath);
               return of(false);
             }
           })

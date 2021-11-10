@@ -1,11 +1,11 @@
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="getOrders($event)" pullFactor="0.5" pullMin="100" pullMax="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="title-box">
     <h2>Bestellingen</h2>
   </div>
   <div class="orders-list">
-    <ion-refresher slot="fixed" (ionRefresh)="getOrders($event)">
-      <ion-refresher-content></ion-refresher-content>
-    </ion-refresher>
     <app-order-list *ngIf="orders?.results?.length > 0 && !loading" [orders]="orders"></app-order-list>
     <div *ngIf="loading" class="orders-loading">
       <p>Bestellingen laden...</p>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 
 @Component({
@@ -6,12 +6,12 @@ import {Routes} from '../../../models/core-models';
   templateUrl: './order-complete.page.html',
   styleUrls: ['./order-complete.page.scss'],
 })
-export class OrderCompletePage implements OnInit {
+export class OrderCompletePage {
 
   constructor() {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
   }
 
   getOverviewUrl() {

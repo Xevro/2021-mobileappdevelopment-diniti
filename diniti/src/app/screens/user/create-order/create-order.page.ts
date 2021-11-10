@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {ProductsProxyService, ProductsSummaryService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './create-order.page.html',
   styleUrls: ['./create-order.page.scss'],
 })
-export class CreateOrderPage implements OnInit {
+export class CreateOrderPage {
 
   products: Product[];
   filterTerm: string;
@@ -24,7 +24,7 @@ export class CreateOrderPage implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loading = true;
     this.message = null;
     this.productsProxyService.getProductsWithVisibilityAction(true)
@@ -36,10 +36,6 @@ export class CreateOrderPage implements OnInit {
         },
         (error) => {
         });
-  }
-
-  ionViewWillEnter() {
-    this.message = null;
     if (this.selectedProducts?.length === 0) {
       for (const [key] of Object.entries(this.products)) {
         this.products[key].amount = 0;

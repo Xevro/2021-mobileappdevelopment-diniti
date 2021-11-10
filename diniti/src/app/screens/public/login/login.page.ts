@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {FieldTypes} from '../../../models/ui-models';
 import {Router} from '@angular/router';
@@ -10,7 +10,7 @@ import {Role} from '../../../models/authentication-models';
   templateUrl: 'login.page.html',
   styleUrls: ['login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   fieldTypes = FieldTypes;
   usernameInput: string = null;
@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
     return Routes.register;
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
   }
 
   userNameValueChanged(userNameValue: string) {
@@ -87,6 +87,7 @@ export class LoginPage implements OnInit {
           }
         },
         (error) => {
+          this.authenticationService.logOut();
           this.submitted = false;
           this.passwordInput = null;
           this.errorMessage = 'Kon niet inloggen';

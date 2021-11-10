@@ -23,9 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.offlineEvent = fromEvent(window, 'offline');
 
     this.subscriptions.push(this.onlineEvent.subscribe(e => {
-      this.toastMessageService.presentToast('U bent terug online').then(() => {
-        location.reload(true);
-      });
+      this.toastMessageService.presentToast('U bent terug online');
       console.log('Online...');
     }));
 

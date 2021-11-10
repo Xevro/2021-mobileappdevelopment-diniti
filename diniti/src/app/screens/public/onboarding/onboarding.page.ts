@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {Router} from '@angular/router';
 
@@ -7,14 +7,14 @@ import {Router} from '@angular/router';
   templateUrl: 'onboarding.page.html',
   styleUrls: ['onboarding.page.scss'],
 })
-export class OnboardingPage implements OnInit {
+export class OnboardingPage {
 
   appIcon = '../../../assets/icon/diniti-logo.svg';
 
   constructor(private router: Router) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
   }
 
   login() {

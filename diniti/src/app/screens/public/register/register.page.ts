@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {FieldTypes} from '../../../models/ui-models';
 import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   templateUrl: 'register.page.html',
   styleUrls: ['register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
 
   fieldTypes = FieldTypes;
   submitted = false;
@@ -50,7 +50,7 @@ export class RegisterPage implements OnInit {
     return Routes.login;
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
   }
 
   validateRegister() {

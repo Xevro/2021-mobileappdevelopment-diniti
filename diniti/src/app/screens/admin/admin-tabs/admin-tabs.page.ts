@@ -9,4 +9,7 @@ export class AdminTabsPage {
 
   constructor() {
   }
+
+  ionViewWillEnter() {
+  }
 }

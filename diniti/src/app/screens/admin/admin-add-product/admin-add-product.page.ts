@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Image, Routes} from '../../../models/core-models';
 import {Router} from '@angular/router';
 import {FieldTypes} from '../../../models/ui-models';
@@ -13,7 +13,7 @@ import {UuidGenerator} from '../../../services/core-services';
   templateUrl: './admin-add-product.page.html',
   styleUrls: ['./admin-add-product.page.scss'],
 })
-export class AdminAddProductPage implements OnInit {
+export class AdminAddProductPage {
 
   fieldTypes = FieldTypes;
   loading = false;
@@ -38,9 +38,6 @@ export class AdminAddProductPage implements OnInit {
     private currencyPipe: CurrencyPipe,
     private uuidGenerator: UuidGenerator
   ) {
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {

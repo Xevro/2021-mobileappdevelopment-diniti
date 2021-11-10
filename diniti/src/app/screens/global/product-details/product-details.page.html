@@ -12,7 +12,7 @@
           </ion-button>
         </ion-buttons>
 
-        <h2>{{ (product?.name) ? product?.name : '--' }}</h2>
+        <h2>{{ product?.name }}</h2>
         <ion-buttons *ngIf="currentRole === role.admin">
           <ion-button *ngIf="!edit" (click)="editProduct()" [textContent]="" class="header-edit-product">
             <ion-icon name="create-outline"></ion-icon>
