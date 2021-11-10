@@ -246,12 +246,6 @@ Logboek Mobile Application Development - 2021-2022
 
  - Te doen deze week
 
-    ** Op summary page een loader toevoegen zoals op login/register.
-    ** Hoofdletters in teksten (knoppen top navbar).
-    ** Status van bestelling in lijst weergeven op bestellingsoverzicht.
-    ** Wijzig guard op onboarding/login/register pagina's zoals bij overview tabs.
-    ** Filters toevoegen op bestellingen pagina (admin + user).
-
     * Wachtwoord vergeten functie toevoegen.
     * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
     * Bestelling kunnen verwijderen op detail pagina.
@@ -260,17 +254,14 @@ Logboek Mobile Application Development - 2021-2022
     * 404 pagina design geven.
     * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
     * Voeg herlaad data knop toe op products en bestellingen pagina (ion-refresher) (toegepast op orders overview).
-
-    * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
     * Notitie voor bestelling toevoegen (optionele notitie) (toast.
+
     * Push notificatie kunnen tonen (optioneel).
-    * Na bestelling de vorige bestelling wissen (aantal in productenlijst).
-    
 
 
  - Gedaan
 
-    * applicatie online geplaatst op diniti.b4a.app
+    * Applicatie online geplaatst op diniti.b4a.app
     * Hoofdletters in teksten (knoppen top navbar).
     * Op summary page een loader toevoegen zoals op login/register.
     * Status van bestelling in lijst weergeven op bestellingsoverzicht.
@@ -278,6 +269,7 @@ Logboek Mobile Application Development - 2021-2022
     * Error catch toegevoegd om session cookie te verwijderen.
     * Wijzig guard op onboarding/login/register pagina's zoals bij overview tabs.
     * Filters toevoegen op bestellingen pagina (admin + user).
+    * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
 
 
   - Opgeloste problemen
@@ -290,7 +282,7 @@ Logboek Mobile Application Development - 2021-2022
 
   - Op te lossen problemen
 
-    * In productie krijgen api calls gateway timeout 504 door cors error.
+    * In productie krijgen api calls gateway timeout 504 error (bij /users/me).
 
 
   - Bronnen
