@@ -1,5 +1,5 @@
 import {Time} from '../core-models';
-import {OrderStatus} from './order-status.enum';
+import {OrderStatus} from './enum/order-status.enum';
 import {Product} from './product.model';
 import {UserPointer} from './user-pointer.model';
 
