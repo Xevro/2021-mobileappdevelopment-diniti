@@ -19,8 +19,7 @@ Logboek Mobile Application Development - 2021-2022
 
     Om een image picker toe te voegen maakte ik gebruik van deze code:
     https://forum.ionicframework.com/t/imagepicker-for-browser/183262
-    Service worker informatie:
-    https://blog.angular-university.io/angular-service-worker/
+    Zeer nuttige link: Service worker informatie: https://blog.angular-university.io/angular-service-worker/
     https://ionicframework.com/blog/start-build-deploy-your-first-capacitor-pwa-with-ionic/
 
 
@@ -252,9 +251,12 @@ Logboek Mobile Application Development - 2021-2022
 
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * 404 pagina design geven.
-    * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
+    
     * Voeg herlaad data knop toe op products en bestellingen pagina (ion-refresher) (toegepast op orders overview).
+    
+
     * Notitie voor bestelling toevoegen (optionele notitie) (toast.
+    * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
 
     * Push notificatie kunnen tonen (optioneel).
 
@@ -288,5 +290,5 @@ Logboek Mobile Application Development - 2021-2022
   - Bronnen
 
     * Online/offline controle: https://stackblitz.com/edit/angular-offline-online-detection?file=src%2Fapp%2Fapp.component.html
-
+    * https://forum.ionicframework.com/t/ionic-4-checking-network-status-over-browser/157648
 

@@ -9,22 +9,22 @@ import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from './services/authentication-services';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
+import {Network} from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production,
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:10000'
     })],
   providers: [HttpClientModule, ImagePicker, {
     provide: RouteReuseStrategy,
     useClass: IonicRouteStrategy
-  }, AuthenticationService],
+  }, AuthenticationService, Network],
   bootstrap: [AppComponent],
 })
-
 /*
  {
       provide: HTTP_INTERCEPTORS,

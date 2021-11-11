@@ -28,6 +28,15 @@ export class OverviewOrdersPage {
   }
 
   ionViewWillEnter() {
+    /*
+        this.networkService.verifyConnection().then(conn =>{
+          if(conn){
+            // DO YOUR CODE
+          }
+          // NO NEED FOR ELSE SINCE IT'S HANDLED ON PROVIDER
+        });
+
+     */
     this.loading = true;
     this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
       .subscribe(
@@ -52,7 +61,7 @@ export class OverviewOrdersPage {
     this.router.navigate(Routes.userOrderCreate);
   }
 
-  statusChanged(status) {
+  sortOnStatus(status) {
     if (status.target.value === OrderFilterOptions.pending) {
       this.orders.results.sort((first, second) => (first.status > second.status) ? -1 : (first.status < second.status) ? 1 : 0);
     }

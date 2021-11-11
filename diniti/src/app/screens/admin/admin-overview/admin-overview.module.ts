@@ -8,14 +8,14 @@ import {OrderListModule} from '../../../components/order-list/order-list.module'
 import {OrderDetailsPageModule} from '../../global/order-details/order-details.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        AdminOverviewPageRoutingModule,
-        OrderListModule,
-        OrderDetailsPageModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    AdminOverviewPageRoutingModule,
+    OrderListModule,
+    OrderDetailsPageModule
+  ],
   declarations: [AdminOverviewPage]
 })
 export class AdminOverviewPageModule {

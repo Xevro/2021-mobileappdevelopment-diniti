@@ -1,39 +1,25 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {fromEvent, Observable, Subscription} from 'rxjs';
-import {ToastMessageService} from './services/ui-services';
+import {Component} from '@angular/core';
+import {SwUpdate} from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  onlineEvent: Observable<Event>;
-  offlineEvent: Observable<Event>;
-
-  subscriptions: Subscription[] = [];
+export class AppComponent {
 
   constructor(
-    private toastMessageService: ToastMessageService
+    private swUpdate: SwUpdate
   ) {
   }
 
-  ngOnInit() {
-    this.onlineEvent = fromEvent(window, 'online');
-    this.offlineEvent = fromEvent(window, 'offline');
-
-    this.subscriptions.push(this.onlineEvent.subscribe(e => {
-      this.toastMessageService.presentToast('U bent terug online');
-      console.log('Online...');
-    }));
-
-    this.subscriptions.push(this.offlineEvent.subscribe(e => {
-      this.toastMessageService.presentToast('U bent offline');
-      console.log('Offline...');
-    }));
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  ionViewWillEnter() {
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+        if (confirm('New version available. Load New Version?')) {
+          window.location.reload();
+        }
+      });
+    }
   }
 }

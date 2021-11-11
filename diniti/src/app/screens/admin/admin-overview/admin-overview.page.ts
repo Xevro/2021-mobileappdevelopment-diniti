@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {OrderFilterDates, OrderFilterOptions, Orders} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 import {OrdersProxyService} from '../../../services/backend-services';
+import {NetworkService} from '../../../services/core-services';
 
 @Component({
   selector: 'app-admin-overview',
@@ -12,6 +13,7 @@ export class AdminOverviewPage {
 
   orders: Orders;
   loading = false;
+  errorMessage = false;
 
   orderFilterStatus = OrderFilterOptions;
   filterStatus: OrderFilterOptions = OrderFilterOptions.empty;
@@ -21,6 +23,7 @@ export class AdminOverviewPage {
 
   constructor(
     private router: Router,
+    private networkService: NetworkService,
     private ordersProxyService: OrdersProxyService
   ) {
   }
@@ -46,12 +49,12 @@ export class AdminOverviewPage {
           event?.target.complete();
         },
         (error) => {
-          console.log('orders error probleem');
-          console.log(error);
+          this.loading = false;
+          this.errorMessage = true;
         });
   }
 
-  statusChanged(status) {
+  sortOnStatus(status) {
     if (status.target.value === OrderFilterOptions.pending) {
       this.orders.results.sort((first, second) => (first.status > second.status) ? -1 : (first.status < second.status) ? 1 : 0);
     }
