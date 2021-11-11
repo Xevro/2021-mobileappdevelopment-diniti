@@ -17,10 +17,15 @@
   </ion-header>
   <div class="add-product-box">
     <p class="title">Voeg een product toe</p>
+    <div *ngIf="errorMessage" class="error-message">
+      <p>Er is een onverwachte fout opgetreden.</p>
+    </div>
+
     <div class="input-fields">
       <div *ngIf="nameErrorMessage" class="error-message">
         <p>{{ nameErrorMessage }}</p>
       </div>
+
       <app-input-field (onInputChange)="nameValueChanged($event)" [fieldType]="fieldTypes.text"
                        [name]="'name'" [placeholder]="'Naam'" [value]="product?.name"></app-input-field>
       <div *ngIf="priceErrorMessage" class="error-message">
@@ -31,22 +36,27 @@
       <div *ngIf="descriptionErrorMessage" class="error-message">
         <p>{{ descriptionErrorMessage }}</p>
       </div>
+
       <ion-textarea (ionInput)="descriptionValueChanged($event)" placeholder="Beschrijving" name="description"
                     rows="6" cols="20"
                     value="{{ product?.description }}"></ion-textarea>
+
       <ion-item class="product-visibility">
         <ion-label (click)="visibility.checked = !visibility.checked">Zichtbaar voor klanten</ion-label>
         <ion-toggle #visibility (ionChange)="changeVisibility($event)" class="button"></ion-toggle>
       </ion-item>
+
       <div class="product-upload">
         <p *ngIf="loadingImage" class="image-upload-message">Afbeelding aan het uploaden...</p>
         <p *ngIf="!loadingImage && uploadingImageDone" class="image-upload-message">Klik op 'voeg toe' om het product
           toe te voegen</p>
+
+        <div *ngIf="validationMessage" class="error-message">
+          <p>{{ validationMessage }}</p>
+        </div>
+
         <p *ngIf="!loadingImage && imageError" class="image-upload-message">Er is een fout opgetreden bij het
           ophalen van de afbeelding</p>
-        <div *ngIf="errorMessage" class="error-message">
-          <p>{{ errorMessage }}</p>
-        </div>
         <app-button (click)="uploadProductImage()" [buttonText]="'Voeg een product foto toe'" [disabled]="loadingImage"
                     [invertColor]="true"></app-button>
         <app-button (click)="removeProductImage()" *ngIf="imageResultData && !loadingImage"

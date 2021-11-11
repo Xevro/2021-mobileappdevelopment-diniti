@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {Image, Routes} from '../../../models/core-models';
 import {Router} from '@angular/router';
 import {FieldTypes} from '../../../models/ui-models';
-import {PhotoService} from '../../../services/ui-services';
+import {PhotoService, ToastMessageService} from '../../../services/ui-services';
 import {ProductsProxyService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
 import {CurrencyPipe} from '@angular/common';
-import {UuidGenerator} from '../../../services/core-services';
+import {NetworkService, UuidGenerator} from '../../../services/core-services';
 
 @Component({
   selector: 'app-admin-add-product',
@@ -28,15 +28,18 @@ export class AdminAddProductPage {
   nameErrorMessage: string = null;
   priceErrorMessage: string = null;
   descriptionErrorMessage: string = null;
-  errorMessage: string = null;
+  validationMessage: string = null;
+  errorMessage = false;
   imageError = false;
 
   constructor(
     private router: Router,
     private photoService: PhotoService,
-    private productsProxyService: ProductsProxyService,
     private currencyPipe: CurrencyPipe,
-    private uuidGenerator: UuidGenerator
+    private uuidGenerator: UuidGenerator,
+    private networkService: NetworkService,
+    private toastMessageService: ToastMessageService,
+    private productsProxyService: ProductsProxyService
   ) {
   }
 
@@ -59,60 +62,78 @@ export class AdminAddProductPage {
   }
 
   saveNewProduct() {
-    if (this.product.name && this.product.price) {
-      this.loading = true;
-      this.errorMessage = '';
-      if (this.imageResultData) {
-        this.product.image = {
-          name: this.imageResultData.name,
-          url: this.imageResultData.url,
-          __type: 'File'
-        };
-        this.product.productId = this.uuidGenerator.generateUUID();
-        this.productsProxyService.postProductAction(this.product)
-          .subscribe(
-            (status) => {
-              this.goToProducts();
-            },
-            (error) => {
-              this.errorMessage = 'Er is een onverwacht probleem opgetreden.';
-            });
+    if (this.networkService.getNetworkStatus()) {
+      if (this.product.name && this.product.price) {
+        this.loading = true;
+        this.errorMessage = false;
+        this.validationMessage = null;
+        if (this.imageResultData) {
+          this.product.image = {
+            name: this.imageResultData.name,
+            url: this.imageResultData.url,
+            __type: 'File'
+          };
+          this.product.productId = this.uuidGenerator.generateUUID();
+          this.productsProxyService.postProductAction(this.product)
+            .subscribe(
+              (status) => {
+                this.goToProducts();
+              },
+              (error) => {
+                this.loading = false;
+                this.errorMessage = true;
+                this.toastMessageService.presentToast(
+                  `Error, de gegevens konden niet worden verstuurd. Status: ${error.status}`, 3500);
+              });
+        } else {
+          this.product.productId = this.uuidGenerator.generateUUID();
+          this.productsProxyService.postProductAction(this.product)
+            .subscribe(
+              (status) => {
+                this.goToProducts();
+              },
+              (error) => {
+                this.errorMessage = true;
+                this.toastMessageService.presentToast(
+                  `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+              });
+        }
       } else {
-        this.product.productId = this.uuidGenerator.generateUUID();
-        this.productsProxyService.postProductAction(this.product)
-          .subscribe(
-            (status) => {
-              this.goToProducts();
-            },
-            (error) => {
-              this.errorMessage = 'Er is een onverwacht probleem opgetreden.';
-            });
+        this.validationMessage = 'Naam en of prijs zijn niet ingevuld.';
       }
     } else {
-      this.errorMessage = 'Naam en of prijs zijn niet ingevuld';
+      this.toastMessageService.presentToast(
+        'Er is geen netwerk verbinding...', 3500
+      );
     }
   }
 
   uploadProductImage() {
-    this.loadingImage = true;
-    const photo = this.photoService.capturePhoto();
-    photo.then(async (response) => {
-      const urlRawData = await this.photoService.toDataURL(response.webPath)
-        .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
+    if (this.networkService.getNetworkStatus()) {
+      this.loadingImage = true;
+      const photo = this.photoService.capturePhoto();
+      photo.then(async (response) => {
+        const urlRawData = await this.photoService.toDataURL(response.webPath)
+          .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
-      this.productsProxyService.postImageAction(urlRawData)
-        .subscribe(
-          (result) => {
-            this.imageResultData = result;
-            this.loadingImage = false;
-            this.uploadingImageDone = true;
-            this.imageError = false;
-          },
-          (error) => {
-            this.uploadingImageDone = false;
-            this.imageError = true;
-          });
-    });
+        this.productsProxyService.postImageAction(urlRawData)
+          .subscribe(
+            (result) => {
+              this.imageResultData = result;
+              this.loadingImage = false;
+              this.uploadingImageDone = true;
+              this.imageError = false;
+            },
+            (error) => {
+              this.uploadingImageDone = false;
+              this.imageError = true;
+              this.toastMessageService.presentToast(
+                `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+            });
+      });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
   }
 
   removeProductImage() {

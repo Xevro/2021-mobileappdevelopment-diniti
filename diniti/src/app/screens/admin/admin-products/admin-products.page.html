@@ -28,5 +28,8 @@
     <div *ngIf="products?.length === 0 && !loading" class="products-loading">
       <p>Geen producten gevonden</p>
     </div>
+    <div *ngIf="errorMessage" class="products-loading">
+      <p>Kon geen gegevens ophalen.</p>
+    </div>
   </div>
 </ion-content>

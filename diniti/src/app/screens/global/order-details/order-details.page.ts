@@ -4,6 +4,8 @@ import {ActivatedRoute} from '@angular/router';
 import {OrdersProxyService, UserProxyService} from '../../../services/backend-services';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Role} from '../../../models/authentication-models';
+import {ToastMessageService} from '../../../services/ui-services';
+import {NetworkService} from "../../../services/core-services";
 
 @Component({
   selector: 'app-order-details',
@@ -24,10 +26,12 @@ export class OrderDetailsPage {
   orderStatus = OrderStatus;
 
   constructor(
+    private networkService: NetworkService,
     private activatedRoute: ActivatedRoute,
+    private userProxyService: UserProxyService,
     private ordersProxyService: OrdersProxyService,
     public authenticationService: AuthenticationService,
-    private userProxyService: UserProxyService
+    private toastMessageService: ToastMessageService
   ) {
   }
 
@@ -51,10 +55,14 @@ export class OrderDetailsPage {
               },
               (error) => {
                 this.error = true;
+                this.toastMessageService.presentToast(
+                  `Error, de klanten gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
               });
         },
         (error) => {
           this.error = true;
+          this.toastMessageService.presentToast(
+            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
         });
   }
 
@@ -76,16 +84,22 @@ export class OrderDetailsPage {
   }
 
   saveStatus() {
-    this.updatingLoading = true;
-    this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId)
-      .subscribe(
-        (response) => {
-          this.updatingLoading = false;
-          this.changedStatus = false;
-          this.edit = false;
-        },
-        (error) => {
-          this.error = true;
-        });
+    if (this.networkService.getNetworkStatus()) {
+      this.updatingLoading = true;
+      this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId)
+        .subscribe(
+          (response) => {
+            this.updatingLoading = false;
+            this.changedStatus = false;
+            this.edit = false;
+          },
+          (error) => {
+            this.error = true;
+            this.toastMessageService.presentToast(
+              `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
+          });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
   }
 }

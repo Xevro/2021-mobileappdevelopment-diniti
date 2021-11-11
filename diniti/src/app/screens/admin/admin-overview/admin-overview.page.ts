@@ -3,6 +3,7 @@ import {OrderFilterDates, OrderFilterOptions, Orders} from '../../../models/back
 import {Router} from '@angular/router';
 import {OrdersProxyService} from '../../../services/backend-services';
 import {NetworkService} from '../../../services/core-services';
+import {ToastMessageService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-admin-overview',
@@ -24,7 +25,8 @@ export class AdminOverviewPage {
   constructor(
     private router: Router,
     private networkService: NetworkService,
-    private ordersProxyService: OrdersProxyService
+    private ordersProxyService: OrdersProxyService,
+    private toastMessageService: ToastMessageService
   ) {
   }
 
@@ -51,6 +53,8 @@ export class AdminOverviewPage {
         (error) => {
           this.loading = false;
           this.errorMessage = true;
+          this.toastMessageService.presentToast(
+            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
         });
   }
 
