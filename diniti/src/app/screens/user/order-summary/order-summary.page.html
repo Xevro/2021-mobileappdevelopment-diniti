@@ -3,7 +3,7 @@
     <ion-toolbar>
       <ion-progress-bar *ngIf="loading && !timeError" type="indeterminate"></ion-progress-bar>
       <div class="summary-header">
-        <ion-back-button class="go-back" defaultHref="overview/order/create" icon="" text="Terug"></ion-back-button>
+        <ion-back-button class="go-back" defaultHref="overview/orders/create" icon="" text="Terug"></ion-back-button>
         <h2>Winkelmand</h2>
         <ion-buttons>
           <ion-button (click)="goToOrderComplete()" [textContent]="'Bestel'" class="header-register-order">

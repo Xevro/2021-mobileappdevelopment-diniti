@@ -2,15 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {filter, first, shareReplay} from 'rxjs/operators';
-import {AuthenticationService} from '../authentication-services';
 
 @Injectable()
 export class InterceptService implements HttpInterceptor {
   public readonly store: Record<string, Observable<HttpEvent<any>>> = {};
 
-  constructor(
-    private authenticationService: AuthenticationService
-  ) {
+  constructor() {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

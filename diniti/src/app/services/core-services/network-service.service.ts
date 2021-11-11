@@ -23,23 +23,20 @@ export class NetworkService {
   }
 
   initNetworkMonitor() {
-    console.log('init network monitoring...');
     if ('onLine' in navigator) {
       this.appIsOnline = navigator.onLine;
     }
     // check if we are on device or if its a browser:
     if (this.appIsOnDevice) {
-      // watch network for a disconnect
       this.network.onDisconnect().subscribe(() => {
-        console.log('network disconnected:(');
+        console.log('network disconnected');
         this.appIsOnline = false;
       });
-      // watch network for a connection
       this.network.onConnect().subscribe(() => {
         console.log('network connected!');
         this.appIsOnline = true;
         if (this.network.type === 'wifi') {
-          console.log('we got a wifi connection, woohoo!');
+          console.log('we have a wifi connection!');
         }
       });
       console.log('device network monitor is ON');
@@ -49,17 +46,15 @@ export class NetworkService {
           this.appIsOnline = false;
           localStorage.setItem('connectionStatus', NetworkStatus.Offline);
           this.toastMessageService.presentToast('U bent offline.');
-          console.log('network disconnected:(');
         }
       );
       fromEvent(window, 'online').subscribe(() => {
           this.appIsOnline = true;
           localStorage.setItem('connectionStatus', NetworkStatus.Online);
           this.toastMessageService.presentToast('U bent terug online');
-          console.log('network connected!');
         }
       );
-      console.log('PWA network monitor is ON');
+      console.log('PWA network monitor started');
     }
   }
 

@@ -7,8 +7,9 @@ import {Role} from './models/authentication-models';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: RouteLiterals.onboarding,
-    pathMatch: 'full'
+    canActivate: [LoginGuard],
+    runGuardsAndResolvers: 'always',
+    loadChildren: () => import('./screens/public/onboarding/onboarding.module').then(m => m.OnboardingPageModule)
   },
   {
     path: RouteLiterals.onboarding,
