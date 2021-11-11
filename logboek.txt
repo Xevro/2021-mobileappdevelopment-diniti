@@ -258,6 +258,7 @@ Logboek Mobile Application Development - 2021-2022
     * Notitie voor bestelling toevoegen (optionele notitie) (toast.
     * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
 
+    * Enum ts files in enum map zetten.
     * Push notificatie kunnen tonen (optioneel).
 
 

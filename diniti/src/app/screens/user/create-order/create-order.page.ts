@@ -3,6 +3,7 @@ import {Routes} from '../../../models/core-models';
 import {ProductsProxyService, ProductsSummaryService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
 import {Router} from '@angular/router';
+import {ToastMessageService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-create-order',
@@ -19,6 +20,7 @@ export class CreateOrderPage {
 
   constructor(
     private router: Router,
+    private toastMessageService: ToastMessageService,
     private productsProxyService: ProductsProxyService,
     private productsSummaryService: ProductsSummaryService
   ) {
@@ -35,6 +37,9 @@ export class CreateOrderPage {
           this.loadStoredProducts();
         },
         (error) => {
+          this.message = 'Geen producten kunnen ophalen';
+          this.toastMessageService.presentToast(
+            `Error, de producten konden niet worden opgehaald. Status: ${error.status}`, 3500);
         });
     if (this.selectedProducts?.length === 0) {
       for (const [key] of Object.entries(this.products)) {

@@ -4,6 +4,8 @@ import {FieldTypes} from '../../../models/ui-models';
 import {Router} from '@angular/router';
 import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
 import {Role} from '../../../models/authentication-models';
+import {ToastMessageService} from '../../../services/ui-services';
+import {NetworkService} from '../../../services/core-services';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +25,11 @@ export class LoginPage {
 
   constructor(
     private router: Router,
-    private authenticationProxyService: AuthenticationProxyService,
-    private authenticationService: AuthenticationService) {
+    private networkService: NetworkService,
+    private toastMessageService: ToastMessageService,
+    private authenticationService: AuthenticationService,
+    private authenticationProxyService: AuthenticationProxyService
+  ) {
   }
 
   get imageSrc(): string {
@@ -40,14 +45,6 @@ export class LoginPage {
   }
 
   ionViewWillEnter() {
-  }
-
-  userNameValueChanged(userNameValue: string) {
-    this.usernameInput = userNameValue;
-  }
-
-  passwordValueChanged(passwordValue: string) {
-    this.passwordInput = passwordValue;
   }
 
   validateLogin() {
@@ -72,25 +69,39 @@ export class LoginPage {
   }
 
   submitLogin() {
-    this.authenticationProxyService.loginAction(this.usernameInput, this.passwordInput)
-      .subscribe(
-        (response) => {
-          this.authenticationService.userLoggedIn(response);
-          this.submitted = false;
-          if (response.role === Role.admin) {
-            this.router.navigate(Routes.adminOverview);
-          } else if (response.role === Role.user) {
-            this.router.navigate(Routes.userOverview);
-          } else {
+    if (this.networkService.getNetworkStatus()) {
+      this.authenticationProxyService.loginAction(this.usernameInput, this.passwordInput)
+        .subscribe(
+          (response) => {
+            this.authenticationService.userLoggedIn(response);
+            this.submitted = false;
+            if (response.role === Role.admin) {
+              this.router.navigate(Routes.adminOverview);
+            } else if (response.role === Role.user) {
+              this.router.navigate(Routes.userOverview);
+            } else {
+              this.passwordInput = null;
+              this.errorMessage = 'Kon niet inloggen wegens een probleem';
+            }
+          },
+          (error) => {
+            this.authenticationService.logOut();
+            this.submitted = false;
             this.passwordInput = null;
-            this.errorMessage = 'Kon niet inloggen';
-          }
-        },
-        (error) => {
-          this.authenticationService.logOut();
-          this.submitted = false;
-          this.passwordInput = null;
-          this.errorMessage = 'Kon niet inloggen';
-        });
+            this.errorMessage = '';
+            this.toastMessageService.presentToast(
+              `Error, de gebruiker kon niet worden ingelogd. Status: ${error.status}`, 3500);
+          });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
+  }
+
+  userNameValueChanged(userNameValue: string) {
+    this.usernameInput = userNameValue;
+  }
+
+  passwordValueChanged(passwordValue: string) {
+    this.passwordInput = passwordValue;
   }
 }

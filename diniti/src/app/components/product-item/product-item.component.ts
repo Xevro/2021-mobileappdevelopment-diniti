@@ -6,6 +6,8 @@ import {Routes} from '../../models/core-models';
 import {Router} from '@angular/router';
 import {Role} from '../../models/authentication-models';
 import {AuthenticationService} from '../../services/authentication-services';
+import {ToastMessageService} from '../../services/ui-services';
+import {NetworkService} from '../../services/core-services';
 
 @Component({
   selector: 'app-product-item',
@@ -29,6 +31,8 @@ export class ProductItemComponent implements OnInit {
   constructor(
     private router: Router,
     private alertController: AlertController,
+    private networkService: NetworkService,
+    private toastMessageService: ToastMessageService,
     private productsProxyService: ProductsProxyService,
     private authenticationService: AuthenticationService
   ) {
@@ -55,45 +59,57 @@ export class ProductItemComponent implements OnInit {
   }
 
   async deleteProduct() {
-    const alert = await this.alertController.create({
-      cssClass: 'basic-alert',
-      header: 'Opgelet',
-      message: 'Bent u zeker dat u "' + this.product.name + '" wilt verwijderen?',
-      buttons: [
-        {
-          text: 'Verwijder',
-          cssClass: 'btns-modal-alert',
-          handler: () => {
-            this.productsProxyService.deleteProductsAction(this.product.objectId)
-              .subscribe(
-                (response) => {
-                  this.removedProduct.emit(true);
-                },
-                (error) => {
-                });
+    if (this.networkService.getNetworkStatus()) {
+      const alert = await this.alertController.create({
+        cssClass: 'basic-alert',
+        header: 'Opgelet',
+        message: 'Bent u zeker dat u "' + this.product.name + '" wilt verwijderen?',
+        buttons: [
+          {
+            text: 'Verwijder',
+            cssClass: 'btns-modal-alert',
+            handler: () => {
+              this.productsProxyService.deleteProductsAction(this.product.objectId)
+                .subscribe(
+                  (response) => {
+                    this.removedProduct.emit(true);
+                  },
+                  (error) => {
+                    this.toastMessageService.presentToast(
+                      `Error, het product kon niet worden verwijderd. Status: ${error.status}`, 3500);
+                  });
+            }
+          },
+          {
+            text: 'Annuleer',
+            role: 'Annuleer',
+            cssClass: 'modal-button-cancel'
           }
-        },
-        {
-          text: 'Annuleer',
-          role: 'Annuleer',
-          cssClass: 'modal-button-cancel'
-        }
-      ]
-    });
-    await alert.present();
+        ]
+      });
+      await alert.present();
+    } else {
+      await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
   }
 
   toggleVisibility(visibility: boolean) {
-    this.loading = true;
-    this.product.visibility = visibility;
-    this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.objectId)
-      .subscribe(
-        (response) => {
-          this.loading = false;
-        },
-        (error) => {
-          this.loading = false;
-        });
+    if (this.networkService.getNetworkStatus()) {
+      this.loading = true;
+      this.product.visibility = visibility;
+      this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.objectId)
+        .subscribe(
+          (response) => {
+            this.loading = false;
+          },
+          (error) => {
+            this.loading = false;
+            this.toastMessageService.presentToast(
+              `Error, de zichtbaarheid kon niet worden gewijzigd. Status: ${error.status}`, 3500);
+          });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
   }
 
   goToDetailPage() {

@@ -5,7 +5,11 @@ import {AuthenticatedGuard, LoginGuard} from './guards';
 import {Role} from './models/authentication-models';
 
 const routes: Routes = [
-  {path: '', redirectTo: RouteLiterals.onboarding, pathMatch: 'full'},
+  {
+    path: '',
+    redirectTo: RouteLiterals.onboarding,
+    pathMatch: 'full'
+  },
   {
     path: RouteLiterals.onboarding,
     canActivate: [LoginGuard],

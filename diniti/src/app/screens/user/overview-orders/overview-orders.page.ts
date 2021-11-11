@@ -4,6 +4,7 @@ import {Routes} from '../../../models/core-models';
 import {OrdersProxyService} from '../../../services/backend-services';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {OrderFilterDates, OrderFilterOptions, Orders} from '../../../models/backend-models';
+import {ToastMessageService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-overview-orders',
@@ -24,19 +25,12 @@ export class OverviewOrdersPage {
   constructor(
     private router: Router,
     private ordersProxyService: OrdersProxyService,
-    private authenticationService: AuthenticationService) {
+    private toastMessageService: ToastMessageService,
+    private authenticationService: AuthenticationService
+  ) {
   }
 
   ionViewWillEnter() {
-    /*
-        this.networkService.verifyConnection().then(conn =>{
-          if(conn){
-            // DO YOUR CODE
-          }
-          // NO NEED FOR ELSE SINCE IT'S HANDLED ON PROVIDER
-        });
-
-     */
     this.loading = true;
     this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
       .subscribe(
@@ -52,8 +46,8 @@ export class OverviewOrdersPage {
           this.loading = false;
         },
         (error) => {
-          console.log('fix probleem bij overview orders user');
-          console.log(error);
+          this.toastMessageService.presentToast(
+            `Error, de bestellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
         });
   }
 

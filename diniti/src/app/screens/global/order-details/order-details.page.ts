@@ -5,7 +5,7 @@ import {OrdersProxyService, UserProxyService} from '../../../services/backend-se
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Role} from '../../../models/authentication-models';
 import {ToastMessageService} from '../../../services/ui-services';
-import {NetworkService} from "../../../services/core-services";
+import {NetworkService} from '../../../services/core-services';
 
 @Component({
   selector: 'app-order-details',

@@ -4,7 +4,8 @@ import {OrdersProxyService, ProductsSummaryService} from '../../../services/back
 import {Order, OrderStatus} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication-services';
-import {UuidGenerator} from '../../../services/core-services';
+import {NetworkService, UuidGenerator} from '../../../services/core-services';
+import {ToastMessageService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-order-summary',
@@ -20,10 +21,12 @@ export class OrderSummaryPage {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService,
-    private productsSummaryService: ProductsSummaryService,
+    private uuidGenerator: UuidGenerator,
+    private networkService: NetworkService,
     private ordersProxyService: OrdersProxyService,
-    private uuidGenerator: UuidGenerator
+    private toastMessageService: ToastMessageService,
+    private authenticationService: AuthenticationService,
+    private productsSummaryService: ProductsSummaryService
   ) {
   }
 
@@ -44,7 +47,6 @@ export class OrderSummaryPage {
   goToOrderComplete() {
     this.timeError = '';
     this.loading = true;
-    // check if internet connection is active
     if (this.order.pickUpTime) {
       this.order.status = OrderStatus.pending;
       this.order.userId = {
@@ -59,15 +61,20 @@ export class OrderSummaryPage {
       };
       this.order.orderId = Date.now();
       this.order.orderUuid = this.uuidGenerator.generateUUID();
-      this.ordersProxyService.postOrderAction(this.order)
-        .subscribe(
-          (response) => {
-            this.loading = false;
-            this.router.navigate(Routes.orderComplete);
-          },
-          (error) => {
-            // show error
-          });
+      if (this.networkService.getNetworkStatus()) {
+        this.ordersProxyService.postOrderAction(this.order)
+          .subscribe(
+            (response) => {
+              this.loading = false;
+              this.router.navigate(Routes.orderComplete);
+            },
+            (error) => {
+              this.toastMessageService.presentToast(
+                `Error, de bestelling kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+            });
+      } else {
+        this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+      }
     } else {
       this.timeError = 'Kies een tijdstip';
     }

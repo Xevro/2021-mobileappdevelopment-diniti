@@ -7,7 +7,8 @@ import {AuthenticationService} from '../../../services/authentication-services';
 import {FieldTypes} from '../../../models/ui-models';
 import {Image} from '../../../models/core-models';
 import {CurrencyPipe} from '@angular/common';
-import {PhotoService} from '../../../services/ui-services';
+import {PhotoService, ToastMessageService} from '../../../services/ui-services';
+import {NetworkService} from '../../../services/core-services';
 
 @Component({
   selector: 'app-product-details',
@@ -32,7 +33,7 @@ export class ProductDetailsPage {
   nameErrorMessage: string = null;
   priceErrorMessage: string = null;
   descriptionErrorMessage: string = null;
-  errorMessage: string = null;
+  validationMessage: string = null;
   imageError = false;
 
   constructor(
@@ -40,6 +41,8 @@ export class ProductDetailsPage {
     private photoService: PhotoService,
     private currencyPipe: CurrencyPipe,
     private activatedRoute: ActivatedRoute,
+    private networkService: NetworkService,
+    private toastMessageService: ToastMessageService,
     private productsProxyService: ProductsProxyService,
     public authenticationService: AuthenticationService
   ) {
@@ -65,6 +68,8 @@ export class ProductDetailsPage {
         },
         (error) => {
           this.error = true;
+          this.toastMessageService.presentToast(
+            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
         });
   }
 
@@ -78,67 +83,126 @@ export class ProductDetailsPage {
   }
 
   SaveEditProduct() {
-    if (this.updateProduct.name && this.updateProduct.price && this.updateProduct.description) {
-      this.errorMessage = '';
-      if (this.imageResultData) {
-        this.updateProduct.image = {
-          name: this.imageResultData.name,
-          url: this.imageResultData.url,
-          __type: 'File'
-        };
-        this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
-          .subscribe(
-            (status) => {
-              this.edit = false;
-              this.getOrderData();
-            },
-            (error) => {
-              this.errorMessage = 'Er is een onverwacht probleem opgetreden.';
-            });
+    if (this.networkService.getNetworkStatus()) {
+      if (this.updateProduct.name && this.updateProduct.price && this.updateProduct.description) {
+        this.error = false;
+        if (this.imageResultData) {
+          this.updateProduct.image = {
+            name: this.imageResultData.name,
+            url: this.imageResultData.url,
+            __type: 'File'
+          };
+          this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
+            .subscribe(
+              (status) => {
+                this.edit = false;
+                this.getOrderData();
+              },
+              (error) => {
+                this.error = true;
+                this.toastMessageService.presentToast(
+                  `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
+              });
+        } else {
+          this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
+            .subscribe(
+              (status) => {
+                this.edit = false;
+                this.getOrderData();
+              },
+              (error) => {
+                this.error = true;
+                this.toastMessageService.presentToast(
+                  `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
+              });
+        }
       } else {
-        this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
-          .subscribe(
-            (status) => {
-              this.edit = false;
-              this.getOrderData();
-            },
-            (error) => {
-              this.errorMessage = 'Er is een onverwacht probleem opgetreden.';
-            });
+        this.validationMessage = 'Naam, beschrijving en of prijs zijn niet ingevuld';
       }
     } else {
-      this.errorMessage = 'Naam, beschrijving en of prijs zijn niet ingevuld';
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
   }
 
   uploadProductImage() {
-    this.loadingImage = true;
-    const photo = this.photoService.capturePhoto();
-    photo.then(async (response) => {
-      const urlRawData = await this.photoService.toDataURL(response.webPath)
-        .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
+    if (this.networkService.getNetworkStatus()) {
+      this.loadingImage = true;
+      const photo = this.photoService.capturePhoto();
+      photo.then(async (response) => {
+        const urlRawData = await this.photoService.toDataURL(response.webPath)
+          .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
-      this.productsProxyService.postImageAction(urlRawData)
-        .subscribe(
-          (result) => {
-            this.imageResultData = result;
-            this.loadingImage = false;
-            this.uploadingImageDone = true;
-            this.edit = false;
-            this.imageError = false;
-          },
-          (error) => {
-            this.uploadingImageDone = false;
-            this.imageError = true;
-          });
-    });
+        this.productsProxyService.postImageAction(urlRawData)
+          .subscribe(
+            (result) => {
+              this.imageResultData = result;
+              this.loadingImage = false;
+              this.uploadingImageDone = true;
+              this.edit = false;
+              this.imageError = false;
+            },
+            (error) => {
+              this.uploadingImageDone = false;
+              this.imageError = true;
+              this.toastMessageService.presentToast(
+                `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+            });
+      });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
   }
 
   changeProductPicture() {
-    this.loadingImage = true;
-    const photo = this.photoService.capturePhoto();
-    photo.then(async (response) => {
-      const urlRawData = await this.photoService.toDataURL(response.webPath)
+    if (this.networkService.getNetworkStatus()) {
+      this.loadingImage = true;
+      const photo = this.photoService.capturePhoto();
+      photo.then(async (response) => {
+        const urlRawData = await this.photoService.toDataURL(response.webPath)
+          .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
+
+        this.productsProxyService.postImageAction(urlRawData)
+          .subscribe(
+            (result) => {
+              const data = {
+                image: {
+                  name: result.name,
+                  url: result.url,
+                  __type: 'File'
+                }
+              };
+              this.productsProxyService.updateProductImageAction(data, this.product.objectId)
+                .subscribe(
+                  (status) => {
+                    this.loadingImage = false;
+                    this.edit = false;
+                    this.getOrderData();
+                  },
+                  (error) => {
+                    this.loadingImage = false;
+                    this.toastMessageService.presentToast(
+                      `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+                  });
+            },
+            (error) => {
+              this.loadingImage = false;
+              this.toastMessageService.presentToast(
+                `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+            });
+      });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
+  }
+
+  async removeProductPicture() {
+    if (this.networkService.getNetworkStatus()) {
+      this.loadingImage = true;
+      this.imageResultData = null;
+      this.uploadingImageDone = false;
+      const getUrl = window.location;
+      const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/icon/diniti-logo.png';
+      const urlRawData = await this.photoService.toDataURL(baseUrl)
         .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
       this.productsProxyService.postImageAction(urlRawData)
@@ -159,48 +223,19 @@ export class ProductDetailsPage {
                   this.getOrderData();
                 },
                 (error) => {
-                  console.log('error4', error);
+                  this.loadingImage = false;
+                  this.toastMessageService.presentToast(
+                    `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
                 });
           },
           (error) => {
-            console.log('error3', error);
+            this.loadingImage = false;
+            this.toastMessageService.presentToast(
+              `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
           });
-    });
-  }
-
-  async removeProductPicture() {
-    this.loadingImage = true;
-    this.imageResultData = null;
-    this.uploadingImageDone = false;
-    const getUrl = window.location;
-    const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/icon/diniti-logo.png';
-    const urlRawData = await this.photoService.toDataURL(baseUrl)
-      .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
-
-    this.productsProxyService.postImageAction(urlRawData)
-      .subscribe(
-        (result) => {
-          const data = {
-            image: {
-              name: result.name,
-              url: result.url,
-              __type: 'File'
-            }
-          };
-          this.productsProxyService.updateProductImageAction(data, this.product.objectId)
-            .subscribe(
-              (status) => {
-                this.loadingImage = false;
-                this.edit = false;
-                this.getOrderData();
-              },
-              (error) => {
-                console.log('error1', error);
-              });
-        },
-        (error) => {
-          console.log('error2', error);
-        });
+    } else {
+      await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
   }
 
   hideEditProduct() {

@@ -4,6 +4,8 @@ import {FieldTypes} from '../../../models/ui-models';
 import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
 import {RegisterInfo} from '../../../models/authentication-models';
 import {Router} from '@angular/router';
+import {NetworkService} from '../../../services/core-services';
+import {ToastMessageService} from '../../../services/ui-services';
 
 @Component({
   selector: 'app-register',
@@ -34,8 +36,11 @@ export class RegisterPage {
 
   constructor(
     private router: Router,
-    private authenticationProxyService: AuthenticationProxyService,
-    private userContext: AuthenticationService) {
+    private networkService: NetworkService,
+    private userContext: AuthenticationService,
+    private toastMessageService: ToastMessageService,
+    private authenticationProxyService: AuthenticationProxyService
+  ) {
   }
 
   get imageSrc(): string {
@@ -116,29 +121,35 @@ export class RegisterPage {
   }
 
   submitRegister() {
-    const registerData: RegisterInfo = {
-      firstname: this.firstNameInput,
-      lastname: this.lastNameInput,
-      username: this.userNameInput,
-      email: this.emailInput,
-      userEmail: this.emailInput,
-      password: this.passwordInput
-    };
-    this.authenticationProxyService.registerAction(registerData)
-      .subscribe(
-        (response) => {
-          this.userContext.userRegistered(response);
-          this.submitted = false;
-          this.emailInput = null;
-          this.passwordInput = null;
-          this.router.navigate(Routes.userOverview);
-        },
-        (error) => {
-          this.submitted = false;
-          this.passwordInput = '';
-          this.passwordConfirmInput = '';
-          this.errorMessage = 'Kon niet registreren';
-        });
+    if (this.networkService.getNetworkStatus()) {
+      const registerData: RegisterInfo = {
+        firstname: this.firstNameInput,
+        lastname: this.lastNameInput,
+        username: this.userNameInput,
+        email: this.emailInput,
+        userEmail: this.emailInput,
+        password: this.passwordInput
+      };
+      this.authenticationProxyService.registerAction(registerData)
+        .subscribe(
+          (response) => {
+            this.userContext.userRegistered(response);
+            this.submitted = false;
+            this.emailInput = null;
+            this.passwordInput = null;
+            this.router.navigate(Routes.userOverview);
+          },
+          (error) => {
+            this.submitted = false;
+            this.passwordInput = '';
+            this.passwordConfirmInput = '';
+            this.errorMessage = '';
+            this.toastMessageService.presentToast(
+              `Error, de gebruiker kon niet worden geregistreerd. Status: ${error.status}`, 3500);
+          });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
   }
 
   firstNameValueChanged(firstNameValue: string) {
