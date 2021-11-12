@@ -247,12 +247,9 @@ Logboek Mobile Application Development - 2021-2022
 
     * Wachtwoord vergeten functie toevoegen.
     * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
-    * Bestelling kunnen verwijderen op detail pagina.
-
     * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * 404 pagina design geven.
     
-    * Voeg herlaad data knop toe op products en bestellingen pagina (ion-refresher) (toegepast op orders overview).
     * Push notificatie kunnen tonen (optioneel).
 
 
@@ -271,7 +268,8 @@ Logboek Mobile Application Development - 2021-2022
     * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
     * knop toegevoegd op de bestellingspagina.
     * Notitie voor bestelling toevoegen (optionele notitie).
-
+    * Voeg herlaad data knop toe op products en bestellingen pagina (ion-refresher).
+    * Bestelling kunnen verwijderen op detail pagina.
 
   - Opgeloste problemen
 

@@ -1,6 +1,7 @@
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-header class="ion-no-border">
     <ion-toolbar>
+      <ion-progress-bar *ngIf="removingLoading" type="indeterminate"></ion-progress-bar>
       <div class="summary-header">
         <ion-back-button *ngIf="!edit"
                          defaultHref="{{ (currentRole === role.admin) ? 'admin/orders' : 'overview/orders' }}"
@@ -56,6 +57,9 @@
           </div>
           <div class="save-status-button" *ngIf="changedStatus">
             <app-button [buttonText]="'Sla wijziging op'" [invertColor]="true" (click)="saveStatus()"></app-button>
+          </div>
+          <div class="save-status-button">
+            <app-button [buttonText]="'Verwijder bestelling'" [invertColor]="true" (click)="deleteOrder()"></app-button>
           </div>
         </div>
       </div>

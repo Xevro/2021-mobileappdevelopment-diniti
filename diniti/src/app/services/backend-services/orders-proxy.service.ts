@@ -57,4 +57,9 @@ export class OrdersProxyService extends CrudDataProvider<any> {
     };
     return this.putRequest(url, body, headerOptions);
   }
+
+  deleteOrderAction(objectId: string): Observable<any> {
+    const url = `classes/Orders/${objectId}`;
+    return this.deleteRequest(url);
+  }
 }
