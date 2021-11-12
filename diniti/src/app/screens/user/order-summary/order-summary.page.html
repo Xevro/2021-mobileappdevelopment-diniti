@@ -20,9 +20,7 @@
     <div class="summary-content">
       <ion-list class="time-picker">
         <ion-list-header>
-          <ion-label>
-            Kies een afhaal tijdstip
-          </ion-label>
+          <ion-label>Kies een afhaal tijdstip</ion-label>
         </ion-list-header>
         <p *ngIf="timeError" class="time-error">{{ timeError }}</p>
         <ion-item>
@@ -38,6 +36,15 @@
           <app-product-list [hideUserButtons]="true" [products]="order?.products"></app-product-list>
         </div>
       </div>
+    </div>
+    <div class="optional-field">
+      <p class="bold-text">Opmerking (optioneel)</p>
+      <ion-textarea (ionInput)="optionalNoticeChanged($event)" placeholder="Opmerking" name="notice"
+                    rows="6" cols="20"
+      ></ion-textarea>
+    </div>
+    <div class="order-button">
+      <app-button [buttonText]="'Bestel'" [invertColor]="true" (click)="goToOrderComplete()"></app-button>
     </div>
   </div>
 </ion-content>

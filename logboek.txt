@@ -253,7 +253,7 @@ Logboek Mobile Application Development - 2021-2022
     * 404 pagina design geven.
     
     * Voeg herlaad data knop toe op products en bestellingen pagina (ion-refresher) (toegepast op orders overview).
-    * Notitie voor bestelling toevoegen (optionele notitie) (toast.
+    * Notitie voor bestelling toevoegen (optionele notitie) (toast).
     * Push notificatie kunnen tonen (optioneel).
 
 
@@ -271,6 +271,7 @@ Logboek Mobile Application Development - 2021-2022
     * Enum ts files in enum map zetten.
     * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
     * knop toegevoegd op de bestellingspagina.
+
 
   - Opgeloste problemen
 

@@ -11,6 +11,7 @@ export interface Order {
   pickUpTime: Time;
   products: Product[];
   status: OrderStatus;
+  optionalNotice?: string;
   totalPrice: number;
   createdAt: string;
   updatedAt: string;

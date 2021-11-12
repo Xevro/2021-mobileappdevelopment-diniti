@@ -7,6 +7,7 @@ import {OrderSummaryPageRoutingModule} from './order-summary-routing.module';
 
 import {OrderSummaryPage} from './order-summary.page';
 import {ProductListModule} from "../../../components/product-list/product-list.module";
+import {ButtonModule} from '../../../components/button/button.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {ProductListModule} from "../../../components/product-list/product-list.m
     FormsModule,
     IonicModule,
     OrderSummaryPageRoutingModule,
-    ProductListModule
+    ProductListModule,
+    ButtonModule
   ],
   declarations: [OrderSummaryPage]
 })

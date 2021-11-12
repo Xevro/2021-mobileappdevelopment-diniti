@@ -45,7 +45,7 @@ export class OrderSummaryPage {
   }
 
   goToOrderComplete() {
-    this.timeError = '';
+    this.timeError = null;
     this.loading = true;
     if (this.order.pickUpTime) {
       this.order.status = OrderStatus.pending;
@@ -66,7 +66,9 @@ export class OrderSummaryPage {
           .subscribe(
             (response) => {
               this.loading = false;
-              this.router.navigate(Routes.orderComplete);
+              setTimeout(() => {
+                this.router.navigate(Routes.orderComplete);
+              }, 1000);
             },
             (error) => {
               this.toastMessageService.presentToast(
@@ -77,6 +79,15 @@ export class OrderSummaryPage {
       }
     } else {
       this.timeError = 'Kies een tijdstip';
+    }
+  }
+
+  optionalNoticeChanged(noticeValue: any) {
+    const notice = noticeValue.target.value;
+    if (notice.length !== 0) {
+      this.order.optionalNotice = notice;
+    } else {
+      this.order.optionalNotice = '';
     }
   }
 }

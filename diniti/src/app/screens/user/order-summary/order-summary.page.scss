@@ -37,6 +37,10 @@ ion-content {
     margin-left: auto;
     margin-right: auto;
 
+    .order-button {
+      text-align: center;
+    }
+
     .summary-information {
       display: flex;
       margin-left: 15px;
@@ -58,11 +62,10 @@ ion-content {
       ion-list {
         ion-list-header {
           padding-left: 15px;
-          margin-bottom: 15px;
 
           ion-label {
             --color: var(--ion-color-step-850, #262626);
-            font-size: 22px;
+            font-size: 1.1rem;
             font-weight: 700;
             letter-spacing: 0;
           }
@@ -76,6 +79,24 @@ ion-content {
         h2 {
           margin-bottom: 20px;
         }
+      }
+    }
+
+    .optional-field {
+      margin-top: 30px;
+      margin-left: 15px;
+      margin-right: 15px;
+
+      .bold-text {
+        font-weight: bold;
+      }
+      ion-textarea {
+        margin-top: 10px;
+        background: var(--color-app-shade-white-1);
+        border: 1px solid var(--color-app-shade-white-2);
+        box-sizing: border-box;
+        border-radius: 8px;
+        --padding-start: 8px;
       }
     }
   }

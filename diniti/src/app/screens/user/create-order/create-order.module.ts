@@ -8,7 +8,7 @@ import {CreateOrderPageRoutingModule} from './create-order-routing.module';
 
 import {CreateOrderPage} from './create-order.page';
 import {ProductListModule} from '../../../components/product-list/product-list.module';
-import {ButtonModule} from "../../../components/button/button.module";
+import {ButtonModule} from '../../../components/button/button.module';
 
 @NgModule({
   imports: [
