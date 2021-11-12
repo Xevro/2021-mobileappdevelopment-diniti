@@ -30,5 +30,8 @@
     <div *ngIf="products?.length === 0 && !loading" class="products-loading">
       <p>Geen producten gevonden</p>
     </div>
+    <div class="order-button" *ngIf="changedProducts">
+      <app-button [buttonText]="'Ga verder'" [invertColor]="true" (click)="getOrderSummaryUrl()"></app-button>
+    </div>
   </div>
 </ion-content>

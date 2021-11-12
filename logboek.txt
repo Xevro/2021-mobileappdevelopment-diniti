@@ -270,7 +270,7 @@ Logboek Mobile Application Development - 2021-2022
     * Controle service op internet verbinding (boodschap tonen dat internet connectie weg is).
     * Enum ts files in enum map zetten.
     * Fix error messages op alle pagina's waar requests gebeuren (console.log('error', error)).
-
+    * knop toegevoegd op de bestellingspagina.
 
   - Opgeloste problemen
 

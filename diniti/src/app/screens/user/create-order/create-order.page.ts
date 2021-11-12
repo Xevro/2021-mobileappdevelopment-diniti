@@ -15,6 +15,7 @@ export class CreateOrderPage {
   products: Product[];
   filterTerm: string;
   loading = false;
+  changedProducts = false;
   message: string;
   selectedProducts: Product[];
 
@@ -35,6 +36,7 @@ export class CreateOrderPage {
           this.products = response?.results;
           this.loading = false;
           this.loadStoredProducts();
+          this.checkOrders();
         },
         (error) => {
           this.message = 'Geen producten kunnen ophalen';
@@ -60,6 +62,7 @@ export class CreateOrderPage {
 
   updatedProductsList(productsEvent: any) {
     this.selectedProducts = productsEvent.products;
+    this.checkOrders();
   }
 
   getOrderSummaryUrl() {
@@ -69,7 +72,19 @@ export class CreateOrderPage {
       this.productsSummaryService.setProductsData(filteredProducts);
       this.router.navigate(Routes.userOrderCreateSummary);
     } else {
-      this.message = 'Kies een product om verder te kunnen gaan';
+      this.changedProducts = false;
+      this.message = 'Kies een product om verder te gaan';
+    }
+  }
+
+  checkOrders() {
+    const filteredProducts = this.selectedProducts?.filter((value) => value?.amount !== 0 && value.amount);
+    if (filteredProducts && filteredProducts.length !== 0) {
+      this.changedProducts = true;
+      this.message = null;
+    } else {
+      this.changedProducts = false;
+      this.message = 'Kies een product om verder te gaan';
     }
   }
 
