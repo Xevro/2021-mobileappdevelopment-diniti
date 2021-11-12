@@ -31,6 +31,10 @@ export class OverviewOrdersPage {
   }
 
   ionViewWillEnter() {
+    this.getOrders();
+  }
+
+  getOrders(event?: any) {
     this.loading = true;
     this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
       .subscribe(
@@ -44,8 +48,10 @@ export class OverviewOrdersPage {
             });
           }
           this.loading = false;
+          event?.target.complete();
         },
         (error) => {
+          event?.target.complete();
           this.toastMessageService.presentToast(
             `Error, de bestellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
         });

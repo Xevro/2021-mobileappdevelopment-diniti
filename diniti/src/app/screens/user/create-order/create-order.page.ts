@@ -28,6 +28,10 @@ export class CreateOrderPage {
   }
 
   ionViewWillEnter() {
+    this.getProducts();
+  }
+
+  getProducts(event?: any) {
     this.loading = true;
     this.message = null;
     this.productsProxyService.getProductsWithVisibilityAction(true)
@@ -37,8 +41,10 @@ export class CreateOrderPage {
           this.loading = false;
           this.loadStoredProducts();
           this.checkOrders();
+          event?.target.complete();
         },
         (error) => {
+          event?.target.complete();
           this.message = 'Geen producten kunnen ophalen';
           this.toastMessageService.presentToast(
             `Error, de producten konden niet worden opgehaald. Status: ${error.status}`, 3500);

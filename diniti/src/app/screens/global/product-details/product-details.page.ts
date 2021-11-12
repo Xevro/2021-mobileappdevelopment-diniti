@@ -149,6 +149,7 @@ export class ProductDetailsPage {
             });
       });
     } else {
+      this.loadingImage = false;
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
   }
@@ -191,6 +192,7 @@ export class ProductDetailsPage {
             });
       });
     } else {
+      this.loadingImage = false;
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
   }
@@ -234,6 +236,7 @@ export class ProductDetailsPage {
               `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
           });
     } else {
+      this.loadingImage = false;
       await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
   }

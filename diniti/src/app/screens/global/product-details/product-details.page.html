@@ -27,7 +27,7 @@
 
   <div class="product-page-content">
     <div class="product-information" *ngIf="!edit">
-      <p *ngIf="loading">Product gegevens laden...</p>
+      <p *ngIf="loading && !error">Product gegevens laden...</p>
       <p *ngIf="error && !product">Kon de product gegevens niet laden.</p>
       <div *ngIf="!loading && product">
         <div class="product-image">
@@ -40,7 +40,6 @@
     </div>
 
     <div class="product-information" *ngIf="currentRole === role.admin && edit">
-
       <p *ngIf="loading && !error">Product gegevens laden...</p>
       <p *ngIf="error && !product">Kon de product gegevens niet laden.</p>
       <div *ngIf="!loading && product && !error">

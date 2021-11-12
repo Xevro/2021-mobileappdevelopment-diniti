@@ -51,6 +51,7 @@ export class AdminOverviewPage {
           event?.target.complete();
         },
         (error) => {
+          event?.target.complete();
           this.loading = false;
           this.errorMessage = true;
           this.toastMessageService.presentToast(

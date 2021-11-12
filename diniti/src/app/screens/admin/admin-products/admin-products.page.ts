@@ -30,7 +30,7 @@ export class AdminProductsPage {
     this.getProducts();
   }
 
-  getProducts() {
+  getProducts(event?: any) {
     this.loading = true;
     this.message = null;
     this.productsProxyService.getAllProductsAction()
@@ -38,8 +38,10 @@ export class AdminProductsPage {
         (response) => {
           this.products = response?.results;
           this.loading = false;
+          event?.target.complete();
         },
         (error) => {
+          event?.target.complete();
           this.loading = false;
           this.errorMessage = true;
           this.toastMessageService.presentToast(
