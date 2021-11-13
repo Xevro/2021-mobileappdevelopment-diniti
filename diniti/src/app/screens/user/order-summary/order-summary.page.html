@@ -25,7 +25,7 @@
         <p *ngIf="timeError" class="time-error">{{ timeError }}</p>
         <ion-item>
           <ion-label>Tijdstip</ion-label>
-          <ion-datetime [(ngModel)]="order.pickUpTime" display-format="HH:mm" max="19:00"
+          <ion-datetime [(ngModel)]="selectedTime" display-format="HH:mm" max="19:00"
                         min="10:00" placeholder="Kies één tijdstip">
           </ion-datetime>
         </ion-item>

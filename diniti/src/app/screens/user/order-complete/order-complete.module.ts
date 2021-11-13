@@ -8,6 +8,7 @@ import {OrderCompletePageRoutingModule} from './order-complete-routing.module';
 
 import {OrderCompletePage} from './order-complete.page';
 import {ButtonModule} from '../../../components/button/button.module';
+import {OrderListItemModule} from "../../../components/order-list-item/order-list-item.module";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {ButtonModule} from '../../../components/button/button.module';
     FormsModule,
     IonicModule,
     OrderCompletePageRoutingModule,
-    ButtonModule
+    ButtonModule,
+    OrderListItemModule
   ],
   declarations: [OrderCompletePage]
 })

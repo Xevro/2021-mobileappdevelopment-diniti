@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Routes} from '../../../models/core-models';
-import {Router} from '@angular/router';
+import {Routes, Time} from '../../../models/core-models';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-order-complete',
@@ -9,11 +9,14 @@ import {Router} from '@angular/router';
 })
 export class OrderCompletePage {
 
-  pickUpTime: string;
+  pickUpTime: Time;
 
-  constructor(
-    private router:  Router
-  ) {
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.pickUpTime = this.router.getCurrentNavigation().extras.state.pickUpTime;
+      }
+    });
   }
 
   ionViewWillEnter() {

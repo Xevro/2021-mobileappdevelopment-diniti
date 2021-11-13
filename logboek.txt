@@ -247,7 +247,6 @@ Logboek Mobile Application Development - 2021-2022
 
     * Wachtwoord vergeten functie toevoegen.
     * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
-    * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip + toevoegen knop terug (duidelijker).
     * 404 pagina design geven.
     
     * Push notificatie kunnen tonen (optioneel).
@@ -272,7 +271,8 @@ Logboek Mobile Application Development - 2021-2022
     * Bestelling kunnen verwijderen op detail pagina.
     * Guard toegevoegd op de order complete route zodat het enkel mogelijk is om de pagina te bekijken wanneer er een bestelling gemaakt is.
     * Knop toegevoegd op de order complete pagina om terug te keren naar het overzicht.
-    
+    * Tijdstip van bestellen op bestelling gelukt wijzigen naar gekozen tijdstip.
+
 
   - Opgeloste problemen
 
@@ -280,7 +280,7 @@ Logboek Mobile Application Development - 2021-2022
     * Interceptor verwijderd omdat deze in productie altijd uit de cache werd gehaald en dus niet herlade
     * Verbetering in de guards: Elke pagina voerde 2 keer de guard uit doordat de guard op beide routing bestanden stond.
     * Om data steeds opnieuw te laden bij bezoeken zijn alle 'ngOnInit' functies gewijzigd naar 'ionViewWillEnter'
-
+    * Probleem opgelost waar te kiezen afhaal tijd werd opgeslagen als huidige tijd.
 
   - Op te lossen problemen
 

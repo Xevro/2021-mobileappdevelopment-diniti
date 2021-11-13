@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Routes} from '../../../models/core-models';
 import {OrdersProxyService, ProductsSummaryService} from '../../../services/backend-services';
 import {Order, OrderStatus} from '../../../models/backend-models';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {NetworkService, UuidGenerator} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
@@ -18,6 +18,7 @@ export class OrderSummaryPage {
   loading = false;
   order: Order = {totalPrice: 0.0} as Order;
   timeError: string;
+  selectedTime: any;
 
   constructor(
     private router: Router,
@@ -47,17 +48,16 @@ export class OrderSummaryPage {
   goToOrderComplete() {
     this.timeError = null;
     this.loading = true;
-    if (this.order.pickUpTime) {
+    if (this.selectedTime) {
       this.order.status = OrderStatus.pending;
       this.order.userId = {
         __type: 'Pointer',
         className: '_User',
         objectId: this.authenticationService.getObjectId()
       };
-      const date = new Date(Date.now());
       this.order.pickUpTime = {
         __type: 'Date',
-        iso: `${date.toDateString()}  ${date.toTimeString()}`
+        iso: this.selectedTime
       };
       this.order.orderId = Date.now();
       this.order.orderUuid = this.uuidGenerator.generateUUID();
@@ -68,15 +68,24 @@ export class OrderSummaryPage {
               this.loading = false;
               localStorage.setItem('orderComplete', '1');
               setTimeout(() => {
-                this.router.navigate(Routes.orderComplete);
-              }, 1000);
+                  const navigationExtras: NavigationExtras = {
+                    state: {
+                      pickUpTime: this.order.pickUpTime
+                    }
+                  };
+                  this.router.navigate(Routes.orderComplete, navigationExtras);
+                }, 1000
+              )
+              ;
             },
             (error) => {
+              this.loading = false;
               localStorage.setItem('orderComplete', '0');
               this.toastMessageService.presentToast(
                 `Error, de bestelling kon niet worden opgeslaan. Status: ${error.status}`, 3500);
             });
       } else {
+        this.loading = false;
         localStorage.setItem('orderComplete', '0');
         this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
       }

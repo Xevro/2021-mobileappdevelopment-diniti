@@ -11,7 +11,7 @@
   </ion-header>
   <div class="order-complete-content">
     <h1>Bestelling is gelukt!</h1>
-    <h2>U kan uw bestelling ophalen om {{ pickUpTime }}</h2>
+    <h2>U kan uw bestelling ophalen om {{ pickUpTime.iso | date:'HH:mm' ?? '--' }}</h2>
     <app-button [buttonText]="'Ga terug naar overzicht'" (click)="goToOverview()"></app-button>
   </div>
 </ion-content>
