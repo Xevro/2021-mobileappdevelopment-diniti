@@ -270,6 +270,9 @@ Logboek Mobile Application Development - 2021-2022
     * Notitie voor bestelling toevoegen (optionele notitie).
     * Voeg herlaad data knop toe op products en bestellingen pagina (ion-refresher).
     * Bestelling kunnen verwijderen op detail pagina.
+    * Guard toegevoegd op de order complete route zodat het enkel mogelijk is om de pagina te bekijken wanneer er een bestelling gemaakt is.
+    * Knop toegevoegd op de order complete pagina om terug te keren naar het overzicht.
+    
 
   - Opgeloste problemen
 

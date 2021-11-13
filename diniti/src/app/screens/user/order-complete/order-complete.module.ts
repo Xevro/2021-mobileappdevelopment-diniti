@@ -7,13 +7,15 @@ import {IonicModule} from '@ionic/angular';
 import {OrderCompletePageRoutingModule} from './order-complete-routing.module';
 
 import {OrderCompletePage} from './order-complete.page';
+import {ButtonModule} from '../../../components/button/button.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OrderCompletePageRoutingModule
+    OrderCompletePageRoutingModule,
+    ButtonModule
   ],
   declarations: [OrderCompletePage]
 })

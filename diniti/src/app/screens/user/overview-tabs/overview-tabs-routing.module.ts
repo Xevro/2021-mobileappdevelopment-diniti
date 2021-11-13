@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OverviewTabsPage} from './overview-tabs.page';
 import {RouteLiterals} from '../../../models/core-models';
+import {OrderCompleteGuard} from '../../../guards';
 
 const routes: Routes = [
   {
@@ -34,6 +35,8 @@ const routes: Routes = [
       },
       {
         path: RouteLiterals.userOrderDetail + '/' + RouteLiterals.userOrderComplete,
+        canActivateChild: [OrderCompleteGuard],
+        runGuardsAndResolvers: 'always',
         loadChildren: () => import('../order-complete/order-complete.module').then(m => m.OrderCompletePageModule)
       },
       {

@@ -66,15 +66,18 @@ export class OrderSummaryPage {
           .subscribe(
             (response) => {
               this.loading = false;
+              localStorage.setItem('orderComplete', '1');
               setTimeout(() => {
                 this.router.navigate(Routes.orderComplete);
               }, 1000);
             },
             (error) => {
+              localStorage.setItem('orderComplete', '0');
               this.toastMessageService.presentToast(
                 `Error, de bestelling kon niet worden opgeslaan. Status: ${error.status}`, 3500);
             });
       } else {
+        localStorage.setItem('orderComplete', '0');
         this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
       }
     } else {
