@@ -24,11 +24,13 @@ export class OrderCompletePage {
 
   getOverviewUrl() {
     localStorage.removeItem('orderComplete');
+    localStorage.removeItem('products');
     return Routes.userOverview;
   }
 
   goToOverview() {
     localStorage.removeItem('orderComplete');
+    localStorage.removeItem('products');
     this.router.navigate(Routes.userOverview);
   }
 }

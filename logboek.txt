@@ -282,6 +282,7 @@ Logboek Mobile Application Development - 2021-2022
     * Om data steeds opnieuw te laden bij bezoeken zijn alle 'ngOnInit' functies gewijzigd naar 'ionViewWillEnter'
     * Probleem opgelost waar te kiezen afhaal tijd werd opgeslagen als huidige tijd.
 
+
   - Op te lossen problemen
 
     * In productie krijgen api calls gateway timeout 504 error (bij /users/me).
