@@ -248,7 +248,7 @@ Logboek Mobile Application Development - 2021-2022
     * Wachtwoord vergeten functie toevoegen.
     * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
     * 404 pagina design geven.
-    
+    * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
     * Push notificatie kunnen tonen (optioneel).
 
 
