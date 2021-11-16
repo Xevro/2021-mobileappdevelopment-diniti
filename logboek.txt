@@ -293,3 +293,36 @@ Logboek Mobile Application Development - 2021-2022
     * Online/offline controle: https://stackblitz.com/edit/angular-offline-online-detection?file=src%2Fapp%2Fapp.component.html
     * https://forum.ionicframework.com/t/ionic-4-checking-network-status-over-browser/157648
 
+
+
+- Week 9 - vrijdag 19/11/2021
+
+ - Te doen deze week
+
+    * Wachtwoord vergeten functie toevoegen.
+    * Wachtwoord wijzigen pagina toevoegen.
+    * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
+    * 404 pagina design geven.
+    * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
+    * Push notificatie kunnen tonen (optioneel).
+    * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken
+
+ - Gedaan
+
+    *
+
+
+  - Opgeloste problemen
+
+    *
+
+
+  - Op te lossen problemen
+
+    * In productie krijgen api calls gateway timeout 504 error (bij /users/me).
+
+
+  - Bronnen
+
+    *
+

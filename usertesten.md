@@ -21,4 +21,4 @@ Op de login pagina zocht Jasper naar een 'wachtwoord vergeten' functie maar deze
 #### Verwerkt in Figma prototype:
 
 - Zoekfunctie aan de company products pagina toevoegen
-- Wachtwoord vergeten knop bij login toevoegen
+- Wachtwoord vergeten functie en knop bij login toevoegen
