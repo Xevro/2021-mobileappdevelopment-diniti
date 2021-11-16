@@ -307,6 +307,7 @@ Logboek Mobile Application Development - 2021-2022
     * Push notificatie kunnen tonen (optioneel).
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken
 
+
  - Gedaan
 
     *

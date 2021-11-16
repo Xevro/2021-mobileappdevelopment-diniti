@@ -33,6 +33,14 @@ const routes: Routes = [
         loadChildren: () => import('../../admin/admin-add-product/admin-add-product.module').then(m => m.AdminAddProductPageModule)
       },
       {
+        path: RouteLiterals.adminCustomers,
+        loadChildren: () => import('../../admin/admin-customers/admin-customers.module').then(m => m.AdminCustomersPageModule)
+      },
+      {
+        path: RouteLiterals.adminCustomers + '/' + RouteLiterals.adminCustomersDetail + '/:customerId',
+        loadChildren: () => import('../../admin/admin-customer-details/admin-customer-details.module').then(m => m.AdminCustomerDetailsPageModule)
+      },
+      {
         path: '',
         redirectTo: '/admin/orders',
         pathMatch: 'full'
