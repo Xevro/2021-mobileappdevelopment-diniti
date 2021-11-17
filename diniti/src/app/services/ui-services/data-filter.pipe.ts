@@ -7,7 +7,13 @@ export class DataFilterPipe implements PipeTransform {
 
   transform(data: any[], filterValue: string): any[] {
     if (filterValue) {
-      return data.filter(v => v.name.toLowerCase().includes(filterValue.toLowerCase()));
+      if (data[0].name) {
+        return data.filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()));
+      } else if (data[0].firstname && data[0].lastname && data[0].userEmail) {
+        return data.filter(item => item.firstname.toLowerCase().includes(filterValue.toLowerCase()) ||
+            item.lastname.toLowerCase().includes(filterValue.toLowerCase()) ||
+            item.userEmail.toLowerCase().includes(filterValue.toLowerCase()));
+      }
     } else {
       return data;
     }

@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FieldTypes} from '../../models/ui-models/field-types.enum';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FieldTypes} from '../../models/ui-models';
 
 @Component({
   selector: 'app-input-field',
   templateUrl: './input-field.component.html',
   styleUrls: ['./input-field.component.scss'],
 })
-export class InputFieldComponent implements OnInit {
+export class InputFieldComponent {
 
   @Input() placeholder: string;
   @Input() fieldType: FieldTypes = FieldTypes.text;
@@ -18,7 +18,7 @@ export class InputFieldComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
   }
 
   onChange() {

@@ -1,9 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>admin-customers</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <ion-refresher slot="fixed" (ionRefresh)="getCustomers($event)" pullFactor="0.5" pullMin="100" pullMax="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="customer-header">
+        <h2>Klanten</h2>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <div class="customers-list">
+    <div *ngIf="message" class="customers-loading">
+      <p>{{ message }}</p>
+    </div>
+    <div class="search-field">
+      <ion-searchbar [(ngModel)]="filterTerm" animated="true" placeholder="Zoek klanten"></ion-searchbar>
+    </div>
+    <app-customer-list #customersList (changedCustomersList)="updatedCustomersList(customersList)"
+                       *ngIf="!loading" [filterTerm]="filterTerm" [customers]="customers"></app-customer-list>
+    <div *ngIf="loading" class="customers-loading">
+      <p>Klanten laden...</p>
+    </div>
+    <div *ngIf="customers?.length === 0 && !loading" class="customers-loading">
+      <p>Geen klanten gevonden</p>
+    </div>
+    <div *ngIf="errorMessage" class="customers-loading">
+      <p>Kon geen gegevens ophalen.</p>
+    </div>
+  </div>
 </ion-content>

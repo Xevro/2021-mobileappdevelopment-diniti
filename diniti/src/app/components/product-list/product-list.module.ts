@@ -10,7 +10,7 @@ import {DataFilterPipe} from "../../services/ui-services";
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, ProductItemModule],
   declarations: [ProductListComponent, DataFilterPipe],
-  exports: [ProductListComponent]
+  exports: [ProductListComponent, DataFilterPipe]
 })
 export class ProductListModule {
 }

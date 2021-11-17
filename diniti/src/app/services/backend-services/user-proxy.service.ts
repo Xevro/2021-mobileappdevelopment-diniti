@@ -3,8 +3,9 @@ import {CrudDataProvider} from '../core-services';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
-import {UpdateUser, User} from '../../models/backend-models';
+import {UpdateUser, User, Users} from '../../models/backend-models';
 import {AuthenticationService} from '../authentication-services';
+import {Role} from '../../models/authentication-models';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,11 @@ export class UserProxyService extends CrudDataProvider<any> {
 
   getUserDataAction(objectId: string): Observable<User> {
     const url = `users/${objectId}`;
+    return this.getRequest(url);
+  }
+
+  getAllCustomersAction(role: Role): Observable<Users> {
+    const url = `users?where={"role":"${role}"}`;
     return this.getRequest(url);
   }
 

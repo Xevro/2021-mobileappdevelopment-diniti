@@ -1,3 +1,18 @@
-<p>
-  customer-item works!
-</p>
+<div class="customer-item">
+  <div class="item-top-row">
+    <div>
+      <p>Bestelling # {{ customer?.firstname + ' ' + customer?.lastname}}</p>
+    </div>
+    <div>
+      <p>{{ '--' }}</p>
+    </div>
+  </div>
+  <div class="item-bottom-row">
+    <div>
+      <p>{{ customer?.userEmail }}</p>
+    </div>
+    <div>
+      <p>192q</p>
+    </div>
+  </div>
+</div>

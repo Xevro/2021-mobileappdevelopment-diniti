@@ -1,0 +1,11 @@
+.customers-list-box {
+  margin: auto;
+
+  .customers-list {
+    width: auto;
+    margin: auto;
+    max-width: var(--list-width);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

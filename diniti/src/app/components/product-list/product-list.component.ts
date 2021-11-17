@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product, Products} from '../../models/backend-models';
 
 @Component({
@@ -6,7 +6,7 @@ import {Product, Products} from '../../models/backend-models';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent {
 
   @Input() hideUserButtons = false;
   @Input() showAdminButtons = false;
@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
   }
 
   changedProducts(productsList: any) {

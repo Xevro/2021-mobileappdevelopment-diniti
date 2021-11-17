@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../../models/backend-models';
 import {AlertController} from '@ionic/angular';
 import {ProductsProxyService} from '../../services/backend-services';
@@ -14,7 +14,7 @@ import {NetworkService} from '../../services/core-services';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss'],
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent {
 
   @Input() hideUserButtons = false;
   @Input() showAdminButtons = false;
@@ -38,7 +38,7 @@ export class ProductItemComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.currentRole = this.authenticationService.getRole();
   }
 
