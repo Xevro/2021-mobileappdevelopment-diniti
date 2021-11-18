@@ -102,6 +102,7 @@ export class AdminAddProductPage {
         this.validationMessage = 'Naam en of prijs zijn niet ingevuld.';
       }
     } else {
+      this.loading = false;
       this.toastMessageService.presentToast(
         'Er is geen netwerk verbinding...', 3500
       );
@@ -130,8 +131,11 @@ export class AdminAddProductPage {
               this.toastMessageService.presentToast(
                 `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
             });
+      }, () => {
+        this.loadingImage = false;
       });
     } else {
+      this.loadingImage = false;
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
   }

@@ -164,15 +164,18 @@ export class UserProfilePage {
                   this.getUserDataFromCloud();
                 },
                 (error) => {
+                  this.loadingImage = false;
                   this.toastMessageService.presentToast(
                     `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
                 });
           },
           (error) => {
+            this.loadingImage = false;
             this.toastMessageService.presentToast(
               `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
           });
     } else {
+      this.loadingImage = false;
       await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
   }
@@ -201,6 +204,7 @@ export class UserProfilePage {
                     this.getUserDataFromCloud();
                   },
                   (error) => {
+                    this.loadingImage = false;
                     this.toastMessageService.presentToast(
                       `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
                   });
@@ -209,8 +213,11 @@ export class UserProfilePage {
               this.toastMessageService.presentToast(
                 `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
             });
+      }, () => {
+        this.loadingImage = false;
       });
     } else {
+      this.loadingImage = false;
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
   }

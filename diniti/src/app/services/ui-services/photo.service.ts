@@ -9,8 +9,8 @@ import {Platform} from '@ionic/angular';
 export class PhotoService {
 
   constructor(
-    public imagePicker: ImagePicker,
-    public platform: Platform
+    public platform: Platform,
+    public imagePicker: ImagePicker
   ) {
   }
 
