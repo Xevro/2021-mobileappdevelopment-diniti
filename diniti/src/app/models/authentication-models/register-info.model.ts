@@ -1,4 +1,5 @@
 export interface RegisterInfo {
+  customerId: string;
   firstname: string;
   lastname: string;
   username: string;

@@ -4,7 +4,7 @@ import {FieldTypes} from '../../../models/ui-models';
 import {AuthenticationProxyService, AuthenticationService} from '../../../services/authentication-services';
 import {RegisterInfo} from '../../../models/authentication-models';
 import {Router} from '@angular/router';
-import {NetworkService} from '../../../services/core-services';
+import {NetworkService, UuidGenerator} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
 
 @Component({
@@ -36,6 +36,7 @@ export class RegisterPage {
 
   constructor(
     private router: Router,
+    private uuidGenerator: UuidGenerator,
     private networkService: NetworkService,
     private userContext: AuthenticationService,
     private toastMessageService: ToastMessageService,
@@ -136,6 +137,7 @@ export class RegisterPage {
   submitRegister() {
     if (this.networkService.getNetworkStatus()) {
       const registerData: RegisterInfo = {
+        customerId: this.uuidGenerator.generateUUID(),
         firstname: this.firstNameInput,
         lastname: this.lastNameInput,
         username: this.userNameInput,

@@ -17,7 +17,7 @@ const routes: Routes = [
         loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {
-        path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductDetail + '/:productId',
+        path: RouteLiterals.adminProducts + '/' + RouteLiterals.adminProductDetail + '/:productUuid',
         loadChildren: () => import('../../global/product-details/product-details.module').then(m => m.AdminProductDetailsPageModule)
       },
       {
@@ -37,7 +37,7 @@ const routes: Routes = [
         loadChildren: () => import('../../admin/admin-customers/admin-customers.module').then(m => m.AdminCustomersPageModule)
       },
       {
-        path: RouteLiterals.adminCustomers + '/' + RouteLiterals.adminCustomersDetail + '/:customerId',
+        path: RouteLiterals.adminCustomers + '/' + RouteLiterals.adminCustomersDetail + '/:customerUuid',
         loadChildren: () => import('../../admin/admin-customer-details/admin-customer-details.module').then(m => m.AdminCustomerDetailsPageModule)
       },
       {

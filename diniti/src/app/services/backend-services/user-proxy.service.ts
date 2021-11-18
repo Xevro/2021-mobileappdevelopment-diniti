@@ -29,6 +29,11 @@ export class UserProxyService extends CrudDataProvider<any> {
     return this.getRequest(url);
   }
 
+  getCustomerDataByUuidAction(customerUuid: string): Observable<Users> {
+    const url = `users?where={"customerId":"${customerUuid}"}`;
+    return this.getRequest(url);
+  }
+
   postImageAction(imageData: any): Observable<any> {
     const url = `files/userProfilePicture.png`;
     const headerOptions = {

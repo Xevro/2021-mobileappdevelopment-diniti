@@ -2,6 +2,7 @@ import {Role} from '../authentication-models';
 import {ProfilePicture} from './profile-picture.model';
 
 export interface User {
+  customerId?: string;
   createdAt?: string;
   updatedAt?: string;
   firstname?: string;

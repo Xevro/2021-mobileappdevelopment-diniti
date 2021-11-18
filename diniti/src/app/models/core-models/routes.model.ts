@@ -17,6 +17,10 @@ export class Routes {
   static adminProducts = ['/', RouteLiterals.adminOverview, RouteLiterals.adminProducts];
   static adminCreateProduct = ['/', RouteLiterals.adminOverview, RouteLiterals.adminProducts, RouteLiterals.adminProductCreate];
 
+  static adminCustomerDetail(customerId: string) {
+    return ['/', RouteLiterals.adminOverview, RouteLiterals.adminCustomers, RouteLiterals.adminCustomersDetail, customerId];
+  }
+
   static userOrderDetail(orderId: string) {
     return ['/', RouteLiterals.userOverview, RouteLiterals.orders, RouteLiterals.userOrderDetail, orderId];
   }

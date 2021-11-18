@@ -55,7 +55,7 @@ export class ProductDetailsPage {
 
   getOrderData() {
     this.loading = true;
-    this.productsProxyService.getProductByIdAction(this.activatedRoute.snapshot.params.productId)
+    this.productsProxyService.getProductByIdAction(this.activatedRoute.snapshot.params.productUuid)
       .subscribe(
         (response) => {
           this.product = response?.results[0];
