@@ -305,12 +305,13 @@ Logboek Mobile Application Development - 2021-2022
     * 404 pagina design geven.
     * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
     * Push notificatie kunnen tonen (optioneel).
-    * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken
+    * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
 
 
  - Gedaan
 
-    *
+    * Klanten lijst (componenten) en detail pagina aangemaakt.
+    * Probleem opgelost waardat de producten lijst dubbele producten weergaf wanneer de pagina herladen werd.
 
 
   - Opgeloste problemen
