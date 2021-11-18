@@ -36,7 +36,12 @@
       <app-input-field (onInputChange)="passwordValueChanged($event)" [fieldType]="fieldTypes.password"
                        [name]="'wachtwoord'" [placeholder]="'Wachtwoord'"></app-input-field>
       <div *ngIf="passwordErrorMessage" class="error-message">
-        <p>{{passwordErrorMessage}}</p>
+        <p>De volgende voorwaarden moeten in het wachtwoord worden opgenomen:</p>
+        <p>Lengte tussen 8 en 32 karakters.</p>
+        <p>1 of meerdere hoofdletters.</p>
+        <p>1 of meerdere kleineletters.</p>
+        <p>1 of meerdere cijfers.</p>
+        <p>1 of meerdere speciale karakters.</p>
       </div>
       <app-input-field (onInputChange)="passwordConfirmValueChanged($event)" [fieldType]="fieldTypes.password"
                        [name]="'Wachtwoord controle'" [placeholder]="'Wachtwoord controle'"></app-input-field>

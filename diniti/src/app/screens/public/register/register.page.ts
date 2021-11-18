@@ -29,7 +29,7 @@ export class RegisterPage {
   lastNameErrorMessage = null;
   userNameErrorMessage = null;
   emailErrorMessage = null;
-  passwordErrorMessage = null;
+  passwordErrorMessage = false;
   passwordConfirmErrorMessage = null;
   checkedErrorMessage = null;
   errorMessage = null;
@@ -96,15 +96,14 @@ export class RegisterPage {
     }
 
     if (this.passwordInput === null) {
-      this.passwordErrorMessage = 'Wachtwoord is vereist';
+      this.passwordErrorMessage = true;
       this.submitted = false;
     } else {
-      const passwordRegex = /^[A-Za-z0-9]\w{8,}$/;
-      if (!passwordRegex.test(this.passwordInput)) {
-        this.passwordErrorMessage = 'Wachtwoord is niet goed opgebouwd';
+      if (!this.validate(this.passwordInput)) {
+        this.passwordErrorMessage = true;
         this.submitted = false;
       } else {
-        this.passwordErrorMessage = null;
+        this.passwordErrorMessage = false;
       }
     }
 
@@ -118,6 +117,20 @@ export class RegisterPage {
       && !this.passwordErrorMessage) && (this.passwordInput === this.passwordConfirmInput) && this.checked) {
       this.submitRegister();
     }
+  }
+
+  validate(password) {
+    const minMaxLength = /^[\s\S]{8,32}$/;
+    const upper = /[A-Z]/;
+    const lower = /[a-z]/;
+    const numbers = /[0-9]/;
+    const special = /[ !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]/;
+
+    return minMaxLength.test(password) &&
+      upper.test(password) &&
+      lower.test(password) &&
+      numbers.test(password) &&
+      special.test(password);
   }
 
   submitRegister() {

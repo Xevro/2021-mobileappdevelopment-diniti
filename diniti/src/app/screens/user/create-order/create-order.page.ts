@@ -60,9 +60,13 @@ export class CreateOrderPage {
     const storedProducts = this.productsSummaryService.getProductsData();
     if (storedProducts !== undefined && storedProducts) {
       for (const [key, value] of Object.entries(storedProducts)) {
-        this.products[key] = value;
+        for (const product of this.products) {
+          if (value.objectId === product.objectId) {
+            product.amount = value.amount;
+          }
+        }
       }
-      this.selectedProducts = storedProducts;
+      this.selectedProducts = this.products;
     }
   }
 

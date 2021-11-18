@@ -14,7 +14,7 @@ export class AuthenticationService {
   cookiePath = '/';
   authenticated = false;
   sessionToken: string = null;
-  role: Role = null;
+  role: Role = Role.user;
   objectId: string;
 
   constructor(

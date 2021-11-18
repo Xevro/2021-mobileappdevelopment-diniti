@@ -5,7 +5,7 @@
                          *ngFor="let customer of customers | datafilter:filterTerm"
                          [customer]="customer"></app-customer-item>
     </div>
-    <div *ngIf="(customers | datafilter:filterTerm)?.length === 0" class="no-customers">
+    <div *ngIf="(customers | datafilter:filterTerm)?.length === 0 && filterTerm" class="no-customers">
       <p>Geen zoekresultaten voor {{ filterTerm }}</p>
     </div>
   </div>

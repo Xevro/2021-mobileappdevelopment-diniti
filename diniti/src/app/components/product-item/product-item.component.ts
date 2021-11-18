@@ -36,10 +36,10 @@ export class ProductItemComponent {
     private productsProxyService: ProductsProxyService,
     private authenticationService: AuthenticationService
   ) {
+    this.currentRole = this.authenticationService.getRole();
   }
 
   ionViewWillEnter() {
-    this.currentRole = this.authenticationService.getRole();
   }
 
   countUpProductAmount() {
@@ -117,6 +117,8 @@ export class ProductItemComponent {
       this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
     } else if (this.currentRole === Role.user && !this.disableDetail) {
       this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
+    } else {
+      this.router.navigate(Routes.userProductDetail('no-product'));
     }
   }
 }

@@ -7,7 +7,7 @@
                         [hideUserButtons]="hideUserButtons" [product]="product" [disableDetail]="disableDetail"
                         [showAdminButtons]="showAdminButtons"></app-product-item>
     </div>
-    <div *ngIf="(products | datafilter:filterTerm)?.length === 0" class="no-products">
+    <div *ngIf="(products | datafilter:filterTerm)?.length === 0 && filterTerm" class="no-products">
       <p>Geen zoekresultaten voor {{ filterTerm }}</p>
     </div>
   </div>

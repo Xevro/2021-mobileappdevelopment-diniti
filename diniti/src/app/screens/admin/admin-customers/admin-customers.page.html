@@ -24,7 +24,7 @@
     <div *ngIf="customers?.length === 0 && !loading" class="customers-loading">
       <p>Geen klanten gevonden</p>
     </div>
-    <div *ngIf="errorMessage" class="customers-loading">
+    <div *ngIf="errorMessage && !loading" class="customers-loading">
       <p>Kon geen gegevens ophalen.</p>
     </div>
   </div>
