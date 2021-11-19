@@ -7,12 +7,9 @@ ion-content {
   .product-header {
     .go-back {
       position: absolute;
+      top: 1px;
+      left: 14px;
       --color: var(--color-app-primary);
-      margin-left: 10px;
-      text-transform: none;
-      font-size: 1rem;
-      font-weight: normal;
-      text-decoration: none;
     }
 
     .header-close-edit {

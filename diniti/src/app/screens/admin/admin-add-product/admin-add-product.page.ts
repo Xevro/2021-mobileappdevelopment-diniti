@@ -5,7 +5,7 @@ import {FieldTypes} from '../../../models/ui-models';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
 import {ProductsProxyService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
-import {CurrencyPipe} from '@angular/common';
+import {CurrencyPipe, Location} from '@angular/common';
 import {NetworkService, UuidGenerator} from '../../../services/core-services';
 
 @Component({
@@ -34,6 +34,7 @@ export class AdminAddProductPage {
 
   constructor(
     private router: Router,
+    private location: Location,
     private photoService: PhotoService,
     private currencyPipe: CurrencyPipe,
     private uuidGenerator: UuidGenerator,
@@ -173,5 +174,9 @@ export class AdminAddProductPage {
     } else {
       this.descriptionErrorMessage = 'Beschrijving kan niet leeg zijn';
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

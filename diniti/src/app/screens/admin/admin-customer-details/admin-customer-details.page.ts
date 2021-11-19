@@ -6,6 +6,7 @@ import {AuthenticationService} from '../../../services/authentication-services';
 import {Orders, User} from '../../../models/backend-models';
 import {Role} from '../../../models/authentication-models';
 import {ToastMessageService} from '../../../services/ui-services';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-admin-customer-details',
@@ -24,6 +25,7 @@ export class AdminCustomerDetailsPage {
 
   constructor(
     private router: Router,
+    private location: Location,
     private networkService: NetworkService,
     private activatedRoute: ActivatedRoute,
     private userProxyService: UserProxyService,
@@ -68,5 +70,9 @@ export class AdminCustomerDetailsPage {
           this.toastMessageService.presentToast(
             `Error, de bestellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
         });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

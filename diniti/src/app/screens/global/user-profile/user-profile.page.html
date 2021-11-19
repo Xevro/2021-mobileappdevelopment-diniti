@@ -4,18 +4,26 @@
       <ion-toolbar>
         <div class="profile-header">
           <ion-buttons *ngIf="cancelButton">
-            <ion-button (click)="cancelEditUser()" [textContent]="'Annuleer'" class="cancel-button">
+            <ion-button (click)="cancelEditUser()" [textContent]="" class="cancel-button">
+              <ion-icon name="close-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
-          <ion-back-button *ngIf="!cancelButton" class="back-button" defaultHref="overview/orders" icon=""
-                           text="Terug"></ion-back-button>
+
+          <ion-buttons>
+            <ion-button *ngIf="!cancelButton" (click)="goBack()" [textContent]="" class="cancel-button">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+
           <h2>Profiel</h2>
           <ion-buttons *ngIf="editButton">
-            <ion-button (click)="handleEditUserData()" [textContent]="'Bewerk'" class="header-edit-profile">
+            <ion-button (click)="handleEditUserData()" [textContent]="" class="header-edit-profile">
+              <ion-icon name="create-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
           <ion-buttons *ngIf="!editButton">
-            <ion-button (click)="validateInput()" [textContent]="'Bewaar'" class="header-edit-profile">
+            <ion-button (click)="validateInput()" [textContent]="" class="header-edit-profile">
+              <ion-icon name="save-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
         </div>

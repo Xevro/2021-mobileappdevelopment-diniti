@@ -8,6 +8,7 @@ import {ToastMessageService} from '../../../services/ui-services';
 import {NetworkService} from '../../../services/core-services';
 import {AlertController} from '@ionic/angular';
 import {Routes} from '../../../models/core-models';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-order-details',
@@ -30,6 +31,7 @@ export class OrderDetailsPage {
 
   constructor(
     private router: Router,
+    private location: Location,
     private networkService: NetworkService,
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
@@ -150,5 +152,9 @@ export class OrderDetailsPage {
     } else {
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

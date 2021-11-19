@@ -2,10 +2,11 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <div class="product-header">
-        <ion-back-button *ngIf="!edit"
-                         defaultHref="{{ (currentRole === role.admin) ? 'admin/products' : 'overview/orders/create' }}"
-                         class="go-back" icon="" text="Terug">
-        </ion-back-button>
+        <ion-buttons>
+          <ion-button *ngIf="!edit" (click)="goBack()" [textContent]="" class="go-back">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
         <ion-buttons *ngIf="currentRole === role.admin">
           <ion-button *ngIf="edit" (click)="hideEditProduct()" [textContent]="" class="header-close-edit">
             <ion-icon name="close-outline"></ion-icon>

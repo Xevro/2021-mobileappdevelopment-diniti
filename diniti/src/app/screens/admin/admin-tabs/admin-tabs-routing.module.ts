@@ -38,7 +38,8 @@ const routes: Routes = [
       },
       {
         path: RouteLiterals.adminCustomers + '/' + RouteLiterals.adminCustomersDetail + '/:customerUuid',
-        loadChildren: () => import('../../admin/admin-customer-details/admin-customer-details.module').then(m => m.AdminCustomerDetailsPageModule)
+        loadChildren: () => import('../../admin/admin-customer-details/admin-customer-details.module')
+          .then(m => m.AdminCustomerDetailsPageModule)
       },
       {
         path: '',

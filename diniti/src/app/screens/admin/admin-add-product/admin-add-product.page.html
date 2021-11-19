@@ -3,12 +3,13 @@
     <ion-toolbar>
       <div class="product-header">
         <ion-buttons>
-          <ion-button [routerLink]="routes.adminProducts" routerDirection="back" [textContent]="'Annuleer'"
-                      class="cancel">
+          <ion-button (click)="goBack()" [textContent]="" class="cancel">
+            <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
         <ion-buttons>
-          <ion-button (click)="saveNewProduct()" [textContent]="'Voeg toe'" class="header-product-add">
+          <ion-button (click)="saveNewProduct()" [textContent]="" class="header-product-add">
+            <ion-icon name="save-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
       </div>

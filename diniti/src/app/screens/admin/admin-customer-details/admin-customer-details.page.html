@@ -2,7 +2,11 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <div class="customer-header">
-        <ion-back-button defaultHref="admin/customers" class="go-back" icon="" text="Terug"></ion-back-button>
+        <ion-buttons>
+          <ion-button (click)="goBack()" [textContent]="" class="go-back">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
         <h2>{{ customer?.firstname ?? '-'}} {{ customer?.lastname ?? '-' }}</h2>
       </div>
     </ion-toolbar>
@@ -13,7 +17,7 @@
     <p *ngIf="error && !customer && !loading">Kon de klantengegevens niet laden.</p>
     <div *ngIf="!loading && customer && !error" class="customer-information">
       <img src="{{ customer?.profilePicture.url }}" alt="Profielfoto klant" class="profile-picture-customer">
-      <p>Klantennr: <a>{{ customer?.customerId }}</a></p>
+      <p>Klanten nr.: <a>{{ customer?.customerId }}</a></p>
       <p>Naam: {{ (customer?.firstname ?? '--') + ' ' + (customer?.lastname ?? '--') }}</p>
       <p>Email: {{ customer?.userEmail }}</p>
       <p>Gebruikersnaam: {{ customer?.username }}</p>

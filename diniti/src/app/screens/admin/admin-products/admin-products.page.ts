@@ -20,8 +20,8 @@ export class AdminProductsPage {
 
   constructor(
     private router: Router,
-    private productsProxyService: ProductsProxyService,
-    private toastMessageService: ToastMessageService
+    private toastMessageService: ToastMessageService,
+    private productsProxyService: ProductsProxyService
   ) {
   }
 
@@ -54,7 +54,7 @@ export class AdminProductsPage {
     this.products = productsEvent.products;
   }
 
-  goToCreateOrder() {
+  goToCreateProduct() {
     this.router.navigate(Routes.adminCreateProduct);
   }
 }

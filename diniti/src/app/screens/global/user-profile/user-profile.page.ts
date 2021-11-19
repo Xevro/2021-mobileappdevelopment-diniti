@@ -7,6 +7,7 @@ import {UserProxyService} from '../../../services/backend-services';
 import {UpdateUser, User} from '../../../models/backend-models';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
 import {NetworkService} from '../../../services/core-services';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-profile',
@@ -33,6 +34,7 @@ export class UserProfilePage {
 
   constructor(
     private router: Router,
+    private location: Location,
     private photoService: PhotoService,
     private networkService: NetworkService,
     private userProxyService: UserProxyService,
@@ -236,5 +238,9 @@ export class UserProfilePage {
 
   emailValueChanged(emailValue: string) {
     this.updatedData.email = emailValue;
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

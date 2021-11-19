@@ -6,7 +6,7 @@ import {Role} from '../../../models/authentication-models';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {FieldTypes} from '../../../models/ui-models';
 import {Image} from '../../../models/core-models';
-import {CurrencyPipe} from '@angular/common';
+import {CurrencyPipe, Location} from '@angular/common';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
 import {NetworkService} from '../../../services/core-services';
 
@@ -38,6 +38,7 @@ export class ProductDetailsPage {
 
   constructor(
     private router: Router,
+    private location: Location,
     private photoService: PhotoService,
     private currencyPipe: CurrencyPipe,
     private activatedRoute: ActivatedRoute,
@@ -273,5 +274,9 @@ export class ProductDetailsPage {
     } else {
       this.descriptionErrorMessage = 'Beschrijving kan niet leeg zijn';
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
