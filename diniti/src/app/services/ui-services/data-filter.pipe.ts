@@ -11,8 +11,8 @@ export class DataFilterPipe implements PipeTransform {
         return data.filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()));
       } else if (data[0].firstname && data[0].lastname && data[0].userEmail) {
         return data.filter(item => item.firstname.toLowerCase().includes(filterValue.toLowerCase()) ||
-            item.lastname.toLowerCase().includes(filterValue.toLowerCase()) ||
-            item.userEmail.toLowerCase().includes(filterValue.toLowerCase()));
+          item.lastname.toLowerCase().includes(filterValue.toLowerCase()) ||
+          item.userEmail.toLowerCase().includes(filterValue.toLowerCase()));
       }
     } else {
       return data;

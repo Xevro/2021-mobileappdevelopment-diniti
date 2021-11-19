@@ -1,0 +1,59 @@
+ion-content {
+  .customer-header {
+    .go-back {
+      position: absolute;
+      --color: var(--color-app-primary);
+      margin-left: 10px;
+      text-transform: none;
+      font-size: 1rem;
+      font-weight: normal;
+      text-decoration: none;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+
+  .products-list {
+    margin-top: 60px;
+  }
+
+  .customer-page-content {
+    max-width: var(--list-width);
+    margin-left: auto;
+    margin-right: auto;
+
+    .customer-information {
+      margin-left: 15px;
+      margin-right: 15px;
+
+      a {
+        font-weight: bold;
+      }
+
+      .profile-picture-customer {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        margin: auto;
+        border-radius: 10px;
+      }
+    }
+
+    .customer-content {
+
+      .customer-list {
+        margin-left: 15px;
+        margin-right: 15px;
+
+        h2 {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+

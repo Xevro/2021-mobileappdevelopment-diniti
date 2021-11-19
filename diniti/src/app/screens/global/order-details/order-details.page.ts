@@ -57,7 +57,7 @@ export class OrderDetailsPage {
                 (userData) => {
                   this.user = userData;
                   this.loading = false;
-                  this.error = !this.order?.orderId;
+                  this.error = !this.user?.objectId;
                 },
                 (error) => {
                   this.error = true;

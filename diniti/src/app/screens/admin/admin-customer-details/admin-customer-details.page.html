@@ -1,3 +1,33 @@
 <ion-content>
-{{ user?.userEmail }}
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <div class="customer-header">
+        <ion-back-button defaultHref="admin/customers" class="go-back" icon="" text="Terug"></ion-back-button>
+        <h2>{{ customer?.firstname ?? '-'}} {{ customer?.lastname ?? '-' }}</h2>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="customer-page-content">
+    <p *ngIf="loading && !error">Klantengegevens laden...</p>
+    <p *ngIf="error && !customer && !loading">Kon de klantengegevens niet laden.</p>
+    <div *ngIf="!loading && customer && !error" class="customer-information">
+      <img src="{{ customer?.profilePicture.url }}" alt="Profielfoto klant" class="profile-picture-customer">
+      <p>Klantennr: <a>{{ customer?.customerId }}</a></p>
+      <p>Naam: {{ (customer?.firstname ?? '--') + ' ' + (customer?.lastname ?? '--') }}</p>
+      <p>Email: {{ customer?.userEmail }}</p>
+      <p>Gebruikersnaam: {{ customer?.username }}</p>
+      <p>Account aangemaakt: {{ customer?.createdAt | date:'YYYY-MM-dd HH:mm:ss' }}</p>
+    </div>
+    <div class="customer-content">
+      <div class="customer-list">
+        <p *ngIf="loadingOrders && !error">Bestellingen laden...</p>
+        <h2 *ngIf="!loadingOrders && customersOrders && !error">Bestellingen</h2>
+        <p *ngIf="errorOrders || !customersOrders && !loadingOrders">Kon geen bestellingen vinden.</p>
+        <div *ngIf="!loadingOrders && customersOrders && !error">
+          <app-order-list [orders]="customersOrders"></app-order-list>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
