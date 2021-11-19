@@ -43,8 +43,7 @@
         <p *ngIf="loading && !error">Bestelling laden...</p>
         <h2 *ngIf="!loading && order && !error">Bestelling</h2>
         <div *ngIf="!loading && order && !error">
-          <app-product-list [hideUserButtons]="true" [disableDetail]="true"
-                            [products]="order?.products"></app-product-list>
+          <app-product-list [hideUserButtons]="true" [products]="order?.products"></app-product-list>
         </div>
       </div>
       <div class="summary-list" *ngIf="edit">

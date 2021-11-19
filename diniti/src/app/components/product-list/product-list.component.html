@@ -4,7 +4,7 @@
       <app-product-item #productsList (changedProduct)="changedProducts(productsList)"
                         (removedProduct)="removedProductEmit($event)"
                         *ngFor="let product of products | datafilter:filterTerm" [hideCount]="hideCount"
-                        [hideUserButtons]="hideUserButtons" [product]="product" [disableDetail]="disableDetail"
+                        [hideUserButtons]="hideUserButtons" [product]="product"
                         [showAdminButtons]="showAdminButtons"></app-product-item>
     </div>
     <div *ngIf="(products | datafilter:filterTerm)?.length === 0 && filterTerm" class="no-products">

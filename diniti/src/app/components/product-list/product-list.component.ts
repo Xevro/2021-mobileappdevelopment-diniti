@@ -10,7 +10,6 @@ export class ProductListComponent {
 
   @Input() hideUserButtons = false;
   @Input() showAdminButtons = false;
-  @Input() disableDetail = false;
   @Input() hideCount = false;
   @Input() products: Product[];
   @Input() filterTerm: string;

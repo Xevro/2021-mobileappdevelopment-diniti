@@ -6,6 +6,7 @@ import {NavigationExtras, Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {NetworkService, UuidGenerator} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-order-summary',
@@ -22,6 +23,7 @@ export class OrderSummaryPage {
 
   constructor(
     private router: Router,
+    private location: Location,
     private uuidGenerator: UuidGenerator,
     private networkService: NetworkService,
     private ordersProxyService: OrdersProxyService,
@@ -101,5 +103,9 @@ export class OrderSummaryPage {
     } else {
       this.order.optionalNotice = '';
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

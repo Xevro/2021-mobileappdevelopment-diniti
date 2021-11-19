@@ -22,7 +22,7 @@ export class CustomerItemComponent {
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    this.currentRole = this.authenticationService.getRole();
+    this.currentRole = this.authenticationService.getRole() ?? Role.user;
   }
 
   ionViewWillEnter() {

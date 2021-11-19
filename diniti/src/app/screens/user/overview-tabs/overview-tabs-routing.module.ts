@@ -22,7 +22,7 @@ const routes: Routes = [
         loadChildren: () => import('../../global/order-details/order-details.module').then(m => m.OrderDetailsPageModule)
       },
       {
-        path: RouteLiterals.orders + '/' + RouteLiterals.userProduct + '/:productId',
+        path: RouteLiterals.orders + '/' + RouteLiterals.userProduct + '/:productUuid',
         loadChildren: () => import('../../global/product-details/product-details.module').then(m => m.AdminProductDetailsPageModule)
       },
       {

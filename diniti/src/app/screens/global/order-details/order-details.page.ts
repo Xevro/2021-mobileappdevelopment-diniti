@@ -44,7 +44,7 @@ export class OrderDetailsPage {
 
   ionViewWillEnter() {
     this.getOrderData();
-    this.currentRole = this.authenticationService.getRole();
+    this.currentRole = this.authenticationService.getRole() ?? Role.user;
   }
 
   getOrderData() {

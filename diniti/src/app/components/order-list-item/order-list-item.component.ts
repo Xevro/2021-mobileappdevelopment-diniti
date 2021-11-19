@@ -21,7 +21,7 @@ export class OrderListItemComponent {
     private toastMessageService: ToastMessageService,
     private authenticationService: AuthenticationService
   ) {
-    this.currentRole = this.authenticationService.getRole();
+    this.currentRole = this.authenticationService.getRole() ?? Role.user;
   }
 
   ionViewWillEnter() {
@@ -33,7 +33,7 @@ export class OrderListItemComponent {
     } else if (this.currentRole === Role.user) {
       this.router.navigate(Routes.userOrderDetail(this.order.orderUuid.toString()));
     } else {
-      this.router.navigate(Routes.userOrderDetail('no-order'));
+      this.router.navigate(Routes.userOrderDetail(this.order.orderUuid.toString()));
     }
   }
 }

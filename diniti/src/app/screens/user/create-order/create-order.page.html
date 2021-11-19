@@ -6,12 +6,14 @@
     <ion-toolbar>
       <div class="order-header">
         <ion-buttons>
-          <ion-button (click)="goToOverview()" [textContent]="'Annuleer'" class="cancel">
+          <ion-button (click)="goToOverview()" [textContent]="" class="cancel">
+            <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
         <h2>Bestel</h2>
         <ion-buttons>
-          <ion-button (click)="getOrderSummaryUrl()" [textContent]="'Winkelmand'" class="header-order-summary">
+          <ion-button (click)="getOrderSummaryUrl()" [textContent]="" class="header-order-summary">
+            <ion-icon name="basket-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
       </div>

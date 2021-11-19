@@ -18,7 +18,6 @@ export class ProductItemComponent {
 
   @Input() hideUserButtons = false;
   @Input() showAdminButtons = false;
-  @Input() disableDetail = false;
   @Input() hideCount = false;
   @Input() product: Product;
 
@@ -36,7 +35,7 @@ export class ProductItemComponent {
     private productsProxyService: ProductsProxyService,
     private authenticationService: AuthenticationService
   ) {
-    this.currentRole = this.authenticationService.getRole();
+    this.currentRole = this.authenticationService.getRole() ?? Role.user;
   }
 
   ionViewWillEnter() {
@@ -113,12 +112,12 @@ export class ProductItemComponent {
   }
 
   goToDetailPage() {
-    if (this.currentRole === Role.admin && !this.disableDetail) {
+    if (this.currentRole === Role.admin) {
       this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
-    } else if (this.currentRole === Role.user && !this.disableDetail) {
+    } else if (this.currentRole === Role.user) {
       this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
     } else {
-      this.router.navigate(Routes.userProductDetail('no-product'));
+      this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
     }
   }
 }

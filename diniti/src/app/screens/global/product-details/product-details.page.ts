@@ -51,7 +51,7 @@ export class ProductDetailsPage {
 
   ionViewWillEnter() {
     this.getOrderData();
-    this.currentRole = this.authenticationService.getRole();
+    this.currentRole = this.authenticationService.getRole() ?? Role.user;
   }
 
   getOrderData() {
@@ -59,13 +59,17 @@ export class ProductDetailsPage {
     this.productsProxyService.getProductByIdAction(this.activatedRoute.snapshot.params.productUuid)
       .subscribe(
         (response) => {
-          this.product = response?.results[0];
-          this.updateProduct.name = this.product.name;
-          this.updateProduct.price = this.product.price;
-          this.updateProduct.visibility = this.product.visibility;
-          this.updateProduct.description = this.product.description;
-          this.loading = false;
-          this.error = !this.product?.productId;
+          if (response.results.length !== 0) {
+            this.product = response.results[0];
+            this.updateProduct.name = this.product.name;
+            this.updateProduct.price = this.product.price;
+            this.updateProduct.visibility = this.product.visibility;
+            this.updateProduct.description = this.product.description;
+            this.loading = false;
+            this.error = !this.product?.productId;
+          } else {
+            this.error = true;
+          }
         },
         (error) => {
           this.error = true;
