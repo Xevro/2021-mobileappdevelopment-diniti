@@ -44,6 +44,10 @@ export class LoginPage {
     return Routes.register;
   }
 
+  get passwordReset() {
+    return Routes.resetPassword;
+  }
+
   ionViewWillEnter() {
   }
 

@@ -2,6 +2,8 @@ export class RouteLiterals {
   static onboarding = 'onboarding';
   static login = 'login';
   static register = 'register';
+  static reset = 'reset';
+  static resetPassword = 'password';
 
   static userProfile = 'profile';
   static userOverview = 'overview';

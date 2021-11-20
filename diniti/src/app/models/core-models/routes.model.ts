@@ -4,6 +4,7 @@ export class Routes {
   static onboarding = ['/', RouteLiterals.onboarding];
   static login = ['/', RouteLiterals.onboarding, RouteLiterals.login];
   static register = ['/', RouteLiterals.onboarding, RouteLiterals.register];
+  static resetPassword = ['/', RouteLiterals.onboarding, RouteLiterals.resetPassword, RouteLiterals.reset];
 
   static userOverview = ['/', RouteLiterals.userOverview];
   static orders = ['/', RouteLiterals.userOverview, RouteLiterals.orders];

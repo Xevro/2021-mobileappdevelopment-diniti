@@ -29,6 +29,10 @@ ion-content {
     .input-fields {
       margin-top: 150px;
 
+      a {
+        text-decoration: none;
+      }
+
       .button-login {
         text-align: center;
         margin-top: 25px;

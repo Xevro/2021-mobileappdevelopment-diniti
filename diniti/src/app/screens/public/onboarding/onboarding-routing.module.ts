@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: RouteLiterals.register,
     loadChildren: () => import('../register/register.module').then(m => m.RegisterUserPageModule)
+  },
+  {
+    path: RouteLiterals.resetPassword + '/' + RouteLiterals.reset,
+    loadChildren: () => import('../reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   }
 ];
 

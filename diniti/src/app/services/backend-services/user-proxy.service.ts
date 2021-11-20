@@ -59,4 +59,15 @@ export class UserProxyService extends CrudDataProvider<any> {
     };
     return this.putRequest(url, body, headerOptions);
   }
+
+  requestPasswordReset(email: string): Observable<void> {
+    const url = `requestPasswordReset`;
+    const headerOptions = {
+      'Content-Type': 'application/json'
+    };
+    const body = {
+      email
+    };
+    return this.postRequest(url, body, headerOptions);
+  }
 }

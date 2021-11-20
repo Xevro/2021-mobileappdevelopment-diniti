@@ -16,17 +16,18 @@
       <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
                        [name]="'username'" [placeholder]="'Gebruikersnaam'"></app-input-field>
       <div *ngIf="usernameErrorMessage" class="error-message">
-        <p>{{usernameErrorMessage}}</p>
+        <p>{{ usernameErrorMessage }}</p>
       </div>
       <app-input-field (onInputChange)="passwordValueChanged($event)" [fieldType]="fieldTypes.password"
                        [name]="'password'" [placeholder]="'Wachtwoord'"
                        [value]="passwordInput"></app-input-field>
 
+      <p><a [routerLink]="passwordReset">Wachtwoord vergeten?</a></p>
       <div *ngIf="passwordErrorMessage" class="error-message">
-        <p>{{passwordErrorMessage}}</p>
+        <p>{{ passwordErrorMessage }}</p>
       </div>
       <div *ngIf="errorMessage" class="error-message">
-        <p>{{errorMessage}}</p>
+        <p>{{ errorMessage }}</p>
       </div>
       <div class="button-login">
         <app-button (click)="validateLogin()" [buttonText]="'Log in'" [disabled]="submitted"
