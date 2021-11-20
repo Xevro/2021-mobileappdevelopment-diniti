@@ -193,14 +193,14 @@ export class UserProfilePage {
         this.userProxyService.postImageAction(urlRawData)
           .subscribe(
             (result) => {
-              const data = {
+              const imageData = {
                 profilePicture: {
                   name: result.name,
                   url: result.url,
                   __type: 'File'
                 }
               };
-              this.userProxyService.updateUserImageAction(data, this.authenticationService.getObjectId())
+              this.userProxyService.updateUserImageAction(imageData, this.authenticationService.getObjectId())
                 .subscribe(
                   (status) => {
                     this.getUserDataFromCloud();

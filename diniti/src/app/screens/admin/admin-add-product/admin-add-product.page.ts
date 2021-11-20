@@ -76,27 +76,25 @@ export class AdminAddProductPage {
           };
           this.product.productId = this.uuidGenerator.generateUUID();
           this.productsProxyService.postProductAction(this.product)
-            .subscribe(
-              (status) => {
+            .subscribe((status) => {
                 this.goToProducts();
               },
               (error) => {
                 this.loading = false;
                 this.errorMessage = true;
                 this.toastMessageService.presentToast(
-                  `Error, de gegevens konden niet worden verstuurd. Status: ${error.status}`, 3500);
+                  `Error, de product gegevens konden niet worden verstuurd. Status: ${error.status}`, 3500);
               });
         } else {
           this.product.productId = this.uuidGenerator.generateUUID();
           this.productsProxyService.postProductAction(this.product)
-            .subscribe(
-              (status) => {
+            .subscribe((status) => {
                 this.goToProducts();
               },
               (error) => {
                 this.errorMessage = true;
                 this.toastMessageService.presentToast(
-                  `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+                  `Error, de product gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
               });
         }
       } else {
@@ -105,8 +103,7 @@ export class AdminAddProductPage {
     } else {
       this.loading = false;
       this.toastMessageService.presentToast(
-        'Er is geen netwerk verbinding...', 3500
-      );
+        'Er is geen netwerk verbinding...', 3500);
     }
   }
 
@@ -119,8 +116,7 @@ export class AdminAddProductPage {
           .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
         this.productsProxyService.postImageAction(urlRawData)
-          .subscribe(
-            (result) => {
+          .subscribe((result) => {
               this.imageResultData = result;
               this.loadingImage = false;
               this.uploadingImageDone = true;
@@ -130,10 +126,12 @@ export class AdminAddProductPage {
               this.uploadingImageDone = false;
               this.imageError = true;
               this.toastMessageService.presentToast(
-                `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+                `Error, de afbeelding konden niet worden opgeslaan. Status: ${error.status}`, 3500);
             });
       }, () => {
         this.loadingImage = false;
+        this.uploadingImageDone = true;
+        this.imageError = false;
       });
     } else {
       this.loadingImage = false;

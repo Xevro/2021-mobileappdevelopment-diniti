@@ -313,7 +313,7 @@ Logboek Mobile Application Development - 2021-2022
     * Probleem opgelost waardat de producten lijst dubbele producten weergaf wanneer de pagina herladen werd.
     * Overzicht van klanten en hun bestellingen weergeven op admin pagina.
     * Terug keren naar de vorige pagina dynamisch opgelost met de Location service
-    
+    * Enkele zaken verbeterd omtrend mogelijke fouten met de role (indien geen role: steeds user gebruiken als role).
 
   - Opgeloste problemen
 
