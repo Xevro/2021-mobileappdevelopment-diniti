@@ -3,7 +3,8 @@ import {FieldTypes} from '../../../models/ui-models';
 import {UserProxyService} from '../../../services/backend-services';
 import {NetworkService} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
-import {Routes} from "../../../models/core-models";
+import {Routes} from '../../../models/core-models';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,11 +14,12 @@ import {Routes} from "../../../models/core-models";
 export class ResetPasswordPage {
 
   fieldTypes = FieldTypes;
-  email: string;
+  email: string = null;
   emailErrorMessage: string;
   submitted = false;
 
   constructor(
+    private route: Router,
     private networkService: NetworkService,
     private userProxyService: UserProxyService,
     private toastMessageService: ToastMessageService
@@ -65,14 +67,13 @@ export class ResetPasswordPage {
         .subscribe(
           (response) => {
             this.submitted = false;
-            console.log(response);
-            console.log('gelukt');
+            this.route.navigate(Routes.login);
           },
           (error) => {
             this.submitted = false;
-            this.emailErrorMessage = '';
+            this.emailErrorMessage = null;
             this.toastMessageService.presentToast(
-              `Error, het wachtwoord wijzigen kon niet worden opgevraagd. Status: ${error.status}`, 3500);
+              `Error, de aanvraag kon niet worden verstuurd. Status: ${error.status}`, 3500);
           });
     } else {
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
