@@ -1,0 +1,13 @@
+ion-content {
+  .error-content {
+    margin: auto;
+    max-width: var(--list-width);
+    text-align: center;
+
+    h2 {
+      font-size: 1.7rem;
+      margin-top: 70px;
+      margin-bottom: 40px;
+    }
+  }
+}

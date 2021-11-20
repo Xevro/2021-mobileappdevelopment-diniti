@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SwUpdate} from '@angular/service-worker';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-not-found',
@@ -9,13 +9,14 @@ import {SwUpdate} from '@angular/service-worker';
 export class NotFoundPage {
 
   constructor(
-    private swUpdate: SwUpdate
+    private location: Location
   ) {
   }
 
   ionViewWillEnter() {
-    this.swUpdate.available.subscribe(() => {
-      window.location.reload();
-    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
