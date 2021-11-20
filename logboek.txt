@@ -299,7 +299,6 @@ Logboek Mobile Application Development - 2021-2022
 
  - Te doen deze week
 
-    * Wachtwoord vergeten functie toevoegen.
     * Wachtwoord wijzigen pagina toevoegen.
     * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
     * Push notificatie kunnen tonen (optioneel).
@@ -314,6 +313,7 @@ Logboek Mobile Application Development - 2021-2022
     * Terug keren naar de vorige pagina dynamisch opgelost met de Location service
     * Enkele zaken verbeterd omtrend mogelijke fouten met de role (indien geen role: steeds user gebruiken als role).
     * 404 pagina design geven.
+    * Wachtwoord vergeten functie toevoegen.
 
     
   - Opgeloste problemen
