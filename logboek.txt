@@ -305,6 +305,7 @@ Logboek Mobile Application Development - 2021-2022
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
     * Email verificatie toevoegen.
 
+
  - Gedaan
 
     * Klanten lijst (componenten) en detail pagina aangemaakt.
@@ -323,11 +324,43 @@ Logboek Mobile Application Development - 2021-2022
 
   - Op te lossen problemen
 
-    * In productie krijgen api calls gateway timeout 504 error (bij /users/me).
+    * In productie krijgen api calls gateway timeout 504 error (bij /users/me). (De afgelopen weken is dit probleem niet meer voorgekomen).
 
 
   - Bronnen
 
     * Terug naar vorige pagina probleem opgelost: https://stackoverflow.com/questions/54892266/ionic-4-angular-back-button-to-previous-page-instead-of-root
+
+
+
+- Week 10 - vrijdag 26/11/2021
+
+ - Te doen deze week
+
+    * Wachtwoord wijzigen pagina toevoegen.
+    * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
+    * Push notificatie kunnen tonen (optioneel).
+    * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
+    * Email verificatie toevoegen.
+
+
+ - Gedaan
+
+    *
+
+    
+  - Opgeloste problemen
+
+    *
+
+
+  - Op te lossen problemen
+
+    * 
+
+
+  - Bronnen
+
+    *
 
 
