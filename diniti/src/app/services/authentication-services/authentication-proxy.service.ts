@@ -16,8 +16,15 @@ export class AuthenticationProxyService extends CrudDataProvider<any> {
   }
 
   loginAction(username: string, password: string): Observable<LoginResponse> {
-    const url = `login?username=${encodeURI(username)}&password=${encodeURI(password)}`;
-    return this.getRequest(url);
+    const url = 'login';
+    const headerOptions = {
+      'Content-Type': 'application/json'
+    };
+    const body = {
+      username,
+      password
+    };
+    return this.postRequest(url, body, headerOptions);
   }
 
   registerAction(registerData: RegisterInfo): Observable<RegisterResponse> {
