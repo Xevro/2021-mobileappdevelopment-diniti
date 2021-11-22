@@ -341,6 +341,7 @@ Logboek Mobile Application Development - 2021-2022
     * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
     * Push notificatie kunnen tonen (optioneel).
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
+    * Voeg offline functionaliteit toe aan POST en PUT methodes.
 
 
  - Gedaan
@@ -360,6 +361,6 @@ Logboek Mobile Application Development - 2021-2022
 
   - Bronnen
 
-    *
+    * Offline requests handlen: https://offering.solutions/blog/articles/2018/11/21/online-and-offline-sync-with-angular-and-indexeddb/
 
 

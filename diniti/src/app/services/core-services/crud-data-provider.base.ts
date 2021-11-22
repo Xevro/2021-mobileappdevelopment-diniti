@@ -13,7 +13,9 @@ export abstract class CrudDataProvider<Type> {
     'X-Parse-Revocable-Session': '1'
   };
 
-  constructor(protected httpClient: HttpClient) {
+  constructor(
+    protected httpClient: HttpClient
+  ) {
   }
 
   getRequest(url: string, headerOptions = {}): Observable<Type> {
