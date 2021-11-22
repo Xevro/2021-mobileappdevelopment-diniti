@@ -224,6 +224,26 @@ export class UserProfilePage {
     }
   }
 
+  requestPasswordChange() {
+    if (this.networkService.getNetworkStatus()) {
+      this.userProxyService.requestPasswordReset(this.userData.userEmail)
+        .subscribe(
+          (response) => {
+            this.submitted = false;
+            this.toastMessageService.presentToast(
+              'U zal een email ontvangen om uw wachtwoord te wijzigen.', 3500);
+          },
+          (error) => {
+            this.submitted = false;
+            this.emailErrorMessage = null;
+            this.toastMessageService.presentToast(
+              `Error, de aanvraag kon niet worden verstuurd. Status: ${error.status}`, 3500);
+          });
+    } else {
+      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+    }
+  }
+
   firstNameValueChanged(firstNameValue: string) {
     this.updatedData.firstname = firstNameValue;
   }

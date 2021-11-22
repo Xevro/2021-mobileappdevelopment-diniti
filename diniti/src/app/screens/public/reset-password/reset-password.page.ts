@@ -19,7 +19,7 @@ export class ResetPasswordPage {
   submitted = false;
 
   constructor(
-    private route: Router,
+    private router: Router,
     private networkService: NetworkService,
     private userProxyService: UserProxyService,
     private toastMessageService: ToastMessageService
@@ -67,7 +67,7 @@ export class ResetPasswordPage {
         .subscribe(
           (response) => {
             this.submitted = false;
-            this.route.navigate(Routes.login);
+            this.router.navigate(Routes.login);
           },
           (error) => {
             this.submitted = false;

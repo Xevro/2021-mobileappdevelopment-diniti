@@ -337,21 +337,20 @@ Logboek Mobile Application Development - 2021-2022
 
  - Te doen deze week
 
-    * Wachtwoord wijzigen pagina toevoegen.
+    * Wachtwoord wijzigen knop toevoegen.
     * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
     * Push notificatie kunnen tonen (optioneel).
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
-    * Email verificatie toevoegen.
 
 
  - Gedaan
 
-    *
+    * Wachtwoord wijzigen knop toevoegen.
 
     
   - Opgeloste problemen
 
-    *
+    * Login GET request gewijzigd naar POST wegens veiligheidsredenen.
 
 
   - Op te lossen problemen

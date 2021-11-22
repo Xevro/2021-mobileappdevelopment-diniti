@@ -95,6 +95,10 @@
         <div *ngIf="emailErrorMessage" class="error-message">
           <p>{{ emailErrorMessage }}</p>
         </div>
+        <div>
+          <app-button (click)="requestPasswordChange()" [buttonText]="'Wijzig wachtwoord'" [invertColor]="true"
+                      class="logout-button"></app-button>
+        </div>
       </div>
 
       <div *ngIf="!toggleEditView">
