@@ -2,7 +2,7 @@
   <div class="products-item-box">
     <div (click)="goToDetailPage()" class="product-image-box">
       <ion-thumbnail slot="start">
-        <ion-img [src]="product?.image?.url" alt="{{ product.name }}"></ion-img>
+        <ion-img [src]="product?.image?.url" alt="{{ product?.name ?? 'Product afbeelding' }}"></ion-img>
       </ion-thumbnail>
     </div>
     <div (click)="goToDetailPage()" class="product-item-box">

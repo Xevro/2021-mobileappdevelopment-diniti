@@ -27,21 +27,28 @@
         <p>{{ nameErrorMessage }}</p>
       </div>
 
-      <app-input-field (onInputChange)="nameValueChanged($event)" [fieldType]="fieldTypes.text"
-                       [name]="'name'" [placeholder]="'Naam'" [value]="product?.name"></app-input-field>
-      <div *ngIf="priceErrorMessage" class="error-message">
-        <p>{{ priceErrorMessage }}</p>
+      <div class="input-section">
+        <ion-label>Naam</ion-label>
+        <app-input-field (onInputChange)="nameValueChanged($event)" [fieldType]="fieldTypes.text"
+                         [name]="'name'" [placeholder]="'Naam'" [value]="product?.name"></app-input-field>
+        <div *ngIf="priceErrorMessage" class="error-message">
+          <p>{{ priceErrorMessage }}</p>
+        </div>
       </div>
-      <app-input-field (onInputChange)="priceValueChanged($event)" [fieldType]="fieldTypes.text" [name]="'price'"
-                       [placeholder]="'Prijs'" [value]="product?.price" inputmode="decimal"></app-input-field>
-      <div *ngIf="descriptionErrorMessage" class="error-message">
-        <p>{{ descriptionErrorMessage }}</p>
+      <div class="input-section">
+        <ion-label>Prijs</ion-label>
+        <app-input-field (onInputChange)="priceValueChanged($event)" [fieldType]="fieldTypes.text" [name]="'price'"
+                         [placeholder]="'Prijs'" [value]="product?.price" inputmode="decimal"></app-input-field>
+        <div *ngIf="descriptionErrorMessage" class="error-message">
+          <p>{{ descriptionErrorMessage }}</p>
+        </div>
       </div>
-
-      <ion-textarea (ionInput)="descriptionValueChanged($event)" placeholder="Beschrijving" name="description"
-                    rows="6" cols="20"
-                    value="{{ product?.description }}"></ion-textarea>
-
+      <div class="input-section">
+        <ion-label>Beschrijving</ion-label>
+        <ion-textarea (ionInput)="descriptionValueChanged($event)" placeholder="Beschrijving" name="description"
+                      rows="6" cols="20"
+                      value="{{ product?.description }}"></ion-textarea>
+      </div>
       <ion-item class="product-visibility">
         <ion-label (click)="visibility.checked = !visibility.checked">Zichtbaar voor klanten</ion-label>
         <ion-toggle #visibility (ionChange)="changeVisibility($event)" class="button"></ion-toggle>

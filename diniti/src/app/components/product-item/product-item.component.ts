@@ -29,8 +29,8 @@ export class ProductItemComponent {
 
   constructor(
     private router: Router,
-    private alertController: AlertController,
     private networkService: NetworkService,
+    private alertController: AlertController,
     private toastMessageService: ToastMessageService,
     private productsProxyService: ProductsProxyService,
     private authenticationService: AuthenticationService
@@ -114,8 +114,6 @@ export class ProductItemComponent {
   goToDetailPage() {
     if (this.currentRole === Role.admin) {
       this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
-    } else if (this.currentRole === Role.user) {
-      this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
     } else {
       this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
     }

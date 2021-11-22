@@ -25,12 +25,6 @@ import {Network} from '@ionic-native/network/ngx';
   }, AuthenticationService, Network],
   bootstrap: [AppComponent],
 })
-/*
- {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptService,
-      multi: true
-    }
- */
+
 export class AppModule {
 }

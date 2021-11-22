@@ -32,8 +32,8 @@ export class OrderDetailsPage {
   constructor(
     private router: Router,
     private location: Location,
-    private networkService: NetworkService,
     private activatedRoute: ActivatedRoute,
+    private networkService: NetworkService,
     private alertController: AlertController,
     private userProxyService: UserProxyService,
     private ordersProxyService: OrdersProxyService,

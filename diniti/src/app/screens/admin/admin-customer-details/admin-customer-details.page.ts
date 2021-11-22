@@ -26,8 +26,8 @@ export class AdminCustomerDetailsPage {
   constructor(
     private router: Router,
     private location: Location,
-    private networkService: NetworkService,
     private activatedRoute: ActivatedRoute,
+    private networkService: NetworkService,
     private userProxyService: UserProxyService,
     private ordersProxyService: OrdersProxyService,
     private toastMessageService: ToastMessageService,

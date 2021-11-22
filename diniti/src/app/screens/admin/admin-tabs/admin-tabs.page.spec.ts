@@ -1,7 +1,7 @@
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import {AdminTabsPage} from './overview-tabs.page';
+import {AdminTabsPage} from './admin-tabs.page';
 
 describe('OverviewTabsPage', () => {
   let component: AdminTabsPage;

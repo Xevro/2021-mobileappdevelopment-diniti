@@ -14,8 +14,8 @@ export class NetworkService {
 
   constructor(
     private network: Network,
-    private toastMessageService: ToastMessageService,
-    private platform: Platform
+    private platform: Platform,
+    private toastMessageService: ToastMessageService
   ) {
     this.platform.ready().then(() => {
       this.initNetworkMonitor();
@@ -62,9 +62,6 @@ export class NetworkService {
     if (localStorage.getItem('connectionStatus') === NetworkStatus.Offline) {
       return false;
     }
-    if (localStorage.getItem('connectionStatus') === NetworkStatus.Online) {
-      return true;
-    }
-    return false;
+    return localStorage.getItem('connectionStatus') === NetworkStatus.Online;
   }
 }

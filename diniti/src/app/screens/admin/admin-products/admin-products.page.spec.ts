@@ -1,6 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {IonicModule} from '@ionic/angular';
-
 import {AdminProductsPage} from './admin-products.page';
 
 describe('AdminProductsPage', () => {

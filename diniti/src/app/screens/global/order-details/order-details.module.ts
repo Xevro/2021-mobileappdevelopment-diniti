@@ -7,7 +7,7 @@ import {OrderDetailsPage} from './order-details.page';
 import {ProductListModule} from '../../../components/product-list/product-list.module';
 import {OrderListItemModule} from '../../../components/order-list-item/order-list-item.module';
 import {EnumToArrayPipe} from '../../../services/ui-services';
-import {ButtonModule} from "../../../components/button/button.module";
+import {ButtonModule} from '../../../components/button/button.module';
 
 @NgModule({
   imports: [

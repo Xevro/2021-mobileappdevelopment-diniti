@@ -38,6 +38,14 @@ ion-content {
     }
 
     .input-fields {
+      .input-section {
+        padding-top: 10px;
+
+        ion-label {
+          font-weight: bold;
+        }
+      }
+
       .product-upload {
         margin-top: 10px;
         text-align: center;

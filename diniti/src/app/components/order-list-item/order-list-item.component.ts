@@ -14,6 +14,7 @@ import {ToastMessageService} from '../../services/ui-services';
 export class OrderListItemComponent {
 
   @Input() order: Order;
+
   currentRole: Role;
 
   constructor(

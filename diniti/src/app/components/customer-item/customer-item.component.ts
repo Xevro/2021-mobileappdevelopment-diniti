@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {User} from '../../models/backend-models';
-import {Role} from "../../models/authentication-models";
-import {Routes} from "../../models/core-models";
-import {AuthenticationService} from "../../services/authentication-services";
-import {Router} from "@angular/router";
+import {Role} from '../../models/authentication-models';
+import {Routes} from '../../models/core-models';
+import {AuthenticationService} from '../../services/authentication-services';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-customer-item',
@@ -13,10 +13,9 @@ import {Router} from "@angular/router";
 export class CustomerItemComponent {
 
   @Input() customer: User;
+  @Output() changedCustomer = new EventEmitter<User>();
 
   currentRole: Role;
-
-  @Output() changedCustomer = new EventEmitter<User>();
 
   constructor(
     private router: Router,

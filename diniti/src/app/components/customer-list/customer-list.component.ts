@@ -22,5 +22,4 @@ export class CustomerListComponent {
   changedCustomers(customersList: any) {
     this.changedCustomersList.emit(customersList);
   }
-
 }
