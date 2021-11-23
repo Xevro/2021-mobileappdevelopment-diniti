@@ -135,7 +135,7 @@ export class RegisterPage {
   }
 
   submitRegister() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       const registerData: RegisterInfo = {
         customerId: this.uuidGenerator.generateUUID(),
         firstname: this.firstNameInput,

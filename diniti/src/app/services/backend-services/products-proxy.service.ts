@@ -6,15 +6,14 @@ import {Observable} from 'rxjs';
 import {AuthenticationService} from '../authentication-services';
 import {Product, Products, UpdateProduct} from '../../models/backend-models';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class ProductsProxyService extends CrudDataProvider<any> {
   api = environment.api;
 
   constructor(
     httpClient: HttpClient,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService
+  ) {
     super(httpClient);
   }
 

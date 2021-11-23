@@ -58,7 +58,7 @@ export class ProductItemComponent {
   }
 
   async deleteProduct() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       const alert = await this.alertController.create({
         cssClass: 'basic-alert',
         header: 'Opgelet',
@@ -93,7 +93,7 @@ export class ProductItemComponent {
   }
 
   toggleVisibility(visibility: boolean) {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.loading = true;
       this.product.visibility = visibility;
       this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.objectId)

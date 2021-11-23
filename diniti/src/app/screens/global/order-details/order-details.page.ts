@@ -80,7 +80,7 @@ export class OrderDetailsPage {
   }
 
   async deleteOrder() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       const alert = await this.alertController.create({
         cssClass: 'basic-alert',
         header: 'Opgelet',
@@ -135,7 +135,7 @@ export class OrderDetailsPage {
   }
 
   saveStatus() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.updatingLoading = true;
       this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId)
         .subscribe(

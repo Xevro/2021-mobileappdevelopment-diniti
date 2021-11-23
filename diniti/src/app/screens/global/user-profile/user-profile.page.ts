@@ -122,7 +122,7 @@ export class UserProfilePage {
   }
 
   updateUserData() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.updatedData.userEmail = this.updatedData.email;
       this.userProxyService.updateUserdataAction(this.updatedData, this.authenticationService.getObjectId())
         .subscribe(
@@ -143,7 +143,7 @@ export class UserProfilePage {
   }
 
   async removeProfilePicture() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.loadingImage = true;
       const getUrl = window.location;
       const baseUrl = getUrl.protocol + '//' + getUrl.host + '/assets/icon/DNTUserDARK.png';
@@ -183,7 +183,7 @@ export class UserProfilePage {
   }
 
   changeProfilePicture() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.loadingImage = true;
       const photo = this.photoService.capturePhoto();
       photo.then(async (response) => {
@@ -225,7 +225,7 @@ export class UserProfilePage {
   }
 
   requestPasswordChange() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.userProxyService.requestPasswordReset(this.userData.userEmail)
         .subscribe(
           (response) => {

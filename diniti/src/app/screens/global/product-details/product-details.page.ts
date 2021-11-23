@@ -88,7 +88,7 @@ export class ProductDetailsPage {
   }
 
   SaveEditProduct() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       if (this.updateProduct.name && this.updateProduct.price && this.updateProduct.description) {
         this.error = false;
         if (this.imageResultData) {
@@ -130,7 +130,7 @@ export class ProductDetailsPage {
   }
 
   uploadProductImage() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.loadingImage = true;
       const photo = this.photoService.capturePhoto();
       photo.then(async (response) => {
@@ -160,7 +160,7 @@ export class ProductDetailsPage {
   }
 
   changeProductPicture() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.loadingImage = true;
       const photo = this.photoService.capturePhoto();
       photo.then(async (response) => {
@@ -203,7 +203,7 @@ export class ProductDetailsPage {
   }
 
   async removeProductPicture() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.loadingImage = true;
       this.imageResultData = null;
       this.uploadingImageDone = false;

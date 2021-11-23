@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {Image, Routes} from '../../../models/core-models';
+import {Image, Methods, Routes} from '../../../models/core-models';
 import {Router} from '@angular/router';
 import {FieldTypes} from '../../../models/ui-models';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
 import {ProductsProxyService} from '../../../services/backend-services';
-import {Product} from '../../../models/backend-models';
+import {Product, StoredRequest} from '../../../models/backend-models';
 import {CurrencyPipe, Location} from '@angular/common';
-import {NetworkService, UuidGenerator} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 
 @Component({
   selector: 'app-admin-add-product',
@@ -40,7 +40,8 @@ export class AdminAddProductPage {
     private uuidGenerator: UuidGenerator,
     private networkService: NetworkService,
     private toastMessageService: ToastMessageService,
-    private productsProxyService: ProductsProxyService
+    private productsProxyService: ProductsProxyService,
+    private offlineStorageManager: OfflineStorageManager
   ) {
   }
 
@@ -62,12 +63,12 @@ export class AdminAddProductPage {
     this.router.navigate(Routes.adminProducts);
   }
 
-  saveNewProduct() {
-    if (this.networkService.getNetworkStatus()) {
-      if (this.product.name && this.product.price) {
-        this.loading = true;
-        this.errorMessage = false;
-        this.validationMessage = null;
+  async saveNewProduct() {
+    if (this.product.name && this.product.price) {
+      this.loading = true;
+      this.errorMessage = false;
+      this.validationMessage = null;
+      if (this.networkService.isOnline) {
         if (this.imageResultData) {
           this.product.image = {
             name: this.imageResultData.name,
@@ -98,17 +99,23 @@ export class AdminAddProductPage {
               });
         }
       } else {
-        this.validationMessage = 'Naam en of prijs zijn niet ingevuld.';
+        const request: StoredRequest = {
+          method: Methods.POST,
+          payload: this.product,
+          url: 'classes/Products'
+        };
+        this.offlineStorageManager.addRequestToStorage(request);
+        this.loading = false;
+        await this.toastMessageService.presentToast('Het product wordt toegevoegd van zodra er internet beschikbaar is.');
+        this.goToProducts();
       }
     } else {
-      this.loading = false;
-      this.toastMessageService.presentToast(
-        'Er is geen netwerk verbinding...', 3500);
+      this.validationMessage = 'Naam en of prijs zijn niet ingevuld.';
     }
   }
 
   uploadProductImage() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.loadingImage = true;
       const photo = this.photoService.capturePhoto();
       photo.then(async (response) => {

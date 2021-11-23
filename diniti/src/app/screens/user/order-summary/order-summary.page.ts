@@ -63,7 +63,7 @@ export class OrderSummaryPage {
       };
       this.order.orderId = Date.now();
       this.order.orderUuid = this.uuidGenerator.generateUUID();
-      if (this.networkService.getNetworkStatus()) {
+      if (this.networkService.isOnline) {
         this.ordersProxyService.postOrderAction(this.order)
           .subscribe(
             (response) => {

@@ -73,7 +73,7 @@ export class LoginPage {
   }
 
   submitLogin() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.authenticationProxyService.loginAction(this.usernameInput, this.passwordInput)
         .subscribe(
           (response) => {

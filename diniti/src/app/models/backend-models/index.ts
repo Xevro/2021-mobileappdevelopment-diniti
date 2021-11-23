@@ -8,6 +8,7 @@ export * from './photo.model';
 export * from './product.model';
 export * from './products.model';
 export * from './profile-picture.model';
+export * from './stored-requests.model';
 export * from './update-product.model';
 export * from './update-user.model';
 export * from './user.model';

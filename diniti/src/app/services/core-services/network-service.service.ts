@@ -1,22 +1,31 @@
 import {Injectable} from '@angular/core';
-import {fromEvent} from 'rxjs';
+import {fromEvent, Subject} from 'rxjs';
 import {Network} from '@ionic-native/network/ngx';
 import {ToastMessageService} from '../ui-services';
 import {Platform} from '@ionic/angular';
-import {NetworkStatus} from '../../models/core-models';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class NetworkService {
   appIsOnline: boolean;
   appIsOnDevice: boolean;
+
+  private internalConnectionChanged = new Subject<boolean>();
+
+  get connectionChanged() {
+    return this.internalConnectionChanged.asObservable();
+  }
+
+  get isOnline() {
+    return !!window.navigator.onLine;
+  }
 
   constructor(
     private network: Network,
     private platform: Platform,
     private toastMessageService: ToastMessageService
   ) {
+    window.addEventListener('online', () => this.updateOnlineStatus());
+    window.addEventListener('offline', () => this.updateOnlineStatus());
     this.platform.ready().then(() => {
       this.initNetworkMonitor();
     });
@@ -41,16 +50,13 @@ export class NetworkService {
       });
       console.log('device network monitor is ON');
     } else {
-      localStorage.setItem('connectionStatus', NetworkStatus.Online);
       fromEvent(window, 'offline').subscribe(() => {
           this.appIsOnline = false;
-          localStorage.setItem('connectionStatus', NetworkStatus.Offline);
           this.toastMessageService.presentToast('U bent offline.');
         }
       );
       fromEvent(window, 'online').subscribe(() => {
           this.appIsOnline = true;
-          localStorage.setItem('connectionStatus', NetworkStatus.Online);
           this.toastMessageService.presentToast('U bent terug online');
         }
       );
@@ -58,10 +64,7 @@ export class NetworkService {
     }
   }
 
-  getNetworkStatus(): boolean {
-    if (localStorage.getItem('connectionStatus') === NetworkStatus.Offline) {
-      return false;
-    }
-    return localStorage.getItem('connectionStatus') === NetworkStatus.Online;
+  private updateOnlineStatus() {
+    this.internalConnectionChanged.next(window.navigator.onLine);
   }
 }

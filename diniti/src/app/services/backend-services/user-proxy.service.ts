@@ -7,9 +7,7 @@ import {UpdateUser, User, Users} from '../../models/backend-models';
 import {AuthenticationService} from '../authentication-services';
 import {Role} from '../../models/authentication-models';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class UserProxyService extends CrudDataProvider<any> {
   api = environment.api;
 

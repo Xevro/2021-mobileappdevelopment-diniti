@@ -1,4 +1,4 @@
-export * from './enum/network-status.enum';
+export * from './enum/methods.enum';
 
 export * from './image.model';
 export * from './route-literals.model';

@@ -62,7 +62,7 @@ export class ResetPasswordPage {
   }
 
   submitResetPassword() {
-    if (this.networkService.getNetworkStatus()) {
+    if (this.networkService.isOnline) {
       this.userProxyService.requestPasswordReset(this.email)
         .subscribe(
           (response) => {

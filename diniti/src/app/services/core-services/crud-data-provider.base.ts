@@ -13,7 +13,7 @@ export abstract class CrudDataProvider<Type> {
     'X-Parse-Revocable-Session': '1'
   };
 
-  constructor(
+  protected constructor(
     protected httpClient: HttpClient
   ) {
   }
