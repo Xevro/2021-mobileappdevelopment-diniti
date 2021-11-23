@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Router} from '@angular/router';
-import {Routes} from '../../../models/core-models';
+import {Methods, Routes} from '../../../models/core-models';
 import {FieldTypes} from '../../../models/ui-models';
 import {UserProxyService} from '../../../services/backend-services';
 import {UpdateUser, User} from '../../../models/backend-models';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
-import {NetworkService} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
 import {Location} from '@angular/common';
 
 @Component({
@@ -39,7 +39,8 @@ export class UserProfilePage {
     private networkService: NetworkService,
     private userProxyService: UserProxyService,
     private toastMessageService: ToastMessageService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private offlineStorageManager: OfflineStorageManager
   ) {
   }
 
@@ -138,7 +139,20 @@ export class UserProfilePage {
               `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
           });
     } else {
-      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+      const headerOptions = {
+        'X-Parse-Session-Token': this.authenticationService.getSessionToken()
+      };
+      this.offlineStorageManager.addRequestToStorage({
+        method: Methods.PUT,
+        payload: this.updatedData,
+        headerOptions,
+        url: `users/${this.authenticationService.getObjectId()}`
+      });
+      this.editUserData = !this.editUserData;
+      this.cancelButton = false;
+      this.editButton = true;
+      this.toggleEditView = false;
+      this.toastMessageService.presentToast('De gegevens wordt gewijzigd van zodra er terug internet beschikbaar is.', 3500);
     }
   }
 
@@ -240,7 +254,15 @@ export class UserProfilePage {
               `Error, de aanvraag kon niet worden verstuurd. Status: ${error.status}`, 3500);
           });
     } else {
-      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+      const headerOptions = {'Content-Type': 'application/json'};
+      this.offlineStorageManager.addRequestToStorage({
+        method: Methods.POST,
+        payload: {email: this.userData.userEmail},
+        headerOptions,
+        url: `requestPasswordReset`
+      });
+      this.submitted = false;
+      this.toastMessageService.presentToast('U zal een email ontvangen om uw wachtwoord te wijzigen van zodra er terug internet beschikbaar is.', 3500);
     }
   }
 

@@ -5,9 +5,9 @@ import {OrdersProxyService, UserProxyService} from '../../../services/backend-se
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Role} from '../../../models/authentication-models';
 import {ToastMessageService} from '../../../services/ui-services';
-import {NetworkService} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
 import {AlertController} from '@ionic/angular';
-import {Routes} from '../../../models/core-models';
+import {Methods, Routes} from '../../../models/core-models';
 import {Location} from '@angular/common';
 
 @Component({
@@ -38,7 +38,8 @@ export class OrderDetailsPage {
     private userProxyService: UserProxyService,
     private ordersProxyService: OrdersProxyService,
     private toastMessageService: ToastMessageService,
-    public authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService,
+    private offlineStorageManager: OfflineStorageManager
   ) {
   }
 
@@ -80,17 +81,17 @@ export class OrderDetailsPage {
   }
 
   async deleteOrder() {
-    if (this.networkService.isOnline) {
-      const alert = await this.alertController.create({
-        cssClass: 'basic-alert',
-        header: 'Opgelet',
-        message: 'Bent u zeker dat u deze bestelling wilt verwijderen?',
-        buttons: [
-          {
-            text: 'Verwijder',
-            cssClass: 'btns-modal-alert',
-            handler: () => {
-              this.removingLoading = true;
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Opgelet',
+      message: 'Bent u zeker dat u deze bestelling wilt verwijderen?',
+      buttons: [
+        {
+          text: 'Verwijder',
+          cssClass: 'btns-modal-alert',
+          handler: () => {
+            this.removingLoading = true;
+            if (this.networkService.isOnline) {
               this.ordersProxyService.deleteOrderAction(this.order.objectId)
                 .subscribe(
                   (response) => {
@@ -102,19 +103,25 @@ export class OrderDetailsPage {
                     this.toastMessageService.presentToast(
                       `Error, het product kon niet worden verwijderd. Status: ${error.status}`, 3500);
                   });
+            } else {
+              this.offlineStorageManager.addRequestToStorage({
+                method: Methods.DELETE,
+                url: `classes/Orders/${this.order.objectId}`
+              });
+              this.toastMessageService.presentToast('De bestelling wordt verwijderd van zodra er terug internet beschikbaar is.', 3500);
+              this.removingLoading = false;
+              this.router.navigate(Routes.adminOverview);
             }
-          },
-          {
-            text: 'Annuleer',
-            role: 'Annuleer',
-            cssClass: 'modal-button-cancel'
           }
-        ]
-      });
-      await alert.present();
-    } else {
-      await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
-    }
+        },
+        {
+          text: 'Annuleer',
+          role: 'Annuleer',
+          cssClass: 'modal-button-cancel'
+        }
+      ]
+    });
+    await alert.present();
   }
 
   editOrder() {
@@ -135,8 +142,8 @@ export class OrderDetailsPage {
   }
 
   saveStatus() {
+    this.updatingLoading = true;
     if (this.networkService.isOnline) {
-      this.updatingLoading = true;
       this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId)
         .subscribe(
           (response) => {
@@ -150,7 +157,17 @@ export class OrderDetailsPage {
               `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
           });
     } else {
-      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+      const headerOptions = {'Content-Type': 'application/json'};
+      this.offlineStorageManager.addRequestToStorage({
+        method: Methods.PUT,
+        payload: {status: this.order.status},
+        headerOptions,
+        url: `classes/Orders/${this.order.objectId}`
+      });
+      this.updatingLoading = false;
+      this.changedStatus = false;
+      this.edit = false;
+      this.toastMessageService.presentToast('De bestelling wordt gewijzigd van zodra er terug internet beschikbaar is.', 3500);
     }
   }
 

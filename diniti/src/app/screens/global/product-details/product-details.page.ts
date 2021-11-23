@@ -5,10 +5,10 @@ import {ProductsProxyService} from '../../../services/backend-services';
 import {Role} from '../../../models/authentication-models';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {FieldTypes} from '../../../models/ui-models';
-import {Image} from '../../../models/core-models';
+import {Image, Methods} from '../../../models/core-models';
 import {CurrencyPipe, Location} from '@angular/common';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
-import {NetworkService} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
 
 @Component({
   selector: 'app-product-details',
@@ -45,7 +45,8 @@ export class ProductDetailsPage {
     private networkService: NetworkService,
     private toastMessageService: ToastMessageService,
     private productsProxyService: ProductsProxyService,
-    public authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService,
+    private offlineStorageManager: OfflineStorageManager
   ) {
   }
 
@@ -88,15 +89,15 @@ export class ProductDetailsPage {
   }
 
   SaveEditProduct() {
-    if (this.networkService.isOnline) {
-      if (this.updateProduct.name && this.updateProduct.price && this.updateProduct.description) {
-        this.error = false;
-        if (this.imageResultData) {
-          this.updateProduct.image = {
-            name: this.imageResultData.name,
-            url: this.imageResultData.url,
-            __type: 'File'
-          };
+    if (this.updateProduct.name && this.updateProduct.price && this.updateProduct.description) {
+      this.error = false;
+      if (this.imageResultData) {
+        this.updateProduct.image = {
+          name: this.imageResultData.name,
+          url: this.imageResultData.url,
+          __type: 'File'
+        };
+        if (this.networkService.isOnline) {
           this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
             .subscribe(
               (status) => {
@@ -109,6 +110,19 @@ export class ProductDetailsPage {
                   `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
               });
         } else {
+          const headerOptions = {'Content-Type': 'application/json'};
+          this.offlineStorageManager.addRequestToStorage({
+            method: Methods.PUT,
+            payload: this.updateProduct,
+            headerOptions,
+            url: `classes/Products/${this.product.objectId}`
+          });
+          this.loading = false;
+          this.edit = false;
+          this.toastMessageService.presentToast('De gegevens wordt gewijzigd van zodra er terug internet beschikbaar is.', 3500);
+        }
+      } else {
+        if (this.networkService.isOnline) {
           this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
             .subscribe(
               (status) => {
@@ -120,12 +134,21 @@ export class ProductDetailsPage {
                 this.toastMessageService.presentToast(
                   `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
               });
+        } else {
+          const headerOptions = {'Content-Type': 'application/json'};
+          this.offlineStorageManager.addRequestToStorage({
+            method: Methods.PUT,
+            payload: this.updateProduct,
+            headerOptions,
+            url: `classes/Products/${this.product.objectId}`
+          });
+          this.loading = false;
+          this.edit = false;
+          this.toastMessageService.presentToast('De gegevens wordt gewijzigd van zodra er terug internet beschikbaar is.', 3500);
         }
-      } else {
-        this.validationMessage = 'Naam, beschrijving en of prijs zijn niet ingevuld';
       }
     } else {
-      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+      this.validationMessage = 'Naam, beschrijving en of prijs zijn niet ingevuld';
     }
   }
 

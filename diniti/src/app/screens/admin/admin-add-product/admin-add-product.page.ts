@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {FieldTypes} from '../../../models/ui-models';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
 import {ProductsProxyService} from '../../../services/backend-services';
-import {Product, StoredRequest} from '../../../models/backend-models';
+import {Product} from '../../../models/backend-models';
 import {CurrencyPipe, Location} from '@angular/common';
 import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 
@@ -68,14 +68,14 @@ export class AdminAddProductPage {
       this.loading = true;
       this.errorMessage = false;
       this.validationMessage = null;
-      if (this.networkService.isOnline) {
-        if (this.imageResultData) {
-          this.product.image = {
-            name: this.imageResultData.name,
-            url: this.imageResultData.url,
-            __type: 'File'
-          };
-          this.product.productId = this.uuidGenerator.generateUUID();
+      if (this.imageResultData) {
+        this.product.image = {
+          name: this.imageResultData.name,
+          url: this.imageResultData.url,
+          __type: 'File'
+        };
+        this.product.productId = this.uuidGenerator.generateUUID();
+        if (this.networkService.isOnline) {
           this.productsProxyService.postProductAction(this.product)
             .subscribe((status) => {
                 this.goToProducts();
@@ -87,7 +87,18 @@ export class AdminAddProductPage {
                   `Error, de product gegevens konden niet worden verstuurd. Status: ${error.status}`, 3500);
               });
         } else {
-          this.product.productId = this.uuidGenerator.generateUUID();
+          this.offlineStorageManager.addRequestToStorage({
+            method: Methods.POST,
+            payload: this.product,
+            url: 'classes/Products'
+          });
+          this.loading = false;
+          this.toastMessageService.presentToast('Het product wordt toegevoegd van zodra er terug internet beschikbaar is.', 3500);
+          this.goToProducts();
+        }
+      } else {
+        this.product.productId = this.uuidGenerator.generateUUID();
+        if (this.networkService.isOnline) {
           this.productsProxyService.postProductAction(this.product)
             .subscribe((status) => {
                 this.goToProducts();
@@ -97,17 +108,16 @@ export class AdminAddProductPage {
                 this.toastMessageService.presentToast(
                   `Error, de product gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
               });
+        } else {
+          this.offlineStorageManager.addRequestToStorage({
+            method: Methods.POST,
+            payload: this.product,
+            url: 'classes/Products'
+          });
+          this.loading = false;
+          this.toastMessageService.presentToast('Het product wordt toegevoegd van zodra er terug internet beschikbaar is.', 3500);
+          this.goToProducts();
         }
-      } else {
-        const request: StoredRequest = {
-          method: Methods.POST,
-          payload: this.product,
-          url: 'classes/Products'
-        };
-        this.offlineStorageManager.addRequestToStorage(request);
-        this.loading = false;
-        this.toastMessageService.presentToast('Het product wordt toegevoegd van zodra er terug internet beschikbaar is.', 3500);
-        this.goToProducts();
       }
     } else {
       this.validationMessage = 'Naam en of prijs zijn niet ingevuld.';

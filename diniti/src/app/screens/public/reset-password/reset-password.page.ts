@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {FieldTypes} from '../../../models/ui-models';
 import {UserProxyService} from '../../../services/backend-services';
-import {NetworkService} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
-import {Routes} from '../../../models/core-models';
+import {Methods, Routes} from '../../../models/core-models';
 import {Router} from '@angular/router';
 
 @Component({
@@ -22,7 +22,8 @@ export class ResetPasswordPage {
     private router: Router,
     private networkService: NetworkService,
     private userProxyService: UserProxyService,
-    private toastMessageService: ToastMessageService
+    private toastMessageService: ToastMessageService,
+    private offlineStorageManager: OfflineStorageManager
   ) {
   }
 
@@ -76,7 +77,16 @@ export class ResetPasswordPage {
               `Error, de aanvraag kon niet worden verstuurd. Status: ${error.status}`, 3500);
           });
     } else {
-      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+      this.submitted = false;
+      const headerOptions = {'Content-Type': 'application/json'};
+      this.offlineStorageManager.addRequestToStorage({
+        method: Methods.POST,
+        payload: {email: this.email},
+        headerOptions,
+        url: `requestPasswordReset`
+      });
+      this.toastMessageService.presentToast('De bestelling wordt verwerkt van zodra er terug internet beschikbaar is.', 3500);
+      this.router.navigate(Routes.login);
     }
   }
 

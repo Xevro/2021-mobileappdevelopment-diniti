@@ -49,24 +49,26 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
 
   private async sendRequestsFromIndexedDb() {
     const allRequests: StoredRequest[] = await this.indexedDB.requests.toArray();
-    await allRequests.forEach((storedRequest: StoredRequest) => {
-        if (storedRequest.method === Methods.POST) {
-          this.postRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
-            .subscribe(() => storedRequest.done = true);
+    if (allRequests) {
+      await allRequests.forEach((storedRequest: StoredRequest) => {
+          if (storedRequest.method === Methods.POST) {
+            this.postRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
+              .subscribe(() => storedRequest.done = true);
+          }
+          if (storedRequest.method === Methods.PUT) {
+            this.putRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
+              .subscribe(() => storedRequest.done = true);
+          }
+          if (storedRequest.method === Methods.DELETE) {
+            this.deleteRequest(storedRequest.url, storedRequest.headerOptions ?? {})
+              .subscribe(() => storedRequest.done = true);
+          }
+          this.indexedDB.requests.delete(storedRequest.id).then(() => {
+            console.log(`item ${storedRequest.id} sent and deleted locally`);
+          });
         }
-        if (storedRequest.method === Methods.PUT) {
-          this.putRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
-            .subscribe(() => storedRequest.done = true);
-        }
-        if (storedRequest.method === Methods.DELETE) {
-          this.deleteRequest(storedRequest.url, storedRequest.headerOptions ?? {})
-            .subscribe(() => storedRequest.done = true);
-        }
-        this.indexedDB.requests.delete(storedRequest.id).then(() => {
-          console.log(`item ${storedRequest.id} sent and deleted locally`);
-        });
-      }
-    );
-    window.location.reload();
+      );
+      window.location.reload();
+    }
   }
 }

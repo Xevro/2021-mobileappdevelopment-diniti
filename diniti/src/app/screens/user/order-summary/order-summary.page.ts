@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {Routes} from '../../../models/core-models';
+import {Methods, Routes} from '../../../models/core-models';
 import {OrdersProxyService, ProductsSummaryService} from '../../../services/backend-services';
 import {Order, OrderStatus} from '../../../models/backend-models';
 import {NavigationExtras, Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication-services';
-import {NetworkService, UuidGenerator} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
 import {Location} from '@angular/common';
 
@@ -28,6 +28,7 @@ export class OrderSummaryPage {
     private networkService: NetworkService,
     private ordersProxyService: OrdersProxyService,
     private toastMessageService: ToastMessageService,
+    private offlineStorageManager: OfflineStorageManager,
     private authenticationService: AuthenticationService,
     private productsSummaryService: ProductsSummaryService
   ) {
@@ -70,15 +71,11 @@ export class OrderSummaryPage {
               this.loading = false;
               localStorage.setItem('orderComplete', '1');
               setTimeout(() => {
-                  const navigationExtras: NavigationExtras = {
-                    state: {
-                      pickUpTime: this.order.pickUpTime
-                    }
-                  };
-                  this.router.navigate(Routes.orderComplete, navigationExtras);
-                }, 1000
-              )
-              ;
+                const navigationExtras: NavigationExtras = {
+                  state: {pickUpTime: this.order.pickUpTime}
+                };
+                this.router.navigate(Routes.orderComplete, navigationExtras);
+              }, 1000);
             },
             (error) => {
               this.loading = false;
@@ -88,8 +85,19 @@ export class OrderSummaryPage {
             });
       } else {
         this.loading = false;
-        localStorage.setItem('orderComplete', '0');
-        this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+        localStorage.setItem('orderComplete', '1');
+        this.offlineStorageManager.addRequestToStorage({
+          method: Methods.POST,
+          payload: this.order,
+          url: `classes/Orders`
+        });
+        this.toastMessageService.presentToast('De bestelling wordt verwerkt van zodra er terug internet beschikbaar is.', 3500);
+        setTimeout(() => {
+          const navigationExtras: NavigationExtras = {
+            state: {pickUpTime: this.order.pickUpTime}
+          };
+          this.router.navigate(Routes.orderComplete, navigationExtras);
+        }, 1000);
       }
     } else {
       this.timeError = 'Kies een tijdstip';
