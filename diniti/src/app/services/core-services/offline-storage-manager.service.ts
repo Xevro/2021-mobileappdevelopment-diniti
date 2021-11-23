@@ -63,9 +63,7 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
             this.deleteRequest(storedRequest.url, storedRequest.headerOptions ?? {})
               .subscribe(() => storedRequest.done = true);
           }
-          this.indexedDB.requests.delete(storedRequest.id).then(() => {
-            console.log(`item ${storedRequest.id} sent and deleted locally`);
-          });
+          this.indexedDB.requests.delete(storedRequest.id);
         }
       );
       window.location.reload();
