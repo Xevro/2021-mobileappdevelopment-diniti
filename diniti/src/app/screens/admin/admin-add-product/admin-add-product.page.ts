@@ -63,7 +63,7 @@ export class AdminAddProductPage {
     this.router.navigate(Routes.adminProducts);
   }
 
-  async saveNewProduct() {
+  saveNewProduct() {
     if (this.product.name && this.product.price) {
       this.loading = true;
       this.errorMessage = false;
@@ -106,7 +106,7 @@ export class AdminAddProductPage {
         };
         this.offlineStorageManager.addRequestToStorage(request);
         this.loading = false;
-        await this.toastMessageService.presentToast('Het product wordt toegevoegd van zodra er internet beschikbaar is.');
+        this.toastMessageService.presentToast('Het product wordt toegevoegd van zodra er terug internet beschikbaar is.', 3500);
         this.goToProducts();
       }
     } else {

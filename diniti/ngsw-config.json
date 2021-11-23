@@ -41,7 +41,7 @@
         "https://parsefiles.back4app.com/"
       ],
       "cacheConfig": {
-        "strategy": "performance",
+        "strategy": "freshness",
         "maxSize": 100,
         "timeout": "3s",
         "maxAge": "2d"

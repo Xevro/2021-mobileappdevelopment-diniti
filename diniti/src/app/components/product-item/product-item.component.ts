@@ -2,12 +2,12 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../../models/backend-models';
 import {AlertController} from '@ionic/angular';
 import {ProductsProxyService} from '../../services/backend-services';
-import {Routes} from '../../models/core-models';
+import {Methods, Routes} from '../../models/core-models';
 import {Router} from '@angular/router';
 import {Role} from '../../models/authentication-models';
 import {AuthenticationService} from '../../services/authentication-services';
 import {ToastMessageService} from '../../services/ui-services';
-import {NetworkService} from '../../services/core-services';
+import {NetworkService, OfflineStorageManager} from '../../services/core-services';
 
 @Component({
   selector: 'app-product-item',
@@ -33,7 +33,8 @@ export class ProductItemComponent {
     private alertController: AlertController,
     private toastMessageService: ToastMessageService,
     private productsProxyService: ProductsProxyService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private offlineStorageManager: OfflineStorageManager
   ) {
     this.currentRole = this.authenticationService.getRole() ?? Role.user;
   }
@@ -58,16 +59,16 @@ export class ProductItemComponent {
   }
 
   async deleteProduct() {
-    if (this.networkService.isOnline) {
-      const alert = await this.alertController.create({
-        cssClass: 'basic-alert',
-        header: 'Opgelet',
-        message: 'Bent u zeker dat u "' + this.product.name + '" wilt verwijderen?',
-        buttons: [
-          {
-            text: 'Verwijder',
-            cssClass: 'btns-modal-alert',
-            handler: () => {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Opgelet',
+      message: 'Bent u zeker dat u "' + this.product.name + '" wilt verwijderen?',
+      buttons: [
+        {
+          text: 'Verwijder',
+          cssClass: 'btns-modal-alert',
+          handler: () => {
+            if (this.networkService.isOnline) {
               this.productsProxyService.deleteProductsAction(this.product.objectId)
                 .subscribe(
                   (response) => {
@@ -77,19 +78,23 @@ export class ProductItemComponent {
                     this.toastMessageService.presentToast(
                       `Error, het product kon niet worden verwijderd. Status: ${error.status}`, 3500);
                   });
+            } else {
+              this.offlineStorageManager.addRequestToStorage({
+                method: Methods.DELETE,
+                url: `classes/Products/${this.product.objectId}`
+              });
+              this.toastMessageService.presentToast('Het product zal verwijderd worden van zodra er terug internet beschikbaar is.', 3500);
             }
-          },
-          {
-            text: 'Annuleer',
-            role: 'Annuleer',
-            cssClass: 'modal-button-cancel'
           }
-        ]
-      });
-      await alert.present();
-    } else {
-      await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
-    }
+        },
+        {
+          text: 'Annuleer',
+          role: 'Annuleer',
+          cssClass: 'modal-button-cancel'
+        }
+      ]
+    });
+    await alert.present();
   }
 
   toggleVisibility(visibility: boolean) {
@@ -107,15 +112,32 @@ export class ProductItemComponent {
               `Error, de zichtbaarheid kon niet worden gewijzigd. Status: ${error.status}`, 3500);
           });
     } else {
-      this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
+      const headerOptions = {
+        'Content-Type': 'application/json'
+      };
+      const body = {
+        visibility
+      };
+      this.offlineStorageManager.addRequestToStorage({
+        method: Methods.PUT,
+        url: `classes/Products/${this.product.objectId}`,
+        payload: body,
+        headerOptions
+      });
+      this.loading = false;
+      this.toastMessageService.presentToast('De zichtbaarheid zal gewijzigd worden van zodra er terug internet beschikbaar is.', 3500);
     }
   }
 
   goToDetailPage() {
-    if (this.currentRole === Role.admin) {
-      this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
+    if (this.product.productId) {
+      if (this.currentRole === Role.admin) {
+        this.router.navigate(Routes.adminProductDetail(this.product.productId.toString()));
+      } else {
+        this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
+      }
     } else {
-      this.router.navigate(Routes.userProductDetail(this.product.productId.toString()));
+      this.router.navigate(Routes.userProductDetail('error'));
     }
   }
 }

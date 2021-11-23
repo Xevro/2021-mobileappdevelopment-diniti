@@ -4,7 +4,7 @@ export interface StoredRequest {
   id?: string;
   method: Methods;
   url: string;
-  payload: any;
-  headerOptions?: [];
+  payload?: any;
+  headerOptions?: any;
   done?: boolean;
 }

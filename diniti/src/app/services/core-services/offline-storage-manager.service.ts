@@ -28,18 +28,14 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
     request.id = this.uuidGenerator.generateUUID();
     request.done = false;
     if (!this.networkService.isOnline) {
-      this.addToIndexedDb(request);
+      this.indexedDB.requests.add(request);
     }
   }
 
   private registerToEvents(onlineOfflineService: NetworkService) {
     onlineOfflineService.connectionChanged.subscribe(online => {
       if (online) {
-        console.log('went back online');
-        console.log('sending all stored items');
         this.sendRequestsFromIndexedDb();
-      } else {
-        console.log('went offline, storing in indexdb');
       }
     });
   }
@@ -51,34 +47,26 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
     });
   }
 
-  private addToIndexedDb(request: StoredRequest) {
-    this.indexedDB.requests.add(request).then(async () => {
-      const allItems: StoredRequest[] = await this.indexedDB.requests.toArray();
-      console.log('saved in DB, DB is now', allItems);
-    }).catch(e => {
-      console.log('Error: ' + (e.stack || e));
-    });
-  }
-
   private async sendRequestsFromIndexedDb() {
     const allRequests: StoredRequest[] = await this.indexedDB.requests.toArray();
     await allRequests.forEach((storedRequest: StoredRequest) => {
         if (storedRequest.method === Methods.POST) {
-          const response = this.postRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {});
-          response.subscribe(() => storedRequest.done = true);
+          this.postRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
+            .subscribe(() => storedRequest.done = true);
         }
         if (storedRequest.method === Methods.PUT) {
-          const response = this.putRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {});
-          response.subscribe(() => storedRequest.done = true);
+          this.putRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
+            .subscribe(() => storedRequest.done = true);
         }
         if (storedRequest.method === Methods.DELETE) {
-          const response = this.deleteRequest(storedRequest.url, storedRequest.headerOptions ?? {});
-          response.subscribe(() => storedRequest.done = true);
+          this.deleteRequest(storedRequest.url, storedRequest.headerOptions ?? {})
+            .subscribe(() => storedRequest.done = true);
         }
         this.indexedDB.requests.delete(storedRequest.id).then(() => {
           console.log(`item ${storedRequest.id} sent and deleted locally`);
         });
       }
     );
+    window.location.reload();
   }
 }
