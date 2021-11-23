@@ -98,9 +98,9 @@ export class ProductItemComponent {
   }
 
   toggleVisibility(visibility: boolean) {
+    this.loading = true;
+    this.product.visibility = visibility;
     if (this.networkService.isOnline) {
-      this.loading = true;
-      this.product.visibility = visibility;
       this.productsProxyService.updateProductVisibilityAction(this.product.visibility, this.product.objectId)
         .subscribe(
           (response) => {

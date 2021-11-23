@@ -336,22 +336,21 @@ Logboek Mobile Application Development - 2021-2022
 - Week 10 - vrijdag 26/11/2021
 
  - Te doen deze week
-
-    * Wachtwoord wijzigen knop toevoegen.
-    * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.    
+  
     * Push notificatie kunnen tonen (optioneel).
+    * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.  
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
-    * Voeg offline functionaliteit toe aan POST, PUT en DELETE methodes.
 
 
  - Gedaan
 
     * Wachtwoord wijzigen knop toevoegen.
-
+    * Voeg offline functionaliteit toe aan POST, PUT en DELETE methodes.
+    * Wachtwoord wijzigen knop toevoegen op profiel wijzigen gedeelte.
     
   - Opgeloste problemen
 
-    * Login GET request gewijzigd naar POST wegens veiligheidsredenen.
+    * Login GET request gewijzigd naar POST wegens veiligheidsredenen (Documentatie gewijzigd en pull request gemaakt op de Github Parse docs repo).
 
 
   - Op te lossen problemen
