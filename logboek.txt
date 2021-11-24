@@ -337,10 +337,12 @@ Logboek Mobile Application Development - 2021-2022
 
  - Te doen deze week
   
-    * Push notificatie kunnen tonen (optioneel).
+    * Push notificatie kunnen tonen (optioneel 2de hardware feature).
     * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.  
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
-
+    * Hoeken van product foto afronden
+    * Titel van product pagina bovenaan zetten.
+    * NaN fixen bij grote getallen op product toevoegen pagina.
 
  - Gedaan
 
