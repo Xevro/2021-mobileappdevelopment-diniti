@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import Dexie from 'dexie';
-import {UuidGenerator} from './uuid-generator.service';
 import {NetworkService} from './network-service.service';
 import {StoredRequest} from '../../models/backend-models';
 import {Methods} from '../../models/core-models';
@@ -16,7 +15,6 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
 
   constructor(
     httpClient: HttpClient,
-    private uuidGenerator: UuidGenerator,
     private networkService: NetworkService
   ) {
     super(httpClient);
@@ -25,7 +23,6 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
   }
 
   addRequestToStorage(request: StoredRequest) {
-    request.id = this.uuidGenerator.generateUUID();
     request.done = false;
     if (!this.networkService.isOnline) {
       this.indexedDB.requests.add(request);
@@ -43,7 +40,7 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
   private createDatabase() {
     this.indexedDB = new Dexie('Diniti');
     this.indexedDB.version(1).stores({
-      requests: 'id,method,url,payload,headerOptions,done'
+      requests: 'method,url,payload,headerOptions,done'
     });
   }
 
