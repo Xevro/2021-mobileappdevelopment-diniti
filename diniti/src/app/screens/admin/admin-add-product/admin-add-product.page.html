@@ -7,6 +7,7 @@
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
+        <h2>Nieuw product</h2>
         <ion-buttons>
           <ion-button (click)="saveNewProduct()" [textContent]="" class="header-product-add">
             <ion-icon name="save-outline"></ion-icon>
@@ -17,7 +18,6 @@
     </ion-toolbar>
   </ion-header>
   <div class="add-product-box">
-    <p class="title">Voeg een product toe</p>
     <div *ngIf="errorMessage" class="error-message">
       <p>Er is een onverwachte fout opgetreden.</p>
     </div>
