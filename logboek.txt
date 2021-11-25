@@ -338,17 +338,19 @@ Logboek Mobile Application Development - 2021-2022
  - Te doen deze week
   
     * Push notificatie kunnen tonen (optioneel 2de hardware feature).
-    * Enkel tijdstip na huidige uur kunnen kiezen voor bestelling.  
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
-    * Hoeken van product foto afronden
-    * Titel van product pagina bovenaan zetten.
-    * NaN fixen bij grote getallen op product toevoegen pagina.
+    
 
  - Gedaan
 
     * Wachtwoord wijzigen knop toevoegen.
+    * Hoeken van product foto afronden.
     * Voeg offline functionaliteit toe aan POST, PUT en DELETE methodes.
     * Wachtwoord wijzigen knop toevoegen op profiel wijzigen gedeelte.
+    * Titel van product pagina bovenaan zetten.
+    * Sluit knop toegevoegd aan de toaster message.
+    * Instellingen pagina toegevoegd om openingstijden te wijzigen.
+    
     
   - Opgeloste problemen
 

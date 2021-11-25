@@ -1,6 +1,24 @@
 ion-content {
   .title-box {
     text-align: center;
+
+    ion-toolbar {
+      .orders-header {
+
+        h2 {
+          font-weight: 600;
+          font-size: 30px;
+          text-align: center;
+        }
+
+        .header-settings {
+          position: absolute;
+          right: 12px;
+          top: -45px;
+          --color: var(--color-app-primary);
+        }
+      }
+    }
   }
 
   .list-title {

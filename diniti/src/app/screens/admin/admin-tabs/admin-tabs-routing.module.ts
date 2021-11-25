@@ -42,6 +42,10 @@ const routes: Routes = [
           .then(m => m.AdminCustomerDetailsPageModule)
       },
       {
+        path: RouteLiterals.adminSettings,
+        loadChildren: () => import('../../admin/admin-settings/admin-settings.module').then( m => m.AdminSettingsPageModule)
+      },
+      {
         path: '',
         redirectTo: '/admin/orders',
         pathMatch: 'full'

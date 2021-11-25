@@ -15,6 +15,7 @@ export class RouteLiterals {
   static userOrderCreateSummary = 'summary';
 
   static adminOverview = 'admin';
+  static adminSettings = 'settings';
   static adminProfile = 'profile';
   static adminOrders = 'orders';
   static adminProducts = 'products';

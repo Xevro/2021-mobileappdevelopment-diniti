@@ -14,7 +14,13 @@ export class ToastMessageService {
   async presentToast(alertMessage: string, durationMessage: number = 2000) {
     const toast = await this.toastController.create({
       message: alertMessage,
-      duration: durationMessage
+      duration: durationMessage,
+      buttons: [
+        {
+          text: 'Sluit',
+          role: 'cancel'
+        }
+      ]
     });
     await toast.present();
   }

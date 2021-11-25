@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {OrdersProxyService} from '../../../services/backend-services';
 import {NetworkService} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
+import {Routes} from '../../../models/core-models';
 
 @Component({
   selector: 'app-admin-overview',
@@ -81,5 +82,9 @@ export class AdminOverviewPage {
         }
       });
     }
+  }
+
+  goToSettingsPage() {
+    this.router.navigate(Routes.adminSettings);
   }
 }

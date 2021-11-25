@@ -3,7 +3,16 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <div class="title-box">
-    <h2>Bestellingen</h2>
+    <ion-toolbar>
+      <div class="orders-header">
+        <h2>Bestellingen</h2>
+        <ion-buttons>
+          <ion-button (click)="goToSettingsPage()" [textContent]="" class="header-settings">
+            <ion-icon name="cog-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </ion-toolbar>
   </div>
   <div class="orders-list">
     <div class="filter-options">
