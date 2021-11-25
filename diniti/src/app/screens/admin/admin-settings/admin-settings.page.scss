@@ -25,4 +25,22 @@ ion-content {
       }
     }
   }
+
+  .error-message {
+    font-size: 0.95rem;
+    color: var(--color-app-primary);
+  }
+
+  .settings-box {
+    max-width: 430px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .input-fields {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
 }
+

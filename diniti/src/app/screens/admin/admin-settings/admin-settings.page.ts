@@ -9,6 +9,7 @@ import {Location} from '@angular/common';
 export class AdminSettingsPage {
 
   loading = false;
+  errorMessage = false;
 
   constructor(
     private location: Location

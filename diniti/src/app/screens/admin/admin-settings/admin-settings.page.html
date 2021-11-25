@@ -14,11 +14,33 @@
           </ion-button>
         </ion-buttons>
       </div>
-      <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
     </ion-toolbar>
   </ion-header>
 
-<div>
-  
-</div>
+  <div class="settings-box">
+    <div *ngIf="loading && !errorMessage">
+      <p>Instellingen ophalen...</p>
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      <p>Er is een onverwachte fout opgetreden.</p>
+    </div>
+
+    <div class="input-fields">
+      <ion-item>
+        <ion-label>Openingsuur</ion-label>
+        <ion-datetime display-format="HH:mm" placeholder="Kies een openingsuur">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sluitingsuur</ion-label>
+        <ion-datetime display-format="HH:mm" placeholder="Kies een sluitingsuur">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label (click)="customerCanOrder.checked = !customerCanOrder.checked">Klant kan bestellen?</ion-label>
+        <ion-toggle #customerCanOrder></ion-toggle> <!--(ionChange)="changeVisibility($event)"-->
+      </ion-item>
+    </div>
+
+  </div>
 </ion-content>
