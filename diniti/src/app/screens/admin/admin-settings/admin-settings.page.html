@@ -3,13 +3,20 @@
     <ion-toolbar>
       <div class="settings-header">
         <ion-buttons>
-          <ion-button (click)="goBack()" [textContent]="" class="cancel">
+          <ion-button *ngIf="!edit" (click)="goBack()" [textContent]="" class="cancel">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </ion-button>
+
+          <ion-button *ngIf="edit" (click)="toggleEdit()" [textContent]="" class="cancel">
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
         <h2>Instellingen</h2>
         <ion-buttons>
-          <ion-button (click)="saveSettings()" [textContent]="" class="header-save-settings">
+          <ion-button *ngIf="!edit" (click)="toggleEdit()" [textContent]="" class="header-save-settings">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="edit" (click)="saveSettings()" [textContent]="" class="header-save-settings">
             <ion-icon name="save-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
@@ -25,22 +32,31 @@
       <p>Er is een onverwachte fout opgetreden.</p>
     </div>
 
-    <div class="input-fields">
+    <div class="input-fields" *ngIf="!edit">
+      <p>Openingsuur: {{ settings?.startHour }}</p>
+      <p>Sluitingsuur: {{ settings?.closingHour }}</p>
+      <p><a>{{ (settings?.status) ? 'De klant kan bestellen online.' : 'De klant kan niet bestellen online.' }}</a></p>
+      <p>Laatst gewijzigd: {{ settings?.updatedAt | date:'dd-MM-YYYY HH:mm' }}</p>
+    </div>
+
+    <div class="input-fields" *ngIf="edit">
       <ion-item>
         <ion-label>Openingsuur</ion-label>
-        <ion-datetime display-format="HH:mm" placeholder="Kies een openingsuur">
+        <ion-datetime display-format="HH:mm" value="{{ settings?.startHour }}"
+                      placeholder="Kies een openingsuur">
         </ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Sluitingsuur</ion-label>
-        <ion-datetime display-format="HH:mm" placeholder="Kies een sluitingsuur">
+        <ion-datetime display-format="HH:mm" value="{{ settings?.closingHour }}"
+                      placeholder="Kies een sluitingsuur">
         </ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-label (click)="customerCanOrder.checked = !customerCanOrder.checked">Klant kan bestellen?</ion-label>
-        <ion-toggle #customerCanOrder></ion-toggle> <!--(ionChange)="changeVisibility($event)"-->
+        <ion-label (click)="status.checked = !status.checked">Klant kan bestellen?</ion-label>
+        <ion-toggle #status checked="{{ settings?.status }}"
+                    (ionChange)="changeStoreStatus($event)"></ion-toggle>
       </ion-item>
     </div>
-
   </div>
 </ion-content>

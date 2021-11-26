@@ -86,8 +86,7 @@
         <ion-item class="product-visibility">
           <ion-label (click)="visibility.checked = !visibility.checked">Zichtbaar voor klanten</ion-label>
           <ion-toggle #visibility checked="{{ updateProduct?.visibility }}"
-                      (ionChange)="changeVisibility($event)"
-                      class="button"></ion-toggle>
+                      (ionChange)="changeVisibility($event)"></ion-toggle>
         </ion-item>
         <div class="save-button">
           <app-button [invertColor]="true" [buttonText]="'Sla wijzigingen op'"
