@@ -1,6 +1,7 @@
 <ion-content>
   <ion-header class="ion-no-border">
     <ion-toolbar>
+      <ion-progress-bar *ngIf="loadingPutRequest" type="indeterminate"></ion-progress-bar>
       <div class="settings-header">
         <ion-buttons>
           <ion-button *ngIf="!edit" (click)="goBack()" [textContent]="" class="cancel">
@@ -31,7 +32,7 @@
       <p>Er is een onverwachte fout opgetreden.</p>
     </div>
 
-    <div class="input-fields" *ngIf="!edit">
+    <div class="input-fields" *ngIf="!edit && !loading">
       <p>Openingsuur: {{ settings?.startHour?.iso | date:'HH:mm' }}</p>
       <p>Sluitingsuur: {{ settings?.closingHour?.iso | date:'HH:mm' }}</p>
       <p>Status:
@@ -39,7 +40,7 @@
       <p>Laatst gewijzigd: {{ settings?.updatedAt | date:'dd-MM-YYYY HH:mm' }}</p>
     </div>
 
-    <div class="input-fields" *ngIf="edit">
+    <div class="input-fields" *ngIf="edit && !loading">
       <ion-item>
         <ion-label>Openingsuur</ion-label>
         <ion-datetime display-format="HH:mm" (ionChange)="changeStartHour($event)" [value]="settings?.startHour.iso"

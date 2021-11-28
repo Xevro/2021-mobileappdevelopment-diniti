@@ -4,7 +4,8 @@
   </ion-refresher>
   <div class="title-box">
     <h2>Mijn bestellingen</h2>
-    <app-button (click)="createOrder()" [buttonText]="'Plaats een bestelling'" [invertColor]="true"></app-button>
+    <app-button *ngIf="canOrder" (click)="createOrder()" [buttonText]="'Plaats een bestelling'" [invertColor]="true"></app-button>
+    <p *ngIf="!canOrder">Er kan op dit moment niet worden besteld.</p>
   </div>
   <div>
     <div class="list-title">

@@ -14,6 +14,7 @@ import {Methods} from '../../../models/core-models';
 export class AdminSettingsPage {
 
   loading = false;
+  loadingPutRequest = false;
   error = false;
   settings: StoreSettings = {} as StoreSettings;
   edit = false;
@@ -30,31 +31,27 @@ export class AdminSettingsPage {
   }
 
   ionViewWillEnter() {
-    if (this.networkService.isOnline) {
-      this.settingsProxyService.getSettingsAction()
-        .subscribe((result) => {
-            this.settings = result.results[0];
-            this.startHour = this.settings.startHour.iso;
-            this.closingHour = this.settings.closingHour.iso;
-          },
-          (error) => {
-            this.error = true;
-            this.toastMessageService.presentToast(
-              `Error, de instellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
-          });
-    }
+    this.loading = true;
+    this.settingsProxyService.getSettingsAction()
+      .subscribe((result) => {
+          this.settings = result.results[0];
+          this.startHour = this.settings.startHour.iso;
+          this.closingHour = this.settings.closingHour.iso;
+          this.loading = false;
+        },
+        (error) => {
+          this.loading = false;
+          this.error = true;
+          this.toastMessageService.presentToast(
+            `Error, de instellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
+        });
   }
 
   saveSettings() {
+    this.loadingPutRequest = true;
     if (this.networkService.isOnline) {
-      this.settings.startHour = {
-        __type: 'Date',
-        iso: this.startHour
-      };
-      this.settings.closingHour = {
-        __type: 'Date',
-        iso: this.closingHour
-      };
+      this.settings.startHour = {__type: 'Date', iso: this.startHour};
+      this.settings.closingHour = {__type: 'Date', iso: this.closingHour};
       this.settingsProxyService.updateSettingsAction(this.settings, this.settings.objectId)
         .subscribe((response) => {
           },
@@ -64,13 +61,16 @@ export class AdminSettingsPage {
               `Error, de instellingen konden niet worden gewijzigd. Status: ${error.status}`, 3500);
           });
     } else {
+      const headerOptions = {'Content-Type': 'application/json'};
       this.offlineStorageManager.addRequestToStorage({
         method: Methods.PUT,
         url: `classes/Settings/${this.settings.objectId}`,
-        payload: this.settings
+        payload: this.settings,
+        headerOptions
       });
       this.toastMessageService.presentToast('De instellingen wordt gewijzigd van zodra er terug internet beschikbaar is.', 3500);
     }
+    this.loadingPutRequest = false;
     this.edit = false;
   }
 

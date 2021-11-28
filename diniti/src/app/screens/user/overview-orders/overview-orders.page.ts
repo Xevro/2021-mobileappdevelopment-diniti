@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Routes} from '../../../models/core-models';
-import {OrdersProxyService} from '../../../services/backend-services';
+import {OrdersProxyService, SettingsProxyService} from '../../../services/backend-services';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {OrderFilterDates, OrderFilterOptions, Orders} from '../../../models/backend-models';
 import {ToastMessageService} from '../../../services/ui-services';
+import {NetworkService} from '../../../services/core-services';
 
 @Component({
   selector: 'app-overview-orders',
@@ -15,6 +16,7 @@ export class OverviewOrdersPage {
 
   orders: Orders;
   loading = false;
+  canOrder = false;
 
   orderFilterStatus = OrderFilterOptions;
   filterStatus: OrderFilterOptions = OrderFilterOptions.empty;
@@ -24,8 +26,10 @@ export class OverviewOrdersPage {
 
   constructor(
     private router: Router,
+    private networkService: NetworkService,
     private ordersProxyService: OrdersProxyService,
     private toastMessageService: ToastMessageService,
+    private settingsProxyService: SettingsProxyService,
     private authenticationService: AuthenticationService
   ) {
   }
@@ -36,6 +40,17 @@ export class OverviewOrdersPage {
 
   getOrders(event?: any) {
     this.loading = true;
+    if (this.networkService.isOnline) {
+      this.settingsProxyService.getSettingsAction()
+        .subscribe((result) => {
+            const settings = result.results[0];
+            this.canOrder = settings.status;
+          },
+          (error) => {
+            this.toastMessageService.presentToast(
+              `Error, enkele gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+          });
+    }
     this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
       .subscribe(
         (response) => {
