@@ -30,8 +30,8 @@
         <p *ngIf="timeError" class="time-error">{{ timeError }}</p>
         <ion-item>
           <ion-label>Tijdstip</ion-label>
-          <ion-datetime [(ngModel)]="selectedTime" display-format="HH:mm" max="19:00"
-                        min="10:00" placeholder="Kies één tijdstip">
+          <ion-datetime [(ngModel)]="selectedTime" display-format="HH:mm" max="{{ closingHour | date:'HH:mm' }}"
+                        min="{{ startHour | date:'HH:mm' }}" placeholder="Kies één tijdstip">
           </ion-datetime>
         </ion-item>
       </ion-list>

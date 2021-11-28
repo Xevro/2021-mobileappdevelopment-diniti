@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Methods, Routes} from '../../../models/core-models';
-import {OrdersProxyService, ProductsSummaryService} from '../../../services/backend-services';
-import {Order, OrderStatus} from '../../../models/backend-models';
+import {OrdersProxyService, ProductsSummaryService, SettingsProxyService} from '../../../services/backend-services';
+import {Order, OrderStatus, StoreSettings} from '../../../models/backend-models';
 import {NavigationExtras, Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication-services';
 import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
@@ -17,6 +17,9 @@ export class OrderSummaryPage {
 
   createOrder = false;
   loading = false;
+  settings: StoreSettings;
+  startHour: any;
+  closingHour: any;
   order: Order = {totalPrice: 0.0} as Order;
   timeError: string;
   selectedTime: any;
@@ -28,6 +31,7 @@ export class OrderSummaryPage {
     private networkService: NetworkService,
     private ordersProxyService: OrdersProxyService,
     private toastMessageService: ToastMessageService,
+    private settingsProxyService: SettingsProxyService,
     private offlineStorageManager: OfflineStorageManager,
     private authenticationService: AuthenticationService,
     private productsSummaryService: ProductsSummaryService
@@ -43,6 +47,20 @@ export class OrderSummaryPage {
         const roundedString = this.order.totalPrice.toFixed(2);
         this.order.totalPrice = Number(roundedString);
       });
+
+      if (this.networkService.isOnline) {
+        this.settingsProxyService.getSettingsAction()
+          .subscribe((result) => {
+              this.settings = result.results[0];
+              this.startHour = this.settings.startHour.iso;
+              this.closingHour = this.settings.closingHour.iso;
+            },
+            (error) => {
+              this.toastMessageService.presentToast(
+                `Error, de instellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
+            });
+      }
+
     } else {
       this.router.navigate(Routes.userOrderCreate);
     }
