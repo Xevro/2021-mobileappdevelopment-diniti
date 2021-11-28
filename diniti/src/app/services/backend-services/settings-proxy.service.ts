@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from '../authentication-services';
-import {Settings} from '../../models/backend-models';
+import {Settings, StoreSettings} from '../../models/backend-models';
 
 @Injectable({providedIn: 'root'})
 export class SettingsProxyService extends CrudDataProvider<any> {
@@ -25,13 +25,15 @@ export class SettingsProxyService extends CrudDataProvider<any> {
     return this.getRequest(url, headerOptions);
   }
 
-  updateSettingsAction(visibility: boolean, objectId: string): Observable<any> {
-    const url = `classes/Products`;
+  updateSettingsAction(settings: StoreSettings, objectId: string): Observable<any> {
+    const url = `classes/Settings/${objectId}`;
     const headerOptions = {
       'Content-Type': 'application/json'
     };
     const body = {
-      visibility
+      status: settings.status,
+      startHour: settings.startHour,
+      closingHour: settings.closingHour
     };
     return this.putRequest(url, body, headerOptions);
   }

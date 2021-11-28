@@ -1,8 +1,10 @@
+import {Time} from '../core-models';
+
 export interface StoreSettings {
-  closingHour: string;
+  closingHour: Time;
+  startHour: Time;
   createdAt?: string;
   objectId: string;
-  startHour: string;
   status: boolean;
   updatedAt?: string;
 }
