@@ -62,10 +62,15 @@ export class AdminSettingsPage {
           });
     } else {
       const headerOptions = {'Content-Type': 'application/json'};
+      const payload = {
+        status: this.settings.status,
+        startHour: this.settings.startHour,
+        closingHour: this.settings.closingHour
+      };
       this.offlineStorageManager.addRequestToStorage({
         method: Methods.PUT,
         url: `classes/Settings/${this.settings.objectId}`,
-        payload: this.settings,
+        payload,
         headerOptions
       });
       this.toastMessageService.presentToast('De instellingen wordt gewijzigd van zodra er terug internet beschikbaar is.', 3500);
