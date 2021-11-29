@@ -378,7 +378,7 @@ Logboek Mobile Application Development - 2021-2022
 
  - Gedaan
 
-    *
+    * HTML en CSS cleanup doorgevoerd op alle pagina's.
     
     
   - Opgeloste problemen

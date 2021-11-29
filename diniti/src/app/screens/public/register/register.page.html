@@ -13,40 +13,58 @@
   </ion-header>
   <div class="register-page">
     <div class="input-fields">
-      <app-input-field (onInputChange)="firstNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                       [name]="'voornaam'" [placeholder]="'Voornaam'"></app-input-field>
-      <div *ngIf="firstNameErrorMessage" class="error-message">
-        <p>{{firstNameErrorMessage}}</p>
+      <div class="input-section">
+        <ion-label>Voornaam</ion-label>
+        <app-input-field (onInputChange)="firstNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                         [name]="'voornaam'" [placeholder]="'Voornaam'"></app-input-field>
+        <div *ngIf="firstNameErrorMessage" class="error-message">
+          <p>{{firstNameErrorMessage}}</p>
+        </div>
       </div>
-      <app-input-field (onInputChange)="lastNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                       [name]="'achternaam'" [placeholder]="'Achternaam'"></app-input-field>
-      <div *ngIf="lastNameErrorMessage" class="error-message">
-        <p>{{lastNameErrorMessage}}</p>
+      <div class="input-section">
+        <ion-label>Achternaam</ion-label>
+        <app-input-field (onInputChange)="lastNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                         [name]="'achternaam'" [placeholder]="'Achternaam'"></app-input-field>
+        <div *ngIf="lastNameErrorMessage" class="error-message">
+          <p>{{lastNameErrorMessage}}</p>
+        </div>
       </div>
-      <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
-                       [name]="'gebruikersnaam'" [placeholder]="'Gebruikersnaam'"></app-input-field>
-      <div *ngIf="userNameErrorMessage" class="error-message">
-        <p>{{userNameErrorMessage}}</p>
+      <div class="input-section">
+        <ion-label>Gebruikersnaam</ion-label>
+        <app-input-field (onInputChange)="userNameValueChanged($event)" [fieldType]="fieldTypes.text"
+                         [name]="'gebruikersnaam'" [placeholder]="'Gebruikersnaam'"></app-input-field>
+        <div *ngIf="userNameErrorMessage" class="error-message">
+          <p>{{userNameErrorMessage}}</p>
+        </div>
       </div>
-      <app-input-field (onInputChange)="emailValueChanged($event)" [fieldType]="fieldTypes.email"
-                       [name]="'email'" [placeholder]="'Email'"></app-input-field>
-      <div *ngIf="emailErrorMessage" class="error-message">
-        <p>{{emailErrorMessage}}</p>
+      <div class="input-section">
+        <ion-label>Email</ion-label>
+        <app-input-field (onInputChange)="emailValueChanged($event)" [fieldType]="fieldTypes.email"
+                         [name]="'email'" [placeholder]="'Email'"></app-input-field>
+        <div *ngIf="emailErrorMessage" class="error-message">
+          <p>{{emailErrorMessage}}</p>
+        </div>
       </div>
-      <app-input-field (onInputChange)="passwordValueChanged($event)" [fieldType]="fieldTypes.password"
-                       [name]="'wachtwoord'" [placeholder]="'Wachtwoord'"></app-input-field>
-      <div *ngIf="passwordErrorMessage" class="error-message">
-        <p>De volgende voorwaarden moeten in het wachtwoord worden opgenomen:</p>
-        <p>Lengte tussen 8 en 32 karakters.</p>
-        <p>1 of meerdere hoofdletters.</p>
-        <p>1 of meerdere kleineletters.</p>
-        <p>1 of meerdere cijfers.</p>
-        <p>1 of meerdere speciale karakters.</p>
+      <div class="input-section">
+        <ion-label>Wachtwoord</ion-label>
+        <app-input-field (onInputChange)="passwordValueChanged($event)" [fieldType]="fieldTypes.password"
+                         [name]="'wachtwoord'" [placeholder]="'Wachtwoord'"></app-input-field>
+        <div *ngIf="passwordErrorMessage" class="error-message">
+          <p>De volgende voorwaarden moeten in het wachtwoord worden opgenomen:</p>
+          <p>Lengte tussen 8 en 32 karakters.</p>
+          <p>1 of meerdere hoofdletters.</p>
+          <p>1 of meerdere kleineletters.</p>
+          <p>1 of meerdere cijfers.</p>
+          <p>1 of meerdere speciale karakters.</p>
+        </div>
       </div>
-      <app-input-field (onInputChange)="passwordConfirmValueChanged($event)" [fieldType]="fieldTypes.password"
-                       [name]="'Wachtwoord controle'" [placeholder]="'Wachtwoord controle'"></app-input-field>
-      <div *ngIf="passwordConfirmErrorMessage" class="error-message">
-        <p>{{passwordConfirmErrorMessage}}</p>
+      <div class="input-section">
+        <ion-label>Wachtwoord controle</ion-label>
+        <app-input-field (onInputChange)="passwordConfirmValueChanged($event)" [fieldType]="fieldTypes.password"
+                         [name]="'Wachtwoord controle'" [placeholder]="'Wachtwoord controle'"></app-input-field>
+        <div *ngIf="passwordConfirmErrorMessage" class="error-message">
+          <p>{{passwordConfirmErrorMessage}}</p>
+        </div>
       </div>
       <ion-item class="terms">
         <ion-checkbox (click)="checkboxChanged($event)" color="primary"></ion-checkbox>

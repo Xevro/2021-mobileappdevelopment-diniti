@@ -23,24 +23,20 @@
     </div>
 
     <div class="input-fields">
-      <div *ngIf="nameErrorMessage" class="error-message">
-        <p>{{ nameErrorMessage }}</p>
-      </div>
-
       <div class="input-section">
         <ion-label>Naam</ion-label>
         <app-input-field (onInputChange)="nameValueChanged($event)" [fieldType]="fieldTypes.text"
                          [name]="'name'" [placeholder]="'Naam'" [value]="product?.name"></app-input-field>
-        <div *ngIf="priceErrorMessage" class="error-message">
-          <p>{{ priceErrorMessage }}</p>
+        <div *ngIf="nameErrorMessage" class="error-message">
+          <p>{{ nameErrorMessage }}</p>
         </div>
       </div>
       <div class="input-section">
         <ion-label>Prijs</ion-label>
         <app-input-field (onInputChange)="priceValueChanged($event)" [fieldType]="fieldTypes.text" [name]="'price'"
                          [placeholder]="'Prijs'" [value]="product?.price" inputmode="decimal"></app-input-field>
-        <div *ngIf="descriptionErrorMessage" class="error-message">
-          <p>{{ descriptionErrorMessage }}</p>
+        <div *ngIf="priceErrorMessage" class="error-message">
+          <p>{{ priceErrorMessage }}</p>
         </div>
       </div>
       <div class="input-section">
@@ -48,6 +44,9 @@
         <ion-textarea (ionInput)="descriptionValueChanged($event)" placeholder="Beschrijving" name="description"
                       rows="6" cols="20"
                       value="{{ product?.description }}"></ion-textarea>
+        <div *ngIf="descriptionErrorMessage" class="error-message">
+          <p>{{ descriptionErrorMessage }}</p>
+        </div>
       </div>
       <ion-item class="product-visibility">
         <ion-label (click)="visibility.checked = !visibility.checked">Zichtbaar voor klanten</ion-label>
@@ -58,10 +57,6 @@
         <p *ngIf="loadingImage" class="image-upload-message">Afbeelding aan het uploaden...</p>
         <p *ngIf="!loadingImage && uploadingImageDone" class="image-upload-message">Klik op 'voeg toe' om het product
           toe te voegen</p>
-
-        <div *ngIf="validationMessage" class="error-message">
-          <p>{{ validationMessage }}</p>
-        </div>
 
         <p *ngIf="!loadingImage && imageError" class="image-upload-message">Er is een fout opgetreden bij het
           ophalen van de afbeelding</p>

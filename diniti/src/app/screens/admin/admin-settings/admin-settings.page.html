@@ -58,6 +58,9 @@
         <ion-toggle #status checked="{{ settings?.status }}"
                     (ionChange)="changeStoreStatus($event)"></ion-toggle>
       </ion-item>
+      <div class="settings-save-button">
+      <app-button (click)="saveSettings()" [buttonText]="'Sla instelingen op'" [invertColor]="true"></app-button>
+      </div>
     </div>
   </div>
 </ion-content>

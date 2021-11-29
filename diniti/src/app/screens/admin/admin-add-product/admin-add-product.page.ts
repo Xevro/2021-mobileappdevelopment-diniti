@@ -28,7 +28,6 @@ export class AdminAddProductPage {
   nameErrorMessage: string = null;
   priceErrorMessage: string = null;
   descriptionErrorMessage: string = null;
-  validationMessage: string = null;
   errorMessage = false;
   imageError = false;
 
@@ -67,7 +66,6 @@ export class AdminAddProductPage {
     if (this.product.name && this.product.price) {
       this.loading = true;
       this.errorMessage = false;
-      this.validationMessage = null;
       if (this.imageResultData) {
         this.product.image = {
           name: this.imageResultData.name,
@@ -120,7 +118,12 @@ export class AdminAddProductPage {
         }
       }
     } else {
-      this.validationMessage = 'Naam en of prijs zijn niet ingevuld.';
+      if (!this.product.name) {
+        this.nameErrorMessage = 'Naam kan niet leeg zijn.';
+      }
+      if (!this.product.price) {
+        this.priceErrorMessage = 'Prijs kan niet leeg of 0 zijn.';
+      }
     }
   }
 

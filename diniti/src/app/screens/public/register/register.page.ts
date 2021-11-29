@@ -160,7 +160,7 @@ export class RegisterPage {
             this.passwordConfirmInput = '';
             this.errorMessage = '';
             this.toastMessageService.presentToast(
-              `Error, de gebruiker kon niet worden geregistreerd. Status: ${error.status}`, 3500);
+              `Error, de gebruiker kon niet worden geregistreerd.`, 3500);
           });
     } else {
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);

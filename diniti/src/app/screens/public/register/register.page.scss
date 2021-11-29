@@ -33,8 +33,16 @@ ion-content {
     .input-fields {
       margin-top: 80px;
 
+      .input-section {
+        margin-top: 15px;
+
+        ion-label {
+          font-size: .95rem;
+        }
+      }
+
       .error-message {
-        font-size: 0.95rem;
+        font-size: .95rem;
         color: var(--color-app-primary);
       }
 

@@ -1,9 +1,4 @@
 ion-content {
-  .error-message {
-    font-size: 0.95rem;
-    color: var(--color-app-primary);
-  }
-
   ion-header {
     ion-toolbar {
       .header-toolbar {
@@ -27,6 +22,15 @@ ion-content {
           --color: var(--color-app-primary);
         }
       }
+    }
+  }
+
+  .error-message {
+    font-size: .95rem;
+    color: var(--color-app-primary);
+
+    p {
+      margin-bottom: 0;
     }
   }
 

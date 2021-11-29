@@ -94,7 +94,7 @@ export class LoginPage {
             this.passwordInput = null;
             this.errorMessage = '';
             this.toastMessageService.presentToast(
-              `Error, de gebruiker kon niet worden ingelogd. Status: ${error.status}`, 3500);
+              `Error, de gebruiker kon niet worden ingelogd.`, 3500);
           });
     } else {
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
