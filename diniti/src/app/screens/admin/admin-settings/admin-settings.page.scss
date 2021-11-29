@@ -1,18 +1,17 @@
 ion-content {
   ion-header {
     ion-toolbar {
-
-      .settings-header {
-        .cancel {
+      .header-toolbar {
+        .header-cancel {
           position: absolute;
           left: 15px;
           top: 0;
           --color: var(--color-app-primary);
         }
 
-        h2 {
+        h1 {
           font-weight: 600;
-          font-size: 30px;
+          font-size: 1.875rem;
           text-align: center;
         }
 

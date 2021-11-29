@@ -2,16 +2,16 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-progress-bar *ngIf="loadingPutRequest" type="indeterminate"></ion-progress-bar>
-      <div class="settings-header">
+      <div class="header-toolbar">
         <ion-buttons>
-          <ion-button *ngIf="!edit" (click)="goBack()" [textContent]="" class="cancel">
+          <ion-button *ngIf="!edit" (click)="goBack()" [textContent]="" class="header-cancel">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </ion-button>
-          <ion-button *ngIf="edit" (click)="toggleEdit()" [textContent]="" class="cancel">
+          <ion-button *ngIf="edit" (click)="toggleEdit()" [textContent]="" class="header-cancel">
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <h2>Instellingen</h2>
+        <h1>Instellingen</h1>
         <ion-buttons>
           <ion-button *ngIf="!edit" (click)="toggleEdit()" [textContent]="" class="header-save-settings">
             <ion-icon name="create-outline"></ion-icon>

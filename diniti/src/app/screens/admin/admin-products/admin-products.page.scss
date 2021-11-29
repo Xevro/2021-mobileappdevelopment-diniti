@@ -1,16 +1,20 @@
 ion-content {
-  .order-header {
-    h2 {
-      font-weight: 600;
-      font-size: 30px;
-      text-align: center;
-    }
+  ion-header {
+    ion-toolbar {
+      .header-toolbar {
+        h1 {
+          font-weight: 600;
+          font-size: 1.875rem;
+          text-align: center;
+        }
 
-    .header-create-product {
-      position: absolute;
-      right: 10px;
-      top: -45px;
-      --color: var(--color-app-primary);
+        .header-create-product {
+          position: absolute;
+          right: 10px;
+          top: -45px;
+          --color: var(--color-app-primary);
+        }
+      }
     }
   }
 

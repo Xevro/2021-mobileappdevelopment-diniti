@@ -2,8 +2,14 @@ ion-content {
   .title-box {
     text-align: center;
 
+    h1 {
+      font-weight: 600;
+      font-size: 1.875rem;
+      text-align: center;
+    }
+
     p {
-      margin-top: 20px;
+      margin-top: 25px;
     }
   }
 
@@ -13,6 +19,12 @@ ion-content {
     margin-left: auto;
     margin-right: auto;
     padding-left: 18px;
+
+    h4 {
+      font-weight: 600;
+      font-size: 1.875rem;
+      text-align: center;
+    }
   }
 
   .orders-list {
@@ -21,12 +33,6 @@ ion-content {
 
     .filter-options {
       margin-bottom: 30px;
-    }
-
-    h2 {
-      font-weight: 600;
-      font-size: 30px;
-      text-align: center;
     }
 
     .no-orders {

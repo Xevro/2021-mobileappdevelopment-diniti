@@ -2,11 +2,13 @@
   <ion-refresher slot="fixed" (ionRefresh)="getOrders($event)" pullFactor="0.5" pullMin="100" pullMax="200">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <ion-header class="ion-no-border">
   <div class="title-box">
-    <h2>Mijn bestellingen</h2>
+    <h1>Mijn bestellingen</h1>
     <app-button *ngIf="canOrder" (click)="createOrder()" [buttonText]="'Plaats een bestelling'" [invertColor]="true"></app-button>
     <p *ngIf="!canOrder">Er kan op dit moment niet worden besteld.</p>
   </div>
+  </ion-header>
   <div>
     <div class="list-title">
       <h4>Bestellingen</h4>

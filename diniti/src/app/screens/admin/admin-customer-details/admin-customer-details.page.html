@@ -1,13 +1,13 @@
 <ion-content>
   <ion-header class="ion-no-border">
     <ion-toolbar>
-      <div class="customer-header">
+      <div class="header-toolbar">
         <ion-buttons>
           <ion-button (click)="goBack()" [textContent]="" class="go-back">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <h2>{{ customer?.firstname ?? '-'}} {{ customer?.lastname ?? '-' }}</h2>
+        <h1>{{ customer?.firstname ?? '-'}} {{ customer?.lastname ?? '-' }}</h1>
       </div>
     </ion-toolbar>
   </ion-header>

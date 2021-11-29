@@ -1,25 +1,27 @@
 ion-content {
   --background: var(--color-app-primary);
 
-  ion-toolbar {
-    --background: var(--color-app-primary);
+  ion-header {
+    ion-toolbar {
+      --background: var(--color-app-primary);
 
-    .order-complete-header {
-      h2 {
-        font-weight: 600;
-        font-size: 30px;
-        text-align: center;
-      }
+      .header-toolbar {
+        h1 {
+          font-weight: 600;
+          font-size: 1.875rem;
+          text-align: center;
+        }
 
-      .order-complete-button {
-        position: absolute;
-        right: 10px;
-        top: -10px;
-        --color: var(--color-app-secondary);
-        text-transform: lowercase;
-        font-size: 1rem;
-        font-weight: normal;
-        text-decoration: none;
+        .order-complete-button {
+          position: absolute;
+          right: 10px;
+          top: -10px;
+          --color: var(--color-app-secondary);
+          text-transform: lowercase;
+          font-size: 1rem;
+          font-weight: normal;
+          text-decoration: none;
+        }
       }
     }
   }

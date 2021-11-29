@@ -2,13 +2,13 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-progress-bar *ngIf="loading && !timeError" type="indeterminate"></ion-progress-bar>
-      <div class="summary-header">
+      <div class="header-toolbar">
         <ion-buttons>
           <ion-button (click)="goBack()" [textContent]="" class="go-back">
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <h2>Winkelmand</h2>
+        <h1>Winkelmand</h1>
         <ion-buttons>
           <ion-button (click)="goToOrderComplete()" [textContent]="" class="header-register-order">
             <ion-icon name="checkmark-circle-outline"></ion-icon>

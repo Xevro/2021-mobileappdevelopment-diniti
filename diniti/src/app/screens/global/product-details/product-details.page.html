@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <ion-header class="ion-no-border">
     <ion-toolbar>
-      <div class="product-header">
+      <div class="header-toolbar">
         <ion-buttons>
           <ion-button *ngIf="!edit" (click)="goBack()" [textContent]="" class="go-back">
             <ion-icon name="arrow-back-outline"></ion-icon>
@@ -12,8 +12,7 @@
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-
-        <h2>{{ product?.name }}</h2>
+        <h1>{{ product?.name }}</h1>
         <ion-buttons *ngIf="currentRole === role.admin">
           <ion-button *ngIf="!edit" (click)="editProduct()" [textContent]="" class="header-edit-product">
             <ion-icon name="create-outline"></ion-icon>

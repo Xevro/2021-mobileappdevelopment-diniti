@@ -4,25 +4,29 @@ ion-content {
     color: var(--color-app-primary);
   }
 
-  .product-header {
-    .cancel {
-      position: absolute;
-      left: 15px;
-      top: 0;
-      --color: var(--color-app-primary);
-    }
+  ion-header {
+    ion-toolbar {
+      .header-toolbar {
+        .header-cancel {
+          position: absolute;
+          left: 15px;
+          top: 0;
+          --color: var(--color-app-primary);
+        }
 
-    h2 {
-      font-weight: 600;
-      font-size: 30px;
-      text-align: center;
-    }
+        h1 {
+          font-weight: 600;
+          font-size: 1.875rem;
+          text-align: center;
+        }
 
-    .header-product-add {
-      position: absolute;
-      right: 12px;
-      top: -45px;
-      --color: var(--color-app-primary);
+        .header-product-add {
+          position: absolute;
+          right: 12px;
+          top: -45px;
+          --color: var(--color-app-primary);
+        }
+      }
     }
   }
 

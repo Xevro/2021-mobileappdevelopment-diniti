@@ -2,11 +2,11 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-progress-bar *ngIf="submitted" type="indeterminate"></ion-progress-bar>
-      <div class="login-header">
+      <div class="header-toolbar">
         <a [routerLink]="onboardingRoute" routerDirection="back">
           <img [src]="imageSrc" alt="cancel" class="cancel-login">
         </a>
-        <h2>Log in</h2>
+        <h1>Log in</h1>
         <a [routerLink]="registerRoute" class="header-register" routerDirection="forward">Registreer</a>
       </div>
     </ion-toolbar>

@@ -384,6 +384,7 @@ Logboek Mobile Application Development - 2021-2022
   - Opgeloste problemen
 
     *
+    
 
   - Op te lossen problemen
 

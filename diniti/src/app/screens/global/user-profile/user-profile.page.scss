@@ -5,7 +5,7 @@ ion-content {
 
     ion-header {
       ion-toolbar {
-        .profile-header {
+        .header-toolbar {
           background-color: var(--color-app-primary);
           margin: -20px 0 0;
           padding-top: 20px;
@@ -18,7 +18,7 @@ ion-content {
             --color: var(--color-app-secondary);
           }
 
-          h2 {
+          h1 {
             font-weight: 600;
             font-size: 30px;
             text-align: center;
@@ -84,7 +84,7 @@ ion-content {
         }
       }
 
-      h4 {
+      .profile-user-title {
         margin-top: 0;
         font-style: normal;
         font-weight: 600;

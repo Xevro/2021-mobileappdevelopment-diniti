@@ -2,20 +2,19 @@
   <div class="profile-page-box">
     <ion-header class="ion-no-border">
       <ion-toolbar>
-        <div class="profile-header">
+        <div class="header-toolbar">
           <ion-buttons *ngIf="cancelButton">
             <ion-button (click)="cancelEditUser()" [textContent]="" class="cancel-button">
               <ion-icon name="close-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
-
           <ion-buttons>
             <ion-button *ngIf="!cancelButton" (click)="goBack()" [textContent]="" class="cancel-button">
               <ion-icon name="arrow-back-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
 
-          <h2>Profiel</h2>
+          <h1>Profiel</h1>
           <ion-buttons *ngIf="editButton">
             <ion-button (click)="handleEditUserData()" [textContent]="" class="header-edit-profile">
               <ion-icon name="create-outline"></ion-icon>
@@ -38,7 +37,7 @@
         <img alt="profile image" class="profile-image" src="{{ userData?.profilePicture?.url }}">
       </div>
       <p *ngIf="loadingImage && toggleEditView" class="image-upload-message">Afbeelding aan het uploaden...</p>
-      <h4>{{ userData?.firstname + ' ' + userData?.lastname }}</h4>
+      <p class="profile-user-title">{{ userData?.firstname + ' ' + userData?.lastname }}</p>
 
       <div *ngIf="!toggleEditView && userData" class="profile-data">
         <div class="username-box">

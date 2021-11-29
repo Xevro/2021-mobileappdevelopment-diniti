@@ -2,7 +2,7 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-progress-bar *ngIf="removingLoading" type="indeterminate"></ion-progress-bar>
-      <div class="summary-header">
+      <div class="header-toolbar">
         <ion-buttons>
           <ion-button *ngIf="!edit" (click)="goBack()" [textContent]="" class="go-back">
             <ion-icon name="arrow-back-outline"></ion-icon>
@@ -13,7 +13,7 @@
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <h2>Bestelling</h2>
+        <h1>Bestelling</h1>
         <ion-buttons *ngIf="currentRole === role.admin">
           <ion-button *ngIf="!edit" (click)="editOrder()" [textContent]="" class="header-edit-order">
             <ion-icon name="create-outline"></ion-icon>

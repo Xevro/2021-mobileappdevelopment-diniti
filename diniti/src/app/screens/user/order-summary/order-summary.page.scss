@@ -1,23 +1,27 @@
 ion-content {
-  .summary-header {
-    .go-back {
-      position: absolute;
-      top: 0;
-      left: 15px;
-      --color: var(--color-app-primary);
-    }
+  ion-header {
+    ion-toolbar {
+      .header-toolbar {
+        .go-back {
+          position: absolute;
+          top: 0;
+          left: 15px;
+          --color: var(--color-app-primary);
+        }
 
-    h2 {
-      font-weight: 600;
-      font-size: 30px;
-      text-align: center;
-    }
+        h1 {
+          font-weight: 600;
+          font-size: 1.875rem;
+          text-align: center;
+        }
 
-    .header-register-order {
-      position: absolute;
-      right: 10px;
-      top: -45px;
-      --color: var(--color-app-primary);
+        .header-register-order {
+          position: absolute;
+          right: 10px;
+          top: -45px;
+          --color: var(--color-app-primary);
+        }
+      }
     }
   }
 
