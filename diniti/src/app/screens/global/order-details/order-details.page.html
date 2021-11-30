@@ -8,14 +8,16 @@
             <ion-icon name="arrow-back-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <ion-buttons *ngIf="currentRole === role.admin">
-          <ion-button *ngIf="edit" (click)="hideEditOrder()" [textContent]="" class="header-close-edit">
+        <ion-buttons>
+          <ion-button *ngIf="edit && currentRole === role.admin" (click)="hideEditOrder()" [textContent]=""
+                      class="header-close-edit">
             <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
         <h1>Bestelling</h1>
-        <ion-buttons *ngIf="currentRole === role.admin">
-          <ion-button *ngIf="!edit" (click)="editOrder()" [textContent]="" class="header-edit-order">
+        <ion-buttons>
+          <ion-button *ngIf="!edit && currentRole === role.admin" (click)="editOrder()" [textContent]=""
+                      class="header-edit-order">
             <ion-icon name="create-outline"></ion-icon>
           </ion-button>
           <ion-button *ngIf="edit" (click)="saveStatus()" [textContent]="" class="header-edit-order">
