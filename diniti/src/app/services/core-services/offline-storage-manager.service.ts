@@ -6,6 +6,7 @@ import {Methods} from '../../models/core-models';
 import {CrudDataProvider} from './crud-data-provider.base';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {SwUpdate} from '@angular/service-worker';
 
 @Injectable({providedIn: 'root'})
 export class OfflineStorageManager extends CrudDataProvider<any> {
@@ -15,6 +16,7 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
 
   constructor(
     httpClient: HttpClient,
+    private updates: SwUpdate,
     private networkService: NetworkService
   ) {
     super(httpClient);
@@ -30,9 +32,9 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
   }
 
   private registerToEvents(onlineOfflineService: NetworkService) {
-    onlineOfflineService.connectionChanged.subscribe(online => {
+    onlineOfflineService.connectionChanged.subscribe(async online => {
       if (online) {
-        this.sendRequestsFromIndexedDb();
+        await this.sendRequestsFromIndexedDb();
       }
     });
   }
@@ -63,7 +65,7 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
           this.indexedDB.requests.delete(storedRequest.id);
         }
       );
-      window.location.reload();
+      this.updates.activateUpdate().then(() => document.location.reload());
     }
   }
 }

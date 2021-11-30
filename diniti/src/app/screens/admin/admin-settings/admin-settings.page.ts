@@ -49,9 +49,9 @@ export class AdminSettingsPage {
 
   saveSettings() {
     this.loadingPutRequest = true;
+    this.settings.startHour = {__type: 'Date', iso: this.startHour};
+    this.settings.closingHour = {__type: 'Date', iso: this.closingHour};
     if (this.networkService.isOnline) {
-      this.settings.startHour = {__type: 'Date', iso: this.startHour};
-      this.settings.closingHour = {__type: 'Date', iso: this.closingHour};
       this.settingsProxyService.updateSettingsAction(this.settings, this.settings.objectId)
         .subscribe((response) => {
           },
