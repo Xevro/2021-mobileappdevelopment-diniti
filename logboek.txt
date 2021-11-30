@@ -373,12 +373,13 @@ Logboek Mobile Application Development - 2021-2022
  - Te doen deze week
   
     * Push notificatie kunnen tonen (optioneel 2de hardware feature).
-    * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
 
 
  - Gedaan
 
     * HTML en CSS cleanup doorgevoerd op alle pagina's.
+    * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
+    * Ion-label toegevoegd aan input velden op login en register.
     
     
   - Opgeloste problemen

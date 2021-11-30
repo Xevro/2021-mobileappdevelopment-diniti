@@ -68,7 +68,7 @@
       </div>
       <ion-item class="terms">
         <ion-checkbox (click)="checkboxChanged($event)" color="primary"></ion-checkbox>
-        <ion-label class="checkbox-label">{{ 'Ik ga akkoord met de voorwaarden' }}</ion-label>
+        <ion-label class="checkbox-label">Ik ga akkoord met de <a (click)="goToConditions()">voorwaarden</a></ion-label>
       </ion-item>
       <div *ngIf="checkedErrorMessage" class="error-message">
         <p>{{checkedErrorMessage}}</p>

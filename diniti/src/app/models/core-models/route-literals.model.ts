@@ -4,6 +4,7 @@ export class RouteLiterals {
   static register = 'register';
   static reset = 'reset';
   static resetPassword = 'password';
+  static termsAndConditions = 'terms-and-conditions';
 
   static userProfile = 'profile';
   static userOverview = 'overview';

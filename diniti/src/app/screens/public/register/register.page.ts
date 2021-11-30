@@ -194,4 +194,8 @@ export class RegisterPage {
   checkboxChanged(e) {
     this.checked = !e.currentTarget.checked;
   }
+
+  goToConditions() {
+    this.router.navigate(Routes.termsAndConditions);
+  }
 }

@@ -37,6 +37,7 @@ ion-content {
         margin-top: 15px;
 
         ion-label {
+          font-weight: bold;
           font-size: .95rem;
         }
       }
@@ -57,7 +58,7 @@ ion-content {
 
         .checkbox-label {
           margin-left: 10px;
-          font-size: 14px;
+          font-size: .875rem;
           color: var(--color-app-shade-gray-1);
         }
       }

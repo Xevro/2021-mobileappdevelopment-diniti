@@ -36,6 +36,11 @@ const routes: Routes = [
     loadChildren: () => import('./screens/admin/admin-tabs/admin-tabs.module').then(m => m.AdminTabsModule)
   },
   {
+    path: RouteLiterals.termsAndConditions,
+    loadChildren: () => import('./screens/public/terms-and-conditions/terms-and-conditions.module')
+      .then(m => m.TermsAndConditionsPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./screens/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
