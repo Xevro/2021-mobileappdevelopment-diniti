@@ -380,8 +380,12 @@ Logboek Mobile Application Development - 2021-2022
     * HTML en CSS cleanup doorgevoerd op alle pagina's.
     * Gebruikers voorwaarden pagina toevoegen waar deze kan worden bekeken.
     * Ion-label toegevoegd aan input velden op login en register.
+    * Enkele kleine problemen opgelost en verbeterd.
     
-    
+
+    - Applicatie is beschikbaar op https://diniti.b4a.app
+
+
   - Opgeloste problemen
 
     *
