@@ -335,6 +335,8 @@ Logboek Mobile Application Development - 2021-2022
 
 - Week 10 - vrijdag 26/11/2021
 
+- Parse documentatie gewijzigd: https://docs.parseplatform.org/rest/guide/#logging-in
+
  - Te doen deze week
   
     * Push notificatie kunnen tonen (optioneel 2de hardware feature).
