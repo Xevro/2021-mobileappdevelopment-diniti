@@ -403,7 +403,7 @@ Logboek Mobile Application Development - 2021-2022
     *
 
 
-- Week 13 - vrijdag 010/12/2021
+- Week 12 - vrijdag 010/12/2021
 
  - Te doen deze week
   
