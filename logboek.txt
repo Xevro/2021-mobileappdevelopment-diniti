@@ -403,3 +403,33 @@ Logboek Mobile Application Development - 2021-2022
     *
 
 
+- Week 13 - vrijdag 010/12/2021
+
+ - Te doen deze week
+  
+    * Push notificatie kunnen tonen (optioneel 2de hardware feature).
+
+
+ - Gedaan
+
+    *
+    
+
+    - Applicatie is beschikbaar op https://diniti.b4a.app
+
+
+  - Opgeloste problemen
+
+    *
+    
+
+  - Op te lossen problemen
+
+    * 
+
+
+  - Bronnen
+
+    *
+
+
