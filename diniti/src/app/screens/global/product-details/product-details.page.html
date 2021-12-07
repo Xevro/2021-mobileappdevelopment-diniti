@@ -35,7 +35,7 @@
         </div>
         <p>Prijs/st: <a>{{ product?.price | currency:'EUR' }}</a></p>
         <p class="bold-text">Beschrijving</p>
-        <p>{{ product?.description }}</p>
+        <p>{{ product?.description ?? '--'}}</p>
       </div>
     </div>
 

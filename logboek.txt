@@ -412,7 +412,8 @@ Logboek Mobile Application Development - 2021-2022
 
  - Gedaan
 
-    *
+    * Kleine fix (margin) op registratie pagina
+    * 2 '--' streepjes op lege beschrijving van product detail pagina toegevoegd
     
 
     - Applicatie is beschikbaar op https://diniti.b4a.app
