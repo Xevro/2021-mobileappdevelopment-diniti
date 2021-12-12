@@ -403,7 +403,7 @@ Logboek Mobile Application Development - 2021-2022
     *
 
 
-- Week 12 - vrijdag 010/12/2021
+- Week 12 - vrijdag 10/12/2021
 
  - Te doen deze week
   
@@ -412,9 +412,39 @@ Logboek Mobile Application Development - 2021-2022
 
  - Gedaan
 
-    * Kleine fix (margin) op registratie pagina
-    * 2 '--' streepjes op lege beschrijving van product detail pagina toegevoegd
+    * Kleine fix (margin) op registratie pagina.
+    * 2 '--' streepjes op lege beschrijving van product detail pagina toegevoegd.
     
+
+    - Applicatie is beschikbaar op https://diniti.b4a.app
+
+
+  - Opgeloste problemen
+
+    *
+    
+
+  - Op te lossen problemen
+
+    * 
+
+
+  - Bronnen
+
+    *
+
+
+- Week 13 - vrijdag 17/12/2021
+
+ - Te doen deze week
+  
+    * Push notificatie kunnen tonen (optioneel 2de hardware feature).
+    * Kleine controle op een save icon doen.
+
+
+ - Gedaan
+
+    *
 
     - Applicatie is beschikbaar op https://diniti.b4a.app
 
