@@ -464,3 +464,62 @@ Logboek Mobile Application Development - 2021-2022
     *
 
 
+- Week 13 - vrijdag 17/12/2021
+
+ - Te doen deze week
+  
+    * Push notificatie kunnen tonen (optioneel 2de hardware feature).
+    * Kleine controle op een save icon doen.
+    
+
+ - Gedaan
+
+    *
+
+    - Applicatie is beschikbaar op https://diniti.b4a.app
+
+
+  - Opgeloste problemen
+
+    *
+    
+
+  - Op te lossen problemen
+
+    * 
+
+
+  - Bronnen
+
+
+
+- Week 14 - vrijdag 24/12/2021
+
+ - Te doen deze week
+  
+    * Push notificatie kunnen tonen (optioneel 2de hardware feature).
+    * Kleine controle op een save icon doen.
+
+
+ - Gedaan
+
+    *
+
+    - Applicatie is beschikbaar op https://diniti.b4a.app
+
+
+  - Opgeloste problemen
+
+    *
+    
+
+  - Op te lossen problemen
+
+    * 
+
+
+  - Bronnen
+
+    *
+
+
