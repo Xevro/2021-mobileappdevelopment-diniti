@@ -38,17 +38,14 @@ export class NetworkService {
     // check if we are on device or if its a browser:
     if (this.appIsOnDevice) {
       this.network.onDisconnect().subscribe(() => {
-        console.log('network disconnected');
         this.appIsOnline = false;
       });
       this.network.onConnect().subscribe(() => {
-        console.log('network connected!');
         this.appIsOnline = true;
         if (this.network.type === 'wifi') {
-          console.log('we have a wifi connection!');
+          console.log('we found a wifi connection!');
         }
       });
-      console.log('device network monitor is ON');
     } else {
       fromEvent(window, 'offline').subscribe(() => {
           this.appIsOnline = false;
@@ -60,7 +57,6 @@ export class NetworkService {
           this.toastMessageService.presentToast('U bent terug online');
         }
       );
-      console.log('PWA network monitor started');
     }
   }
 
