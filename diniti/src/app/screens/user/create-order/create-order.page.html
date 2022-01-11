@@ -24,7 +24,7 @@
       <p>{{ message }}</p>
     </div>
     <div class="search-field">
-      <ion-searchbar [(ngModel)]="filterTerm" animated="true" placeholder="Zoek producten"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="filterTerm" animated="true" placeholder="Zoek naar een product"></ion-searchbar>
       <ion-item>
         <ion-label>Filter op een categorie</ion-label>
         <ion-select interface="popover" [(ngModel)]="categoriesFilter" (ionChange)="filterProductsOnCategory($event)">
