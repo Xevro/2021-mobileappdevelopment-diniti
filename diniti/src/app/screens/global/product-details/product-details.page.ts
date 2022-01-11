@@ -9,6 +9,7 @@ import {Image, Methods} from '../../../models/core-models';
 import {CurrencyPipe, Location} from '@angular/common';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
 import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
+import {ProductCategories} from "../../../models/backend-models/enum/product-categories.enum";
 
 @Component({
   selector: 'app-product-details',
@@ -25,6 +26,9 @@ export class ProductDetailsPage {
   role = Role;
   currentRole: Role;
   fieldTypes = FieldTypes;
+
+  categoriesEnum = ProductCategories;
+  selectedCategory = ProductCategories.snacks;
 
   loadingImage = false;
   uploadingImageDone = false;
@@ -64,6 +68,8 @@ export class ProductDetailsPage {
             this.product = response.results[0];
             this.updateProduct.name = this.product.name;
             this.updateProduct.price = this.product.price;
+            this.updateProduct.category = this.product.category;
+            this.selectedCategory = this.product.category;
             this.updateProduct.visibility = this.product.visibility;
             this.updateProduct.description = this.product.description;
             this.loading = false;
@@ -300,6 +306,12 @@ export class ProductDetailsPage {
       this.descriptionErrorMessage = '';
     } else {
       this.descriptionErrorMessage = 'Beschrijving kan niet leeg zijn';
+    }
+  }
+
+  selectCategory(categoryChoice) {
+    if (categoryChoice.target.value !== ProductCategories.all) {
+      this.updateProduct.category = categoryChoice.target.value;
     }
   }
 

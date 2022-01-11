@@ -6,16 +6,18 @@ import {ProductDetailsRoutingModule} from './product-details-routing.module';
 import {ProductDetailsPage} from './product-details.page';
 import {InputFieldModule} from '../../../components/input-field/input-field.module';
 import {ButtonModule} from '../../../components/button/button.module';
+import {OrderDetailsPageModule} from '../order-details/order-details.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ProductDetailsRoutingModule,
-    InputFieldModule,
-    ButtonModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ProductDetailsRoutingModule,
+        InputFieldModule,
+        ButtonModule,
+        OrderDetailsPageModule
+    ],
   providers: [CurrencyPipe],
   declarations: [ProductDetailsPage]
 })

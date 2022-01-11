@@ -39,22 +39,20 @@ export class CreateOrderPage {
   getProducts(event?: any) {
     this.loading = true;
     this.message = null;
-    this.productsProxyService.getProductsWithVisibilityAction(true)
-      .subscribe(
-        (response) => {
-          this.products = response?.results;
-          this.allProducts = this.products;
-          this.loading = false;
-          this.loadStoredProducts();
-          this.checkOrders();
-          event?.target.complete();
-        },
-        (error) => {
-          event?.target.complete();
-          this.message = 'Geen producten kunnen ophalen';
-          this.toastMessageService.presentToast(
-            `Error, de producten konden niet worden opgehaald. Status: ${error.status}`, 3500);
-        });
+    this.productsProxyService.getProductsWithVisibilityAction(true).subscribe((response) => {
+        this.products = response?.results;
+        this.allProducts = this.products;
+        this.loading = false;
+        this.loadStoredProducts();
+        this.checkOrders();
+        event?.target.complete();
+      },
+      (error) => {
+        event?.target.complete();
+        this.message = 'Geen producten kunnen ophalen';
+        this.toastMessageService.presentToast(
+          `Error, de producten konden niet worden opgehaald. Status: ${error.status}`, 3500);
+      });
     if (this.selectedProducts?.length === 0) {
       for (const [key] of Object.entries(this.products)) {
         this.products[key].amount = 0;

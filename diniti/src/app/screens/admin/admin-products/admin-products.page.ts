@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {ProductsProxyService} from '../../../services/backend-services';
 import {Routes} from '../../../models/core-models';
 import {ToastMessageService} from '../../../services/ui-services';
+import {ProductCategories} from '../../../models/backend-models/enum/product-categories.enum';
 
 @Component({
   selector: 'app-admin-products',
@@ -13,10 +14,14 @@ import {ToastMessageService} from '../../../services/ui-services';
 export class AdminProductsPage {
 
   products: Product[];
+  allProducts: Product[];
   filterTerm: string;
   loading = false;
   errorMessage = false;
   message: string;
+
+  categoriesEnum = ProductCategories;
+  categoriesFilter = ProductCategories.all;
 
   constructor(
     private router: Router,
@@ -37,6 +42,7 @@ export class AdminProductsPage {
       .subscribe(
         (response) => {
           this.products = response?.results;
+          this.allProducts = this.products;
           this.loading = false;
           event?.target.complete();
         },
@@ -48,6 +54,13 @@ export class AdminProductsPage {
             `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500
           );
         });
+  }
+
+  filterProductsOnCategory(filterChoice) {
+    this.products = this.allProducts;
+    if (filterChoice.target.value !== ProductCategories.all) {
+      this.products = this.products.filter(product => product.category === filterChoice.target.value);
+    }
   }
 
   updatedProductsList(productsEvent: any) {

@@ -33,7 +33,8 @@
         <div class="product-image">
           <img src="{{ product?.image?.url }}" alt="{{ product?.image?.name }}">
         </div>
-        <p>Prijs/st: <a>{{ product?.price | currency:'EUR' }}</a></p>
+        <p>Prijs/stuk: <a>{{ product?.price | currency:'EUR' }}</a></p>
+        <p>Categorie: <a>{{ product?.category }}</a></p>
         <p class="bold-text">Beschrijving</p>
         <p>{{ product?.description ?? '--'}}</p>
       </div>
@@ -74,6 +75,15 @@
         <app-input-field (onInputChange)="priceValueChanged($event)" [fieldType]="fieldTypes.text"
                          [placeholder]="'Prijs'" [name]="'price'"
                          [value]="product?.price"></app-input-field>
+        <p class="bold-text">Categorie</p>
+        <ion-item>
+          <ion-label>Selecteer een categorie</ion-label>
+          <ion-select interface="popover" [(ngModel)]="selectedCategory" (ionChange)="selectCategory($event)">
+            <ion-select-option *ngFor="let category of categoriesEnum | enumToArray | slice:1" [value]="category[0]">
+              {{ category[0] }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
 
         <p class="bold-text">Beschrijving</p>
         <div *ngIf="descriptionErrorMessage" class="error-message">
