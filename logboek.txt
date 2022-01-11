@@ -523,3 +523,35 @@ Logboek Mobile Application Development - 2021-2022
     *
 
 
+- Week 17 - vrijdag 14/1/2022
+
+ - Te doen deze week
+  
+    * Kleine controle op een save icon doen.
+
+
+ - Gedaan
+
+    * Categorie toegevoegd aan een product
+    * Filter toegevoegd aan de producten lijst met filter keuze op categorie
+    * Kleine details gewijzigd (marges en spellingsfoutje)
+    
+
+    - Applicatie is beschikbaar op https://diniti.b4a.app
+
+
+  - Opgeloste problemen
+
+    *
+    
+
+  - Op te lossen problemen
+
+    * 
+
+
+  - Bronnen
+
+    *
+
+
