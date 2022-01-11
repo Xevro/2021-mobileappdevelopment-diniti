@@ -49,8 +49,7 @@ export class OrderSummaryPage {
       });
 
       if (this.networkService.isOnline) {
-        this.settingsProxyService.getSettingsAction()
-          .subscribe((result) => {
+        this.settingsProxyService.getSettingsAction().subscribe((result) => {
               this.settings = result.results[0];
               this.startHour = this.settings.startHour.iso;
               this.closingHour = this.settings.closingHour.iso;

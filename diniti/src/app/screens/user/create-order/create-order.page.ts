@@ -42,7 +42,13 @@ export class CreateOrderPage {
     this.productsProxyService.getProductsWithVisibilityAction(true).subscribe((response) => {
         this.products = response?.results;
         if (this.categoriesFilter !== ProductCategories.all) {
-          this.products = this.products.filter(product => product.category === this.categoriesFilter);
+          this.products.sort((a) => {
+            if (a.category === this.categoriesFilter) {
+              return -1;
+            } else {
+              return 1;
+            }
+          });
         }
         this.allProducts = this.products;
         this.loading = false;
@@ -57,7 +63,7 @@ export class CreateOrderPage {
           `Error, de producten konden niet worden opgehaald. Status: ${error.status}`, 3500);
       });
     if (this.selectedProducts?.length === 0) {
-      for (const [key] of Object.entries(this.products)) {
+      for (const [key] of Object.entries(this.allProducts)) {
         this.products[key].amount = 0;
       }
     }
@@ -67,7 +73,7 @@ export class CreateOrderPage {
     const storedProducts = this.productsSummaryService.getProductsData();
     if (storedProducts !== undefined && storedProducts) {
       for (const [key, value] of Object.entries(storedProducts)) {
-        for (const product of this.products) {
+        for (const product of this.allProducts) {
           if (value.objectId === product.objectId) {
             product.amount = value.amount;
           }
@@ -112,9 +118,14 @@ export class CreateOrderPage {
   }
 
   filterProductsOnCategory(filterChoice) {
-    this.products = this.allProducts;
     if (filterChoice.target.value !== ProductCategories.all) {
-      this.products = this.products.filter(product => product.category === filterChoice.target.value);
+      this.products.sort((a) => {
+        if (a.category === filterChoice.target.value) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
     }
   }
 }

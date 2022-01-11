@@ -35,8 +35,7 @@
       </ion-item>
     </div>
     <app-product-list #productsList (changedProductsList)="updatedProductsList(productsList)" *ngIf="!loading"
-                      [filterTerm]="filterTerm"
-                      [products]="products"></app-product-list>
+                      [filterTerm]="filterTerm" [products]="allProducts"></app-product-list>
     <div *ngIf="loading" class="products-loading">
       <p>Producten laden...</p>
     </div>
