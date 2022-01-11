@@ -74,7 +74,7 @@ export class LoginPage {
 
   submitLogin() {
     if (this.networkService.isOnline) {
-      this.authenticationProxyService.loginAction(this.usernameInput, this.passwordInput)
+      this.authenticationProxyService.loginAction(this.usernameInput.toLowerCase(), this.passwordInput)
         .subscribe(
           (response) => {
             this.authenticationService.userLoggedIn(response);

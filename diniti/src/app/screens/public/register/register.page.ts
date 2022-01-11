@@ -176,7 +176,7 @@ export class RegisterPage {
   }
 
   userNameValueChanged(userNameValue: string) {
-    this.userNameInput = userNameValue;
+    this.userNameInput = userNameValue.toLowerCase();
   }
 
   emailValueChanged(emailValue: string) {
