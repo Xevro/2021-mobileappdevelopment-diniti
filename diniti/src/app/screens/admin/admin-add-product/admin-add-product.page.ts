@@ -48,6 +48,7 @@ export class AdminAddProductPage {
     this.product = {
       visibility: false,
       name: '',
+      category: '',
       description: '',
       price: 0.0
     };

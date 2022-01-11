@@ -74,10 +74,10 @@ export class AdminOverviewPage {
       this.orders.results.sort((first, second) => {
         const startDate = new Date(first.pickUpTime.iso).getTime();
         const secondDate = new Date(second.pickUpTime.iso).getTime();
-        if (filterChoice.target.value === OrderFilterDates.Ascending) {
+        if (filterChoice.target.value === OrderFilterDates.ascending) {
           return ((startDate > secondDate) ? -1 : (startDate < secondDate) ? 1 : 0);
         }
-        if (filterChoice.target.value === OrderFilterDates.Descending) {
+        if (filterChoice.target.value === OrderFilterDates.descending) {
           return ((startDate < secondDate) ? -1 : (startDate > secondDate) ? 1 : 0);
         }
       });

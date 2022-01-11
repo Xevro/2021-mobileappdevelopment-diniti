@@ -4,6 +4,7 @@ import {ProductsProxyService, ProductsSummaryService} from '../../../services/ba
 import {Product} from '../../../models/backend-models';
 import {Router} from '@angular/router';
 import {ToastMessageService} from '../../../services/ui-services';
+import {ProductCategories} from '../../../models/backend-models/enum/product-categories.enum';
 
 @Component({
   selector: 'app-create-order',
@@ -13,11 +14,15 @@ import {ToastMessageService} from '../../../services/ui-services';
 export class CreateOrderPage {
 
   products: Product[];
+  allProducts: Product[];
   filterTerm: string;
   loading = false;
   changedProducts = false;
   message: string;
   selectedProducts: Product[];
+
+  categoriesEnum = ProductCategories;
+  categoriesFilter: ProductCategories = ProductCategories.all;
 
   constructor(
     private router: Router,
@@ -38,6 +43,7 @@ export class CreateOrderPage {
       .subscribe(
         (response) => {
           this.products = response?.results;
+          this.allProducts = this.products;
           this.loading = false;
           this.loadStoredProducts();
           this.checkOrders();
@@ -102,5 +108,12 @@ export class CreateOrderPage {
     this.productsSummaryService.removeProductsData();
     this.selectedProducts = [];
     this.router.navigate(Routes.userOverview);
+  }
+
+  filterProductsOnCategory(filterChoice) {
+    this.products = this.allProducts;
+    if (filterChoice.target.value !== ProductCategories.all) {
+      this.products = this.products.filter(product => product.category === filterChoice.target.value);
+    }
   }
 }

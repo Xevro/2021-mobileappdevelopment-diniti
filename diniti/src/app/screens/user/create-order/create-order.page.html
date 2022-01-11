@@ -25,6 +25,14 @@
     </div>
     <div class="search-field">
       <ion-searchbar [(ngModel)]="filterTerm" animated="true" placeholder="Zoek producten"></ion-searchbar>
+      <ion-item>
+        <ion-label>Selecteer een categorie</ion-label>
+        <ion-select interface="popover" [(ngModel)]="categoriesFilter" (ionChange)="filterProductsOnCategory($event)">
+          <ion-select-option *ngFor="let category of categoriesEnum | enumToArray" [value]="category[0]">
+            {{ category[0] }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
     </div>
     <app-product-list #productsList (changedProductsList)="updatedProductsList(productsList)" *ngIf="!loading"
                       [filterTerm]="filterTerm"
