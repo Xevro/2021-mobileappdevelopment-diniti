@@ -527,15 +527,15 @@ Logboek Mobile Application Development - 2021-2022
 
  - Te doen deze week
   
-    * Kleine controle op een save icon doen.
-
+    *
 
  - Gedaan
 
     * Categorie toegevoegd aan een product
     * Filter toegevoegd aan de producten lijst met filter keuze op categorie
     * Kleine details gewijzigd (marges en spellingsfoutje)
-    
+    * Producten toegevoegd om databank te vullen
+
 
     - Applicatie is beschikbaar op https://diniti.b4a.app
 

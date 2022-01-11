@@ -43,6 +43,9 @@ export class AdminProductsPage {
         (response) => {
           this.products = response?.results;
           this.allProducts = this.products;
+          if (this.categoriesFilter !== ProductCategories.all) {
+            this.products = this.products.filter(product => product.category === this.categoriesFilter);
+          }
           this.loading = false;
           event?.target.complete();
         },

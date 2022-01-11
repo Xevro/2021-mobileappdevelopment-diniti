@@ -3,5 +3,6 @@ export enum ProductCategories {
   snacks = 'Snacks',
   drinks = 'Dranken',
   fries = 'Frieten',
-  burgers = 'Hamburgers'
+  burgers = 'Hamburgers',
+  ownThings = 'Eigen bereidingen'
 }

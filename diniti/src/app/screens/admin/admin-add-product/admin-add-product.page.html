@@ -70,7 +70,7 @@
 
         <p *ngIf="!loadingImage && imageError" class="image-upload-message">Er is een fout opgetreden bij het
           ophalen van de afbeelding</p>
-        <app-button (click)="uploadProductImage()" [buttonText]="'Voeg een product foto toe'" [disabled]="loadingImage"
+        <app-button (click)="uploadProductImage()" [buttonText]="(!loadingImage && uploadingImageDone) ? 'Vervang de product foto' : 'Voeg een product foto toe'" [disabled]="loadingImage"
                     [invertColor]="true"></app-button>
         <app-button (click)="removeProductImage()" *ngIf="imageResultData && !loadingImage"
                     [buttonText]="'Verwijder afbeelding'" [disabled]="loadingImage"

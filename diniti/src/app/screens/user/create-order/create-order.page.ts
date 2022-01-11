@@ -41,6 +41,9 @@ export class CreateOrderPage {
     this.message = null;
     this.productsProxyService.getProductsWithVisibilityAction(true).subscribe((response) => {
         this.products = response?.results;
+        if (this.categoriesFilter !== ProductCategories.all) {
+          this.products = this.products.filter(product => product.category === this.categoriesFilter);
+        }
         this.allProducts = this.products;
         this.loading = false;
         this.loadStoredProducts();
