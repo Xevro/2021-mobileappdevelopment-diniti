@@ -40,6 +40,16 @@
         </div>
       </div>
       <div class="input-section">
+        <ion-item>
+          <ion-label>Selecteer een categorie</ion-label>
+          <ion-select interface="popover" [(ngModel)]="selectedCategory" (ionChange)="selectCategory($event)">
+            <ion-select-option *ngFor="let category of categoriesEnum | enumToArray  | slice:1" [value]="category[0]">
+              {{ category[0] }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div class="input-section">
         <ion-label>Beschrijving</ion-label>
         <ion-textarea (ionInput)="descriptionValueChanged($event)" placeholder="Beschrijving" name="description"
                       rows="6" cols="20"

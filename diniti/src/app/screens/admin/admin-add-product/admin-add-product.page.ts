@@ -7,6 +7,7 @@ import {ProductsProxyService} from '../../../services/backend-services';
 import {Product} from '../../../models/backend-models';
 import {CurrencyPipe, Location} from '@angular/common';
 import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
+import {ProductCategories} from '../../../models/backend-models/enum/product-categories.enum';
 
 @Component({
   selector: 'app-admin-add-product',
@@ -24,6 +25,9 @@ export class AdminAddProductPage {
   routes = Routes;
 
   product: Product = {visibility: false} as Product;
+
+  categoriesEnum = ProductCategories;
+  selectedCategory = ProductCategories.snacks;
 
   nameErrorMessage: string = null;
   priceErrorMessage: string = null;
@@ -48,7 +52,7 @@ export class AdminAddProductPage {
     this.product = {
       visibility: false,
       name: '',
-      category: '',
+      category: ProductCategories.snacks,
       description: '',
       price: 0.0
     };
@@ -192,6 +196,12 @@ export class AdminAddProductPage {
       this.descriptionErrorMessage = '';
     } else {
       this.descriptionErrorMessage = 'Beschrijving kan niet leeg zijn';
+    }
+  }
+
+  selectCategory(categoryChoice) {
+    if (categoryChoice.target.value !== ProductCategories.all) {
+      this.product.category = categoryChoice.target.value;
     }
   }
 

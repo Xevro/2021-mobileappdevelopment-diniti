@@ -22,7 +22,7 @@ export class CreateOrderPage {
   selectedProducts: Product[];
 
   categoriesEnum = ProductCategories;
-  categoriesFilter: ProductCategories = ProductCategories.all;
+  categoriesFilter = ProductCategories.all;
 
   constructor(
     private router: Router,
