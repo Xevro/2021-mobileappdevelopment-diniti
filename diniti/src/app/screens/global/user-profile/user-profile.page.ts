@@ -6,7 +6,7 @@ import {FieldTypes} from '../../../models/ui-models';
 import {UserProxyService} from '../../../services/backend-services';
 import {UpdateUser, User} from '../../../models/backend-models';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
-import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 import {Location} from '@angular/common';
 
 @Component({
@@ -36,6 +36,7 @@ export class UserProfilePage {
     private router: Router,
     private location: Location,
     private photoService: PhotoService,
+    private uuidGenerator: UuidGenerator,
     private networkService: NetworkService,
     private userProxyService: UserProxyService,
     private toastMessageService: ToastMessageService,
@@ -143,6 +144,7 @@ export class UserProfilePage {
         'X-Parse-Session-Token': this.authenticationService.getSessionToken()
       };
       this.offlineStorageManager.addRequestToStorage({
+        id: this.uuidGenerator.generateUUID(),
         method: Methods.PUT,
         payload: this.updatedData,
         headerOptions,
@@ -256,6 +258,7 @@ export class UserProfilePage {
     } else {
       const headerOptions = {'Content-Type': 'application/json'};
       this.offlineStorageManager.addRequestToStorage({
+        id: this.uuidGenerator.generateUUID(),
         method: Methods.POST,
         payload: {email: this.userData.userEmail},
         headerOptions,

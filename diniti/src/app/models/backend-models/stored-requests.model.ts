@@ -1,10 +1,9 @@
 import {Methods} from '../core-models';
 
 export interface StoredRequest {
-  id?: string;
+  id: string;
   method: Methods;
   url: string;
   payload?: any;
   headerOptions?: any;
-  done?: boolean;
 }

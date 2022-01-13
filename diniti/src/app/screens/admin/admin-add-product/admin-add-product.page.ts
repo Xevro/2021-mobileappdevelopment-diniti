@@ -91,6 +91,7 @@ export class AdminAddProductPage {
               });
         } else {
           this.offlineStorageManager.addRequestToStorage({
+            id: this.uuidGenerator.generateUUID(),
             method: Methods.POST,
             payload: this.product,
             url: 'classes/Products'
@@ -113,6 +114,7 @@ export class AdminAddProductPage {
               });
         } else {
           this.offlineStorageManager.addRequestToStorage({
+            id: this.uuidGenerator.generateUUID(),
             method: Methods.POST,
             payload: this.product,
             url: 'classes/Products'

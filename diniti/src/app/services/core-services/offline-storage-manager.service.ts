@@ -25,7 +25,6 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
   }
 
   addRequestToStorage(request: StoredRequest) {
-    request.done = false;
     if (!this.networkService.isOnline) {
       this.indexedDB.requests.add(request);
     }
@@ -42,7 +41,7 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
   private createDatabase() {
     this.indexedDB = new Dexie('Diniti');
     this.indexedDB.version(1).stores({
-      requests: 'method,url,payload,headerOptions,done'
+      requests: 'id, method, url, payload, headerOptions'
     });
   }
 
@@ -50,21 +49,20 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
     const allRequests: StoredRequest[] = await this.indexedDB.requests.toArray();
     if (allRequests) {
       await allRequests.forEach((storedRequest: StoredRequest) => {
-          if (storedRequest.method === Methods.POST) {
-            this.postRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
-              .subscribe(() => storedRequest.done = true);
-          }
-          if (storedRequest.method === Methods.PUT) {
-            this.putRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
-              .subscribe(() => storedRequest.done = true);
-          }
-          if (storedRequest.method === Methods.DELETE) {
-            this.deleteRequest(storedRequest.url, storedRequest.headerOptions ?? {})
-              .subscribe(() => storedRequest.done = true);
-          }
-          this.indexedDB.requests.delete(storedRequest.id);
+        if (storedRequest.method === Methods.POST) {
+          this.postRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
+            .subscribe(async () => await this.indexedDB.requests.delete(storedRequest.id));
         }
-      );
+        if (storedRequest.method === Methods.PUT) {
+          this.putRequest(storedRequest.url, storedRequest.payload, storedRequest.headerOptions ?? {})
+            .subscribe(async () => await this.indexedDB.requests.delete(storedRequest.id));
+        }
+        if (storedRequest.method === Methods.DELETE) {
+          this.deleteRequest(storedRequest.url, storedRequest.headerOptions ?? {})
+            .subscribe(async () => await this.indexedDB.requests.delete(storedRequest.id));
+        }
+      });
+      this.indexedDB.clear();
       this.updates.activateUpdate().then(() => document.location.reload());
     }
   }

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FieldTypes} from '../../../models/ui-models';
 import {UserProxyService} from '../../../services/backend-services';
-import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 import {ToastMessageService} from '../../../services/ui-services';
 import {Methods, Routes} from '../../../models/core-models';
 import {Router} from '@angular/router';
@@ -20,6 +20,7 @@ export class ResetPasswordPage {
 
   constructor(
     private router: Router,
+    private uuidGenerator: UuidGenerator,
     private networkService: NetworkService,
     private userProxyService: UserProxyService,
     private toastMessageService: ToastMessageService,
@@ -80,6 +81,7 @@ export class ResetPasswordPage {
       this.submitted = false;
       const headerOptions = {'Content-Type': 'application/json'};
       this.offlineStorageManager.addRequestToStorage({
+        id: this.uuidGenerator.generateUUID(),
         method: Methods.POST,
         payload: {email: this.email},
         headerOptions,

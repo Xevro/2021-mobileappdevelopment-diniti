@@ -8,7 +8,7 @@ import {FieldTypes} from '../../../models/ui-models';
 import {Image, Methods} from '../../../models/core-models';
 import {CurrencyPipe, Location} from '@angular/common';
 import {PhotoService, ToastMessageService} from '../../../services/ui-services';
-import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 import {ProductCategories} from "../../../models/backend-models/enum/product-categories.enum";
 
 @Component({
@@ -45,6 +45,7 @@ export class ProductDetailsPage {
     private location: Location,
     private photoService: PhotoService,
     private currencyPipe: CurrencyPipe,
+    private uuidGenerator: UuidGenerator,
     private activatedRoute: ActivatedRoute,
     private networkService: NetworkService,
     private toastMessageService: ToastMessageService,
@@ -118,6 +119,7 @@ export class ProductDetailsPage {
         } else {
           const headerOptions = {'Content-Type': 'application/json'};
           this.offlineStorageManager.addRequestToStorage({
+            id: this.uuidGenerator.generateUUID(),
             method: Methods.PUT,
             payload: this.updateProduct,
             headerOptions,
@@ -143,6 +145,7 @@ export class ProductDetailsPage {
         } else {
           const headerOptions = {'Content-Type': 'application/json'};
           this.offlineStorageManager.addRequestToStorage({
+            id: this.uuidGenerator.generateUUID(),
             method: Methods.PUT,
             payload: this.updateProduct,
             headerOptions,

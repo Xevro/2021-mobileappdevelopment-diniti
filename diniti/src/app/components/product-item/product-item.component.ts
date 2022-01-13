@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {Role} from '../../models/authentication-models';
 import {AuthenticationService} from '../../services/authentication-services';
 import {ToastMessageService} from '../../services/ui-services';
-import {NetworkService, OfflineStorageManager} from '../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../services/core-services';
 
 @Component({
   selector: 'app-product-item',
@@ -31,6 +31,7 @@ export class ProductItemComponent {
     private router: Router,
     private networkService: NetworkService,
     private alertController: AlertController,
+    private uuidGenerator: UuidGenerator,
     private toastMessageService: ToastMessageService,
     private productsProxyService: ProductsProxyService,
     private authenticationService: AuthenticationService,
@@ -80,6 +81,7 @@ export class ProductItemComponent {
                   });
             } else {
               this.offlineStorageManager.addRequestToStorage({
+                id: this.uuidGenerator.generateUUID(),
                 method: Methods.DELETE,
                 url: `classes/Products/${this.product.objectId}`
               });
@@ -112,13 +114,10 @@ export class ProductItemComponent {
               `Error, de zichtbaarheid kon niet worden gewijzigd. Status: ${error.status}`, 3500);
           });
     } else {
-      const headerOptions = {
-        'Content-Type': 'application/json'
-      };
-      const body = {
-        visibility
-      };
+      const headerOptions = {'Content-Type': 'application/json'};
+      const body = {visibility: this.product.visibility};
       this.offlineStorageManager.addRequestToStorage({
+        id: this.uuidGenerator.generateUUID(),
         method: Methods.PUT,
         url: `classes/Products/${this.product.objectId}`,
         payload: body,

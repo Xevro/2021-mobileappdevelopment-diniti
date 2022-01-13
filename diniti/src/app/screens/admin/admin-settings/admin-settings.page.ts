@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Location} from '@angular/common';
 import {SettingsProxyService} from '../../../services/backend-services';
-import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 import {StoreSettings} from '../../../models/backend-models';
 import {ToastMessageService} from '../../../services/ui-services';
 import {Methods} from '../../../models/core-models';
@@ -23,6 +23,7 @@ export class AdminSettingsPage {
 
   constructor(
     private location: Location,
+    private uuidGenerator: UuidGenerator,
     private networkService: NetworkService,
     private toastMessageService: ToastMessageService,
     private settingsProxyService: SettingsProxyService,
@@ -68,6 +69,7 @@ export class AdminSettingsPage {
         closingHour: this.settings.closingHour
       };
       this.offlineStorageManager.addRequestToStorage({
+        id: this.uuidGenerator.generateUUID(),
         method: Methods.PUT,
         url: `classes/Settings/${this.settings.objectId}`,
         payload,

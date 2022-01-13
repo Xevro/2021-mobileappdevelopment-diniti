@@ -104,6 +104,7 @@ export class OrderSummaryPage {
         this.loading = false;
         localStorage.setItem('orderComplete', '1');
         this.offlineStorageManager.addRequestToStorage({
+          id: this.uuidGenerator.generateUUID(),
           method: Methods.POST,
           payload: this.order,
           url: `classes/Orders`

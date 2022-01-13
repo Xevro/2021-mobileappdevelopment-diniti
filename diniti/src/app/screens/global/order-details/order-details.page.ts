@@ -5,7 +5,7 @@ import {OrdersProxyService, UserProxyService} from '../../../services/backend-se
 import {AuthenticationService} from '../../../services/authentication-services';
 import {Role} from '../../../models/authentication-models';
 import {ToastMessageService} from '../../../services/ui-services';
-import {NetworkService, OfflineStorageManager} from '../../../services/core-services';
+import {NetworkService, OfflineStorageManager, UuidGenerator} from '../../../services/core-services';
 import {AlertController} from '@ionic/angular';
 import {Methods, Routes} from '../../../models/core-models';
 import {Location} from '@angular/common';
@@ -32,6 +32,7 @@ export class OrderDetailsPage {
   constructor(
     private router: Router,
     private location: Location,
+    private uuidGenerator: UuidGenerator,
     private activatedRoute: ActivatedRoute,
     private networkService: NetworkService,
     private alertController: AlertController,
@@ -105,6 +106,7 @@ export class OrderDetailsPage {
                   });
             } else {
               this.offlineStorageManager.addRequestToStorage({
+                id: this.uuidGenerator.generateUUID(),
                 method: Methods.DELETE,
                 url: `classes/Orders/${this.order.objectId}`
               });
@@ -159,6 +161,7 @@ export class OrderDetailsPage {
     } else {
       const headerOptions = {'Content-Type': 'application/json'};
       this.offlineStorageManager.addRequestToStorage({
+        id: this.uuidGenerator.generateUUID(),
         method: Methods.PUT,
         payload: {status: this.order.status},
         headerOptions,
