@@ -47,8 +47,14 @@
         <div *ngIf="!loading && order && !error">
           <app-product-list [hideUserButtons]="true" [products]="order?.products"></app-product-list>
         </div>
+
+        <div class="order-edit-box" *ngIf="order?.userId?.objectId === user?.objectId && currentRole === role.user && !loading">
+          <div class="cancel-order-button">
+            <app-button [buttonText]="'Annuleer bestelling'" [invertColor]="true" (click)="cancelOrder()"></app-button>
+          </div>
+        </div>
       </div>
-      <div class="summary-list" *ngIf="edit">
+      <div class="summary-list" *ngIf="edit && currentRole === role.admin">
         <div class="order-edit-box">
           <ion-label>Status</ion-label>
           <ion-select [(ngModel)]="order.status" [compareWith]="compareFn" (ionChange)="statusChanged($event)">

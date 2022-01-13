@@ -94,15 +94,14 @@ export class OrderDetailsPage {
             this.removingLoading = true;
             if (this.networkService.isOnline) {
               this.ordersProxyService.deleteOrderAction(this.order.objectId)
-                .subscribe(
-                  (response) => {
+                .subscribe(() => {
                     this.removingLoading = false;
                     this.router.navigate(Routes.adminOverview);
                   },
                   (error) => {
                     this.removingLoading = false;
                     this.toastMessageService.presentToast(
-                      `Error, het product kon niet worden verwijderd. Status: ${error.status}`, 3500);
+                      `Error, de bestelling kon niet worden verwijderd. Status: ${error.status}`, 3500);
                   });
             } else {
               this.offlineStorageManager.addRequestToStorage({
@@ -118,6 +117,50 @@ export class OrderDetailsPage {
         },
         {
           text: 'Annuleer',
+          role: 'Annuleer',
+          cssClass: 'modal-button-cancel'
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async cancelOrder() {
+    const alert = await this.alertController.create({
+      cssClass: 'basic-alert',
+      header: 'Opgelet',
+      message: 'Bent u zeker dat u deze bestelling wilt annuleren?',
+      buttons: [
+        {
+          text: 'Annuleer bestelling',
+          cssClass: 'btns-modal-alert',
+          handler: () => {
+            this.removingLoading = true;
+            if (this.networkService.isOnline) {
+              this.ordersProxyService.deleteOrderAction(this.order.objectId)
+                .subscribe(() => {
+                    this.removingLoading = false;
+                    this.router.navigate(Routes.userOverview);
+                  },
+                  (error) => {
+                    this.removingLoading = false;
+                    this.toastMessageService.presentToast(
+                      `Error, de bestelling kon niet worden geannuleerd. Status: ${error.status}`, 3500);
+                  });
+            } else {
+              this.offlineStorageManager.addRequestToStorage({
+                id: this.uuidGenerator.generateUUID(),
+                method: Methods.DELETE,
+                url: `classes/Orders/${this.order.objectId}`
+              });
+              this.toastMessageService.presentToast('De bestelling wordt geannuleerd van zodra er terug internet beschikbaar is.', 3500);
+              this.removingLoading = false;
+              this.router.navigate(Routes.userOverview);
+            }
+          }
+        },
+        {
+          text: 'Terug',
           role: 'Annuleer',
           cssClass: 'modal-button-cancel'
         }
@@ -147,8 +190,7 @@ export class OrderDetailsPage {
     this.updatingLoading = true;
     if (this.networkService.isOnline) {
       this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId)
-        .subscribe(
-          (response) => {
+        .subscribe(() => {
             this.updatingLoading = false;
             this.changedStatus = false;
             this.edit = false;
