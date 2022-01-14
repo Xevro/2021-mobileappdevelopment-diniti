@@ -41,31 +41,26 @@ export class OverviewOrdersPage {
   getOrders(event?: any) {
     this.loading = true;
     if (this.networkService.isOnline) {
-      this.settingsProxyService.getSettingsAction()
-        .subscribe((result) => {
-            const settings = result.results[0];
-            this.canOrder = settings.status;
-          },
-          (error) => {
-            this.toastMessageService.presentToast(
-              `Error, enkele gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
-          });
+      this.settingsProxyService.getSettingsAction().subscribe((result) => {
+        const settings = result.results[0];
+        this.canOrder = settings.status;
+      }, (error) => {
+        this.toastMessageService.presentToast(
+          `Error, enkele gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+      });
     }
-    this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId())
-      .subscribe(
-        (response) => {
-          this.orders = response;
-          if (this.dateFilter === OrderFilterDates.empty) {
-            this.orders.results.sort((first, second) => (first.orderId > second.orderId ? -1 : 0));
-          }
-          this.loading = false;
-          event?.target.complete();
-        },
-        (error) => {
-          event?.target.complete();
-          this.toastMessageService.presentToast(
-            `Error, de bestellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
-        });
+    this.ordersProxyService.getOrdersAction(this.authenticationService.getObjectId()).subscribe((response) => {
+      this.orders = response;
+      if (this.dateFilter === OrderFilterDates.empty) {
+        this.orders.results.sort((first, second) => (first.orderId > second.orderId ? -1 : 0));
+      }
+      this.loading = false;
+      event?.target.complete();
+    }, (error) => {
+      event?.target.complete();
+      this.toastMessageService.presentToast(
+        `Error, de bestellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
+    });
   }
 
   createOrder() {

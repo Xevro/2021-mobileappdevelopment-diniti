@@ -8,6 +8,7 @@ export interface Order {
   orderId: number;
   orderUuid: string;
   userId: UserPointer;
+  username: string;
   pickUpTime: Time;
   products: Product[];
   status: OrderStatus;

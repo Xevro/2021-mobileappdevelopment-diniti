@@ -51,9 +51,7 @@ export class UserProfilePage {
 
   getUserDataFromCloud() {
     const objectId = this.authenticationService.getObjectId();
-    this.userProxyService.getUserDataAction(objectId)
-      .subscribe(
-        (response) => {
+    this.userProxyService.getUserDataAction(objectId).subscribe((response) => {
           this.userData = response;
           this.userData.email = response.userEmail;
           this.updatedData.firstname = response.firstname;
@@ -127,22 +125,18 @@ export class UserProfilePage {
     if (this.networkService.isOnline) {
       this.updatedData.userEmail = this.updatedData.email;
       this.userProxyService.updateUserdataAction(this.updatedData, this.authenticationService.getObjectId())
-        .subscribe(
-          (response) => {
-            this.getUserDataFromCloud();
-            this.editUserData = !this.editUserData;
-            this.cancelButton = false;
-            this.editButton = true;
-            this.toggleEditView = false;
-          },
-          (error) => {
-            this.toastMessageService.presentToast(
-              `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
-          });
+        .subscribe(() => {
+          this.getUserDataFromCloud();
+          this.editUserData = !this.editUserData;
+          this.cancelButton = false;
+          this.editButton = true;
+          this.toggleEditView = false;
+        }, (error) => {
+          this.toastMessageService.presentToast(
+            `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
+        });
     } else {
-      const headerOptions = {
-        'X-Parse-Session-Token': this.authenticationService.getSessionToken()
-      };
+      const headerOptions = {'X-Parse-Session-Token': this.authenticationService.getSessionToken()};
       this.offlineStorageManager.addRequestToStorage({
         id: this.uuidGenerator.generateUUID(),
         method: Methods.PUT,
@@ -167,8 +161,7 @@ export class UserProfilePage {
         .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
       this.userProxyService.postImageAction(urlRawData)
-        .subscribe(
-          (result) => {
+        .subscribe((result) => {
             const data = {
               profilePicture: {
                 name: result.name,
@@ -177,8 +170,7 @@ export class UserProfilePage {
               }
             };
             this.userProxyService.updateUserImageAction(data, this.authenticationService.getObjectId())
-              .subscribe(
-                (status) => {
+              .subscribe(() => {
                   this.getUserDataFromCloud();
                 },
                 (error) => {
@@ -206,31 +198,25 @@ export class UserProfilePage {
         const urlRawData = await this.photoService.toDataURL(response.webPath)
           .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
-        this.userProxyService.postImageAction(urlRawData)
-          .subscribe(
-            (result) => {
-              const imageData = {
-                profilePicture: {
-                  name: result.name,
-                  url: result.url,
-                  __type: 'File'
-                }
-              };
-              this.userProxyService.updateUserImageAction(imageData, this.authenticationService.getObjectId())
-                .subscribe(
-                  (status) => {
-                    this.getUserDataFromCloud();
-                  },
-                  (error) => {
-                    this.loadingImage = false;
-                    this.toastMessageService.presentToast(
-                      `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
-                  });
-            },
-            (error) => {
-              this.toastMessageService.presentToast(
-                `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
-            });
+        this.userProxyService.postImageAction(urlRawData).subscribe((result) => {
+          const imageData = {
+            profilePicture: {
+              name: result.name,
+              url: result.url,
+              __type: 'File'
+            }
+          };
+          this.userProxyService.updateUserImageAction(imageData, this.authenticationService.getObjectId()).subscribe(() => {
+            this.getUserDataFromCloud();
+          }, (error) => {
+            this.loadingImage = false;
+            this.toastMessageService.presentToast(
+              `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
+          });
+        }, (error) => {
+          this.toastMessageService.presentToast(
+            `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+        });
       }, () => {
         this.loadingImage = false;
       });
@@ -242,19 +228,16 @@ export class UserProfilePage {
 
   requestPasswordChange() {
     if (this.networkService.isOnline) {
-      this.userProxyService.requestPasswordReset(this.userData.userEmail)
-        .subscribe(
-          (response) => {
-            this.submitted = false;
-            this.toastMessageService.presentToast(
-              'U zal een email ontvangen om uw wachtwoord te wijzigen.', 3500);
-          },
-          (error) => {
-            this.submitted = false;
-            this.emailErrorMessage = null;
-            this.toastMessageService.presentToast(
-              `Error, de aanvraag kon niet worden verstuurd. Status: ${error.status}`, 3500);
-          });
+      this.userProxyService.requestPasswordReset(this.userData.userEmail).subscribe(() => {
+        this.submitted = false;
+        this.toastMessageService.presentToast(
+          'U zal een email ontvangen om uw wachtwoord te wijzigen.', 3500);
+      }, (error) => {
+        this.submitted = false;
+        this.emailErrorMessage = null;
+        this.toastMessageService.presentToast(
+          `Error, de aanvraag kon niet worden verstuurd. Status: ${error.status}`, 3500);
+      });
     } else {
       const headerOptions = {'Content-Type': 'application/json'};
       this.offlineStorageManager.addRequestToStorage({
@@ -265,7 +248,9 @@ export class UserProfilePage {
         url: `requestPasswordReset`
       });
       this.submitted = false;
-      this.toastMessageService.presentToast('U zal een email ontvangen om uw wachtwoord te wijzigen van zodra er terug internet beschikbaar is.', 3500);
+      this.toastMessageService.presentToast(
+        'U zal een email ontvangen om uw wachtwoord te wijzigen van zodra er terug internet beschikbaar is.',
+        3500);
     }
   }
 

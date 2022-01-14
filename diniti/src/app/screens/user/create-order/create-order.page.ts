@@ -40,24 +40,23 @@ export class CreateOrderPage {
     this.loading = true;
     this.message = null;
     this.productsProxyService.getProductsWithVisibilityAction(true).subscribe((response) => {
-        this.products = response?.results;
-        if (this.categoriesFilter !== ProductCategories.all) {
-          this.products.sort((a) => (a.category === this.categoriesFilter) ? -1 : 1);
-        } else {
-          this.products.sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
-        }
-        this.allProducts = this.products;
-        this.loading = false;
-        this.loadStoredProducts();
-        this.checkOrders();
-        event?.target.complete();
-      },
-      (error) => {
-        event?.target.complete();
-        this.message = 'Geen producten kunnen ophalen';
-        this.toastMessageService.presentToast(
-          `Error, de producten konden niet worden opgehaald. Status: ${error.status}`, 3500);
-      });
+      this.products = response?.results;
+      if (this.categoriesFilter !== ProductCategories.all) {
+        this.products.sort((a) => (a.category === this.categoriesFilter) ? -1 : 1);
+      } else {
+        this.products.sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
+      }
+      this.allProducts = this.products;
+      this.loading = false;
+      this.loadStoredProducts();
+      this.checkOrders();
+      event?.target.complete();
+    }, (error) => {
+      event?.target.complete();
+      this.message = 'Geen producten kunnen ophalen';
+      this.toastMessageService.presentToast(
+        `Error, de producten konden niet worden opgehaald. Status: ${error.status}`, 3500);
+    });
     if (this.selectedProducts?.length === 0) {
       for (const [key] of Object.entries(this.allProducts)) {
         this.products[key].amount = 0;

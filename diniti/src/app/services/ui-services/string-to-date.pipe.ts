@@ -9,6 +9,6 @@ export class StringToDatePipe implements PipeTransform {
   transform(value: Time, ...args: unknown[]): string {
     const date = new Date(value.iso);
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() +
-      ' ' + date.getHours() + ':' + date.getMinutes() + ':' + ((date.getSeconds()) ? date.getSeconds() : '00');
+      ' ' + date.getHours() + ':' + date.getMinutes();
   }
 }
