@@ -46,6 +46,7 @@ export class AdminProductsPage {
           if (this.categoriesFilter !== ProductCategories.all) {
             this.products = this.products.filter(product => product.category === this.categoriesFilter);
           }
+          this.products.sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
           this.loading = false;
           event?.target.complete();
         },
@@ -62,7 +63,8 @@ export class AdminProductsPage {
   filterProductsOnCategory(filterChoice) {
     this.products = this.allProducts;
     if (filterChoice.target.value !== ProductCategories.all) {
-      this.products = this.products.filter(product => product.category === filterChoice.target.value);
+      this.products = this.products.filter(product => product.category === filterChoice.target.value)
+        .sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
     }
   }
 

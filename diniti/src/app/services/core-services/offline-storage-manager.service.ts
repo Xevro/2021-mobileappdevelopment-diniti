@@ -63,7 +63,7 @@ export class OfflineStorageManager extends CrudDataProvider<any> {
         }
       });
       this.indexedDB.clear();
-      this.updates.activateUpdate().then(() => document.location.reload());
     }
+    document.location.reload();
   }
 }

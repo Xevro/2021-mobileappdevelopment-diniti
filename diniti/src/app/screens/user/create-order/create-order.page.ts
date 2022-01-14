@@ -22,7 +22,7 @@ export class CreateOrderPage {
   selectedProducts: Product[];
 
   categoriesEnum = ProductCategories;
-  categoriesFilter = ProductCategories.all;
+  categoriesFilter = ProductCategories.fries;
 
   constructor(
     private router: Router,
@@ -42,13 +42,9 @@ export class CreateOrderPage {
     this.productsProxyService.getProductsWithVisibilityAction(true).subscribe((response) => {
         this.products = response?.results;
         if (this.categoriesFilter !== ProductCategories.all) {
-          this.products.sort((a) => {
-            if (a.category === this.categoriesFilter) {
-              return -1;
-            } else {
-              return 1;
-            }
-          });
+          this.products.sort((a) => (a.category === this.categoriesFilter) ? -1 : 1);
+        } else {
+          this.products.sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
         }
         this.allProducts = this.products;
         this.loading = false;
@@ -119,13 +115,9 @@ export class CreateOrderPage {
 
   filterProductsOnCategory(filterChoice) {
     if (filterChoice.target.value !== ProductCategories.all) {
-      this.products.sort((a) => {
-        if (a.category === filterChoice.target.value) {
-          return -1;
-        } else {
-          return 1;
-        }
-      });
+      this.products.sort((a) => (a.category === filterChoice.target.value) ? -1 : 1);
+    } else {
+      this.products.sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
     }
   }
 }

@@ -56,11 +56,7 @@ export class OverviewOrdersPage {
         (response) => {
           this.orders = response;
           if (this.dateFilter === OrderFilterDates.empty) {
-            this.orders.results.sort((first, second) => {
-              const startDate = new Date(first.pickUpTime.iso).getTime();
-              const secondDate = new Date(second.pickUpTime.iso).getTime();
-              return ((startDate > secondDate) ? -1 : (startDate < secondDate) ? 1 : 0);
-            });
+            this.orders.results.sort((first, second) => (first.orderId > second.orderId ? -1 : 0));
           }
           this.loading = false;
           event?.target.complete();

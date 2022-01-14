@@ -39,7 +39,7 @@
     <div *ngIf="products?.length === 0 && !loading" class="products-loading">
       <p>Geen producten gevonden</p>
     </div>
-    <div *ngIf="errorMessage && !loading" class="products-loading">
+    <div *ngIf="errorMessage && !loading && products?.length <= 0" class="products-loading">
       <p>Kon geen gegevens ophalen.</p>
     </div>
   </div>
