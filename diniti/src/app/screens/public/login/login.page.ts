@@ -74,28 +74,25 @@ export class LoginPage {
 
   submitLogin() {
     if (this.networkService.isOnline) {
-      this.authenticationProxyService.loginAction(this.usernameInput.toLowerCase(), this.passwordInput)
-        .subscribe(
-          (response) => {
-            this.authenticationService.userLoggedIn(response);
-            this.submitted = false;
-            if (response.role === Role.admin) {
-              this.router.navigate(Routes.adminOverview);
-            } else if (response.role === Role.user) {
-              this.router.navigate(Routes.userOverview);
-            } else {
-              this.passwordInput = null;
-              this.errorMessage = 'Kon niet inloggen wegens een probleem';
-            }
-          },
-          (error) => {
-            this.authenticationService.logOut();
-            this.submitted = false;
-            this.passwordInput = null;
-            this.errorMessage = '';
-            this.toastMessageService.presentToast(
-              `Error, de gebruiker kon niet worden ingelogd.`, 3500);
-          });
+      this.authenticationProxyService.loginAction(this.usernameInput.toLowerCase(), this.passwordInput).subscribe((response) => {
+        this.authenticationService.userLoggedIn(response);
+        this.submitted = false;
+        if (response.role === Role.admin) {
+          this.router.navigate(Routes.adminOverview);
+        } else if (response.role === Role.user) {
+          this.router.navigate(Routes.userOverview);
+        } else {
+          this.passwordInput = null;
+          this.errorMessage = 'Kon niet inloggen wegens een probleem';
+        }
+      }, (error) => {
+        this.authenticationService.logOut();
+        this.submitted = false;
+        this.passwordInput = null;
+        this.errorMessage = '';
+        this.toastMessageService.presentToast(
+          `Error, de gebruiker kon niet worden ingelogd.`, 3500);
+      });
     } else {
       this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);
     }

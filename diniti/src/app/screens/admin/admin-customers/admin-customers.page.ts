@@ -33,21 +33,18 @@ export class AdminCustomersPage {
   getCustomers(event?: any) {
     this.loading = true;
     this.message = null;
-    this.userProxyService.getAllCustomersAction(Role.user)
-      .subscribe(
-        (response) => {
-          this.customers = response?.results;
-          this.loading = false;
-          event?.target.complete();
-        },
-        (error) => {
-          event?.target.complete();
-          this.loading = false;
-          this.errorMessage = true;
-          this.toastMessageService.presentToast(
-            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500
-          );
-        });
+    this.userProxyService.getAllCustomersAction(Role.user).subscribe((response) => {
+      this.customers = response?.results;
+      this.loading = false;
+      event?.target.complete();
+    }, (error) => {
+      event?.target.complete();
+      this.loading = false;
+      this.errorMessage = true;
+      this.toastMessageService.presentToast(
+        `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500
+      );
+    });
   }
 
   updatedCustomersList(customersEvent: any) {

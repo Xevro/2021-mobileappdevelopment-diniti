@@ -52,19 +52,19 @@ export class UserProfilePage {
   getUserDataFromCloud() {
     const objectId = this.authenticationService.getObjectId();
     this.userProxyService.getUserDataAction(objectId).subscribe((response) => {
-          this.userData = response;
-          this.userData.email = response.userEmail;
-          this.updatedData.firstname = response.firstname;
-          this.updatedData.lastname = response.lastname;
-          this.updatedData.email = response.userEmail;
-          this.updatedData.userEmail = response.userEmail;
-          this.updatedData.username = response.username;
-          this.loadingImage = false;
-        },
-        (error) => {
-          this.toastMessageService.presentToast(
-            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
-        });
+        this.userData = response;
+        this.userData.email = response.userEmail;
+        this.updatedData.firstname = response.firstname;
+        this.updatedData.lastname = response.lastname;
+        this.updatedData.email = response.userEmail;
+        this.updatedData.userEmail = response.userEmail;
+        this.updatedData.username = response.username;
+        this.loadingImage = false;
+      },
+      (error) => {
+        this.toastMessageService.presentToast(
+          `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+      });
   }
 
   logout() {
@@ -160,30 +160,26 @@ export class UserProfilePage {
       const urlRawData = await this.photoService.toDataURL(baseUrl)
         .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
-      this.userProxyService.postImageAction(urlRawData)
-        .subscribe((result) => {
-            const data = {
-              profilePicture: {
-                name: result.name,
-                url: result.url,
-                __type: 'File'
-              }
-            };
-            this.userProxyService.updateUserImageAction(data, this.authenticationService.getObjectId())
-              .subscribe(() => {
-                  this.getUserDataFromCloud();
-                },
-                (error) => {
-                  this.loadingImage = false;
-                  this.toastMessageService.presentToast(
-                    `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
-                });
-          },
-          (error) => {
-            this.loadingImage = false;
-            this.toastMessageService.presentToast(
-              `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
-          });
+      this.userProxyService.postImageAction(urlRawData).subscribe((result) => {
+        const data = {
+          profilePicture: {
+            name: result.name,
+            url: result.url,
+            __type: 'File'
+          }
+        };
+        this.userProxyService.updateUserImageAction(data, this.authenticationService.getObjectId()).subscribe(() => {
+          this.getUserDataFromCloud();
+        }, (error) => {
+          this.loadingImage = false;
+          this.toastMessageService.presentToast(
+            `Error, de gebruiker kon niet worden bijgewerkt. Status: ${error.status}`, 3500);
+        });
+      }, (error) => {
+        this.loadingImage = false;
+        this.toastMessageService.presentToast(
+          `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+      });
     } else {
       this.loadingImage = false;
       await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);

@@ -62,28 +62,25 @@ export class ProductDetailsPage {
 
   getOrderData() {
     this.loading = true;
-    this.productsProxyService.getProductByIdAction(this.activatedRoute.snapshot.params.productUuid)
-      .subscribe(
-        (response) => {
-          if (response.results.length !== 0) {
-            this.product = response.results[0];
-            this.updateProduct.name = this.product.name;
-            this.updateProduct.price = this.product.price;
-            this.updateProduct.category = this.product.category;
-            this.selectedCategory = this.product.category;
-            this.updateProduct.visibility = this.product.visibility;
-            this.updateProduct.description = this.product.description;
-            this.loading = false;
-            this.error = !this.product?.productId;
-          } else {
-            this.error = true;
-          }
-        },
-        (error) => {
-          this.error = true;
-          this.toastMessageService.presentToast(
-            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
-        });
+    this.productsProxyService.getProductByIdAction(this.activatedRoute.snapshot.params.productUuid).subscribe((response) => {
+      if (response.results.length !== 0) {
+        this.product = response.results[0];
+        this.updateProduct.name = this.product.name;
+        this.updateProduct.price = this.product.price;
+        this.updateProduct.category = this.product.category;
+        this.selectedCategory = this.product.category;
+        this.updateProduct.visibility = this.product.visibility;
+        this.updateProduct.description = this.product.description;
+        this.loading = false;
+        this.error = !this.product?.productId;
+      } else {
+        this.error = true;
+      }
+    }, (error) => {
+      this.error = true;
+      this.toastMessageService.presentToast(
+        `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+    });
   }
 
   editProduct() {
@@ -105,17 +102,14 @@ export class ProductDetailsPage {
           __type: 'File'
         };
         if (this.networkService.isOnline) {
-          this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
-            .subscribe(
-              (status) => {
-                this.edit = false;
-                this.getOrderData();
-              },
-              (error) => {
-                this.error = true;
-                this.toastMessageService.presentToast(
-                  `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
-              });
+          this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId).subscribe(() => {
+            this.edit = false;
+            this.getOrderData();
+          }, (error) => {
+            this.error = true;
+            this.toastMessageService.presentToast(
+              `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
+          });
         } else {
           const headerOptions = {'Content-Type': 'application/json'};
           this.offlineStorageManager.addRequestToStorage({
@@ -131,17 +125,14 @@ export class ProductDetailsPage {
         }
       } else {
         if (this.networkService.isOnline) {
-          this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId)
-            .subscribe(
-              (status) => {
-                this.edit = false;
-                this.getOrderData();
-              },
-              (error) => {
-                this.error = true;
-                this.toastMessageService.presentToast(
-                  `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
-              });
+          this.productsProxyService.updateProductAction(this.updateProduct, this.product.objectId).subscribe(() => {
+            this.edit = false;
+            this.getOrderData();
+          }, (error) => {
+            this.error = true;
+            this.toastMessageService.presentToast(
+              `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
+          });
         } else {
           const headerOptions = {'Content-Type': 'application/json'};
           this.offlineStorageManager.addRequestToStorage({
@@ -169,21 +160,18 @@ export class ProductDetailsPage {
         const urlRawData = await this.photoService.toDataURL(response.webPath)
           .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
-        this.productsProxyService.postImageAction(urlRawData)
-          .subscribe(
-            (result) => {
-              this.imageResultData = result;
-              this.loadingImage = false;
-              this.uploadingImageDone = true;
-              this.edit = false;
-              this.imageError = false;
-            },
-            (error) => {
-              this.uploadingImageDone = false;
-              this.imageError = true;
-              this.toastMessageService.presentToast(
-                `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
-            });
+        this.productsProxyService.postImageAction(urlRawData).subscribe((result) => {
+          this.imageResultData = result;
+          this.loadingImage = false;
+          this.uploadingImageDone = true;
+          this.edit = false;
+          this.imageError = false;
+        }, (error) => {
+          this.uploadingImageDone = false;
+          this.imageError = true;
+          this.toastMessageService.presentToast(
+            `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+        });
       });
     } else {
       this.loadingImage = false;
@@ -209,18 +197,15 @@ export class ProductDetailsPage {
                   __type: 'File'
                 }
               };
-              this.productsProxyService.updateProductImageAction(data, this.product.objectId)
-                .subscribe(
-                  (status) => {
-                    this.loadingImage = false;
-                    this.edit = false;
-                    this.getOrderData();
-                  },
-                  (error) => {
-                    this.loadingImage = false;
-                    this.toastMessageService.presentToast(
-                      `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
-                  });
+              this.productsProxyService.updateProductImageAction(data, this.product.objectId).subscribe(() => {
+                this.loadingImage = false;
+                this.edit = false;
+                this.getOrderData();
+              }, (error) => {
+                this.loadingImage = false;
+                this.toastMessageService.presentToast(
+                  `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+              });
             },
             (error) => {
               this.loadingImage = false;
@@ -244,34 +229,30 @@ export class ProductDetailsPage {
       const urlRawData = await this.photoService.toDataURL(baseUrl)
         .then(dataUrl => this.photoService.dataURItoBlob(dataUrl));
 
-      this.productsProxyService.postImageAction(urlRawData)
-        .subscribe(
-          (result) => {
-            const data = {
-              image: {
-                name: result.name,
-                url: result.url,
-                __type: 'File'
-              }
-            };
-            this.productsProxyService.updateProductImageAction(data, this.product.objectId)
-              .subscribe(
-                (status) => {
-                  this.loadingImage = false;
-                  this.edit = false;
-                  this.getOrderData();
-                },
-                (error) => {
-                  this.loadingImage = false;
-                  this.toastMessageService.presentToast(
-                    `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
-                });
-          },
-          (error) => {
-            this.loadingImage = false;
-            this.toastMessageService.presentToast(
-              `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
-          });
+      this.productsProxyService.postImageAction(urlRawData).subscribe((result) => {
+          const data = {
+            image: {
+              name: result.name,
+              url: result.url,
+              __type: 'File'
+            }
+          };
+          this.productsProxyService.updateProductImageAction(data, this.product.objectId).subscribe(() => {
+              this.loadingImage = false;
+              this.edit = false;
+              this.getOrderData();
+            },
+            (error) => {
+              this.loadingImage = false;
+              this.toastMessageService.presentToast(
+                `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+            });
+        },
+        (error) => {
+          this.loadingImage = false;
+          this.toastMessageService.presentToast(
+            `Error, de afbeelding kon niet worden opgeslaan. Status: ${error.status}`, 3500);
+        });
     } else {
       this.loadingImage = false;
       await this.toastMessageService.presentToast('Er is geen netwerk verbinding...', 3000);

@@ -145,16 +145,13 @@ export class RegisterPage {
         userEmail: this.emailInput,
         password: this.passwordInput
       };
-      this.authenticationProxyService.registerAction(registerData)
-        .subscribe(
-          (response) => {
+      this.authenticationProxyService.registerAction(registerData).subscribe((response) => {
             this.userContext.userRegistered(response);
             this.submitted = false;
             this.emailInput = null;
             this.passwordInput = null;
             this.router.navigate(Routes.userOverview);
-          },
-          (error) => {
+          },(error) => {
             this.submitted = false;
             this.passwordInput = '';
             this.passwordConfirmInput = '';

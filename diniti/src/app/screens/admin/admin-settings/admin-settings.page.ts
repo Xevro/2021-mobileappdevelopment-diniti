@@ -33,19 +33,17 @@ export class AdminSettingsPage {
 
   ionViewWillEnter() {
     this.loading = true;
-    this.settingsProxyService.getSettingsAction()
-      .subscribe((result) => {
-          this.settings = result.results[0];
-          this.startHour = this.settings.startHour.iso;
-          this.closingHour = this.settings.closingHour.iso;
-          this.loading = false;
-        },
-        (error) => {
-          this.loading = false;
-          this.error = true;
-          this.toastMessageService.presentToast(
-            `Error, de instellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
-        });
+    this.settingsProxyService.getSettingsAction().subscribe((result) => {
+      this.settings = result.results[0];
+      this.startHour = this.settings.startHour.iso;
+      this.closingHour = this.settings.closingHour.iso;
+      this.loading = false;
+    },(error) => {
+      this.loading = false;
+      this.error = true;
+      this.toastMessageService.presentToast(
+        `Error, de instellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
+    });
   }
 
   saveSettings() {
@@ -53,14 +51,13 @@ export class AdminSettingsPage {
     this.settings.startHour = {__type: 'Date', iso: this.startHour};
     this.settings.closingHour = {__type: 'Date', iso: this.closingHour};
     if (this.networkService.isOnline) {
-      this.settingsProxyService.updateSettingsAction(this.settings, this.settings.objectId)
-        .subscribe((response) => {
-          },
-          (error) => {
-            this.error = true;
-            this.toastMessageService.presentToast(
-              `Error, de instellingen konden niet worden gewijzigd. Status: ${error.status}`, 3500);
-          });
+      this.settingsProxyService.updateSettingsAction(this.settings, this.settings.objectId).subscribe(() => {
+        },
+        (error) => {
+          this.error = true;
+          this.toastMessageService.presentToast(
+            `Error, de instellingen konden niet worden gewijzigd. Status: ${error.status}`, 3500);
+        });
     } else {
       const headerOptions = {'Content-Type': 'application/json'};
       const payload = {

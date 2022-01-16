@@ -38,26 +38,23 @@ export class AdminProductsPage {
   getProducts(event?: any) {
     this.loading = true;
     this.message = null;
-    this.productsProxyService.getAllProductsAction()
-      .subscribe(
-        (response) => {
-          this.products = response?.results;
-          this.allProducts = this.products;
-          if (this.categoriesFilter !== ProductCategories.all) {
-            this.products = this.products.filter(product => product.category === this.categoriesFilter);
-          }
-          this.products.sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
-          this.loading = false;
-          event?.target.complete();
-        },
-        (error) => {
-          event?.target.complete();
-          this.loading = false;
-          this.errorMessage = true;
-          this.toastMessageService.presentToast(
-            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500
-          );
-        });
+    this.productsProxyService.getAllProductsAction().subscribe((response) => {
+      this.products = response?.results;
+      this.allProducts = this.products;
+      if (this.categoriesFilter !== ProductCategories.all) {
+        this.products = this.products.filter(product => product.category === this.categoriesFilter);
+      }
+      this.products.sort((a, b) => ((a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0));
+      this.loading = false;
+      event?.target.complete();
+    }, (error) => {
+      event?.target.complete();
+      this.loading = false;
+      this.errorMessage = true;
+      this.toastMessageService.presentToast(
+        `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500
+      );
+    });
   }
 
   filterProductsOnCategory(filterChoice) {

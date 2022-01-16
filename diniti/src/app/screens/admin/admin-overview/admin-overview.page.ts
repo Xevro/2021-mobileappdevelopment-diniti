@@ -37,27 +37,24 @@ export class AdminOverviewPage {
 
   getOrders(event?: any) {
     this.loading = true;
-    this.ordersProxyService.getAllOrdersAction()
-      .subscribe(
-        (response) => {
-          this.orders = response;
-          if (this.dateFilter === OrderFilterDates.empty) {
-            this.orders.results.sort((first, second) => {
-              const startDate = new Date(first.pickUpTime.iso).getTime();
-              const secondDate = new Date(second.pickUpTime.iso).getTime();
-              return ((startDate > secondDate) ? -1 : (startDate < secondDate) ? 1 : 0);
-            });
-          }
-          this.loading = false;
-          event?.target.complete();
-        },
-        (error) => {
-          event?.target.complete();
-          this.loading = false;
-          this.errorMessage = true;
-          this.toastMessageService.presentToast(
-            `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+    this.ordersProxyService.getAllOrdersAction().subscribe((response) => {
+      this.orders = response;
+      if (this.dateFilter === OrderFilterDates.empty) {
+        this.orders.results.sort((first, second) => {
+          const startDate = new Date(first.pickUpTime.iso).getTime();
+          const secondDate = new Date(second.pickUpTime.iso).getTime();
+          return ((startDate > secondDate) ? -1 : (startDate < secondDate) ? 1 : 0);
         });
+      }
+      this.loading = false;
+      event?.target.complete();
+    }, (error) => {
+      event?.target.complete();
+      this.loading = false;
+      this.errorMessage = true;
+      this.toastMessageService.presentToast(
+        `Error, de gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+    });
   }
 
   sortOnStatus(status) {

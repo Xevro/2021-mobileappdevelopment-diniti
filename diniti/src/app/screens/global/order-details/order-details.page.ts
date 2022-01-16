@@ -93,16 +93,14 @@ export class OrderDetailsPage {
           handler: () => {
             this.removingLoading = true;
             if (this.networkService.isOnline) {
-              this.ordersProxyService.deleteOrderAction(this.order.objectId)
-                .subscribe(() => {
-                    this.removingLoading = false;
-                    this.router.navigate(Routes.adminOverview);
-                  },
-                  (error) => {
-                    this.removingLoading = false;
-                    this.toastMessageService.presentToast(
-                      `Error, de bestelling kon niet worden verwijderd. Status: ${error.status}`, 3500);
-                  });
+              this.ordersProxyService.deleteOrderAction(this.order.objectId).subscribe(() => {
+                this.removingLoading = false;
+                this.router.navigate(Routes.adminOverview);
+              }, (error) => {
+                this.removingLoading = false;
+                this.toastMessageService.presentToast(
+                  `Error, de bestelling kon niet worden verwijderd. Status: ${error.status}`, 3500);
+              });
             } else {
               this.offlineStorageManager.addRequestToStorage({
                 id: this.uuidGenerator.generateUUID(),
@@ -137,16 +135,14 @@ export class OrderDetailsPage {
           handler: () => {
             this.removingLoading = true;
             if (this.networkService.isOnline) {
-              this.ordersProxyService.deleteOrderAction(this.order.objectId)
-                .subscribe(() => {
-                    this.removingLoading = false;
-                    this.router.navigate(Routes.userOverview);
-                  },
-                  (error) => {
-                    this.removingLoading = false;
-                    this.toastMessageService.presentToast(
-                      `Error, de bestelling kon niet worden geannuleerd. Status: ${error.status}`, 3500);
-                  });
+              this.ordersProxyService.deleteOrderAction(this.order.objectId).subscribe(() => {
+                this.removingLoading = false;
+                this.router.navigate(Routes.userOverview);
+              }, (error) => {
+                this.removingLoading = false;
+                this.toastMessageService.presentToast(
+                  `Error, de bestelling kon niet worden geannuleerd. Status: ${error.status}`, 3500);
+              });
             } else {
               this.offlineStorageManager.addRequestToStorage({
                 id: this.uuidGenerator.generateUUID(),
@@ -189,17 +185,15 @@ export class OrderDetailsPage {
   saveStatus() {
     this.updatingLoading = true;
     if (this.networkService.isOnline) {
-      this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId)
-        .subscribe(() => {
-            this.updatingLoading = false;
-            this.changedStatus = false;
-            this.edit = false;
-          },
-          (error) => {
-            this.error = true;
-            this.toastMessageService.presentToast(
-              `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
-          });
+      this.ordersProxyService.updateOrderAction(this.order.status, this.order.objectId).subscribe(() => {
+        this.updatingLoading = false;
+        this.changedStatus = false;
+        this.edit = false;
+      }, (error) => {
+        this.error = true;
+        this.toastMessageService.presentToast(
+          `Error, de gegevens konden niet worden opgeslaan. Status: ${error.status}`, 3500);
+      });
     } else {
       const headerOptions = {'Content-Type': 'application/json'};
       this.offlineStorageManager.addRequestToStorage({

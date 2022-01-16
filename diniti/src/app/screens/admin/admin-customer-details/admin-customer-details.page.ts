@@ -42,34 +42,29 @@ export class AdminCustomerDetailsPage {
   getCustomerData() {
     this.loading = true;
     this.userProxyService.getCustomerDataByUuidAction(this.activatedRoute.snapshot.params.customerUuid)
-      .subscribe(
-        (userData) => {
-          this.customer = userData?.results[0];
-          this.loading = false;
-          this.error = !this.customer?.customerId;
-          this.getCustomerOrdersData();
-        },
-        (error) => {
-          this.error = true;
-          this.toastMessageService.presentToast(
-            `Error, de klanten gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
-        });
+      .subscribe((userData) => {
+        this.customer = userData?.results[0];
+        this.loading = false;
+        this.error = !this.customer?.customerId;
+        this.getCustomerOrdersData();
+      }, (error) => {
+        this.error = true;
+        this.toastMessageService.presentToast(
+          `Error, de klanten gegevens konden niet worden opgehaald. Status: ${error.status}`, 3500);
+      });
   }
 
   getCustomerOrdersData() {
     this.loadingOrders = true;
-    this.ordersProxyService.getOrdersAction(this.customer.objectId)
-      .subscribe(
-        (orders) => {
-          this.customersOrders = orders;
-          this.loadingOrders = false;
-          this.errorOrders = !this.customersOrders?.results[0]?.objectId;
-        },
-        (error) => {
-          this.errorOrders = true;
-          this.toastMessageService.presentToast(
-            `Error, de bestellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
-        });
+    this.ordersProxyService.getOrdersAction(this.customer.objectId).subscribe((orders) => {
+      this.customersOrders = orders;
+      this.loadingOrders = false;
+      this.errorOrders = !this.customersOrders?.results[0]?.objectId;
+    }, (error) => {
+      this.errorOrders = true;
+      this.toastMessageService.presentToast(
+        `Error, de bestellingen konden niet worden opgehaald. Status: ${error.status}`, 3500);
+    });
   }
 
   goBack() {

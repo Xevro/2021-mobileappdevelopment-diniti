@@ -19,8 +19,7 @@ export class AuthenticatedGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     if (this.networkService.isOnline) {
-      return this.authenticationService.tryAutoLogin().pipe(
-        tap((status) => {
+      return this.authenticationService.tryAutoLogin().pipe(tap((status) => {
           if (!status || next.data.expectedRole !== this.authenticationService.getRole()) {
             this.router.navigate(Routes.login);
           } else {

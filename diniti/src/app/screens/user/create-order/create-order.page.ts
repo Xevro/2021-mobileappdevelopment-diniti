@@ -51,7 +51,7 @@ export class CreateOrderPage {
       this.loadStoredProducts();
       this.checkOrders();
       event?.target.complete();
-    }, (error) => {
+    },(error) => {
       event?.target.complete();
       this.message = 'Geen producten kunnen ophalen';
       this.toastMessageService.presentToast(

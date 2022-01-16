@@ -65,13 +65,10 @@ export class ResetPasswordPage {
 
   submitResetPassword() {
     if (this.networkService.isOnline) {
-      this.userProxyService.requestPasswordReset(this.email)
-        .subscribe(
-          (response) => {
+      this.userProxyService.requestPasswordReset(this.email).subscribe(() => {
             this.submitted = false;
             this.router.navigate(Routes.login);
-          },
-          (error) => {
+          },(error) => {
             this.submitted = false;
             this.emailErrorMessage = null;
             this.toastMessageService.presentToast(

@@ -22,8 +22,7 @@ export class LoginGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     if (this.networkService.isOnline) {
-      return this.authenticationService.tryAutoLogin().pipe(
-        map(status => {
+      return this.authenticationService.tryAutoLogin().pipe(map(status => {
           if (!status) {
             return true;
           } else {
